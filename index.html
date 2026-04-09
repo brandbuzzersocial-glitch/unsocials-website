@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNSOCIALS — We Make It Inevitable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="pre">
+  <div class="pre-flip">
+    <div class="pre-word en" id="pre-en">UNSOCIALS</div>
+    <div class="pre-word th" id="pre-th" style="opacity:0;transform:translateY(110%)">อันโซเชียล</div>
+  </div>
+  <div class="pre-track"><div class="pre-fill" id="pf"></div></div>
+  <div class="pre-txt" id="pt">INITIALISING</div>
+</div>
+
+<!-- CURSOR -->
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nlogo" href="#">UNSOCIALS <span class="nbadge">TH</span></a>
+  <div class="nlinks">
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#cta-sec">Contact</a>
+  </div>
+  <button class="nbook" onclick="document.getElementById('cta-sec').scrollIntoView({behavior:'smooth'})">Book a Call</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+
+  <!-- FLOATING REEL TILES -->
+  <div class="reel-tiles">
+    <!-- Reel 1: Left -->
+    <div class="reel-tile" style="left:4%;top:18%;animation-duration:6s;animation-delay:0s;--tilt:-4deg">
+      <div class="reel-tile-inner">
+        <div class="reel-bg" style="background:linear-gradient(135deg,#1a0030,#4a0080,#ff2d2d 80%);animation-duration:10s"></div>
+        <div class="reel-overlay"></div>
+        <div class="reel-play-dot"></div>
+        <div class="reel-info">
+          <div class="reel-acc">@elysium.pattaya</div>
+          <div class="reel-stat">2.4M views</div>
+        </div>
+        <div class="reel-bar"><div class="reel-prog" style="animation-duration:12s"></div></div>
+      </div>
+    </div>
+    <!-- Reel 2: Left lower -->
+    <div class="reel-tile" style="left:9%;top:54%;animation-duration:7.5s;animation-delay:-2s;--tilt:3deg">
+      <div class="reel-tile-inner">
+        <div class="reel-bg" style="background:linear-gradient(160deg,#001a10,#003d22,#00c874 90%);animation-duration:9s"></div>
+        <div class="reel-overlay"></div>
+        <div class="reel-play-dot" style="animation-delay:.5s"></div>
+        <div class="reel-info">
+          <div class="reel-acc">@alexa.beachclub</div>
+          <div class="reel-stat">890K plays</div>
+        </div>
+        <div class="reel-bar"><div class="reel-prog" style="animation-duration:8s"></div></div>
+      </div>
+    </div>
+    <!-- Reel 3: Right -->
+    <div class="reel-tile" style="right:4%;top:15%;animation-duration:8s;animation-delay:-1s;--tilt:5deg">
+      <div class="reel-tile-inner">
+        <div class="reel-bg" style="background:linear-gradient(120deg,#001030,#0030a0,#00aaff 90%);animation-duration:11s"></div>
+        <div class="reel-overlay"></div>
+        <div class="reel-play-dot" style="animation-delay:.2s"></div>
+        <div class="reel-info">
+          <div class="reel-acc">@nomads.asia</div>
+          <div class="reel-stat">1.1M views</div>
+        </div>
+        <div class="reel-bar"><div class="reel-prog" style="animation-duration:15s;animation-delay:-4s"></div></div>
+      </div>
+    </div>
+    <!-- Reel 4: Right lower -->
+    <div class="reel-tile" style="right:9%;top:50%;animation-duration:6.5s;animation-delay:-3s;--tilt:-3deg">
+      <div class="reel-tile-inner">
+        <div class="reel-bg" style="background:linear-gradient(150deg,#200010,#8b0030,#ff6600 90%);animation-duration:7s;animation-delay:-2s"></div>
+        <div class="reel-overlay"></div>
+        <div class="reel-play-dot" style="animation-delay:.7s"></div>
+        <div class="reel-info">
+          <div class="reel-acc">@bamboo.krabi</div>
+          <div class="reel-stat">3.2M plays</div>
+        </div>
+        <div class="reel-bar"><div class="reel-prog" style="animation-duration:10s;animation-delay:-6s"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-ui">
+    <span class="h-eye">Bangkok · Thailand · Performance Marketing</span>
+    <span class="h-big">
+      <span class="ri d1">WE DON'T</span><br>
+      <span class="ri d2 h-it">do social —</span><br>
+      <span class="ri d3">WE <span class="hac">DOMINATE</span> IT</span>
+    </span>
+    <span class="hero-sub">Performance Marketing · Social · Content · AI Creative · Thailand</span>
+    <div class="hero-ctas">
+      <a href="#work" class="cta-p">View Work</a>
+      <a href="#cta-sec" class="cta-s">Book a Call</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <p>Scroll</p>
+    <div class="scrl-l"></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="bstrip">
+  <div class="bstrip-in">
+    PERFORMANCE MARKETING <span>·</span> SOCIAL MEDIA <span>·</span> CONTENT PRODUCTION <span>·</span> AI CREATIVE <span>·</span> BANGKOK BUILT <span>·</span> RESULTS DRIVEN <span>·</span> PERFORMANCE MARKETING <span>·</span> SOCIAL MEDIA <span>·</span> CONTENT PRODUCTION <span>·</span> AI CREATIVE <span>·</span> BANGKOK BUILT <span>·</span> RESULTS DRIVEN <span>·</span>
+  </div>
+</div>
+
+<!-- U SECTION -->
+<section id="u-section">
+  <div id="u-left">
+    <div id="u-label">THE AGENCY</div>
+    <div id="u-tagline">Built for<br>impact.<br>Driven by<br>results.</div>
+    <div id="u-sub">Every layer of our strategy is built to convert.<br>Performance. Content. Growth. Repeat.</div>
+  </div>
+  <div id="u-stage">
+    <div id="u-collage">
+      <!-- Left Stem -->
+      <div class="u-lay u-lay-bg" data-spd="0.03">
+        <div class="u-dots"></div>
+      </div>
+      <!-- Right Stem -->
+      <div class="u-lay u-lay-card" data-spd="0.06">
+        <div class="u-tech-block">UN<br>SO<br>CI<br>AL<br>S.</div>
+      </div>
+      <!-- Bottom Curve -->
+      <div class="u-lay u-lay-curve" data-spd="0.05">
+        <svg viewBox="0 0 100 50">
+          <path d="M 5,0 A 45,45 0 0,0 95,0" fill="none" stroke="var(--w)" stroke-width="10"/>
+        </svg>
+      </div>
+      <!-- Wireframe / Cube -->
+      <div class="u-lay u-lay-wire" data-spd="0.09">
+        <svg viewBox="0 0 100 100">
+          <path d="M50 5 L95 25 L95 75 L50 95 L5 75 L5 25 Z" fill="none" stroke="var(--ac)" stroke-width="2" stroke-dasharray="4 2"/>
+          <path d="M5 25 L50 45 L95 25" fill="none" stroke="var(--ac)" stroke-width="2" stroke-dasharray="4 2"/>
+          <path d="M50 45 L50 95" fill="none" stroke="var(--ac)" stroke-width="2" stroke-dasharray="4 2"/>
+        </svg>
+      </div>
+      <!-- Asterisk Accent -->
+      <div class="u-lay u-lay-ast" data-spd="0.14">
+        <svg viewBox="0 0 100 100">
+          <g stroke="var(--rd)" stroke-width="12" stroke-linecap="square">
+            <line x1="50" y1="10" x2="50" y2="90"/>
+            <line x1="10" y1="50" x2="90" y2="50"/>
+            <line x1="22" y1="22" x2="78" y2="78"/>
+            <line x1="22" y1="78" x2="78" y2="22"/>
+          </g>
+        </svg>
+      </div>
+      <!-- Floating Crosshairs -->
+      <div class="u-lay u-lay-cross1" data-spd="0.18">+</div>
+      <div class="u-lay u-lay-cross2" data-spd="0.22">+</div>
+      
+      <!-- Center Graphic Slice -->
+      <div class="u-lay u-lay-slice" data-spd="0.07">
+        <div class="u-geo-slice"></div>
+      </div>
+    </div>
+  </div>
+  <div id="u-right">
+    <div class="u-stat rv"><span class="u-sn">50+</span><span class="u-sl">Brands</span></div>
+    <div class="u-stat rv" style="transition-delay:.08s"><span class="u-sn">3×</span><span class="u-sl">Avg Growth</span></div>
+    <div class="u-stat rv" style="transition-delay:.16s"><span class="u-sn">1M+</span><span class="u-sl">THB Generated</span></div>
+    <div class="u-stat rv" style="transition-delay:.24s"><span class="u-sn">0%</span><span class="u-sl">OTA Dependency</span></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="rv-l">
+      <p class="eyebrow">The Agency</p>
+      <h2 class="ab-h">Not an agency.<br>An <em>obsession.</em></h2>
+      <p class="ab-body">A tight team of strategists, creators and digital natives built in Bangkok. <span class="hl-text"><strong>We don't do retainers for brands we don't believe in.</strong></span> Every client we take, we take personally.<br><br>Thailand is our home. The internet is our stage. <span class="hl-text">We've turned zero-revenue hotels into million-baht machines</span>, invisible brands into industry leaders.</p>
+    </div>
+    <div class="rv">
+      <div class="stats-g">
+        <div class="sb"><span class="sn">50+</span><span class="sl2">Brands Worked With</span></div>
+        <div class="sb"><span class="sn">3×</span><span class="sl2">Avg. Reach Growth</span></div>
+        <div class="sb"><span class="sn">1M+</span><span class="sl2">THB Revenue Generated</span></div>
+        <div class="sb"><span class="sn">0%</span><span class="sl2">OTA Dependency for Clients</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXUS SECTION -->
+<section id="nexus-section">
+  <div id="nexus-label"><span>THE ECOSYSTEM</span></div>
+  <div id="nexus-wrap">
+    <canvas id="nexus-canvas"></canvas>
+    <div id="nexus-core">
+      <div class="nexus-glow"></div>
+      <div class="nexus-ring r1"></div>
+      <div class="nexus-ring r2"></div>
+      <div class="nexus-ring r3"></div>
+    </div>
+    <!-- Orbiting UI Cards -->
+    <div class="nx-card" data-orbit="0" style="--angle:0deg;--radius:280px">
+      <div class="nx-card-inner">
+        <div class="nx-card-bar"></div>
+        <div class="nx-card-line nxl1"></div>
+        <div class="nx-card-line nxl2"></div>
+        <div class="nx-card-icon">▶</div>
+      </div>
+      <span>Video Ads</span>
+    </div>
+    <div class="nx-card" data-orbit="1" style="--angle:72deg;--radius:320px">
+      <div class="nx-card-inner">
+        <div class="nx-card-bar" style="width:70%"></div>
+        <div class="nx-card-line nxl1"></div>
+        <div class="nx-card-line nxl2"></div>
+        <div class="nx-card-icon" style="color:var(--ac)">📈</div>
+      </div>
+      <span>Performance</span>
+    </div>
+    <div class="nx-card" data-orbit="2" style="--angle:144deg;--radius:260px">
+      <div class="nx-card-inner">
+        <div class="nx-card-bar" style="background:var(--ac);width:55%"></div>
+        <div class="nx-card-line nxl1"></div>
+        <div class="nx-card-line nxl2"></div>
+        <div class="nx-card-icon" style="color:#a78bfa">✦</div>
+      </div>
+      <span>AI Creative</span>
+    </div>
+    <div class="nx-card" data-orbit="3" style="--angle:216deg;--radius:300px">
+      <div class="nx-card-inner">
+        <div class="nx-card-bar" style="width:80%"></div>
+        <div class="nx-card-line nxl1"></div>
+        <div class="nx-card-line nxl2"></div>
+        <div class="nx-card-icon" style="color:var(--rd)">◉</div>
+      </div>
+      <span>Content</span>
+    </div>
+    <div class="nx-card" data-orbit="4" style="--angle:288deg;--radius:290px">
+      <div class="nx-card-inner">
+        <div class="nx-card-bar" style="width:65%;background:#38bdf8"></div>
+        <div class="nx-card-line nxl1"></div>
+        <div class="nx-card-line nxl2"></div>
+        <div class="nx-card-icon" style="color:#38bdf8">⊕</div>
+      </div>
+      <span>Social</span>
+    </div>
+    <!-- People silhouettes (simple dot nodes) -->
+    <div class="nx-node" style="--angle:36deg;--radius:180px"></div>
+    <div class="nx-node" style="--angle:108deg;--radius:160px"></div>
+    <div class="nx-node" style="--angle:180deg;--radius:200px"></div>
+    <div class="nx-node" style="--angle:252deg;--radius:175px"></div>
+    <div class="nx-node" style="--angle:324deg;--radius:185px"></div>
+  </div>
+  <div id="nexus-copy" class="rv-l">
+    <p class="eyebrow">Full Scale</p>
+    <h2 class="ab-h">One hub.<br><em>Everything.</em></h2>
+    <p class="ab-body">Strategy, content, ads, and analytics — all orbiting a single focus: <span class="hl-text">your growth</span>.</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="svc-w">
+    <h2 class="sec-h rv">What We<br><em>Do.</em></h2>
+    <div class="si rv" style="transition-delay:.05s">
+      <span class="si-num">01</span>
+      <span class="si-n">Performance Marketing</span>
+      <span class="si-d">Google, Meta, TikTok — campaigns built to convert, not just reach.</span>
+      <span class="si-ar">→</span>
+    </div>
+    <div class="si rv" style="transition-delay:.1s">
+      <span class="si-num">02</span>
+      <span class="si-n">Social Media Management</span>
+      <span class="si-d">From strategy to daily execution. We own your feed.</span>
+      <span class="si-ar">→</span>
+    </div>
+    <div class="si rv" style="transition-delay:.15s">
+      <span class="si-num">03</span>
+      <span class="si-n">Content Production</span>
+      <span class="si-d">Reels, shoots, editorial — content that stops the scroll.</span>
+      <span class="si-ar">→</span>
+    </div>
+    <div class="si rv" style="transition-delay:.2s">
+      <span class="si-num">04</span>
+      <span class="si-n">AI Creative Automation</span>
+      <span class="si-d">Luxury visuals, zero photography budget. AI-powered, brand-elevated.</span>
+      <span class="si-ar">→</span>
+    </div>
+    <div class="si rv" style="transition-delay:.25s">
+      <span class="si-num">05</span>
+      <span class="si-n">Brand Strategy</span>
+      <span class="si-d">Identity, positioning, narrative — built to dominate your niche.</span>
+      <span class="si-ar">→</span>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="work">
+  <div class="work-header">
+    <h2 class="work-h rv">Case<br><em>Studies.</em></h2>
+    <p class="rv" style="font-size:13px;color:var(--m2);max-width:320px;line-height:1.8;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.1em">Real brands. Real strategies.<br>Real results across Thailand.</p>
+  </div>
+  <div class="case-grid">
+
+    <!-- ELYSIUM HERO -->
+    <div class="cc hero" onclick="openCase('elysium')">
+      <div class="cc-bg" style="background:radial-gradient(ellipse at 30% 60%, rgba(120,40,180,0.35) 0%, rgba(60,10,100,0.15) 40%, transparent 70%)"></div>
+      <div class="cc-grid"></div>
+      <div class="cc-badge" style="top:20%;right:5%;animation-delay:0s"><div class="cc-bn">1M THB</div><div class="cc-bl">2-Month Revenue</div></div>
+      <div class="cc-badge" style="top:52%;right:5%;animation-delay:1.2s"><div class="cc-bn">0% OTA</div><div class="cc-bl">Direct Bookings</div></div>
+      <div class="cc-badge" style="top:20%;right:22%;animation-delay:.6s"><div class="cc-bn">5★</div><div class="cc-bl">Prathumnak Hill</div></div>
+      <div class="cc-ov"></div>
+      <div class="cc-tag">5-Star Hotel · Full Brand Transformation</div>
+      <div class="cc-body">
+        <div class="cc-ind">Pattaya · Google + Meta Ads · Social Revamp</div>
+        <div class="cc-name">Elysium Pattaya</div>
+        <div class="cc-stats">
+          <div><div class="cc-sn">1M THB</div><div class="cc-sl">Revenue / 2 Months</div></div>
+          <div><div class="cc-sn">0%</div><div class="cc-sl">OTA Dependency</div></div>
+          <div><div class="cc-sn">∞%</div><div class="cc-sl">Website Revenue Growth</div></div>
+        </div>
+        <div class="cc-desc">Zero website revenue to 1,000,000 THB in 2 months. Google Hotel Ads, Meta campaigns, luxury content shoots, AI visuals, and a direct booking strategy that eliminated OTA commission entirely.</div>
+        <div class="cc-cta">Read Full Case Study →</div>
+      </div>
+    </div>
+
+    <!-- ALEXA -->
+    <div class="cc" onclick="openCase('alexa')">
+      <div class="cc-bg" style="background:radial-gradient(ellipse at 70% 40%, rgba(0,180,120,0.3) 0%, rgba(0,80,60,0.12) 45%, transparent 70%)"></div>
+      <div class="cc-grid"></div>
+      <div class="cc-badge" style="top:18%;right:6%;animation-delay:.4s"><div class="cc-bn">2.6M</div><div class="cc-bl">IG Reach</div></div>
+      <div class="cc-ov"></div>
+      <div class="cc-tag">Beach Club · Social + Performance Ads</div>
+      <div class="cc-body">
+        <div class="cc-ind">Pattaya · Meta Ads · Brand Positioning</div>
+        <div class="cc-name">Alexa Beach Club</div>
+        <div class="cc-stats">
+          <div><div class="cc-sn">2.6M</div><div class="cc-sl">IG Reach</div></div>
+          <div><div class="cc-sn">#1</div><div class="cc-sl">Beach Club Pattaya</div></div>
+          <div><div class="cc-sn">280+</div><div class="cc-sl">Direct Reservations</div></div>
+        </div>
+        <div class="cc-desc">Positioned as Pattaya's #1 beach club. Lifestyle shoots with models, Meta awareness + WhatsApp reservation campaigns that turned Alexa into the city's most-booked venue.</div>
+        <div class="cc-cta">Read Full Case Study →</div>
+      </div>
+    </div>
+
+    <!-- SKYVIEW -->
+    <div class="cc" onclick="openCase('skyview')">
+      <div class="cc-bg" style="background:radial-gradient(ellipse at 40% 50%, rgba(20,80,200,0.3) 0%, rgba(10,30,100,0.12) 45%, transparent 70%)"></div>
+      <div class="cc-grid"></div>
+      <div class="cc-badge" style="top:18%;right:6%;animation-delay:.8s"><div class="cc-bn">50 THB</div><div class="cc-bl">Cost Per Lead</div></div>
+      <div class="cc-ov"></div>
+      <div class="cc-tag">Hotel · WhatsApp Lead Generation</div>
+      <div class="cc-body">
+        <div class="cc-ind">Bangkok · Meta Ads · Direct Bookings</div>
+        <div class="cc-name">Hotel Skyview BKK</div>
+        <div class="cc-stats">
+          <div><div class="cc-sn">50–100</div><div class="cc-sl">THB Per Lead</div></div>
+          <div><div class="cc-sn">0%</div><div class="cc-sl">OTA Commission</div></div>
+        </div>
+        <div class="cc-desc">Replaced expensive website conversion ads with WhatsApp Click-to-Chat campaigns. Cost per lead dropped to 50–100 THB with higher conversion rates and direct guest relationships.</div>
+        <div class="cc-cta">Read Full Case Study →</div>
+      </div>
+    </div>
+
+    <!-- NOMADS -->
+    <div class="cc" onclick="openCase('nomads')">
+      <div class="cc-bg" style="background:linear-gradient(145deg,#041018,#082840,#0c3660,#041c30)"></div>
+      <div class="cc-grid"></div>
+      <div class="cc-badge" style="top:18%;right:6%;animation-delay:1s"><div class="cc-bn">#1</div><div class="cc-bl">Best in Asia</div></div>
+      <div class="cc-ov"></div>
+      <div class="cc-tag">Hostel · UGC + Social Media</div>
+      <div class="cc-body">
+        <div class="cc-ind">Thailand · 3 Properties · Hostelworld</div>
+        <div class="cc-name">Nomads Hostel Asia</div>
+        <div class="cc-stats">
+          <div><div class="cc-sn">#1</div><div class="cc-sl">Best Hostel Asia</div></div>
+          <div><div class="cc-sn">3</div><div class="cc-sl">Properties Managed</div></div>
+        </div>
+        <div class="cc-desc">UGC strategy putting real guests at the centre — pub crawls, parties, adventures. Won Best Hostel in Asia by Hostelworld. Organic leads poured through Instagram.</div>
+        <div class="cc-cta">Read Full Case Study →</div>
+      </div>
+    </div>
+
+    <!-- BAMBOO -->
+    <div class="cc" onclick="openCase('bamboo')">
+      <div class="cc-bg" style="background:linear-gradient(145deg,#041204,#0a2c0a,#103614,#061808)"></div>
+      <div class="cc-grid"></div>
+      <div class="cc-badge" style="top:18%;right:6%;animation-delay:.3s"><div class="cc-bn">Krabi #1</div><div class="cc-bl">Beach Club</div></div>
+      <div class="cc-ov"></div>
+      <div class="cc-tag">Beach Club · Social Revamp · Krabi</div>
+      <div class="cc-body">
+        <div class="cc-ind">Krabi · AI Graphics · Event Content</div>
+        <div class="cc-name">Bamboo Beach Club</div>
+        <div class="cc-stats">
+          <div><div class="cc-sn">Krabi #1</div><div class="cc-sl">Beach Club</div></div>
+          <div><div class="cc-sn">Daily</div><div class="cc-sl">Content Posting</div></div>
+        </div>
+        <div class="cc-desc">High-energy party reels, AI conceptual graphics, daily posting rhythm. Live Stories on every event night. Built the narrative: if you're in Krabi and haven't visited Bamboo — your trip isn't complete.</div>
+        <div class="cc-cta">Read Full Case Study →</div>
+      </div>
+    </div>
+
+    <!-- GPS -->
+    <div class="cc" onclick="openCase('gps')">
+      <div class="cc-bg" style="background:linear-gradient(145deg,#181004,#3c2808,#281c04,#140e02)"></div>
+      <div class="cc-grid"></div>
+      <div class="cc-badge" style="top:18%;right:6%;animation-delay:.7s"><div class="cc-bn">Zero</div><div class="cc-bl">Ads Needed</div></div>
+      <div class="cc-ov"></div>
+      <div class="cc-tag">Luxury Gems · Organic Growth</div>
+      <div class="cc-body">
+        <div class="cc-ind">Thailand · AI Content · Education Marketing</div>
+        <div class="cc-name">GPS Gems</div>
+        <div class="cc-stats">
+          <div><div class="cc-sn">Zero</div><div class="cc-sl">Paid Ads</div></div>
+          <div><div class="cc-sn">AI-Built</div><div class="cc-sl">Content Library</div></div>
+        </div>
+        <div class="cc-desc">Built from absolute zero. Full brand identity using AI-generated luxury visuals and an education-first content strategy. Buyers found them organically. No ads needed.</div>
+        <div class="cc-cta">Read Full Case Study →</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="clients-h rv">
+    <p class="eyebrow">Trusted By</p>
+    <h2 style="font-family:'Orbitron',sans-serif;font-size:clamp(38px,5vw,64px);line-height:.9;margin-top:6px">Brands That Dominate<br><span style="font-family:'Space Mono',monospace;font-style:italic;color:var(--ac)">Their Markets</span></h2>
+  </div>
+  <div style="margin-top:48px">
+    <div class="marquee-w" style="margin-bottom:2px">
+      <div class="marquee-t">
+        <span class="client-logo">ELYSIUM PATTAYA<span class="client-dot">✦</span></span>
+        <span class="client-logo">ALEXA BEACH CLUB<span class="client-dot">✦</span></span>
+        <span class="client-logo">HOTEL SKYVIEW BKK<span class="client-dot">✦</span></span>
+        <span class="client-logo">NOMADS ASIA<span class="client-dot">✦</span></span>
+        <span class="client-logo">BAMBOO BEACH CLUB<span class="client-dot">✦</span></span>
+        <span class="client-logo">GPS GEMS<span class="client-dot">✦</span></span>
+        <span class="client-logo">ELYSIUM PATTAYA<span class="client-dot">✦</span></span>
+        <span class="client-logo">ALEXA BEACH CLUB<span class="client-dot">✦</span></span>
+        <span class="client-logo">HOTEL SKYVIEW BKK<span class="client-dot">✦</span></span>
+        <span class="client-logo">NOMADS ASIA<span class="client-dot">✦</span></span>
+        <span class="client-logo">BAMBOO BEACH CLUB<span class="client-dot">✦</span></span>
+        <span class="client-logo">GPS GEMS<span class="client-dot">✦</span></span>
+      </div>
+    </div>
+    <div class="marquee-w">
+      <div class="marquee-t rev">
+        <span class="client-logo">PATTAYA HOTELS<span class="client-dot">✦</span></span>
+        <span class="client-logo">BANGKOK BRANDS<span class="client-dot">✦</span></span>
+        <span class="client-logo">PHUKET RESORTS<span class="client-dot">✦</span></span>
+        <span class="client-logo">KRABI VENUES<span class="client-dot">✦</span></span>
+        <span class="client-logo">LUXURY BRANDS TH<span class="client-dot">✦</span></span>
+        <span class="client-logo">F&B THAILAND<span class="client-dot">✦</span></span>
+        <span class="client-logo">PATTAYA HOTELS<span class="client-dot">✦</span></span>
+        <span class="client-logo">BANGKOK BRANDS<span class="client-dot">✦</span></span>
+        <span class="client-logo">PHUKET RESORTS<span class="client-dot">✦</span></span>
+        <span class="client-logo">KRABI VENUES<span class="client-dot">✦</span></span>
+        <span class="client-logo">LUXURY BRANDS TH<span class="client-dot">✦</span></span>
+        <span class="client-logo">F&B THAILAND<span class="client-dot">✦</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="rv" style="text-align:center">
+    <p class="eyebrow" style="justify-content:center"><span style="width:0"></span>What Clients Say</p>
+    <h2 class="sec-h" style="font-size:clamp(52px,8vw,105px);margin-bottom:0">The <em>Results</em><br>Speak.</h2>
+  </div>
+  <div class="test-g rv" style="transition-delay:.15s">
+    <div class="tc">
+      <div class="qm">"</div>
+      <div class="ts">★★★★★</div>
+      <div class="tq">They didn't just run ads. They built us a system. Zero to 1 million baht in two months — the numbers don't lie.</div>
+      <div class="tau">Management</div>
+      <span class="tbr">Elysium Pattaya</span>
+    </div>
+    <div class="tc">
+      <div class="qm">"</div>
+      <div class="ts">★★★★★</div>
+      <div class="tq">Alexa went from just another beach club to THE beach club in Pattaya. 2.6 million reach. Our tables fill weeks in advance now.</div>
+      <div class="tau">Owner</div>
+      <span class="tbr">Alexa Beach Club</span>
+    </div>
+    <div class="tc">
+      <div class="qm">"</div>
+      <div class="ts">★★★★★</div>
+      <div class="tq">Our guests are better educated about our gems before they even contact us. The organic strategy they built is still paying dividends.</div>
+      <div class="tau">Founder</div>
+      <span class="tbr">GPS Gems Thailand</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-sec">
+  <div class="cta-dec cta-dec1"></div>
+  <div class="cta-dec cta-dec2"></div>
+  <div class="rv-l">
+    <p class="eyebrow">Ready?</p>
+    <h2 class="cta-h">Let's Build Your<br><em>Growth Engine.</em></h2>
+  </div>
+  <div class="cta-form rv" style="transition-delay:.15s">
+    <div class="cta-row">
+      <label>Your Name</label>
+      <input type="text" placeholder="Full Name">
+    </div>
+    <div class="cta-row">
+      <label>Brand / Business</label>
+      <input type="text" placeholder="Brand Name">
+    </div>
+    <div class="cta-row">
+      <label>What You Need</label>
+      <select>
+        <option value="">Select Service</option>
+        <option>Performance Marketing</option>
+        <option>Social Media Management</option>
+        <option>Content Production</option>
+        <option>AI Creative</option>
+        <option>Full Package</option>
+      </select>
+    </div>
+    <button class="cta-btn">Send it → <span style="font-size:16px">↗</span></button>
+    <p class="cta-note">We respond within 24 hours. Every time.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-tick">
+    <div class="ftk">
+      UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp; PERFORMANCE &nbsp;·&nbsp; <strong>INEVITABLE</strong> &nbsp;·&nbsp; BANGKOK &nbsp;·&nbsp; <strong>SOCIAL MEDIA</strong> &nbsp;·&nbsp; CONTENT &nbsp;·&nbsp; <strong>GROWTH</strong> &nbsp;·&nbsp; UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp;
+    </div>
+  </div>
+  <div class="ft-g">
+    <div>
+      <div class="ft-br">UNSOCIALS<br><em>Thailand</em></div>
+      <p class="ft-brs">Performance Marketing Agency<br>Bangkok · Thailand</p>
+    </div>
+    <div class="ft-col">
+      <h5>Services</h5>
+      <a href="#">Performance Marketing</a>
+      <a href="#">Social Media</a>
+      <a href="#">Content Production</a>
+      <a href="#">AI Creative</a>
+      <a href="#">Brand Strategy</a>
+    </div>
+    <div class="ft-col">
+      <h5>Work</h5>
+      <a href="#" onclick="openCase('elysium')">Elysium Pattaya</a>
+      <a href="#" onclick="openCase('alexa')">Alexa Beach Club</a>
+      <a href="#" onclick="openCase('skyview')">Hotel Skyview</a>
+      <a href="#" onclick="openCase('nomads')">Nomads Asia</a>
+    </div>
+    <div class="ft-col">
+      <h5>Connect</h5>
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p>© 2025 Unsocials Thailand. All Rights Reserved.</p>
+    <p>We Make It Inevitable.</p>
+  </div>
+</footer>
+
+<!-- CASE STUDY OVERLAY -->
+<div id="case-overlay">
+  <button class="cs-back" onclick="closeCase()">← Back</button>
+  <div id="case-content"></div>
+</div>
+
+<!-- GSAP & ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

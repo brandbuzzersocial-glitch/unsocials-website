@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UNSOCIALS — We Make It Inevitable</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -108,6 +108,8 @@
       <a href="#work" class="cta-p">View Work</a>
       <a href="#cta-sec" class="cta-s">Book a Call</a>
     </div>
+
+    <!-- AVA NEXUS NODE removed entirely as requested -->
   </div>
   <div class="scroll-hint">
     <p>Scroll</p>
@@ -124,61 +126,66 @@
 
 <!-- U SECTION -->
 <section id="u-section">
-  <div id="u-left">
-    <div id="u-label">THE AGENCY</div>
-    <div id="u-tagline">Built for<br>impact.<br>Driven by<br>results.</div>
-    <div id="u-sub">Every layer of our strategy is built to convert.<br>Performance. Content. Growth. Repeat.</div>
+  <div id="u-left" class="rv-l">
+    <p id="u-label">The Agency</p>
+    <h2 class="u-main-h">Built For<br>Impact.<br>Driven By<br>Results.</h2>
+    <p id="u-sub">Every layer of our strategy is built<br>to convert.<br>Performance. Content. Growth. Repeat.</p>
   </div>
   <div id="u-stage">
     <div id="u-collage">
-      <!-- Left Stem -->
-      <div class="u-lay u-lay-bg" data-spd="0.03">
-        <div class="u-dots"></div>
-      </div>
-      <!-- Right Stem -->
-      <div class="u-lay u-lay-card" data-spd="0.06">
-        <div class="u-tech-block">UN<br>SO<br>CI<br>AL<br>S.</div>
-      </div>
-      <!-- Bottom Curve -->
-      <div class="u-lay u-lay-curve" data-spd="0.05">
-        <svg viewBox="0 0 100 50">
-          <path d="M 5,0 A 45,45 0 0,0 95,0" fill="none" stroke="var(--w)" stroke-width="10"/>
-        </svg>
-      </div>
-      <!-- Wireframe / Cube -->
-      <div class="u-lay u-lay-wire" data-spd="0.09">
+
+      <!-- 1. Dotted texture — top-left -->
+      <div class="u-lay u-lay-dots"></div>
+
+      <!-- Crosshair top-left -->
+      <div class="u-lay u-lay-cross" style="top:40px;left:175px;font-size:16px">+</div>
+      <!-- Crosshair center-left -->
+      <div class="u-lay u-lay-cross" style="top:185px;left:85px;font-size:14px;color:var(--ac)">+</div>
+
+      <!-- 2. Red grid parallelogram — center -->
+      <div class="u-lay u-lay-grid"></div>
+
+      <!-- 3. Yellow wireframe cube — top-left -->
+      <div class="u-lay u-lay-cube">
         <svg viewBox="0 0 100 100">
-          <path d="M50 5 L95 25 L95 75 L50 95 L5 75 L5 25 Z" fill="none" stroke="var(--ac)" stroke-width="2" stroke-dasharray="4 2"/>
-          <path d="M5 25 L50 45 L95 25" fill="none" stroke="var(--ac)" stroke-width="2" stroke-dasharray="4 2"/>
-          <path d="M50 45 L50 95" fill="none" stroke="var(--ac)" stroke-width="2" stroke-dasharray="4 2"/>
+          <path d="M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z" fill="none" stroke="#E8FF00" stroke-width="2.5" stroke-dasharray="5 2"/>
+          <path d="M10 25 L50 45 L90 25" fill="none" stroke="#E8FF00" stroke-width="2.5" stroke-dasharray="5 2"/>
+          <path d="M50 45 L50 95" fill="none" stroke="#E8FF00" stroke-width="2.5" stroke-dasharray="5 2"/>
         </svg>
       </div>
-      <!-- Asterisk Accent -->
-      <div class="u-lay u-lay-ast" data-spd="0.14">
+
+      <!-- 4. Red asterisk / star — top-right -->
+      <div class="u-lay u-lay-ast">
         <svg viewBox="0 0 100 100">
-          <g stroke="var(--rd)" stroke-width="12" stroke-linecap="square">
-            <line x1="50" y1="10" x2="50" y2="90"/>
-            <line x1="10" y1="50" x2="90" y2="50"/>
-            <line x1="22" y1="22" x2="78" y2="78"/>
-            <line x1="22" y1="78" x2="78" y2="22"/>
-          </g>
+          <line x1="50" y1="5"  x2="50" y2="95" stroke="#FF2D2D" stroke-width="14" stroke-linecap="square"/>
+          <line x1="5"  y1="50" x2="95" y2="50" stroke="#FF2D2D" stroke-width="14" stroke-linecap="square"/>
+          <line x1="18" y1="18" x2="82" y2="82" stroke="#FF2D2D" stroke-width="14" stroke-linecap="square"/>
+          <line x1="82" y1="18" x2="18" y2="82" stroke="#FF2D2D" stroke-width="14" stroke-linecap="square"/>
         </svg>
       </div>
-      <!-- Floating Crosshairs -->
-      <div class="u-lay u-lay-cross1" data-spd="0.18">+</div>
-      <div class="u-lay u-lay-cross2" data-spd="0.22">+</div>
-      
-      <!-- Center Graphic Slice -->
-      <div class="u-lay u-lay-slice" data-spd="0.07">
-        <div class="u-geo-slice"></div>
+
+      <!-- 5. Thick white "U" arc — bottom centre -->
+      <div class="u-lay u-lay-arc">
+        <svg viewBox="0 0 200 120" preserveAspectRatio="xMidYMid meet">
+          <path d="M 15,10 A 85,85 0 0 0 185,10" fill="none" stroke="white" stroke-width="36" stroke-linecap="butt"/>
+        </svg>
       </div>
+
+      <!-- 6. White vertical ID strip — right tip of arc -->
+      <div class="u-lay u-lay-strip">
+        <div class="s-row" style="font-size:22px;letter-spacing:-2px">UN</div>
+        <div class="s-row" style="font-size:22px;letter-spacing:-2px">SO</div>
+        <div class="s-row" style="font-size:22px;letter-spacing:-2px">CI</div>
+        <div class="s-row s-slash">/</div>
+      </div>
+
     </div>
   </div>
-  <div id="u-right">
-    <div class="u-stat rv"><span class="u-sn">50+</span><span class="u-sl">Brands</span></div>
-    <div class="u-stat rv" style="transition-delay:.08s"><span class="u-sn">3×</span><span class="u-sl">Avg Growth</span></div>
-    <div class="u-stat rv" style="transition-delay:.16s"><span class="u-sn">1M+</span><span class="u-sl">THB Generated</span></div>
-    <div class="u-stat rv" style="transition-delay:.24s"><span class="u-sn">0%</span><span class="u-sl">OTA Dependency</span></div>
+  <div id="u-right" class="rv">
+    <div class="u-stat"><div class="u-sn">50+</div><div class="u-sl">Brands</div></div>
+    <div class="u-stat"><div class="u-sn">3×</div><div class="u-sl">Avg Growth</div></div>
+    <div class="u-stat"><div class="u-sn">1M+</div><div class="u-sl">THB Generated</div></div>
+    <div class="u-stat"><div class="u-sn">0%</div><div class="u-sl">OTA Dependency</div></div>
   </div>
 </section>
 
@@ -195,7 +202,90 @@
         <div class="sb"><span class="sn">50+</span><span class="sl2">Brands Worked With</span></div>
         <div class="sb"><span class="sn">3×</span><span class="sl2">Avg. Reach Growth</span></div>
         <div class="sb"><span class="sn">1M+</span><span class="sl2">THB Revenue Generated</span></div>
-        <div class="sb"><span class="sn">0%</span><span class="sl2">OTA Dependency for Clients</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AI REPS / CREATIVE SECTION -->
+<section id="ai-reps" class="ai-reps-sec">
+  <div class="about-grid">
+    <div class="rv-l" style="z-index:2">
+      <p class="eyebrow">The New Standard</p>
+      <h2 class="ab-h">AI-Powered.<br><em>Human</em>-Driven.</h2>
+      <p class="ab-body">Our AI representatives, Ava and Alex, aren't just faces. They are the core of our creative engine in Thailand, driving content that converts at 3x the industry average.<br><br><span class="hl-text"><strong>High-end visuals. Zero production delays.</strong></span></p>
+      
+      <div style="margin-top:40px;display:flex;gap:30px">
+        <div class="u-stat"><span class="u-sn">Instant</span><span class="u-sl">Generation</span></div>
+        <div class="u-stat"><span class="u-sn">90%</span><span class="u-sl">Cost Saving</span></div>
+      </div>
+    </div>
+
+    <div class="rep-collage rv">
+      <div class="rep-fragment">
+        <img src="assets/ava_alex/03 (5).png" alt="Ava Lifestyle">
+        <div class="rep-tag-premium">AVA · @un.ava</div>
+      </div>
+      <div class="rep-fragment" style="margin-top:40px">
+        <img src="assets/ava_alex/04 (5).png" alt="Alex Lifestyle">
+        <div class="rep-tag-premium">ALEX · @un.alex</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLACARD / VISION SECTION -->
+<section id="ai-vision" style="padding:100px 0;background:var(--bg);overflow:hidden">
+  <div class="about-grid" style="grid-template-columns:1.2fr 1fr">
+    <div class="rv" style="position:relative">
+      <div class="rep-img-w-premium" style="max-width:520px;margin:0 auto">
+        <img src="assets/ava_alex/01 (4).png" alt="Ava AI Representative">
+        <div class="placard-refined">
+          <div class="placard-text" style="color:#111; font-family:'Syne', sans-serif; font-size:clamp(20px, 4vw, 32px); font-weight:800; text-align:center; line-height:1.2; opacity:0.85; max-width:85%;">
+            This isn't the future.<br>It's the baseline.
+          </div>
+        </div>
+      </div>
+      <!-- Dialog Bubble -->
+      <div class="rep-bubble" id="vision-bubble" style="top:20%;left:-20px">
+        <h6>AVA</h6>
+        <p>This isn't the future. It's the baseline.</p>
+      </div>
+    </div>
+    <div class="rv-l">
+      <h2 class="sec-h">Your Brand.<br><em>Evolved.</em></h2>
+      <p class="ab-body" style="max-width:none">We use AI to bypass traditional production bottlenecks. No more waiting for shoots, scouts, or talent. <span class="hl-text"><strong>We build your brand assets in a vacuum of perfection.</strong></span></p>
+      
+      <div class="si" style="margin-top:20px">
+        <span class="si-num">01</span>
+        <span class="si-n">Virtual Brand Reps</span>
+        <span class="si-d">Personalized AI talent for your brand voice.</span>
+      </div>
+      <div class="si">
+        <span class="si-num">02</span>
+        <span class="si-n">Automated Content</span>
+        <span class="si-d">Daily high-end posts without the high-end cost.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS MOCKUP -->
+<section id="ai-results" style="padding:120px 8vw;background:#060606">
+  <div class="about-grid" style="align-items:center">
+    <div>
+      <h2 class="sec-h">Visible<br><em>Impact.</em></h2>
+      <p class="ab-body">Alex shows you the only thing that matters: <span class="hl-text">Results.</span> Our AI-driven campaigns aren't just pretty — they are performance machines.</p>
+    </div>
+    <div class="rv" style="position:relative">
+      <div class="rep-img-w-premium" style="max-width:480px;margin:0 auto">
+        <img src="assets/ava_alex/06 (2).png" alt="Alex Results">
+        <div class="phone-screen">
+          <img src="assets/report_ui.png" alt="Performance Report" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+      </div>
+      <div class="rep-bubble" id="results-bubble" style="bottom:20%;right:-30px">
+        <h6>ALEX</h6>
+        <p>The graph only goes one way.</p>
       </div>
     </div>
   </div>
@@ -443,39 +533,30 @@
 <section id="clients">
   <div class="clients-h rv">
     <p class="eyebrow">Trusted By</p>
-    <h2 style="font-family:'Orbitron',sans-serif;font-size:clamp(38px,5vw,64px);line-height:.9;margin-top:6px">Brands That Dominate<br><span style="font-family:'Space Mono',monospace;font-style:italic;color:var(--ac)">Their Markets</span></h2>
+    <h2 class="sec-h">Brands That Dominate<br><em>Their Markets</em></h2>
   </div>
   <div style="margin-top:48px">
     <div class="marquee-w" style="margin-bottom:2px">
       <div class="marquee-t">
-        <span class="client-logo">ELYSIUM PATTAYA<span class="client-dot">✦</span></span>
-        <span class="client-logo">ALEXA BEACH CLUB<span class="client-dot">✦</span></span>
-        <span class="client-logo">HOTEL SKYVIEW BKK<span class="client-dot">✦</span></span>
-        <span class="client-logo">NOMADS ASIA<span class="client-dot">✦</span></span>
-        <span class="client-logo">BAMBOO BEACH CLUB<span class="client-dot">✦</span></span>
-        <span class="client-logo">GPS GEMS<span class="client-dot">✦</span></span>
-        <span class="client-logo">ELYSIUM PATTAYA<span class="client-dot">✦</span></span>
-        <span class="client-logo">ALEXA BEACH CLUB<span class="client-dot">✦</span></span>
-        <span class="client-logo">HOTEL SKYVIEW BKK<span class="client-dot">✦</span></span>
-        <span class="client-logo">NOMADS ASIA<span class="client-dot">✦</span></span>
-        <span class="client-logo">BAMBOO BEACH CLUB<span class="client-dot">✦</span></span>
-        <span class="client-logo">GPS GEMS<span class="client-dot">✦</span></span>
+        <img class="client-logo" src="assets/clients/elysium.png" alt="Elysium">
+        <img class="client-logo" src="assets/clients/alexa.png" alt="Alexa">
+        <img class="client-logo" src="assets/clients/skyview.png" alt="Skyview">
+        <img class="client-logo" src="assets/clients/amazon.webp" alt="Amazon">
+        <img class="client-logo" src="assets/clients/netflix.webp" alt="Netflix">
+        <img class="client-logo" src="assets/clients/bamboo.svg" alt="Bamboo">
+        <img class="client-logo" src="assets/clients/radisson.png" alt="Radisson">
+        <img class="client-logo" src="assets/clients/westin.png" alt="Westin">
       </div>
     </div>
     <div class="marquee-w">
       <div class="marquee-t rev">
-        <span class="client-logo">PATTAYA HOTELS<span class="client-dot">✦</span></span>
-        <span class="client-logo">BANGKOK BRANDS<span class="client-dot">✦</span></span>
-        <span class="client-logo">PHUKET RESORTS<span class="client-dot">✦</span></span>
-        <span class="client-logo">KRABI VENUES<span class="client-dot">✦</span></span>
-        <span class="client-logo">LUXURY BRANDS TH<span class="client-dot">✦</span></span>
-        <span class="client-logo">F&B THAILAND<span class="client-dot">✦</span></span>
-        <span class="client-logo">PATTAYA HOTELS<span class="client-dot">✦</span></span>
-        <span class="client-logo">BANGKOK BRANDS<span class="client-dot">✦</span></span>
-        <span class="client-logo">PHUKET RESORTS<span class="client-dot">✦</span></span>
-        <span class="client-logo">KRABI VENUES<span class="client-dot">✦</span></span>
-        <span class="client-logo">LUXURY BRANDS TH<span class="client-dot">✦</span></span>
-        <span class="client-logo">F&B THAILAND<span class="client-dot">✦</span></span>
+        <img class="client-logo" src="assets/clients/ramada.jpg" alt="Ramada">
+        <img class="client-logo" src="assets/clients/logos.png" alt="Logos">
+        <img class="client-logo" src="assets/clients/logos1.png" alt="Logos 1">
+        <img class="client-logo" src="assets/clients/logos2.png" alt="Logos 2">
+        <img class="client-logo" src="assets/clients/logos3.png" alt="Logos 3">
+        <img class="client-logo" src="assets/clients/rir.webp" alt="RIR">
+        <img class="client-logo" src="assets/clients/bcehiksu.jpg" alt="Bcehiksu">
       </div>
     </div>
   </div>

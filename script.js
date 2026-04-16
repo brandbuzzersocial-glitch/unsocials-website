@@ -139,7 +139,15 @@ if(typeof gsap !== 'undefined') {
     };
   });
 
+  var isNexusVis = false;
+  var nxSect = document.getElementById('nexus-section');
+  if(nxSect){
+    new IntersectionObserver(function(es){ isNexusVis=es[0].isIntersecting; }).observe(nxSect);
+  }
+
   function drawStars(t){
+    requestAnimationFrame(drawStars);
+    if(!isNexusVis) return;
     ctx.clearRect(0,0,W,H);
     stars.forEach(function(s){
       var alpha = 0.2 + 0.5 * Math.abs(Math.sin(t*s.speed + s.phase));
@@ -148,7 +156,6 @@ if(typeof gsap !== 'undefined') {
       ctx.fillStyle = 'rgba(255,220,150,'+alpha+')';
       ctx.fill();
     });
-    requestAnimationFrame(drawStars);
   }
   drawStars(0);
 })();
@@ -190,14 +197,14 @@ if(typeof gsap !== 'undefined') {
 // ─── HERO WEBGL SHADER ───
 (function(){
   var canvas=document.getElementById('hero-canvas');
-  var gl=canvas.getContext('webgl');
+  var gl=canvas.getContext('webgl', { powerPreference: "high-performance" });
   if(!gl) return;
-  function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;gl.viewport(0,0,canvas.width,canvas.height)}
+  function resize(){canvas.width=window.innerWidth/2;canvas.height=window.innerHeight/2;gl.viewport(0,0,canvas.width,canvas.height)}
   resize();window.addEventListener('resize',resize);
 
   var vs=`attribute vec2 p;void main(){gl_Position=vec4(p,0,1);}`;
   var fs=`
-    precision highp float;
+    precision mediump float;
     uniform float t;
     uniform vec2 res;
     uniform vec2 mouse;
@@ -247,8 +254,13 @@ if(typeof gsap !== 'undefined') {
   document.addEventListener('mousemove',function(e){mx2=e.clientX;my2=window.innerHeight-e.clientY});
 
   var start=performance.now();
+  var hero=document.getElementById('hero');
+  var isHeroVis=true;
+  if(hero) new IntersectionObserver(function(e){isHeroVis=e[0].isIntersecting}).observe(hero);
+
   function draw(){
     requestAnimationFrame(draw);
+    if(!isHeroVis) return;
     var t=(performance.now()-start)/1000;
     gl.uniform1f(tLoc,t);
     gl.uniform2f(rLoc,canvas.width,canvas.height);
@@ -340,4 +352,16 @@ if(typeof gsap !== 'undefined') {
       }
     });
   }
+
+  // 7. Global Video Optimization
+  if ('IntersectionObserver' in window) {
+    var vidObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.play().catch(function(){}); }
+        else { e.target.pause(); }
+      });
+    }, { rootMargin: '100px' });
+    document.querySelectorAll('video').forEach(function(v) { vidObs.observe(v); });
+  }
+
 })();

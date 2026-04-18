@@ -365,3 +365,182 @@ if(typeof gsap !== 'undefined') {
   }
 
 })();
+
+// ─── CASE STUDY OVERLAY LOGIC ───
+const caseData = {
+  elysium: {
+    eye: 'Hospitality · Pattaya',
+    title: 'Elysium Pattaya',
+    tags: ['Google Hotel Ads', 'Meta Campaigns', 'Content Shoots', 'AI Visuals'],
+    p1: 'Elysium was a 5-star property struggling to break free from OTA dependency. When they brought us on, their direct bookings were near zero. We knew that simply running ads wouldn\\'t cut it; we had to completely overhaul their digital presence.',
+    p2: 'By deploying a full brand transformation that included luxury content shoots and AI-enhanced visuals, we created an irresistible narrative. We paired this with aggressive Google Hotel Ads and highly targeted Meta campaigns to capture high-intent travelers.',
+    p3: 'The result? A staggering 1,000,000 THB in direct revenue within just two months, completely eliminating their reliance on OTAs.',
+    sidebar: [
+      { title: 'Client', text: 'Elysium Pattaya' },
+      { title: 'Location', text: 'Prathumnak Hill, Pattaya' },
+      { title: 'Services', text: 'Performance Marketing, Social Media, AI Creative' }
+    ],
+    results: [
+      { num: '1M', lbl: 'THB Revenue' },
+      { num: '2', lbl: 'Months' },
+      { num: '0%', lbl: 'OTA Dependency' },
+      { num: '∞%', lbl: 'Direct Growth' }
+    ]
+  },
+  alexa: {
+    eye: 'Beach Club · Pattaya',
+    title: 'Alexa Beach Club',
+    tags: ['Meta Ads', 'Social Content', 'Lifestyle Shoots', 'WhatsApp Tracking'],
+    p1: 'Pattaya’s nightlife and beach club scene is fiercely competitive. Alexa Beach Club needed to elevate their positioning to claim the number one spot and aggressively drive direct reservations.',
+    p2: 'We spearheaded high-end lifestyle shoots with international models, creating visual assets that radiated exclusivity. We then funneled these assets into localized Meta awareness campaigns.',
+    p3: 'To bridge the gap between interest and action, we implemented a seamless WhatsApp Click-to-Chat reservation loop. This dual approach ensured massive reach paired with immediate, trackable table bookings.',
+    sidebar: [
+      { title: 'Client', text: 'Alexa Beach Club' },
+      { title: 'Location', text: 'Na Jomtien, Pattaya' },
+      { title: 'Services', text: 'Content Production, Performance Ads' }
+    ],
+    results: [
+      { num: '2.6M', lbl: 'IG Reach' },
+      { num: '#1', lbl: 'Beach Club' },
+      { num: '280+', lbl: 'Reservations' },
+      { num: 'Top', lbl: 'Market Share' }
+    ]
+  },
+  skyview: {
+    eye: 'Hotel · Bangkok',
+    title: 'Hotel Skyview BKK',
+    tags: ['Meta Ads', 'WhatsApp Funnels', 'Lead Gen', 'Zero OTA'],
+    p1: 'Skyview was bleeding margin on expensive traditional website conversion ads and high OTA commissions. They needed a more cost-effective way to secure guest bookings without sacrificing volume.',
+    p2: 'We pivoted the entire performance budget away from low-converting landing pages and directly into interactive WhatsApp Click-to-Chat campaigns via Meta.',
+    p3: 'By engaging potential guests in immediate, one-on-one dialogue, the sales team could close bookings seamlessly. Cost per lead plummeted to 50–100 THB, and OTA commissions were removed entirely for these acquisitions.',
+    sidebar: [
+      { title: 'Client', text: 'Hotel Skyview' },
+      { title: 'Location', text: 'Bangkok, Thailand' },
+      { title: 'Services', text: 'Performance Marketing' }
+    ],
+    results: [
+      { num: '50฿', lbl: 'Cost Per Lead' },
+      { num: '0%', lbl: 'OTA Commission' },
+      { num: 'Direct', lbl: 'Guest Relation' },
+      { num: '100%', lbl: 'ROI Increase' }
+    ]
+  },
+  nomads: {
+    eye: 'Hostel · Thailand',
+    title: 'Nomads Hostel Asia',
+    tags: ['UGC Strategy', 'Organic Growth', 'Community Management'],
+    p1: 'With three diverse properties across Thailand, Nomads required a unifed brand identity that appealed directly to backpackers and digital nomads. They lacked a cohesive voice and organic traction.',
+    p2: 'We put real guests at the absolute centre of the marketing strategy. We implemented heavily documented user-generated content (UGC) campaigns focusing on the raw hostel experience: pub crawls, boat parties, and local adventures.',
+    p3: 'This authentic, FOMO-inducing strategy transformed their Instagram into a lead generation machine, ultimately crowning them as the #1 Best Hostel in Asia by Hostelworld.',
+    sidebar: [
+      { title: 'Client', text: 'Nomads Hostel' },
+      { title: 'Location', text: 'Thailand (3 Properties)' },
+      { title: 'Services', text: 'Social Media Management' }
+    ],
+    results: [
+      { num: '#1', lbl: 'Hostel Asia' },
+      { num: '3', lbl: 'Properties' },
+      { num: '10x', lbl: 'Social Growth' },
+      { num: '100%', lbl: 'Auth. UGC' }
+    ]
+  },
+  bamboo: {
+    eye: 'Beach Club · Krabi',
+    title: 'Bamboo Beach Club',
+    tags: ['AI Graphics', 'Daily Content', 'Event Marketing'],
+    p1: 'Bamboo Beach Club was highly reliant on passing foot traffic. They needed to establish a dominant online presence to become a definitive destination in Krabi before tourists even arrived.',
+    p2: 'We adopted a relentless daily content rhythm. Combining high-energy party reels with cutting-edge AI conceptual graphics gave their feed a premium, yet vibrant aesthetic.',
+    p3: 'By heavily utilizing Live Stories on every major event night, we fostered a digital environment where missing a night at Bamboo felt like missing out on the Krabi experience altogether.',
+    sidebar: [
+      { title: 'Client', text: 'Bamboo Beach Club' },
+      { title: 'Location', text: 'Ao Nang, Krabi' },
+      { title: 'Services', text: 'Content, AI Graphics' }
+    ],
+    results: [
+      { num: '#1', lbl: 'Club in Krabi' },
+      { num: '365', lbl: 'Days Active' },
+      { num: 'Huge', lbl: 'Event Turnout' },
+      { num: 'Daily', lbl: 'New Followers' }
+    ]
+  },
+  gps: {
+    eye: 'Luxury Gems · Thailand',
+    title: 'GPS Gems',
+    tags: ['AI Content Library', 'Organic SEO', 'Education Marketing'],
+    p1: 'GPS Gems was starting from absolute zero. In a market flooded with digital noise, they needed to build absolute trust and a high-end identity to sell luxury jewelry without spending on paid ads.',
+    p2: 'We built an incredibly extensive, AI-generated content library that visualized their luxury aesthetic perfectly. No massive photography budgets were required.',
+    p3: 'We paired these immaculate visuals with an education-first content strategy on social media, teaching buyers about gem quality and sourcing. Buyers began finding them organically, trusting their authority, and purchasing directly.',
+    sidebar: [
+      { title: 'Client', text: 'GPS Gems Thailand' },
+      { title: 'Location', text: 'Bangkok, Thailand' },
+      { title: 'Services', text: 'AI Creative, Strategy' }
+    ],
+    results: [
+      { num: '0฿', lbl: 'Ad Spend' },
+      { num: '100%', lbl: 'AI Visuals' },
+      { num: 'High', lbl: 'Ticket Sales' },
+      { num: 'Full', lbl: 'Brand ID' }
+    ]
+  }
+};
+
+function openCase(id) {
+  const data = caseData[id];
+  if (!data) return;
+  
+  let tagsHtml = data.tags.map(t => `<div class="cs-tag">\${t}</div>`).join('');
+  
+  let infoHtml = data.sidebar.map(s => `
+    <div class="cs-info-item">
+      <div class="cs-info-k">\${s.title}</div>
+      <div class="cs-info-v">\${s.text}</div>
+    </div>
+  `).join('');
+  
+  let resultsHtml = data.results.map(r => `
+    <div class="cs-res-item">
+      <div class="cs-num">\${r.num}</div>
+      <div class="cs-lbl">\${r.lbl}</div>
+    </div>
+  `).join('');
+
+  const html = `
+    <div class="cs-content-wrap">
+      <div class="cs-head">
+        <div class="cs-eye">\${data.eye}</div>
+        <h1 class="cs-title">\${data.title}</h1>
+        <div class="cs-tags">\${tagsHtml}</div>
+      </div>
+      
+      <div class="cs-layout">
+        <div class="cs-narrative">
+          <div class="cs-sec" style="margin-bottom:20px">
+            <div class="cs-sec-lbl">CHALLENGE</div>
+            <p class="cs-p">\${data.p1}</p>
+          </div>
+          <div class="cs-sec">
+            <div class="cs-sec-lbl">STRATEGY</div>
+            <p class="cs-p">\${data.p2}</p>
+            <br>
+            <p class="cs-p">\${data.p3}</p>
+          </div>
+          <div class="cs-info-bar">
+            \${infoHtml}
+          </div>
+        </div>
+        
+        <div class="cs-receipt">
+          \${resultsHtml}
+        </div>
+      </div>
+    </div>
+  `;
+  document.getElementById('case-content').innerHTML = html;
+  document.getElementById('case-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCase() {
+  document.getElementById('case-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}

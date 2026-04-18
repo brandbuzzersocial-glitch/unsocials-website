@@ -372,7 +372,7 @@ const caseData = {
     eye: 'Hospitality · Pattaya',
     title: 'Elysium Pattaya',
     tags: ['Google Hotel Ads', 'Meta Campaigns', 'Content Shoots', 'AI Visuals'],
-    p1: 'Elysium was a 5-star property struggling to break free from OTA dependency. When they brought us on, their direct bookings were near zero. We knew that simply running ads wouldn\\'t cut it; we had to completely overhaul their digital presence.',
+    p1: "Elysium was a 5-star property struggling to break free from OTA dependency. When they brought us on, their direct bookings were near zero. We knew that simply running ads wouldn't cut it; we had to completely overhaul their digital presence.",
     p2: 'By deploying a full brand transformation that included luxury content shoots and AI-enhanced visuals, we created an irresistible narrative. We paired this with aggressive Google Hotel Ads and highly targeted Meta campaigns to capture high-intent travelers.',
     p3: 'The result? A staggering 1,000,000 THB in direct revenue within just two months, completely eliminating their reliance on OTAs.',
     sidebar: [

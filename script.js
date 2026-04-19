@@ -109,13 +109,9 @@ if(typeof gsap !== 'undefined') {
         duration: 0.4,
         ease: 'power2.out'
       });
-      var ov = card.querySelector('.cc-ov');
-      if(ov) gsap.to(ov, { opacity: 0.85 + (yPct * 0.15), duration: 0.2 });
     });
     card.addEventListener('mouseleave', function(){
       gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.7, ease: 'power2.out' });
-      var ov = card.querySelector('.cc-ov');
-      if(ov) gsap.to(ov, { opacity: 0, duration: 0.5 });
     });
   });
 }

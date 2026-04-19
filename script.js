@@ -553,7 +553,10 @@ function openCase(id) {
 
   let mediaHtml = '';
   if (data.media && data.media.length > 0) {
-    mediaHtml = `<div class="cs-sec-label" style="margin-top:60px">Project Media</div><div class="cs-media-grid">`;
+    mediaHtml = `<div class="cs-sec-label" style="margin-top:60px">Project Media</div>
+    <div class="cs-media-container">
+      <button class="cs-media-btn prev" onclick="scrollMedia(-1, event)">←</button>
+      <div class="cs-media-grid">`;
     data.media.forEach(m => {
       if (m.endsWith('.mp4') || m.endsWith('.webm') || m.endsWith('.mov')) {
         mediaHtml += `<video src="${m}" autoplay loop muted playsinline class="cs-media-item" style="pointer-events:none;"></video>`;
@@ -561,7 +564,9 @@ function openCase(id) {
         mediaHtml += `<img src="${m}" alt="Case Study Highlight" class="cs-media-item">`;
       }
     });
-    mediaHtml += `</div>`;
+    mediaHtml += `</div>
+      <button class="cs-media-btn next" onclick="scrollMedia(1, event)">→</button>
+    </div>`;
   }
 
   const html = `
@@ -599,4 +604,11 @@ function openCase(id) {
 function closeCase() {
   document.getElementById('case-overlay').classList.remove('open');
   document.body.style.overflow = '';
+}
+
+function scrollMedia(dir, event) {
+  const container = event.target.closest('.cs-media-container');
+  const grid = container.querySelector('.cs-media-grid');
+  // Scroll by approx one image width plus gap
+  grid.scrollBy({ left: dir * 300, behavior: 'smooth' });
 }

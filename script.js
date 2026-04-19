@@ -530,41 +530,44 @@ function openCase(id) {
   };
   const bg = bgMap[id] || bgMap.elysium;
   
-  let tagsHtml = data.tags.map(t => `<span class="cs-tag">\${t}</span>`).join('');
+  let tagsHtml = data.tags.map(t => `<span class="cs-tag">${t}</span>`).join('');
   
   let infoHtml = data.sidebar.map(s => `
     <div class="sidebar-card">
-      <div class="sc-title">\${s.title}</div>
-      <div class="sc-text">\${s.text}</div>
+      <div class="sc-title">${s.title}</div>
+      <div class="sc-text">${s.text}</div>
     </div>
   `).join('');
   
   let resultsHtml = data.results.map(r => `
     <div class="res-card">
-      <div class="res-num">\${r.num}</div>
-      <div class="res-label">\${r.lbl}</div>
+      <div class="res-num">${r.num}</div>
+      <div class="res-label">${r.lbl}</div>
     </div>
   `).join('');
 
   const html = `
-    <div class="cs-hero" style="background:\${bg};">
+    <div class="cs-hero" style="background:${bg};">
       <button class="cs-back" onclick="closeCase()">← Back to All Cases</button>
-      <div class="cs-eye">\${data.eye}</div>
-      <div class="cs-title">\${data.title.replace(' ', '<br>')}</div>
-      <div class="cs-tags">\${tagsHtml}</div>
+      <div class="cs-eye">${data.eye}</div>
+      <div class="cs-title">${data.title.replace(' ', '<br>')}</div>
+      <div class="cs-tags">${tagsHtml}</div>
     </div>
     <div class="cs-body">
       <div class="cs-cols">
         <div>
-          \${data.problemHtml}
-          \${data.strategyHtml}
+          <div class="cs-sec-label">The Problem</div>
+          ${data.problemHtml}
+          
+          <div class="cs-sec-label">The Strategy</div>
+          ${data.strategyHtml}
         </div>
         <div>
-          \${infoHtml}
+          ${infoHtml}
         </div>
       </div>
       <div class="results">
-        \${resultsHtml}
+        ${resultsHtml}
       </div>
     </div>
   `;

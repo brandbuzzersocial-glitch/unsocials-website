@@ -372,6 +372,7 @@ const caseData = {
     eye: '5-Star Hotel · Pattaya Prathumnak Hill · End-to-End Brand Transformation',
     title: 'Elysium Pattaya',
     tags: ['Social Revamp', 'Google Hotel Ads', 'Meta Performance', 'AI Content', 'Direct Bookings'],
+    media: ["assets/cases/elysium/img1.png","assets/cases/elysium/img2.jpg","assets/cases/elysium/img3.jpg","assets/cases/elysium/img4.jpg","assets/cases/elysium/img5.jpg","assets/cases/elysium/img6.jpg","assets/cases/elysium/img7.jpg","assets/cases/elysium/vid1.mp4","assets/cases/elysium/vid2.mp4","assets/cases/elysium/vid3.mp4"],
     problemHtml: `<div class="cs-sec-title">A 5-star hotel that looked like a 2-star on social.</div>
 <p class="cs-p">Elysium Pattaya is one of the city's most premium properties — a 5-star boutique hotel perched on Prathumnak Hill, one of Pattaya's most coveted luxury locations. But when they came to us, their digital presence told a very different story.</p>
 <p class="cs-p">Their social media was a graveyard of basic offer graphics, stock vectors, and promotional banners that screamed discount hotel — not luxury destination. Website bookings were at zero. Every single reservation came through OTAs — Agoda, Booking.com, Expedia — with commission fees eating directly into revenue. No customer data. No direct relationship with guests. No control over their own brand.</p>
@@ -397,6 +398,7 @@ const caseData = {
     eye: 'Beach Club · Pattaya · Brand Positioning + Performance Ads',
     title: 'Alexa Beach Club',
     tags: ['Brand Positioning', 'Lifestyle Content', 'Meta Ads', 'Pre-Reservations', 'Event Marketing'],
+    media: ["assets/cases/alexa/img1.jpg","assets/cases/alexa/img2.jpg","assets/cases/alexa/img3.jpg","assets/cases/alexa/img4.jpg","assets/cases/alexa/vid1.mp4","assets/cases/alexa/vid2.mp4","assets/cases/alexa/vid3.mp4","assets/cases/alexa/vid4.mp4","assets/cases/alexa/vid5.mp4"],
     problemHtml: `<div class="cs-sec-title">The best beach club in Pattaya that nobody knew existed.</div>
 <p class="cs-p">Alexa Beach Club had everything — an infinity pool, a private beach, world-class DJs, foam parties, and an Ibiza-style atmosphere that Pattaya had never seen before. There was just one problem: it sat outside the main tourist strip, and the world had no idea it existed.</p>
 <p class="cs-p">Their online presence was minimal. Their social wasn't telling the story. Without visibility, the reservations weren't coming. They came to Unsocials Thailand with a clear brief: they didn't just want reach — they wanted to be positioned as the number one beach club in Pattaya.</p>`,
@@ -445,6 +447,7 @@ const caseData = {
     eye: 'Global Hostel Brand · Thailand · UGC + Social Media',
     title: 'Nomads Hostel Asia',
     tags: ['UGC Content', 'Social Media', 'Direct Bookings', 'Community Building'],
+    media: ["assets/cases/nomads/img1.png","assets/cases/nomads/img2.png","assets/cases/nomads/img3.png","assets/cases/nomads/img4.png","assets/cases/nomads/vid1.mp4","assets/cases/nomads/vid2.mp4","assets/cases/nomads/vid3.mp4"],
     problemHtml: `<div class="cs-sec-title">Three hostels. A global brand. Nobody talking about them online.</div>
 <p class="cs-p">Nomads is a globally recognised hostel brand — built for solo travellers, backpackers, and adventure seekers who live for connecting with strangers and turning them into travel companions. When they launched three hostels across Thailand, the brand recognition was there. The local social presence wasn't.</p>
 <p class="cs-p">After 4–5 months of operation, bookings were almost entirely OTA-driven. People knew the Nomads name but didn't know what made these Thailand properties different — the pub crawls, the activities, the community nights, the experiences that don't show up in a booking engine listing.</p>`,
@@ -469,6 +472,7 @@ const caseData = {
     eye: 'Beach Club · Krabi · Social Media Revamp',
     title: 'Bamboo Beach Club',
     tags: ['Social Revamp', 'Event Content', 'AI Graphics', 'Daily Posting', 'Experience Marketing'],
+    media: ["assets/cases/bamboo/img1.png","assets/cases/bamboo/img2.png","assets/cases/bamboo/vid1.mov","assets/cases/bamboo/vid2.mp4","assets/cases/bamboo/vid3.mp4","assets/cases/bamboo/vid4.mp4"],
     problemHtml: `<div class="cs-sec-title">An incredible venue with an invisible social presence.</div>
 <p class="cs-p">Bamboo Beach Club in Krabi is one of the island's most vibrant venues — packed with events, parties, themed nights, and the kind of tropical energy that makes for exceptional content. People visiting Krabi already knew about Bamboo. Word of mouth was working. But social media? It was a complete afterthought.</p>
 <p class="cs-p">The account had a basic presence but wasn't capturing what actually happened inside. No event promotion. No night coverage. No stories showing the atmosphere. No content that made someone in Bangkok say "we need to be there this weekend." The experience existed — the social proof didn't.</p>`,
@@ -493,6 +497,7 @@ const caseData = {
     eye: 'Luxury Gemstones · Thailand · Organic Social Growth',
     title: 'GPS Gems',
     tags: ['AI Content Strategy', 'Social from Scratch', 'Organic Lead Gen', 'Education Marketing'],
+    media: ["assets/cases/gps/img1.jpg","assets/cases/gps/vid1.mp4","assets/cases/gps/vid2.mp4","assets/cases/gps/vid3.mp4","assets/cases/gps/vid4.mp4"],
     problemHtml: `<div class="cs-sec-title">Extraordinary gems. Zero digital presence to show for it.</div>
 <p class="cs-p">GPS Gems came to us at the very beginning — no social media, no content library, no digital footprint. Just an exceptional product: exclusive, rare gemstones crafted into bespoke jewellery for discerning collectors and buyers. The kind of inventory that commands attention when people know it exists. The challenge was making sure they did.</p>
 <p class="cs-p">Starting from scratch in the luxury goods market requires more than product posts. Buyers need education. They need provenance. They need to understand why a particular stone is extraordinary before they can justify the investment. Without content, GPS Gems was completely invisible.</p>`,
@@ -546,6 +551,19 @@ function openCase(id) {
     </div>
   `).join('');
 
+  let mediaHtml = '';
+  if (data.media && data.media.length > 0) {
+    mediaHtml = `<div class="cs-sec-label" style="margin-top:60px">Project Media</div><div class="cs-media-grid">`;
+    data.media.forEach(m => {
+      if (m.endsWith('.mp4') || m.endsWith('.webm') || m.endsWith('.mov')) {
+        mediaHtml += `<video src="${m}" autoplay loop muted playsinline class="cs-media-item" style="pointer-events:none;"></video>`;
+      } else {
+        mediaHtml += `<img src="${m}" alt="Case Study Highlight" class="cs-media-item">`;
+      }
+    });
+    mediaHtml += `</div>`;
+  }
+
   const html = `
     <div class="cs-hero" style="background:${bg};">
       <button class="cs-back" onclick="closeCase()">← Back to All Cases</button>
@@ -561,6 +579,8 @@ function openCase(id) {
           
           <div class="cs-sec-label">The Strategy</div>
           ${data.strategyHtml}
+
+          ${mediaHtml}
         </div>
         <div>
           ${infoHtml}

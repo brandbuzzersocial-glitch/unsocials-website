@@ -518,49 +518,53 @@ const caseData = {
 function openCase(id) {
   const data = caseData[id];
   if (!data) return;
+
+  // Background map (fallback if not defined in object, but we matched the file)
+  const bgMap = {
+    elysium: 'linear-gradient(180deg,#0e0120 0%,#220840 60%,#080808 100%)',
+    alexa: 'linear-gradient(180deg,#0d0820 0%,#1a0a50 60%,#080808 100%)',
+    skyview: 'linear-gradient(180deg,#020810 0%,#0a2840 60%,#080808 100%)',
+    nomads: 'linear-gradient(180deg,#020c18 0%,#062840 60%,#080808 100%)',
+    bamboo: 'linear-gradient(180deg,#041204 0%,#0e2c0e 60%,#080808 100%)',
+    gps: 'linear-gradient(180deg,#160e02 0%,#362408 60%,#080808 100%)'
+  };
+  const bg = bgMap[id] || bgMap.elysium;
   
-  let tagsHtml = data.tags.map(t => `<div class="cs-tag">\${t}</div>`).join('');
+  let tagsHtml = data.tags.map(t => `<span class="cs-tag">\${t}</span>`).join('');
   
   let infoHtml = data.sidebar.map(s => `
-    <div class="cs-info-item">
-      <div class="cs-info-k">\${s.title}</div>
-      <div class="cs-info-v">\${s.text}</div>
+    <div class="sidebar-card">
+      <div class="sc-title">\${s.title}</div>
+      <div class="sc-text">\${s.text}</div>
     </div>
   `).join('');
   
   let resultsHtml = data.results.map(r => `
-    <div class="cs-res-item">
-      <div class="cs-num">\${r.num}</div>
-      <div class="cs-lbl">\${r.lbl}</div>
+    <div class="res-card">
+      <div class="res-num">\${r.num}</div>
+      <div class="res-label">\${r.lbl}</div>
     </div>
   `).join('');
 
   const html = `
-    <div class="cs-content-wrap">
-      <div class="cs-head">
-        <div class="cs-eye">\${data.eye}</div>
-        <h1 class="cs-title">\${data.title}</h1>
-        <div class="cs-tags">\${tagsHtml}</div>
+    <div class="cs-hero" style="background:\${bg};">
+      <button class="cs-back" onclick="closeCase()">← Back to All Cases</button>
+      <div class="cs-eye">\${data.eye}</div>
+      <div class="cs-title">\${data.title.replace(' ', '<br>')}</div>
+      <div class="cs-tags">\${tagsHtml}</div>
+    </div>
+    <div class="cs-body">
+      <div class="cs-cols">
+        <div>
+          \${data.problemHtml}
+          \${data.strategyHtml}
+        </div>
+        <div>
+          \${infoHtml}
+        </div>
       </div>
-      
-      <div class="cs-layout">
-        <div class="cs-narrative">
-          <div class="cs-sec" style="margin-bottom:20px">
-            <div class="cs-sec-lbl">CHALLENGE</div>
-            \${data.problemHtml}
-          </div>
-          <div class="cs-sec">
-            <div class="cs-sec-lbl">STRATEGY</div>
-            \${data.strategyHtml}
-          </div>
-          <div class="cs-info-bar">
-            \${infoHtml}
-          </div>
-        </div>
-        
-        <div class="cs-receipt">
-          \${resultsHtml}
-        </div>
+      <div class="results">
+        \${resultsHtml}
       </div>
     </div>
   `;

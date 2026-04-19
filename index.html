@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UNSOCIALS — We Make It Inevitable</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -470,9 +470,8 @@
   <div class="case-grid">
 
     <!-- ELYSIUM HERO -->
-    <div class="cc hero" onclick="openCase('elysium')">
-      <div class="cc-bg" style="background-image:url('assets/elysium-cover.jpg');background-size:cover;background-position:center top"></div>
-      <div class="cc-bg" style="background:linear-gradient(160deg,rgba(40,5,80,0.78) 0%,rgba(100,20,180,0.45) 45%,rgba(8,0,24,0.92) 100%);position:absolute;inset:0;transition:none"></div>
+    <div class="cc" onclick="openCase('elysium')">
+      <div class="cc-bg"></div>
       <div class="cc-grid"></div>
       <div class="cc-badge" style="top:20%;right:5%;animation-delay:0s"><div class="cc-bn">1M THB</div><div class="cc-bl">2-Month Revenue</div></div>
       <div class="cc-badge" style="top:52%;right:5%;animation-delay:1.2s"><div class="cc-bn">0% OTA</div><div class="cc-bl">Direct Bookings</div></div>
@@ -494,7 +493,7 @@
 
     <!-- ALEXA -->
     <div class="cc" onclick="openCase('alexa')">
-      <div class="cc-bg" style="background:radial-gradient(ellipse at 70% 40%, rgba(0,180,120,0.3) 0%, rgba(0,80,60,0.12) 45%, transparent 70%)"></div>
+      <div class="cc-bg"></div>
       <div class="cc-grid"></div>
       <div class="cc-badge" style="top:18%;right:6%;animation-delay:.4s"><div class="cc-bn">2.6M</div><div class="cc-bl">IG Reach</div></div>
       <div class="cc-ov"></div>
@@ -514,7 +513,7 @@
 
     <!-- SKYVIEW -->
     <div class="cc" onclick="openCase('skyview')">
-      <div class="cc-bg" style="background:radial-gradient(ellipse at 40% 50%, rgba(20,80,200,0.3) 0%, rgba(10,30,100,0.12) 45%, transparent 70%)"></div>
+      <div class="cc-bg"></div>
       <div class="cc-grid"></div>
       <div class="cc-badge" style="top:18%;right:6%;animation-delay:.8s"><div class="cc-bn">50 THB</div><div class="cc-bl">Cost Per Lead</div></div>
       <div class="cc-ov"></div>
@@ -533,7 +532,7 @@
 
     <!-- NOMADS -->
     <div class="cc" onclick="openCase('nomads')">
-      <div class="cc-bg" style="background:linear-gradient(145deg,#041018,#082840,#0c3660,#041c30)"></div>
+      <div class="cc-bg"></div>
       <div class="cc-grid"></div>
       <div class="cc-badge" style="top:18%;right:6%;animation-delay:1s"><div class="cc-bn">#1</div><div class="cc-bl">Best in Asia</div></div>
       <div class="cc-ov"></div>
@@ -552,7 +551,7 @@
 
     <!-- BAMBOO -->
     <div class="cc" onclick="openCase('bamboo')">
-      <div class="cc-bg" style="background:linear-gradient(145deg,#041204,#0a2c0a,#103614,#061808)"></div>
+      <div class="cc-bg"></div>
       <div class="cc-grid"></div>
       <div class="cc-badge" style="top:18%;right:6%;animation-delay:.3s"><div class="cc-bn">Krabi #1</div><div class="cc-bl">Beach Club</div></div>
       <div class="cc-ov"></div>
@@ -571,7 +570,7 @@
 
     <!-- GPS -->
     <div class="cc" onclick="openCase('gps')">
-      <div class="cc-bg" style="background:linear-gradient(145deg,#181004,#3c2808,#281c04,#140e02)"></div>
+      <div class="cc-bg"></div>
       <div class="cc-grid"></div>
       <div class="cc-badge" style="top:18%;right:6%;animation-delay:.7s"><div class="cc-bn">Zero</div><div class="cc-bl">Ads Needed</div></div>
       <div class="cc-ov"></div>
@@ -731,7 +730,6 @@
 
 <!-- CASE STUDY OVERLAY -->
 <div id="case-overlay">
-  <button class="cs-back" onclick="closeCase()">← Back</button>
   <div id="case-content"></div>
 </div>
 

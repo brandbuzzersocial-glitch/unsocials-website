@@ -355,7 +355,9 @@ nav.compact{padding:14px 52px}
 .cs-narrative{display:flex;flex-direction:column;gap:40px}
 .cs-sec{position:relative;padding-left:40px;border-left:1px solid var(--border)}
 .cs-sec-lbl{position:absolute;left:-14px;top:20px;font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:var(--rd);transform:rotate(-90deg);transform-origin:left top;white-space:nowrap}
-.cs-p{font-family:'Space Grotesk',sans-serif;font-size:clamp(16px,1.5vw,20px);line-height:1.75;color:rgba(240,237,232,0.65);max-width:720px}
+.cs-sec-title{font-family:'Syne',sans-serif;font-size:clamp(22px,2.5vw,36px);line-height:1.1;margin-bottom:20px;font-weight:800;letter-spacing:-0.02em;color:var(--w)}
+.cs-p{font-family:'Space Grotesk',sans-serif;font-size:clamp(16px,1.5vw,20px);line-height:1.75;color:rgba(240,237,232,0.65);max-width:720px;margin-bottom:20px}
+.cs-p:last-child{margin-bottom:0}
 .cs-p strong{color:var(--w);font-weight:600}
 
 /* Raw Receipt Stats Block */

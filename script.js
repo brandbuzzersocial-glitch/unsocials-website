@@ -369,117 +369,148 @@ if(typeof gsap !== 'undefined') {
 // ─── CASE STUDY OVERLAY LOGIC ───
 const caseData = {
   elysium: {
-    eye: 'Hospitality · Pattaya',
+    eye: '5-Star Hotel · Pattaya Prathumnak Hill · End-to-End Brand Transformation',
     title: 'Elysium Pattaya',
-    tags: ['Google Hotel Ads', 'Meta Campaigns', 'Content Shoots', 'AI Visuals'],
-    p1: "Elysium was a 5-star property struggling to break free from OTA dependency. When they brought us on, their direct bookings were near zero. We knew that simply running ads wouldn't cut it; we had to completely overhaul their digital presence.",
-    p2: 'By deploying a full brand transformation that included luxury content shoots and AI-enhanced visuals, we created an irresistible narrative. We paired this with aggressive Google Hotel Ads and highly targeted Meta campaigns to capture high-intent travelers.',
-    p3: 'The result? A staggering 1,000,000 THB in direct revenue within just two months, completely eliminating their reliance on OTAs.',
+    tags: ['Social Revamp', 'Google Hotel Ads', 'Meta Performance', 'AI Content', 'Direct Bookings'],
+    problemHtml: `<div class="cs-sec-title">A 5-star hotel that looked like a 2-star on social.</div>
+<p class="cs-p">Elysium Pattaya is one of the city's most premium properties — a 5-star boutique hotel perched on Prathumnak Hill, one of Pattaya's most coveted luxury locations. But when they came to us, their digital presence told a very different story.</p>
+<p class="cs-p">Their social media was a graveyard of basic offer graphics, stock vectors, and promotional banners that screamed discount hotel — not luxury destination. Website bookings were at zero. Every single reservation came through OTAs — Agoda, Booking.com, Expedia — with commission fees eating directly into revenue. No customer data. No direct relationship with guests. No control over their own brand.</p>
+<p class="cs-p">Elysium had the product. They needed the story — and the system to monetise it.</p>`,
+    strategyHtml: `<div class="cs-sec-title">Luxury content. Performance ads. Direct revenue.</div>
+<p class="cs-p"><strong>Phase 1 — Social Transformation:</strong> We stripped the account back to zero and rebuilt it from the ground up. Luxury lifestyle shoots capturing the hotel's rooftop pool, panoramic Prathumnak Hill views, and intimate suite experiences. Travel-led editorial reels designed to trigger aspiration, not just awareness. AI-enhanced visuals that elevated the property into something cinematic — giving potential guests the feeling of Elysium before they ever arrived.</p>
+<p class="cs-p"><strong>Phase 2 — Google Hotel Search Ads:</strong> We launched Hotel Search campaigns targeting travellers actively searching for hotels in Pattaya — worldwide. Guests from Europe, the Middle East, and Asia saw Elysium at the top of Google results. We also ran direct call ads targeting domestic Thai travellers, giving every type of guest the fastest route to conversion.</p>
+<p class="cs-p"><strong>Phase 3 — Meta Awareness & Direct Booking Incentives:</strong> Awareness campaigns ran across Meta targeting the top feeder countries visiting Pattaya. We offered a complimentary mini bar and 20% off for guests who booked directly via Instagram or WhatsApp — bypassing OTAs entirely. Guests had a reason to reach out directly. Elysium had a reason to celebrate.</p>`,
     sidebar: [
-      { title: 'Client', text: 'Elysium Pattaya' },
-      { title: 'Location', text: 'Prathumnak Hill, Pattaya' },
-      { title: 'Services', text: 'Performance Marketing, Social Media, AI Creative' }
+      { title: 'The Brand', text: "Elysium Pattaya — 5-star boutique hotel on Prathumnak Hill, one of Pattaya's most prestigious luxury addresses." },
+      { title: 'The Challenge', text: "Zero website revenue. 100% OTA dependency. Social media that didn't reflect the property's luxury positioning or 5-star calibre." },
+      { title: 'Services Delivered', text: "Full social media revamp · Luxury lifestyle shoots · AI-enhanced content · Google Hotel Search Ads (worldwide) · Call ads (domestic) · Meta awareness campaigns · WhatsApp direct booking system · Direct booking incentive strategy" },
+      { title: 'Key Innovation', text: "A complimentary mini bar + 20% pre-booking offer positioned Elysium's direct channel as more attractive than any OTA — turning social followers into direct-paying guests." }
     ],
     results: [
-      { num: '1M', lbl: 'THB Revenue' },
-      { num: '2', lbl: 'Months' },
-      { num: '0%', lbl: 'OTA Dependency' },
-      { num: '∞%', lbl: 'Direct Growth' }
+      { num: '1M THB', lbl: 'Direct website revenue generated within 2 months of campaign launch' },
+      { num: '∞%', lbl: 'Website revenue growth — from absolute zero to 7-figure monthly revenue' },
+      { num: '0% OTA', lbl: 'Direct booking channel built — guests choosing Elysium over OTA platforms' },
+      { num: '5★', lbl: "Social presence finally matching the luxury reality of Prathumnak Hill's finest hotel" }
     ]
   },
   alexa: {
-    eye: 'Beach Club · Pattaya',
+    eye: 'Beach Club · Pattaya · Brand Positioning + Performance Ads',
     title: 'Alexa Beach Club',
-    tags: ['Meta Ads', 'Social Content', 'Lifestyle Shoots', 'WhatsApp Tracking'],
-    p1: 'Pattaya’s nightlife and beach club scene is fiercely competitive. Alexa Beach Club needed to elevate their positioning to claim the number one spot and aggressively drive direct reservations.',
-    p2: 'We spearheaded high-end lifestyle shoots with international models, creating visual assets that radiated exclusivity. We then funneled these assets into localized Meta awareness campaigns.',
-    p3: 'To bridge the gap between interest and action, we implemented a seamless WhatsApp Click-to-Chat reservation loop. This dual approach ensured massive reach paired with immediate, trackable table bookings.',
+    tags: ['Brand Positioning', 'Lifestyle Content', 'Meta Ads', 'Pre-Reservations', 'Event Marketing'],
+    problemHtml: `<div class="cs-sec-title">The best beach club in Pattaya that nobody knew existed.</div>
+<p class="cs-p">Alexa Beach Club had everything — an infinity pool, a private beach, world-class DJs, foam parties, and an Ibiza-style atmosphere that Pattaya had never seen before. There was just one problem: it sat outside the main tourist strip, and the world had no idea it existed.</p>
+<p class="cs-p">Their online presence was minimal. Their social wasn't telling the story. Without visibility, the reservations weren't coming. They came to Unsocials Thailand with a clear brief: they didn't just want reach — they wanted to be positioned as the number one beach club in Pattaya.</p>`,
+    strategyHtml: `<div class="cs-sec-title">Show the experience. Build the desire. Drive the bookings.</div>
+<p class="cs-p"><strong>Phase 1 — Lifestyle Content Production:</strong> We went in and shot everything. Models in the infinity pool. Birthdays on the beach. Couples at sunset dinners. Foam party madness. DJ sets. Activities. Lunches. Edited into scroll-stopping reels and carousels, we built a content library that made Pattaya look like Ibiza.</p>
+<p class="cs-p"><strong>Phase 2 — Brand Awareness:</strong> Meta awareness campaigns showed Pattaya wasn't just a city for nightlife — Alexa Beach Club was where your day belonged. Targeting tourists in Thailand, expats in Pattaya, and Bangkok weekenders, we repositioned the narrative: if you're in Pattaya and haven't been to Alexa, your trip isn't complete.</p>
+<p class="cs-p"><strong>Phase 3 — Pre-Reservation Campaigns:</strong> Website click ads and WhatsApp/Facebook DM campaigns drove active bookings. Birthdays. Girls' day outs. Corporate events. Weddings. The weekend campaign specifically targeting Bangkok residents produced repeat waves of traffic every Friday — turning Alexa into Pattaya's most-booked beach club.</p>`,
     sidebar: [
-      { title: 'Client', text: 'Alexa Beach Club' },
-      { title: 'Location', text: 'Na Jomtien, Pattaya' },
-      { title: 'Services', text: 'Content Production, Performance Ads' }
+      { title: 'The Brand', text: "Alexa Beach Club — Pattaya's premier Ibiza-style beach club featuring an infinity pool, private beach, international DJs, foam parties, and full dining experiences." },
+      { title: 'The Goal', text: "Positioning. Not just reach. Become undeniably the #1 beach club in Pattaya and generate consistent pre-reservations across all event types." },
+      { title: 'Services Delivered', text: "Lifestyle content production with models · Social media management · Meta brand awareness campaigns · Website click ads · WhatsApp + DM lead generation · Bangkok weekend targeting · Event marketing" },
+      { title: 'Breakthrough Moment', text: "Bangkok weekend campaigns unlocked a recurring revenue stream — local Thai travellers booking Alexa as their Pattaya itinerary centrepiece, not an afterthought." }
     ],
     results: [
-      { num: '2.6M', lbl: 'IG Reach' },
-      { num: '#1', lbl: 'Beach Club' },
-      { num: '280+', lbl: 'Reservations' },
-      { num: 'Top', lbl: 'Market Share' }
+      { num: '26K→2.6M', lbl: 'Instagram reach in 3 months — a 9,700% increase in content visibility' },
+      { num: '280+', lbl: 'Direct reservation messages — birthdays, corporate events, weddings via WhatsApp & DMs' },
+      { num: '20,103', lbl: 'Ad clicks in 3 months — qualified traffic from tourists, Bangkok weekenders, expats' },
+      { num: '#1', lbl: "Positioned as Pattaya's number one beach club — the goal from day one, achieved" }
     ]
   },
   skyview: {
-    eye: 'Hotel · Bangkok',
+    eye: 'Hotel · Bangkok · WhatsApp Lead Generation',
     title: 'Hotel Skyview BKK',
-    tags: ['Meta Ads', 'WhatsApp Funnels', 'Lead Gen', 'Zero OTA'],
-    p1: 'Skyview was bleeding margin on expensive traditional website conversion ads and high OTA commissions. They needed a more cost-effective way to secure guest bookings without sacrificing volume.',
-    p2: 'We pivoted the entire performance budget away from low-converting landing pages and directly into interactive WhatsApp Click-to-Chat campaigns via Meta.',
-    p3: 'By engaging potential guests in immediate, one-on-one dialogue, the sales team could close bookings seamlessly. Cost per lead plummeted to 50–100 THB, and OTA commissions were removed entirely for these acquisitions.',
+    tags: ['WhatsApp Marketing', 'Meta Ads', 'Direct Bookings', 'Cost Per Lead'],
+    problemHtml: `<div class="cs-sec-title">Good bookings. Bad economics. Every sale cost too much.</div>
+<p class="cs-p">Hotel Skyview Bangkok was already running direct booking ads — but the numbers didn't add up. The cost per website purchase was high. Converting leads through a multi-click website funnel meant paying a premium for every booking. Margins were under pressure, and the team needed a smarter, more direct path to revenue.</p>
+<p class="cs-p">They had a great product. What they needed was a more efficient way to get guests from interest to booking — without the cost and drop-off of a website journey.</p>`,
+    strategyHtml: `<div class="cs-sec-title">Cut the middleman. Put the conversation first.</div>
+<p class="cs-p">We introduced a WhatsApp Click-to-Chat ad strategy — Meta campaigns that sent interested travellers directly into a WhatsApp conversation with the hotel team, rather than pushing them through a booking engine.</p>
+<p class="cs-p">The logic was simple: a guest who messages directly is already warm. The hotel team could respond instantly, personalise the offer, confirm availability in real time, and close the booking in a single conversation. No abandoned carts. No lost momentum. Just a direct conversation that turned intent into revenue.</p>
+<p class="cs-p">At just 50–100 THB cost per click, the economics transformed completely. The hotel was acquiring qualified leads at a fraction of the previous cost — and converting them at a higher rate because every interaction was personal and immediate.</p>`,
     sidebar: [
-      { title: 'Client', text: 'Hotel Skyview' },
-      { title: 'Location', text: 'Bangkok, Thailand' },
-      { title: 'Services', text: 'Performance Marketing' }
+      { title: 'The Brand', text: "Hotel Skyview Bangkok — boutique hotel in the heart of Bangkok, offering premium stays with a strong direct booking ambition." },
+      { title: 'The Challenge', text: "High cost per website purchase making direct campaigns uneconomical. Needed a lower-cost, higher-converting lead generation system." },
+      { title: 'Services Delivered', text: "WhatsApp Click-to-Chat ad campaigns · Meta Ads management · Lead qualification strategy · Direct booking funnel design · Ongoing optimisation" },
+      { title: 'The Advantage', text: "Direct guest contact means the hotel team can respond in real time, offer exclusive deals, and build genuine rapport — converting bookings a website alone could never close." }
     ],
     results: [
-      { num: '50฿', lbl: 'Cost Per Lead' },
-      { num: '0%', lbl: 'OTA Commission' },
-      { num: 'Direct', lbl: 'Guest Relation' },
-      { num: '100%', lbl: 'ROI Increase' }
+      { num: '50–100 THB', lbl: 'Cost per WhatsApp lead — a fraction of the previous website cost per booking' },
+      { num: 'Direct', lbl: 'Guest contact from first message — dates, room type, budget captured instantly' },
+      { num: '↑ Revenue', lbl: 'Increased direct room revenue as conversion rates improved through personal booking conversations' },
+      { num: '0% OTA', lbl: 'Every WhatsApp booking is commission-free — full margin stays with the hotel' }
     ]
   },
   nomads: {
-    eye: 'Hostel · Thailand',
+    eye: 'Global Hostel Brand · Thailand · UGC + Social Media',
     title: 'Nomads Hostel Asia',
-    tags: ['UGC Strategy', 'Organic Growth', 'Community Management'],
-    p1: 'With three diverse properties across Thailand, Nomads required a unifed brand identity that appealed directly to backpackers and digital nomads. They lacked a cohesive voice and organic traction.',
-    p2: 'We put real guests at the absolute centre of the marketing strategy. We implemented heavily documented user-generated content (UGC) campaigns focusing on the raw hostel experience: pub crawls, boat parties, and local adventures.',
-    p3: 'This authentic, FOMO-inducing strategy transformed their Instagram into a lead generation machine, ultimately crowning them as the #1 Best Hostel in Asia by Hostelworld.',
+    tags: ['UGC Content', 'Social Media', 'Direct Bookings', 'Community Building'],
+    problemHtml: `<div class="cs-sec-title">Three hostels. A global brand. Nobody talking about them online.</div>
+<p class="cs-p">Nomads is a globally recognised hostel brand — built for solo travellers, backpackers, and adventure seekers who live for connecting with strangers and turning them into travel companions. When they launched three hostels across Thailand, the brand recognition was there. The local social presence wasn't.</p>
+<p class="cs-p">After 4–5 months of operation, bookings were almost entirely OTA-driven. People knew the Nomads name but didn't know what made these Thailand properties different — the pub crawls, the activities, the community nights, the experiences that don't show up in a booking engine listing.</p>`,
+    strategyHtml: `<div class="cs-sec-title">Let the guests tell the story. Make the world jealous.</div>
+<p class="cs-p">The most credible voice for a hostel isn't the brand — it's the traveller. We built a UGC strategy that put real guests at the centre of every piece of content. Real faces. Real friendships. Real experiences — pub crawls, night markets, rooftop parties, sunrise beach runs, and everything in between.</p>
+<p class="cs-p">We captured and edited content featuring guests in their most authentic moments, then distributed it across all social platforms in a format that made the Nomads Thailand experience unmissable. For solo travellers scrolling Instagram at 2am wondering where to go next — Nomads became the answer.</p>
+<p class="cs-p">The content generated organic leads directly on social — travellers DMing for booking information, asking how to join activities, enquiring about availability. We directed them to the direct booking website, growing Nomads' owned revenue channel alongside its community.</p>`,
     sidebar: [
-      { title: 'Client', text: 'Nomads Hostel' },
-      { title: 'Location', text: 'Thailand (3 Properties)' },
-      { title: 'Services', text: 'Social Media Management' }
+      { title: 'The Brand', text: "Nomads Hostel Asia — global hostel brand operating 3 properties across Thailand, catering to solo travellers, backpackers, and adventure tourism." },
+      { title: 'The Challenge', text: "No social presence communicating the Nomads experience. 100% OTA reliance. Travellers didn't know what made Nomads Thailand different from any other hostel." },
+      { title: 'Services Delivered', text: "UGC content strategy and production · Full social media management · Community building · Direct booking lead generation · Activity and event content marketing" },
+      { title: 'Recognition', text: "During our partnership, Nomads Thailand was awarded Best Hostel in Thailand and Best Hostel in Asia by Hostelworld — the industry's most prestigious recognition." }
     ],
     results: [
-      { num: '#1', lbl: 'Hostel Asia' },
-      { num: '3', lbl: 'Properties' },
-      { num: '10x', lbl: 'Social Growth' },
-      { num: '100%', lbl: 'Auth. UGC' }
+      { num: '#1 Asia', lbl: 'Best Hostel in Asia — awarded by Hostelworld during our partnership' },
+      { num: 'Best TH', lbl: 'Best Hostel in Thailand — Hostelworld recognition across all 3 properties' },
+      { num: 'Direct', lbl: 'Organic social-to-booking leads — travellers reaching out via Instagram and Facebook DMs' },
+      { num: 'Real', lbl: 'UGC content strategy capturing authentic experiences that no stock photo could replicate' }
     ]
   },
   bamboo: {
-    eye: 'Beach Club · Krabi',
+    eye: 'Beach Club · Krabi · Social Media Revamp',
     title: 'Bamboo Beach Club',
-    tags: ['AI Graphics', 'Daily Content', 'Event Marketing'],
-    p1: 'Bamboo Beach Club was highly reliant on passing foot traffic. They needed to establish a dominant online presence to become a definitive destination in Krabi before tourists even arrived.',
-    p2: 'We adopted a relentless daily content rhythm. Combining high-energy party reels with cutting-edge AI conceptual graphics gave their feed a premium, yet vibrant aesthetic.',
-    p3: 'By heavily utilizing Live Stories on every major event night, we fostered a digital environment where missing a night at Bamboo felt like missing out on the Krabi experience altogether.',
+    tags: ['Social Revamp', 'Event Content', 'AI Graphics', 'Daily Posting', 'Experience Marketing'],
+    problemHtml: `<div class="cs-sec-title">An incredible venue with an invisible social presence.</div>
+<p class="cs-p">Bamboo Beach Club in Krabi is one of the island's most vibrant venues — packed with events, parties, themed nights, and the kind of tropical energy that makes for exceptional content. People visiting Krabi already knew about Bamboo. Word of mouth was working. But social media? It was a complete afterthought.</p>
+<p class="cs-p">The account had a basic presence but wasn't capturing what actually happened inside. No event promotion. No night coverage. No stories showing the atmosphere. No content that made someone in Bangkok say "we need to be there this weekend." The experience existed — the social proof didn't.</p>`,
+    strategyHtml: `<div class="cs-sec-title">Show Krabi what it's been missing. Then show the world.</div>
+<p class="cs-p">We took over Bamboo's social from the ground up. High-energy party reels edited to match the music, the mood, and the crowd. Every major event got its own content series: fire shows, foam nights, live DJ sets, themed pool parties. The kind of footage that makes your phone screen feel like a portal.</p>
+<p class="cs-p">We introduced conceptual AI-generated graphics that gave Bamboo a visual identity beyond photography — cosmic beach-party aesthetics, event announcement designs, and branded content that stood out in feeds dominated by generic tropical imagery.</p>
+<p class="cs-p">A daily posting rhythm combined with live Stories coverage on every event night gave followers a real-time window into Bamboo's world. The narrative became undeniable: if you are in Krabi and you haven't visited Bamboo Beach Club, your trip is not complete.</p>`,
     sidebar: [
-      { title: 'Client', text: 'Bamboo Beach Club' },
-      { title: 'Location', text: 'Ao Nang, Krabi' },
-      { title: 'Services', text: 'Content, AI Graphics' }
+      { title: 'The Brand', text: "Bamboo Beach Club Krabi — one of Krabi's most energetic beach venues, known for themed events, parties, and an electric tropical atmosphere." },
+      { title: 'The Challenge', text: "Great venue with a weak social presence. Events happening nightly with zero documentation. No content strategy communicating the Bamboo experience." },
+      { title: 'Services Delivered', text: "Full social media revamp · Party and event reel production · AI-generated conceptual graphics · Daily posting strategy · Live Stories event coverage · Ongoing social media management" },
+      { title: 'The Narrative', text: "\"If you're in Krabi and haven't been to Bamboo Beach Club — your trip isn't finished.\" A positioning line that became the brand's social identity." }
     ],
     results: [
-      { num: '#1', lbl: 'Club in Krabi' },
-      { num: '365', lbl: 'Days Active' },
-      { num: 'Huge', lbl: 'Event Turnout' },
-      { num: 'Daily', lbl: 'New Followers' }
+      { num: 'Krabi #1', lbl: "Bamboo positioned as Krabi's must-visit beach club — the destination, not just an option" },
+      { num: 'Daily', lbl: 'Consistent posting with live Stories coverage on every major event night' },
+      { num: 'AI + Real', lbl: 'AI conceptual graphics combined with real event footage — a premium, distinctive aesthetic' },
+      { num: 'Ongoing', lbl: 'Full social media management — continuous content, community growth, event marketing' }
     ]
   },
   gps: {
-    eye: 'Luxury Gems · Thailand',
+    eye: 'Luxury Gemstones · Thailand · Organic Social Growth',
     title: 'GPS Gems',
-    tags: ['AI Content Library', 'Organic SEO', 'Education Marketing'],
-    p1: 'GPS Gems was starting from absolute zero. In a market flooded with digital noise, they needed to build absolute trust and a high-end identity to sell luxury jewelry without spending on paid ads.',
-    p2: 'We built an incredibly extensive, AI-generated content library that visualized their luxury aesthetic perfectly. No massive photography budgets were required.',
-    p3: 'We paired these immaculate visuals with an education-first content strategy on social media, teaching buyers about gem quality and sourcing. Buyers began finding them organically, trusting their authority, and purchasing directly.',
+    tags: ['AI Content Strategy', 'Social from Scratch', 'Organic Lead Gen', 'Education Marketing'],
+    problemHtml: `<div class="cs-sec-title">Extraordinary gems. Zero digital presence to show for it.</div>
+<p class="cs-p">GPS Gems came to us at the very beginning — no social media, no content library, no digital footprint. Just an exceptional product: exclusive, rare gemstones crafted into bespoke jewellery for discerning collectors and buyers. The kind of inventory that commands attention when people know it exists. The challenge was making sure they did.</p>
+<p class="cs-p">Starting from scratch in the luxury goods market requires more than product posts. Buyers need education. They need provenance. They need to understand why a particular stone is extraordinary before they can justify the investment. Without content, GPS Gems was completely invisible.</p>`,
+    strategyHtml: `<div class="cs-sec-title">Educate. Elevate. Let the stones do the selling.</div>
+<p class="cs-p">With no existing content to work with, we built GPS Gems' entire social identity using AI-generated visuals. High-end, editorial-quality imagery of gemstones — rubies, sapphires, rare coloured stones — in environments that communicated luxury, rarity, and craftsmanship. No photography budget required. Just creative vision and the power of AI production.</p>
+<p class="cs-p">We built an education-first content strategy around four core pillars: the origin stories of where each gem is sourced, the craftsmanship journey from raw stone to finished jewellery, gem knowledge posts teaching followers how to identify quality, and exclusive collection reveals that created genuine anticipation and desire.</p>
+<p class="cs-p">The approach worked not because we advertised — but because we informed. Followers came for the knowledge and stayed for the gems. Without running a single paid lead ad, enquiries began arriving organically through Instagram — collectors, buyers, and gifters reaching out directly.</p>`,
     sidebar: [
-      { title: 'Client', text: 'GPS Gems Thailand' },
-      { title: 'Location', text: 'Bangkok, Thailand' },
-      { title: 'Services', text: 'AI Creative, Strategy' }
+      { title: 'The Brand', text: "GPS Gems — Thailand-based luxury gemstone brand dealing in exclusive, rare stones and bespoke jewellery crafted for collectors and high-value buyers." },
+      { title: 'The Challenge', text: "Zero content. Zero social presence. Zero digital history. Built entirely from the ground up — content strategy and brand identity created simultaneously from scratch." },
+      { title: 'Services Delivered', text: "Full social media strategy from scratch · AI-generated luxury content production · Education-first content pillars · Gem origin and craftsmanship storytelling · Collection reveal campaigns · Organic lead generation" },
+      { title: 'The Proof', text: "Organic Instagram leads with zero paid advertising. Buyers already educated, already trusting the brand. The most efficient lead generation possible — no ad spend required." }
     ],
     results: [
-      { num: '0฿', lbl: 'Ad Spend' },
-      { num: '100%', lbl: 'AI Visuals' },
-      { num: 'High', lbl: 'Ticket Sales' },
-      { num: 'Full', lbl: 'Brand ID' }
+      { num: 'Zero Ads', lbl: 'No paid lead generation — every enquiry came through organic social content' },
+      { num: 'Organic', lbl: 'Instagram leads from collectors who discovered GPS Gems through educational content' },
+      { num: 'AI-Built', lbl: 'Full luxury content library created from AI visuals — world-class output, zero photography budget' },
+      { num: 'From Zero', lbl: 'Complete brand social identity built from scratch — strategy, content, and community by Unsocials' }
     ]
   }
 };
@@ -516,13 +547,11 @@ function openCase(id) {
         <div class="cs-narrative">
           <div class="cs-sec" style="margin-bottom:20px">
             <div class="cs-sec-lbl">CHALLENGE</div>
-            <p class="cs-p">\${data.p1}</p>
+            \${data.problemHtml}
           </div>
           <div class="cs-sec">
             <div class="cs-sec-lbl">STRATEGY</div>
-            <p class="cs-p">\${data.p2}</p>
-            <br>
-            <p class="cs-p">\${data.p3}</p>
+            \${data.strategyHtml}
           </div>
           <div class="cs-info-bar">
             \${infoHtml}

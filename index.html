@@ -45,7 +45,7 @@
     <!-- Reel 1: Left -->
     <div class="reel-tile" style="left:4%;top:18%;animation-duration:6s;animation-delay:0s;--tilt:-4deg">
       <div class="reel-tile-inner">
-        <video class="reel-bg" autoplay loop muted playsinline src="assets/reels/r1.mp4"></video>
+        <video class="reel-bg" autoplay loop muted playsinline preload="none" src="assets/reels/r1.mp4"></video>
         <div class="reel-overlay"></div>
         <div class="reel-play-dot"></div>
         <div class="reel-info">
@@ -58,7 +58,7 @@
     <!-- Reel 2: Left lower -->
     <div class="reel-tile" style="left:9%;top:54%;animation-duration:7.5s;animation-delay:-2s;--tilt:3deg">
       <div class="reel-tile-inner">
-        <video class="reel-bg" autoplay loop muted playsinline src="assets/reels/r2.mp4"></video>
+        <video class="reel-bg" autoplay loop muted playsinline preload="none" src="assets/reels/r2.mp4"></video>
         <div class="reel-overlay"></div>
         <div class="reel-play-dot" style="animation-delay:.5s"></div>
         <div class="reel-info">
@@ -71,7 +71,7 @@
     <!-- Reel 3: Right -->
     <div class="reel-tile" style="right:4%;top:15%;animation-duration:8s;animation-delay:-1s;--tilt:5deg">
       <div class="reel-tile-inner">
-        <video class="reel-bg" autoplay loop muted playsinline src="assets/reels/r3.mp4"></video>
+        <video class="reel-bg" autoplay loop muted playsinline preload="none" src="assets/reels/r3.mp4"></video>
         <div class="reel-overlay"></div>
         <div class="reel-play-dot" style="animation-delay:.2s"></div>
         <div class="reel-info">
@@ -84,7 +84,7 @@
     <!-- Reel 4: Right lower -->
     <div class="reel-tile" style="right:9%;top:50%;animation-duration:6.5s;animation-delay:-3s;--tilt:-3deg">
       <div class="reel-tile-inner">
-        <video class="reel-bg" autoplay loop muted playsinline src="assets/reels/r4.mp4"></video>
+        <video class="reel-bg" autoplay loop muted playsinline preload="none" src="assets/reels/r4.mp4"></video>
         <div class="reel-overlay"></div>
         <div class="reel-play-dot" style="animation-delay:.7s"></div>
         <div class="reel-info">
@@ -222,11 +222,11 @@
 
     <div class="rep-collage rv">
       <div class="rep-fragment">
-        <img src="assets/ava_alex/03 (5).png" alt="Ava Lifestyle">
+        <img src="assets/ava_alex/03 (5).png" alt="Ava Lifestyle" loading="lazy">
         <div class="rep-tag-premium">AVA · @un.ava</div>
       </div>
       <div class="rep-fragment" style="margin-top:40px">
-        <img src="assets/ava_alex/04 (5).png" alt="Alex Lifestyle">
+        <img src="assets/ava_alex/04 (5).png" alt="Alex Lifestyle" loading="lazy">
         <div class="rep-tag-premium">ALEX · @un.alex</div>
       </div>
     </div>
@@ -238,7 +238,7 @@
   <div class="about-grid" style="grid-template-columns:1.2fr 1fr">
     <div class="rv" style="position:relative">
       <div class="rep-img-w-premium" style="max-width:520px;margin:0 auto">
-        <img src="assets/ava_alex/01 (4).png" alt="Ava AI Representative">
+        <img src="assets/ava_alex/01 (4).png" alt="Ava AI Representative" loading="lazy">
         <div class="placard-refined">
           <div class="placard-text" style="color:#111; font-family:'Syne', sans-serif; font-size:clamp(20px, 4vw, 32px); font-weight:800; text-align:center; line-height:1.2; opacity:0.85; max-width:85%;">
             This isn't the future.<br>It's the baseline.
@@ -278,9 +278,9 @@
     </div>
     <div class="rv" style="position:relative">
       <div class="rep-img-w-premium" style="max-width:480px;margin:0 auto">
-        <img src="assets/ava_alex/06 (2).png" alt="Alex Results">
+        <img src="assets/ava_alex/06 (2).png" alt="Alex Results" loading="lazy">
         <div class="phone-screen">
-          <img src="assets/report_ui.png" alt="Performance Report" style="width:100%;height:100%;object-fit:cover;">
+          <img src="assets/report_ui.png" alt="Performance Report" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
       <div class="rep-bubble" id="results-bubble" style="bottom:20%;right:-30px">
@@ -374,7 +374,7 @@
       <!-- Video 1 -->
       <div class="aic-card rv" style="transition-delay:.05s">
         <div class="aic-vid-w">
-          <video class="aic-vid" autoplay loop muted playsinline>
+          <video class="aic-vid" autoplay loop muted playsinline preload="none">
             <source src="assets/showcase/ai-marketing.mp4" type="video/mp4">
           </video>
           <div class="aic-overlay"></div>
@@ -389,7 +389,7 @@
       <!-- Video 2 -->
       <div class="aic-card rv" style="transition-delay:.12s">
         <div class="aic-vid-w">
-          <video class="aic-vid" autoplay loop muted playsinline>
+          <video class="aic-vid" autoplay loop muted playsinline preload="none">
             <source src="assets/showcase/ai-social.mp4" type="video/mp4">
           </video>
           <div class="aic-overlay"></div>
@@ -404,7 +404,7 @@
       <!-- Video 3 -->
       <div class="aic-card rv" style="transition-delay:.2s">
         <div class="aic-vid-w">
-          <video class="aic-vid" autoplay loop muted playsinline>
+          <video class="aic-vid" autoplay loop muted playsinline preload="none">
             <source src="assets/showcase/ai-fashion.mp4" type="video/mp4">
           </video>
           <div class="aic-overlay"></div>
@@ -600,25 +600,25 @@
   <div style="margin-top:48px">
     <div class="marquee-w" style="margin-bottom:2px">
       <div class="marquee-t">
-        <img class="client-logo" src="assets/clients/elysium.png" alt="Elysium">
-        <img class="client-logo" src="assets/clients/alexa.png" alt="Alexa">
-        <img class="client-logo" src="assets/clients/skyview.png" alt="Skyview">
-        <img class="client-logo" src="assets/clients/amazon.webp" alt="Amazon">
-        <img class="client-logo" src="assets/clients/netflix.webp" alt="Netflix">
-        <img class="client-logo" src="assets/clients/bamboo.svg" alt="Bamboo">
-        <img class="client-logo" src="assets/clients/radisson.png" alt="Radisson">
-        <img class="client-logo" src="assets/clients/westin.png" alt="Westin">
+        <img class="client-logo" src="assets/clients/elysium.png" alt="Elysium" loading="lazy">
+        <img class="client-logo" src="assets/clients/alexa.png" alt="Alexa" loading="lazy">
+        <img class="client-logo" src="assets/clients/skyview.png" alt="Skyview" loading="lazy">
+        <img class="client-logo" src="assets/clients/amazon.webp" alt="Amazon" loading="lazy">
+        <img class="client-logo" src="assets/clients/netflix.webp" alt="Netflix" loading="lazy">
+        <img class="client-logo" src="assets/clients/bamboo.svg" alt="Bamboo" loading="lazy">
+        <img class="client-logo" src="assets/clients/radisson.png" alt="Radisson" loading="lazy">
+        <img class="client-logo" src="assets/clients/westin.png" alt="Westin" loading="lazy">
       </div>
     </div>
     <div class="marquee-w">
       <div class="marquee-t rev">
-        <img class="client-logo" src="assets/clients/ramada.jpg" alt="Ramada">
-        <img class="client-logo" src="assets/clients/logos.png" alt="Logos">
-        <img class="client-logo" src="assets/clients/logos1.png" alt="Logos 1">
-        <img class="client-logo" src="assets/clients/logos2.png" alt="Logos 2">
-        <img class="client-logo" src="assets/clients/logos3.png" alt="Logos 3">
-        <img class="client-logo" src="assets/clients/rir.webp" alt="RIR">
-        <img class="client-logo" src="assets/clients/bcehiksu.jpg" alt="Bcehiksu">
+        <img class="client-logo" src="assets/clients/ramada.jpg" alt="Ramada" loading="lazy">
+        <img class="client-logo" src="assets/clients/logos.png" alt="Logos" loading="lazy">
+        <img class="client-logo" src="assets/clients/logos1.png" alt="Logos 1" loading="lazy">
+        <img class="client-logo" src="assets/clients/logos2.png" alt="Logos 2" loading="lazy">
+        <img class="client-logo" src="assets/clients/logos3.png" alt="Logos 3" loading="lazy">
+        <img class="client-logo" src="assets/clients/rir.webp" alt="RIR" loading="lazy">
+        <img class="client-logo" src="assets/clients/bcehiksu.jpg" alt="Bcehiksu" loading="lazy">
       </div>
     </div>
   </div>

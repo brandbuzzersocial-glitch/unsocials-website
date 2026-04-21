@@ -311,9 +311,10 @@ nav.compact{padding:14px 52px}
 .cc{
   position:relative;overflow:hidden;cursor:none;min-height:420px;
   background:rgba(20, 20, 20, 0.4);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
   border-radius:20px;
+  will-change:transform;
   border-top: 2px solid rgba(255,255,255,0.4);
   border-left: 2px solid rgba(255,255,255,0.25);
   border-bottom: 2px solid rgba(0,0,0,0.9);
@@ -326,14 +327,6 @@ nav.compact{padding:14px 52px}
   transform-style:preserve-3d;
   display:flex;flex-direction:column;justify-content:flex-end;
   padding-top:60px;
-  animation:tileFloat 6s ease-in-out infinite;
-}
-.cc:nth-child(2n){animation-duration:7.5s; animation-delay:-2s;}
-.cc:nth-child(3n){animation-duration:8.5s; animation-delay:-4s;}
-
-@keyframes tileFloat {
-  0%, 100% { transform: translateY(0px) translateZ(0); }
-  50% { transform: translateY(-12px) translateZ(10px); }
 }
 
 .cc-bg{position:absolute;inset:0;background:var(--bg);transition:transform .5s,opacity .5s; opacity:0.75;}
@@ -427,7 +420,7 @@ nav.compact{padding:14px 52px}
 
 
 /* CLIENTS */
-#clients{padding:100px 0;background:#040404}
+#clients{padding:100px 0;background:#040404;content-visibility:auto;contain-intrinsic-size:0 800px}
 .clients-h{text-align:center;margin-bottom:52px}
 .clients-h .eyebrow{justify-content:center}
 .clients-h .eyebrow::before{display:none}
@@ -439,7 +432,7 @@ nav.compact{padding:14px 52px}
 .client-dot{color:var(--ac);margin:0 8px;font-size:10px}
 
 /* TESTIMONIALS */
-#testimonials{padding:130px 6vw;background:var(--bg)}
+#testimonials{padding:130px 6vw;background:var(--bg);content-visibility:auto;contain-intrinsic-size:0 700px}
 .test-g{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px;background:var(--g2)}
 .tc{background:var(--bg);padding:40px 32px;position:relative;overflow:hidden;transition:background .3s}
 .tc:hover{background:#0e0e0e}
@@ -763,6 +756,8 @@ footer{background:#040404;padding-bottom:40px}
   padding: 130px 6vw 110px;
   position: relative;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 900px;
 }
 #ai-showcase::before {
   content: '';

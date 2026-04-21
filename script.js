@@ -170,7 +170,15 @@ if(typeof gsap !== 'undefined') {
 
   function toRad(d){ return d * Math.PI / 180; }
 
+  var isNexusCardVis = false;
+  var nxSect2 = document.getElementById('nexus-section');
+  if(nxSect2){
+    new IntersectionObserver(function(es){ isNexusCardVis = es[0].isIntersecting; }).observe(nxSect2);
+  }
+
   function tick(){
+    requestAnimationFrame(tick);
+    if(!isNexusCardVis) return;
     cards.forEach(function(card, i){
       angles[i] += speeds[i];
       var rad = toRad(angles[i]);
@@ -185,7 +193,6 @@ if(typeof gsap !== 'undefined') {
       var cy = nodeRadii[i] * Math.sin(rad);
       node.style.transform = 'translate(calc(-50% + '+cx+'px), calc(-50% + '+cy+'px))';
     });
-    requestAnimationFrame(tick);
   }
   tick();
 })();

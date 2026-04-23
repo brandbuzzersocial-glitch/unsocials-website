@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — UNSOCIALS Thailand</title>
+<meta name="description" content="From performance marketing to AI creative automation — explore the full suite of services that Unsocials Thailand uses to make your brand inevitable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* PAGE-LEVEL OVERRIDES */
+  .page-hero {
+    padding: 140px 8vw 80px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(232,255,0,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-hero-eye {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--ac);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .page-hero-eye::before { content: ''; width: 24px; height: 1px; background: var(--ac); display: block; }
+  .page-hero-h {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(56px, 10vw, 140px);
+    line-height: 0.86;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: var(--w);
+    margin-bottom: 36px;
+  }
+  .page-hero-h em { font-family: 'Space Mono', monospace; font-style: italic; color: var(--ac); }
+  .page-hero-sub {
+    font-size: clamp(16px, 1.5vw, 20px);
+    color: rgba(255,255,255,0.55);
+    max-width: 600px;
+    line-height: 1.7;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* SERVICES EXPANDED GRID */
+  .svc-page-grid {
+    padding: 0 8vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg);
+  }
+
+  .svc-expanded {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    padding: 64px 0;
+    position: relative;
+    transition: background 0.4s;
+  }
+  .svc-expanded:hover { background: rgba(232,255,0,0.015); }
+
+  /* Ghost number — purely decorative, no layout impact */
+  .svc-exp-num {
+    font-family: 'Bebas Neue', 'Syne', cursive;
+    font-size: clamp(120px, 14vw, 200px);
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    transition: color 0.4s;
+    position: absolute;
+    top: 40px;
+    right: 300px;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  .svc-expanded:hover .svc-exp-num { color: rgba(232,255,0,0.06); }
+
+  .svc-exp-center {
+    padding: 0 60px 0 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .svc-exp-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ac);
+    margin-bottom: 20px;
+  }
+
+  .svc-exp-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 3.5vw, 52px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--w);
+    line-height: 0.95;
+    margin-bottom: 24px;
+  }
+
+  .svc-exp-body {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.8;
+    max-width: 540px;
+    margin-bottom: 32px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .svc-exp-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .svc-exp-list li {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-transform: uppercase;
+  }
+  .svc-exp-list li::before {
+    content: '→';
+    color: var(--ac);
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .svc-exp-cta {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--ac);
+    padding: 14px 28px;
+    text-decoration: none;
+    clip-path: polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+    transition: transform 0.25s;
+    margin-top: 36px;
+    cursor: pointer;
+    border: none;
+  }
+  .svc-exp-cta:hover { transform: translate(-3px, -3px); }
+
+  .svc-exp-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-left: 1px solid var(--border);
+    padding-left: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .svc-exp-metric {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    padding: 20px 18px;
+    flex: 1;
+    border-left: 2px solid transparent;
+    transition: border-left-color 0.3s, background 0.3s;
+  }
+  .svc-expanded:hover .svc-exp-metric { border-left-color: var(--ac); background: rgba(232,255,0,0.02); }
+
+  .svc-exp-m-val {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(22px, 2.2vw, 32px);
+    color: var(--ac);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .svc-exp-m-lbl {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.4;
+  }
+
+  /* BOTTOM CTA */
+  .svc-bottom-cta {
+    background: var(--ac);
+    color: var(--bg);
+    padding: 80px 8vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .sbc-h {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 60px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    line-height: 0.9;
+  }
+  .sbc-h em { font-family: 'Space Mono', monospace; font-style: italic; }
+  .sbc-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--bg);
+    color: var(--ac);
+    padding: 18px 40px;
+    text-decoration: none;
+    clip-path: polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+    transition: transform 0.25s;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .sbc-link:hover { transform: translate(-3px, -3px); }
+
+  @media(max-width: 900px) {
+    .svc-expanded { grid-template-columns: 1fr; padding: 40px 0; gap: 24px; }
+    .svc-exp-center { padding: 0; }
+    .svc-exp-right { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 24px; }
+    .svc-exp-num { display: none; }
+    .page-hero { padding: 120px 24px 60px; }
+    .svc-page-grid { padding: 0 24px; }
+    .svc-bottom-cta { padding: 60px 24px; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nlogo" href="index.html">UNSOCIALS <span class="nbadge">TH</span></a>
+  <div class="nlinks">
+    <a href="work.html">Work</a>
+    <a href="services.html" style="color:var(--ac)">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="contact.html" class="nbook">Book a Call</a>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-eye">What We Do</div>
+  <h1 class="page-hero-h">Services<br>That <em>Dominate.</em></h1>
+  <p class="page-hero-sub">Five disciplines. One obsession. Every service we offer is engineered to make your brand completely inevitable in your market.</p>
+</section>
+
+<!-- TICKER -->
+<div class="bstrip">
+  <div class="bstrip-in">
+    PERFORMANCE MARKETING <span>·</span> SOCIAL MEDIA <span>·</span> CONTENT PRODUCTION <span>·</span> AI CREATIVE <span>·</span> BRAND STRATEGY <span>·</span> RESULTS DRIVEN <span>·</span> PERFORMANCE MARKETING <span>·</span> SOCIAL MEDIA <span>·</span> CONTENT PRODUCTION <span>·</span> AI CREATIVE <span>·</span> BRAND STRATEGY <span>·</span> RESULTS DRIVEN <span>·</span>
+  </div>
+</div>
+
+<!-- SERVICES GRID -->
+<div class="svc-page-grid">
+
+  <!-- 01 PERFORMANCE MARKETING -->
+  <div class="svc-expanded rv">
+    <div class="svc-exp-num">01</div>
+    <div class="svc-exp-center">
+      <div class="svc-exp-tag">01 · Digital Real Estate</div>
+      <h2 class="svc-exp-title">Performance<br>Marketing</h2>
+      <p class="svc-exp-body">We don't just chase clicks. We build systems that hunt for revenue. Using hyper-targeted campaigns across Google, Meta, and TikTok, we turn digital real estate into your most profitable asset. Every baht spent is tracked. Every campaign is built to scale.</p>
+      <ul class="svc-exp-list">
+        <li>Google Search & Hotel Ads</li>
+        <li>Meta & TikTok Conversion Campaigns</li>
+        <li>Direct Booking Funnel Strategy</li>
+        <li>WhatsApp Click-to-Chat Lead Generation</li>
+        <li>Retargeting & Lookalike Audiences</li>
+      </ul>
+      <a href="contact.html" class="svc-exp-cta">Start a Campaign →</a>
+    </div>
+    <div class="svc-exp-right">
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">3×</div><div class="svc-exp-m-lbl">Average ROAS across all active campaigns</div></div>
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">1M+</div><div class="svc-exp-m-lbl">THB generated for single campaigns in 2 months</div></div>
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">0%</div><div class="svc-exp-m-lbl">Wasted spend — every baht is tracked</div></div>
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">Scale</div><div class="svc-exp-m-lbl">Infinite. When the math works, we push harder.</div></div>
+    </div>
+  </div>
+
+  <!-- 02 SOCIAL MEDIA -->
+  <div class="svc-expanded rv" style="transition-delay:.08s">
+    <div class="svc-exp-num">02</div>
+    <div class="svc-exp-center">
+      <div class="svc-exp-tag">02 · Digital Identity</div>
+      <h2 class="svc-exp-title">Social Media<br>Management</h2>
+      <p class="svc-exp-body">Your feed is your storefront. We take complete ownership of your social presence — from strategy and editorial calendar to daily execution and community management. We transform your channels from a afterthought into a brand-defining, revenue-generating machine.</p>
+      <ul class="svc-exp-list">
+        <li>Grid Strategy & Visual Curation</li>
+        <li>Daily Content Execution</li>
+        <li>Community Growth & Outbound Engagement</li>
+        <li>Algorithm-Optimized Posting Schedules</li>
+        <li>Monthly Analytics & Strategy Reports</li>
+      </ul>
+      <a href="contact.html" class="svc-exp-cta">Own Your Feed →</a>
+    </div>
+    <div class="svc-exp-right">
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">Daily</div><div class="svc-exp-m-lbl">Consistent rhythm of high-end, brand-aligned posts</div></div>
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">10×</div><div class="svc-exp-m-lbl">Average increase in organic engagement</div></div>
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">24/7</div><div class="svc-exp-m-lbl">Community management, response & lead nurturing</div></div>
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">Owned</div><div class="svc-exp-m-lbl">An audience you own, not renting from ads</div></div>
+    </div>
+  </div>
+
+  <!-- 03 CONTENT PRODUCTION -->
+  <div class="svc-expanded rv" style="transition-delay:.16s">
+    <div class="svc-exp-num">03</div>
+    <div class="svc-exp-center">
+      <div class="svc-exp-tag">03 · Visual Domination</div>
+      <h2 class="svc-exp-title">Content<br>Production</h2>
+      <p class="svc-exp-body">Content that stops the scroll and forces the click. From cinematic reels to editorial photography, we produce the visual ammunition your brand needs to dominate feeds and build genuine aspiration. We shoot to convert — every frame is reverse-engineered to drive action.</p>
+      <ul class="svc-exp-list">
+        <li>Short-Form Video — Reels & TikTok</li>
+        <li>Lifestyle & Editorial Photography</li>
+        <li>UGC & Authentic Guest Content</li>
+        <li>Event & Live Coverage</li>
+        <li>Brand Story Documentaries</li>
+      </ul>
+      <a href="contact.html" class="svc-exp-cta">Start a Production →</a>
+    </div>
+    <div class="svc-exp-right">
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">4K</div><div class="svc-exp-m-lbl">Cinema-grade production quality for all major assets</div></div>
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">Viral</div><div class="svc-exp-m-lbl">Format-engineered for algorithmic success</div></div>
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">Fast</div><div class="svc-exp-m-lbl">Rapid turnaround to keep you culturally relevant</div></div>
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">Scale</div><div class="svc-exp-m-lbl">Vast content libraries from single shoot days</div></div>
+    </div>
+  </div>
+
+  <!-- 04 AI CREATIVE -->
+  <div class="svc-expanded rv" style="transition-delay:.24s">
+    <div class="svc-exp-num">04</div>
+    <div class="svc-exp-center">
+      <div class="svc-exp-tag">04 · The Future is Here</div>
+      <h2 class="svc-exp-title">AI Creative<br>Automation</h2>
+      <p class="svc-exp-body">Bypass the bottlenecks of traditional production entirely. We use advanced AI models to generate infinite, hyper-realistic, luxury visual assets — without a camera, a set, or a model. This is the unfair advantage. While competitors wait weeks for a shoot, we generate perfection in a vacuum.</p>
+      <ul class="svc-exp-list">
+        <li>Virtual AI Brand Representatives</li>
+        <li>Generative Product Photography</li>
+        <li>AI-Enhanced Social Content at Scale</li>
+        <li>Conceptual & Editorial AI Graphics</li>
+        <li>Custom AI Model Development</li>
+      </ul>
+      <a href="contact.html" class="svc-exp-cta">Enter the Future →</a>
+    </div>
+    <div class="svc-exp-right">
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">Zero</div><div class="svc-exp-m-lbl">Need for crews, sets, or traditional talent</div></div>
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">100%</div><div class="svc-exp-m-lbl">Ownership and control over every detail</div></div>
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">Days</div><div class="svc-exp-m-lbl">Not weeks. Campaigns delivered instantly.</div></div>
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">∞</div><div class="svc-exp-m-lbl">Variations, angles, and concepts on demand</div></div>
+    </div>
+  </div>
+
+  <!-- 05 BRAND STRATEGY -->
+  <div class="svc-expanded rv" style="transition-delay:.32s">
+    <div class="svc-exp-num">05</div>
+    <div class="svc-exp-center">
+      <div class="svc-exp-tag">05 · The Blueprint</div>
+      <h2 class="svc-exp-title">Brand<br>Strategy</h2>
+      <p class="svc-exp-body">Tactics without strategy is just noise. We build the foundational DNA of your brand — positioning, narrative, and visual identity — ensuring you don't just compete, but completely redefine your category. We find your unfair advantage and amplify it until the competition sounds like an echo.</p>
+      <ul class="svc-exp-list">
+        <li>Category Design & Positioning</li>
+        <li>Brand Voice & Narrative Development</li>
+        <li>Visual Identity Systems</li>
+        <li>Competitor Analysis & Market Gaps</li>
+        <li>Go-to-Market Strategy</li>
+      </ul>
+      <a href="contact.html" class="svc-exp-cta">Build Your Blueprint →</a>
+    </div>
+    <div class="svc-exp-right">
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">One</div><div class="svc-exp-m-lbl">Unified, coherent voice across every touchpoint</div></div>
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">Moat</div><div class="svc-exp-m-lbl">Psychological barriers competitors can't cross</div></div>
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">Price</div><div class="svc-exp-m-lbl">Positioning that lets you dictate premium pricing</div></div>
+      <div class="svc-exp-metric"><div class="svc-exp-m-val">Clarity</div><div class="svc-exp-m-lbl">Absolute alignment on who you are and who you serve</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM CTA BAND -->
+<div class="svc-bottom-cta">
+  <div class="sbc-h">Ready to<br><em>Dominate?</em></div>
+  <a href="contact.html" class="sbc-link">Book a Strategy Call →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-tick">
+    <div class="ftk">
+      UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp; PERFORMANCE &nbsp;·&nbsp; <strong>INEVITABLE</strong> &nbsp;·&nbsp; BANGKOK &nbsp;·&nbsp; <strong>SOCIAL MEDIA</strong> &nbsp;·&nbsp; CONTENT &nbsp;·&nbsp; <strong>GROWTH</strong> &nbsp;·&nbsp; UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp;
+    </div>
+  </div>
+  <div class="ft-g">
+    <div>
+      <div class="ft-br">UNSOCIALS<br><em>Thailand</em></div>
+      <p class="ft-brs">Performance Marketing Agency<br>Bangkok · Thailand</p>
+    </div>
+    <div class="ft-col">
+      <h5>Services</h5>
+      <a href="services.html">Performance Marketing</a>
+      <a href="services.html">Social Media</a>
+      <a href="services.html">Content Production</a>
+      <a href="services.html">AI Creative</a>
+      <a href="services.html">Brand Strategy</a>
+    </div>
+    <div class="ft-col">
+      <h5>Work</h5>
+      <a href="work.html">Elysium Pattaya</a>
+      <a href="work.html">Alexa Beach Club</a>
+      <a href="work.html">Hotel Skyview</a>
+      <a href="work.html">Nomads Asia</a>
+    </div>
+    <div class="ft-col">
+      <h5>Connect</h5>
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p>© 2025 Unsocials Thailand. All Rights Reserved.</p>
+    <p>We Make It Inevitable.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+// Cursor
+var cur=document.getElementById('cur'),cur2=document.getElementById('cur2'),mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+function animCur(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cur2.style.left=cx+'px';cur2.style.top=cy+'px';requestAnimationFrame(animCur)}animCur();
+document.querySelectorAll('a,button,.svc-expanded').forEach(function(el){
+  el.addEventListener('mouseenter',function(){document.body.classList.add('hov')});
+  el.addEventListener('mouseleave',function(){document.body.classList.remove('hov')});
+});
+// Nav compact
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('compact',window.scrollY>80);
+});
+// GSAP reveals
+if(typeof gsap !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.set('.rv', { y: 60, opacity: 0, rotateX: 15, transformPerspective: 800 });
+  ScrollTrigger.batch('.rv', {
+    onEnter: batch => gsap.to(batch, { opacity: 1, y: 0, rotateX: 0, duration: 1.2, stagger: 0.1, ease: 'power3.out' }),
+    start: 'top 88%'
+  });
+}
+</script>
+</body>
+</html>

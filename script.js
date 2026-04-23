@@ -615,3 +615,153 @@ function scrollMedia(dir, event) {
   // Scroll by approx one image width plus gap
   grid.scrollBy({ left: dir * 300, behavior: 'smooth' });
 }
+
+// ─── SERVICE OVERLAY LOGIC ───
+const serviceData = {
+  performance: {
+    eye: '01 · Digital Real Estate',
+    title: 'Performance<br>Marketing',
+    desc: 'We don\'t just chase clicks. We build systems that hunt for revenue. Using hyper-targeted campaigns across Google, Meta, and TikTok, we turn digital real estate into your most profitable asset.',
+    bg: 'linear-gradient(180deg,#121200 0%,#202000 60%,#080808 100%)',
+    metrics: [
+      { val: '3×', lbl: 'Average ROAS across all our active campaigns' },
+      { val: '1M+', lbl: 'THB generated for single campaigns in under 2 months' },
+      { val: '0%', lbl: 'Wasted spend. Every baht is tracked and optimized.' },
+      { val: 'Scale', lbl: 'Infinite. When the math works, we push the pedal down.' }
+    ],
+    features: [
+      { title: 'Google Search & Hotel Ads', desc: 'Capture high-intent traffic the second they search. We dominate the top of Google for your most valuable keywords.' },
+      { title: 'Meta & TikTok Conversion', desc: 'Scroll-stopping creative paired with ruthless machine-learning targeting to acquire customers at the lowest possible cost.' },
+      { title: 'Direct Booking Funnels', desc: 'Bypass OTAs and middlemen. We build funnels that train your customers to buy directly from you.' }
+    ],
+    pitchHtml: '<p class="svc-text">The internet is an auction, and most brands are bidding blindly. We operate differently. We use data to understand exactly what a customer is worth, and we build <strong>performance marketing engines</strong> designed to acquire them for less.</p><p class="svc-text">No vanity metrics. No excuses. Just a transparent, aggressive pursuit of ROI.</p>'
+  },
+  social: {
+    eye: '02 · Digital Identity',
+    title: 'Social Media<br>Management',
+    desc: 'Your feed is your storefront. We take complete ownership of your social presence, transforming it from an afterthought into a brand-defining, revenue-generating machine.',
+    bg: 'linear-gradient(180deg,#001020 0%,#002040 60%,#080808 100%)',
+    metrics: [
+      { val: 'Daily', lbl: 'Consistent rhythm of high-end, brand-aligned posts' },
+      { val: '10×', lbl: 'Average increase in organic engagement and profile visits' },
+      { val: '24/7', lbl: 'Community management, response, and lead nurturing' },
+      { val: 'Owned', lbl: 'We build an audience you own, rather than renting one from ads' }
+    ],
+    features: [
+      { title: 'Grid Strategy & Curation', desc: 'A visually flawless, cohesive feed that instantly establishes trust and luxury positioning the moment a user lands.' },
+      { title: 'Daily Execution', desc: 'We handle everything. Copywriting, hashtag strategy, posting schedules, and algorithm optimization.' },
+      { title: 'Community Growth', desc: 'Active outbound engagement to steal market share and build a fiercely loyal community around your brand.' }
+    ],
+    pitchHtml: '<p class="svc-text">In a world where attention is the only currency that matters, a mediocre social presence is brand suicide. We treat your social channels as <strong>premium editorial publications</strong>.</p><p class="svc-text">We don\'t just post; we curate. We dictate the narrative, engage with intent, and ensure that every pixel represents the highest echelon of your market.</p>'
+  },
+  content: {
+    eye: '03 · Visual Domination',
+    title: 'Content<br>Production',
+    desc: 'Content that stops the scroll and forces the click. From cinematic reels to editorial photography, we produce the visual ammunition your brand needs to dominate feeds.',
+    bg: 'linear-gradient(180deg,#200000 0%,#400000 60%,#080808 100%)',
+    metrics: [
+      { val: '4K', lbl: 'Cinema-grade production quality for all major assets' },
+      { val: 'Viral', lbl: 'Format-engineered specifically for algorithmic success' },
+      { val: 'Speed', lbl: 'Rapid turnaround times to keep your brand culturally relevant' },
+      { val: 'Scale', lbl: 'Vast content libraries built from single shoot days' }
+    ],
+    features: [
+      { title: 'Short-Form Video (Reels/TikTok)', desc: 'Fast-paced, highly-engaging video formats designed specifically to exploit modern social algorithms.' },
+      { title: 'Lifestyle & Editorial Photography', desc: 'High-end imagery that elevates your product or service into an aspirational lifestyle choice.' },
+      { title: 'UGC & Authentic Experiences', desc: 'Raw, native-feeling content that builds trust by showing real people experiencing your brand.' }
+    ],
+    pitchHtml: '<p class="svc-text">You can have the best product in the world, but if your content looks cheap, you are cheap. We operate a <strong>high-velocity production studio</strong> that bridges the gap between premium aesthetics and raw social performance.</p><p class="svc-text">We shoot to convert. Every frame, every transition, and every hook is reverse-engineered to hold attention and drive action.</p>'
+  },
+  ai: {
+    eye: '04 · The Future is Here',
+    title: 'AI Creative<br>Automation',
+    desc: 'Bypass the bottlenecks of traditional production. We use advanced AI models to generate infinite, hyper-realistic, luxury visual assets without ever needing a camera, a set, or a model.',
+    bg: 'linear-gradient(180deg,#100020 0%,#200040 60%,#080808 100%)',
+    metrics: [
+      { val: 'Zero', lbl: 'Need for traditional photography crews, sets, or talent' },
+      { val: '100%', lbl: 'Ownership and control over every microscopic detail' },
+      { val: 'Days', lbl: 'Not weeks. Campaigns conceptualized and delivered instantly.' },
+      { val: 'Infinite', lbl: 'Variations, angles, and concepts generated on demand' }
+    ],
+    features: [
+      { title: 'Virtual Brand Representatives', desc: 'Custom-built, photorealistic AI talent that represents your brand flawlessly, 24/7, without aging or complaining.' },
+      { title: 'Generative Product Photography', desc: 'Place your products in impossible, ultra-luxury environments that would cost hundreds of thousands to build physically.' },
+      { title: 'Automated Content Scaling', desc: 'Generate a month\'s worth of high-end social content in a single afternoon.' }
+    ],
+    pitchHtml: '<p class="svc-text">This is the unfair advantage. While your competitors are waiting weeks for a weather-delayed photoshoot, we are <strong>generating perfection in a vacuum.</strong></p><p class="svc-text">Our AI creative pipeline allows us to visualize concepts that are physically impossible or prohibitively expensive, giving your brand an aesthetic that punches far above its weight class.</p>'
+  },
+  strategy: {
+    eye: '05 · The Blueprint',
+    title: 'Brand<br>Strategy',
+    desc: 'Tactics without strategy is just noise. We build the foundational DNA of your brand—positioning, narrative, and identity—ensuring you don\'t just compete, but completely redefine the category.',
+    bg: 'linear-gradient(180deg,#0a0a0a 0%,#1a1a1a 60%,#080808 100%)',
+    metrics: [
+      { val: 'One', lbl: 'Unified, coherent voice across every single touchpoint' },
+      { val: 'Moat', lbl: 'Building psychological barriers that competitors cannot cross' },
+      { val: 'Price', lbl: 'Positioning that allows you to dictate premium pricing' },
+      { val: 'Clarity', lbl: 'Absolute alignment on who you are and who you are for' }
+    ],
+    features: [
+      { title: 'Category Design & Positioning', desc: 'We don\'t fight in crowded markets. We create new categories where you are the only logical choice.' },
+      { title: 'Narrative & Copywriting', desc: 'Developing a brand voice that is sharp, authoritative, and impossible to ignore.' },
+      { title: 'Visual Identity Systems', desc: 'A cohesive design language that ensures absolute consistency from your website to your WhatsApp profile picture.' }
+    ],
+    pitchHtml: '<p class="svc-text">A strong brand is the ultimate cheat code for customer acquisition. When they know who you are and what you stand for, the ads become cheaper and the conversions become easier.</p><p class="svc-text">We strip your business down to its studs and rebuild it as a <strong>category king</strong>. We find your unique angle and we amplify it until the rest of the market sounds like an echo.</p>'
+  }
+};
+
+function openService(id) {
+  const data = serviceData[id];
+  if (!data) return;
+
+  let metricsHtml = data.metrics.map(m => `
+    <div class="svc-metric">
+      <div class="svc-m-val">${m.val}</div>
+      <div class="svc-m-lbl">${m.lbl}</div>
+    </div>
+  `).join('');
+
+  let featuresHtml = data.features.map(f => `
+    <div class="svc-feature">
+      <div class="svc-f-title">${f.title}</div>
+      <div class="svc-f-desc">${f.desc}</div>
+    </div>
+  `).join('');
+
+  const html = `
+    <div class="svc-hero" style="background:${data.bg};">
+      <button class="cs-back" onclick="closeService()">← Back to Services</button>
+      <div class="svc-eye">${data.eye}</div>
+      <div class="svc-title">${data.title}</div>
+      <div class="svc-desc">${data.desc}</div>
+    </div>
+    <div class="svc-body">
+      <div class="svc-grid">
+        <div class="svc-content-left">
+          <div class="svc-label">The Approach</div>
+          ${data.pitchHtml}
+          
+          <div class="svc-label" style="margin-top:60px">Core Capabilities</div>
+          <div class="svc-features">
+            ${featuresHtml}
+          </div>
+        </div>
+        <div class="svc-content-right">
+          <div class="svc-label">The Output</div>
+          <div class="svc-metrics">
+            ${metricsHtml}
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('service-content').innerHTML = html;
+  document.getElementById('service-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeService() {
+  document.getElementById('service-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}

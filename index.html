@@ -26,14 +26,14 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <a class="nlogo" href="#">UNSOCIALS <span class="nbadge">TH</span></a>
+  <a class="nlogo" href="index.html">UNSOCIALS <span class="nbadge">TH</span></a>
   <div class="nlinks">
-    <a href="#work">Work</a>
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#cta-sec">Contact</a>
+    <a href="work.html">Work</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
   </div>
-  <button class="nbook" onclick="document.getElementById('cta-sec').scrollIntoView({behavior:'smooth'})">Book a Call</button>
+  <a href="contact.html" class="nbook">Book a Call</a>
 </nav>
 
 <!-- HERO -->
@@ -429,31 +429,31 @@
 <section id="services">
   <div class="svc-w">
     <h2 class="sec-h rv">What We<br><em>Do.</em></h2>
-    <div class="si rv" style="transition-delay:.05s">
+    <div class="si rv" style="transition-delay:.05s" onclick="openService('performance')">
       <span class="si-num">01</span>
       <span class="si-n">Performance Marketing</span>
       <span class="si-d">Google, Meta, TikTok — campaigns built to convert, not just reach.</span>
       <span class="si-ar">→</span>
     </div>
-    <div class="si rv" style="transition-delay:.1s">
+    <div class="si rv" style="transition-delay:.1s" onclick="openService('social')">
       <span class="si-num">02</span>
       <span class="si-n">Social Media Management</span>
       <span class="si-d">From strategy to daily execution. We own your feed.</span>
       <span class="si-ar">→</span>
     </div>
-    <div class="si rv" style="transition-delay:.15s">
+    <div class="si rv" style="transition-delay:.15s" onclick="openService('content')">
       <span class="si-num">03</span>
       <span class="si-n">Content Production</span>
       <span class="si-d">Reels, shoots, editorial — content that stops the scroll.</span>
       <span class="si-ar">→</span>
     </div>
-    <div class="si rv" style="transition-delay:.2s">
+    <div class="si rv" style="transition-delay:.2s" onclick="openService('ai')">
       <span class="si-num">04</span>
       <span class="si-n">AI Creative Automation</span>
       <span class="si-d">Luxury visuals, zero photography budget. AI-powered, brand-elevated.</span>
       <span class="si-ar">→</span>
     </div>
-    <div class="si rv" style="transition-delay:.25s">
+    <div class="si rv" style="transition-delay:.25s" onclick="openService('strategy')">
       <span class="si-num">05</span>
       <span class="si-n">Brand Strategy</span>
       <span class="si-d">Identity, positioning, narrative — built to dominate your niche.</span>
@@ -600,25 +600,42 @@
   <div style="margin-top:48px">
     <div class="marquee-w" style="margin-bottom:2px">
       <div class="marquee-t">
-        <img class="client-logo" src="assets/clients/elysium.png" alt="Elysium" loading="lazy">
-        <img class="client-logo" src="assets/clients/alexa.png" alt="Alexa" loading="lazy">
-        <img class="client-logo" src="assets/clients/skyview.png" alt="Skyview" loading="lazy">
-        <img class="client-logo" src="assets/clients/amazon.webp" alt="Amazon" loading="lazy">
-        <img class="client-logo" src="assets/clients/netflix.webp" alt="Netflix" loading="lazy">
-        <img class="client-logo" src="assets/clients/bamboo.svg" alt="Bamboo" loading="lazy">
-        <img class="client-logo" src="assets/clients/radisson.png" alt="Radisson" loading="lazy">
-        <img class="client-logo" src="assets/clients/westin.png" alt="Westin" loading="lazy">
+        <img class="client-logo" src="assets/clients/1.png" alt="Client Logo 1" loading="lazy">
+        <img class="client-logo" src="assets/clients/2.png" alt="Client Logo 2" loading="lazy">
+        <img class="client-logo" src="assets/clients/3.png" alt="Client Logo 3" loading="lazy">
+        <img class="client-logo" src="assets/clients/4.png" alt="Client Logo 4" loading="lazy">
+        <img class="client-logo" src="assets/clients/5.png" alt="Client Logo 5" loading="lazy">
+        <img class="client-logo" src="assets/clients/6.png" alt="Client Logo 6" loading="lazy">
+        <img class="client-logo" src="assets/clients/7.png" alt="Client Logo 7" loading="lazy">
+        <img class="client-logo" src="assets/clients/8.png" alt="Client Logo 8" loading="lazy">
+        <!-- Duplicate for continuous scroll -->
+        <img class="client-logo" src="assets/clients/1.png" alt="Client Logo 1" loading="lazy">
+        <img class="client-logo" src="assets/clients/2.png" alt="Client Logo 2" loading="lazy">
+        <img class="client-logo" src="assets/clients/3.png" alt="Client Logo 3" loading="lazy">
+        <img class="client-logo" src="assets/clients/4.png" alt="Client Logo 4" loading="lazy">
+        <img class="client-logo" src="assets/clients/5.png" alt="Client Logo 5" loading="lazy">
+        <img class="client-logo" src="assets/clients/6.png" alt="Client Logo 6" loading="lazy">
+        <img class="client-logo" src="assets/clients/7.png" alt="Client Logo 7" loading="lazy">
+        <img class="client-logo" src="assets/clients/8.png" alt="Client Logo 8" loading="lazy">
       </div>
     </div>
     <div class="marquee-w">
       <div class="marquee-t rev">
-        <img class="client-logo" src="assets/clients/ramada.jpg" alt="Ramada" loading="lazy">
-        <img class="client-logo" src="assets/clients/logos.png" alt="Logos" loading="lazy">
-        <img class="client-logo" src="assets/clients/logos1.png" alt="Logos 1" loading="lazy">
-        <img class="client-logo" src="assets/clients/logos2.png" alt="Logos 2" loading="lazy">
-        <img class="client-logo" src="assets/clients/logos3.png" alt="Logos 3" loading="lazy">
-        <img class="client-logo" src="assets/clients/rir.webp" alt="RIR" loading="lazy">
-        <img class="client-logo" src="assets/clients/bcehiksu.jpg" alt="Bcehiksu" loading="lazy">
+        <img class="client-logo" src="assets/clients/9.png" alt="Client Logo 9" loading="lazy">
+        <img class="client-logo" src="assets/clients/10.png" alt="Client Logo 10" loading="lazy">
+        <img class="client-logo" src="assets/clients/11.png" alt="Client Logo 11" loading="lazy">
+        <img class="client-logo" src="assets/clients/12.png" alt="Client Logo 12" loading="lazy">
+        <img class="client-logo" src="assets/clients/13.png" alt="Client Logo 13" loading="lazy">
+        <img class="client-logo" src="assets/clients/14.png" alt="Client Logo 14" loading="lazy">
+        <img class="client-logo" src="assets/clients/15.png" alt="Client Logo 15" loading="lazy">
+        <!-- Duplicate for continuous scroll -->
+        <img class="client-logo" src="assets/clients/9.png" alt="Client Logo 9" loading="lazy">
+        <img class="client-logo" src="assets/clients/10.png" alt="Client Logo 10" loading="lazy">
+        <img class="client-logo" src="assets/clients/11.png" alt="Client Logo 11" loading="lazy">
+        <img class="client-logo" src="assets/clients/12.png" alt="Client Logo 12" loading="lazy">
+        <img class="client-logo" src="assets/clients/13.png" alt="Client Logo 13" loading="lazy">
+        <img class="client-logo" src="assets/clients/14.png" alt="Client Logo 14" loading="lazy">
+        <img class="client-logo" src="assets/clients/15.png" alt="Client Logo 15" loading="lazy">
       </div>
     </div>
   </div>
@@ -702,18 +719,18 @@
     </div>
     <div class="ft-col">
       <h5>Services</h5>
-      <a href="#">Performance Marketing</a>
-      <a href="#">Social Media</a>
-      <a href="#">Content Production</a>
-      <a href="#">AI Creative</a>
-      <a href="#">Brand Strategy</a>
+      <a href="services.html">Performance Marketing</a>
+      <a href="services.html">Social Media</a>
+      <a href="services.html">Content Production</a>
+      <a href="services.html">AI Creative</a>
+      <a href="services.html">Brand Strategy</a>
     </div>
     <div class="ft-col">
       <h5>Work</h5>
-      <a href="#" onclick="openCase('elysium')">Elysium Pattaya</a>
-      <a href="#" onclick="openCase('alexa')">Alexa Beach Club</a>
-      <a href="#" onclick="openCase('skyview')">Hotel Skyview</a>
-      <a href="#" onclick="openCase('nomads')">Nomads Asia</a>
+      <a href="work.html">Elysium Pattaya</a>
+      <a href="work.html">Alexa Beach Club</a>
+      <a href="work.html">Hotel Skyview</a>
+      <a href="work.html">Nomads Asia</a>
     </div>
     <div class="ft-col">
       <h5>Connect</h5>
@@ -732,6 +749,11 @@
 <!-- CASE STUDY OVERLAY -->
 <div id="case-overlay">
   <div id="case-content"></div>
+</div>
+
+<!-- SERVICE OVERLAY -->
+<div id="service-overlay">
+  <div id="service-content"></div>
 </div>
 
 <!-- GSAP & ScrollTrigger -->

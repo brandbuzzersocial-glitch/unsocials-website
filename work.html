@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — UNSOCIALS Thailand Case Studies</title>
+<meta name="description" content="Real brands. Real strategies. Real results across Thailand. Explore how Unsocials has turned invisible brands into industry leaders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .page-hero {
+    padding: 140px 8vw 80px;
+    background: #060606;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 20% 50%, rgba(255,45,45,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-hero-eye {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rd);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .page-hero-eye::before { content: ''; width: 24px; height: 1px; background: var(--rd); display: block; }
+  .page-hero-h {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(56px, 10vw, 140px);
+    line-height: 0.86;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: var(--w);
+    margin-bottom: 36px;
+  }
+  .page-hero-h em { font-family: 'Space Mono', monospace; font-style: italic; color: var(--ac); }
+  .page-hero-sub {
+    font-size: clamp(16px, 1.5vw, 20px);
+    color: rgba(255,255,255,0.55);
+    max-width: 600px;
+    line-height: 1.7;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  /* Stats bar */
+  .work-stats-bar {
+    display: flex;
+    gap: 0;
+    background: rgba(255,255,255,0.02);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .wsb-item {
+    flex: 1;
+    padding: 28px 32px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .wsb-item:last-child { border-right: none; }
+  .wsb-val {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 3vw, 48px);
+    color: var(--ac);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .wsb-lbl {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* Case grid full-page */
+  .work-page-section {
+    background: #060606;
+    padding: 60px 24px 80px;
+  }
+  .case-grid-page {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media(max-width:900px) {
+    .case-grid-page { grid-template-columns: 1fr; }
+    .page-hero { padding: 120px 24px 60px; }
+    .work-stats-bar { flex-wrap: wrap; }
+    .wsb-item { flex: 1 0 50%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nlogo" href="index.html">UNSOCIALS <span class="nbadge">TH</span></a>
+  <div class="nlinks">
+    <a href="work.html" style="color:var(--ac)">Work</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="contact.html" class="nbook">Book a Call</a>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-eye">Case Studies</div>
+  <h1 class="page-hero-h">Work That<br><em>Wins.</em></h1>
+  <p class="page-hero-sub">Real brands. Real strategies. Real results across Thailand. Every case study below represents a brand we took personally.</p>
+</section>
+
+<!-- STATS BAR -->
+<div class="work-stats-bar">
+  <div class="wsb-item"><div class="wsb-val">50+</div><div class="wsb-lbl">Brands Transformed</div></div>
+  <div class="wsb-item"><div class="wsb-val">1M+</div><div class="wsb-lbl">THB Revenue Generated</div></div>
+  <div class="wsb-item"><div class="wsb-val">3×</div><div class="wsb-lbl">Avg Reach Growth</div></div>
+  <div class="wsb-item"><div class="wsb-val">0%</div><div class="wsb-lbl">OTA Dependency for Hotel Clients</div></div>
+</div>
+
+<!-- TICKER -->
+<div class="bstrip">
+  <div class="bstrip-in">
+    ELYSIUM PATTAYA <span>·</span> ALEXA BEACH CLUB <span>·</span> HOTEL SKYVIEW <span>·</span> NOMADS ASIA <span>·</span> BAMBOO KRABI <span>·</span> GPS GEMS <span>·</span> ELYSIUM PATTAYA <span>·</span> ALEXA BEACH CLUB <span>·</span> HOTEL SKYVIEW <span>·</span> NOMADS ASIA <span>·</span> BAMBOO KRABI <span>·</span> GPS GEMS <span>·</span>
+  </div>
+</div>
+
+<!-- CASE GRID -->
+<section class="work-page-section">
+  <div class="case-grid-page">
+
+    <!-- ELYSIUM -->
+    <div class="cc" onclick="openCase('elysium')">
+      <div class="cc-bg" style="background-image: url('assets/cases/elysium/img1.png'); background-size: cover; background-position: center;"></div>
+      <div class="cc-grid" style="opacity:0.3"></div>
+      <div class="cc-ov"></div>
+      <div class="cc-tag">5-Star Hotel · Full Brand Transformation</div>
+      <div class="cc-body">
+        <div class="cc-ind">Pattaya · Google + Meta Ads · Social Revamp</div>
+        <div class="cc-name">Elysium Pattaya</div>
+        <div class="cc-stats">
+          <div><div class="cc-sn">1M THB</div><div class="cc-sl">Revenue / 2 Months</div></div>
+          <div><div class="cc-sn">0%</div><div class="cc-sl">OTA Dependency</div></div>
+          <div><div class="cc-sn">∞%</div><div class="cc-sl">Website Revenue Growth</div></div>
+        </div>
+        <div class="cc-desc">Zero website revenue to 1,000,000 THB in 2 months. Google Hotel Ads, Meta campaigns, luxury content shoots, AI visuals, and a direct booking strategy that eliminated OTA commission entirely.</div>
+        <div class="cc-cta">Read Full Case Study →</div>
+      </div>
+    </div>
+
+    <!-- ALEXA -->
+    <div class="cc" onclick="openCase('alexa')">
+      <div class="cc-bg" style="background-image: url('assets/cases/alexa/img1.jpg'); background-size: cover; background-position: center;"></div>
+      <div class="cc-grid" style="opacity:0.3"></div>
+      <div class="cc-ov"></div>
+      <div class="cc-tag">Beach Club · Social + Performance Ads</div>
+      <div class="cc-body">
+        <div class="cc-ind">Pattaya · Meta Ads · Brand Positioning</div>
+        <div class="cc-name">Alexa Beach Club</div>
+        <div class="cc-stats">
+          <div><div class="cc-sn">2.6M</div><div class="cc-sl">IG Reach</div></div>
+          <div><div class="cc-sn">#1</div><div class="cc-sl">Beach Club Pattaya</div></div>
+          <div><div class="cc-sn">280+</div><div class="cc-sl">Direct Reservations</div></div>
+        </div>
+        <div class="cc-desc">Positioned as Pattaya's #1 beach club. Lifestyle shoots with models, Meta awareness + WhatsApp reservation campaigns that turned Alexa into the city's most-booked venue.</div>
+        <div class="cc-cta">Read Full Case Study →</div>
+      </div>
+    </div>
+
+    <!-- SKYVIEW -->
+    <div class="cc" onclick="openCase('skyview')">
+      <div class="cc-bg"></div>
+      <div class="cc-grid"></div>
+      <div class="cc-ov"></div>
+      <div class="cc-tag">Hotel · WhatsApp Lead Generation</div>
+      <div class="cc-body">
+        <div class="cc-ind">Bangkok · Meta Ads · Direct Bookings</div>
+        <div class="cc-name">Hotel Skyview BKK</div>
+        <div class="cc-stats">
+          <div><div class="cc-sn">50–100</div><div class="cc-sl">THB Per Lead</div></div>
+          <div><div class="cc-sn">0%</div><div class="cc-sl">OTA Commission</div></div>
+        </div>
+        <div class="cc-desc">Replaced expensive website conversion ads with WhatsApp Click-to-Chat campaigns. Cost per lead dropped to 50–100 THB with higher conversion rates and direct guest relationships.</div>
+        <div class="cc-cta">Read Full Case Study →</div>
+      </div>
+    </div>
+
+    <!-- NOMADS -->
+    <div class="cc" onclick="openCase('nomads')">
+      <div class="cc-bg" style="background-image: url('assets/cases/nomads/img1.png'); background-size: cover; background-position: center;"></div>
+      <div class="cc-grid" style="opacity:0.3"></div>
+      <div class="cc-ov"></div>
+      <div class="cc-tag">Hostel · UGC + Social Media</div>
+      <div class="cc-body">
+        <div class="cc-ind">Thailand · 3 Properties · Hostelworld</div>
+        <div class="cc-name">Nomads Hostel Asia</div>
+        <div class="cc-stats">
+          <div><div class="cc-sn">#1</div><div class="cc-sl">Best Hostel Asia</div></div>
+          <div><div class="cc-sn">3</div><div class="cc-sl">Properties Managed</div></div>
+        </div>
+        <div class="cc-desc">UGC strategy putting real guests at the centre — pub crawls, parties, adventures. Won Best Hostel in Asia by Hostelworld. Organic leads poured through Instagram.</div>
+        <div class="cc-cta">Read Full Case Study →</div>
+      </div>
+    </div>
+
+    <!-- BAMBOO -->
+    <div class="cc" onclick="openCase('bamboo')">
+      <div class="cc-bg" style="background-image: url('assets/cases/bamboo/img1.png'); background-size: cover; background-position: center;"></div>
+      <div class="cc-grid" style="opacity:0.3"></div>
+      <div class="cc-ov"></div>
+      <div class="cc-tag">Beach Club · Social Revamp · Krabi</div>
+      <div class="cc-body">
+        <div class="cc-ind">Krabi · AI Graphics · Event Content</div>
+        <div class="cc-name">Bamboo Beach Club</div>
+        <div class="cc-stats">
+          <div><div class="cc-sn">Krabi #1</div><div class="cc-sl">Beach Club</div></div>
+          <div><div class="cc-sn">Daily</div><div class="cc-sl">Content Posting</div></div>
+        </div>
+        <div class="cc-desc">High-energy party reels, AI conceptual graphics, daily posting rhythm. Live Stories on every event night. Built the narrative: if you're in Krabi and haven't visited Bamboo — your trip isn't complete.</div>
+        <div class="cc-cta">Read Full Case Study →</div>
+      </div>
+    </div>
+
+    <!-- GPS -->
+    <div class="cc" onclick="openCase('gps')">
+      <div class="cc-bg" style="background-image: url('assets/cases/gps/img1.jpg'); background-size: cover; background-position: center;"></div>
+      <div class="cc-grid" style="opacity:0.3"></div>
+      <div class="cc-ov"></div>
+      <div class="cc-tag">Luxury Gems · Organic Growth</div>
+      <div class="cc-body">
+        <div class="cc-ind">Thailand · AI Content · Education Marketing</div>
+        <div class="cc-name">GPS Gems</div>
+        <div class="cc-stats">
+          <div><div class="cc-sn">Zero</div><div class="cc-sl">Paid Ads</div></div>
+          <div><div class="cc-sn">AI-Built</div><div class="cc-sl">Content Library</div></div>
+        </div>
+        <div class="cc-desc">Built from absolute zero. Full brand identity using AI-generated luxury visuals and an education-first content strategy. Buyers found them organically. No ads needed.</div>
+        <div class="cc-cta">Read Full Case Study →</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-tick">
+    <div class="ftk">
+      UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp; PERFORMANCE &nbsp;·&nbsp; <strong>INEVITABLE</strong> &nbsp;·&nbsp; BANGKOK &nbsp;·&nbsp; <strong>SOCIAL MEDIA</strong> &nbsp;·&nbsp; CONTENT &nbsp;·&nbsp; <strong>GROWTH</strong> &nbsp;·&nbsp; UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp;
+    </div>
+  </div>
+  <div class="ft-g">
+    <div>
+      <div class="ft-br">UNSOCIALS<br><em>Thailand</em></div>
+      <p class="ft-brs">Performance Marketing Agency<br>Bangkok · Thailand</p>
+    </div>
+    <div class="ft-col">
+      <h5>Services</h5>
+      <a href="services.html">Performance Marketing</a>
+      <a href="services.html">Social Media</a>
+      <a href="services.html">Content Production</a>
+      <a href="services.html">AI Creative</a>
+      <a href="services.html">Brand Strategy</a>
+    </div>
+    <div class="ft-col">
+      <h5>Work</h5>
+      <a href="work.html">Elysium Pattaya</a>
+      <a href="work.html">Alexa Beach Club</a>
+      <a href="work.html">Hotel Skyview</a>
+      <a href="work.html">Nomads Asia</a>
+    </div>
+    <div class="ft-col">
+      <h5>Connect</h5>
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p>© 2025 Unsocials Thailand. All Rights Reserved.</p>
+    <p>We Make It Inevitable.</p>
+  </div>
+</footer>
+
+<!-- CASE STUDY OVERLAY -->
+<div id="case-overlay">
+  <div id="case-content"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+<script>
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('compact',window.scrollY>80);
+});
+</script>
+</body>
+</html>

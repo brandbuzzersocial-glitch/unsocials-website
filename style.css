@@ -803,9 +803,6 @@ footer{background:#040404;padding-bottom:40px}
   margin-top: 24px;
   font-family: 'Space Grotesk', sans-serif;
 }
-@media (max-width: 900px) {
-  .aic-top { grid-template-columns: 1fr !important; gap: 24px !important; }
-}
 .aic-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -3,320 +3,299 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Work — UNSOCIALS Thailand Case Studies</title>
-<meta name="description" content="Real brands. Real strategies. Real results across Thailand. Explore how Unsocials has turned invisible brands into industry leaders.">
+<title>Work — UNSOCIALS Global Case Studies</title>
+<meta name="description" content="100+ global brands. Real strategies. Real results from India to Thailand.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-  .page-hero {
-    padding: 140px 8vw 80px;
-    background: #060606;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-  .page-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 20% 50%, rgba(255,45,45,0.04) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .page-hero-eye {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--rd);
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .page-hero-eye::before { content: ''; width: 24px; height: 1px; background: var(--rd); display: block; }
-  .page-hero-h {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(56px, 10vw, 140px);
-    line-height: 0.86;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
-    color: var(--w);
-    margin-bottom: 36px;
-  }
-  .page-hero-h em { font-family: 'Space Mono', monospace; font-style: italic; color: var(--ac); }
-  .page-hero-sub {
-    font-size: clamp(16px, 1.5vw, 20px);
-    color: rgba(255,255,255,0.55);
-    max-width: 600px;
-    line-height: 1.7;
-    font-family: 'Space Grotesk', sans-serif;
-  }
-  /* Stats bar */
-  .work-stats-bar {
-    display: flex;
-    gap: 0;
-    background: rgba(255,255,255,0.02);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .wsb-item {
-    flex: 1;
-    padding: 28px 32px;
-    border-right: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .wsb-item:last-child { border-right: none; }
-  .wsb-val {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(28px, 3vw, 48px);
-    color: var(--ac);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-  .wsb-lbl {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-  }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#040404;cursor:none;overflow-x:hidden}
 
-  /* Case grid full-page */
-  .work-page-section {
-    background: #060606;
-    padding: 60px 24px 80px;
-  }
-  .case-grid-page {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  @media(max-width:900px) {
-    .case-grid-page { grid-template-columns: 1fr; }
-    .page-hero { padding: 120px 24px 60px; }
-    .work-stats-bar { flex-wrap: wrap; }
-    .wsb-item { flex: 1 0 50%; }
-  }
+/* ── NAV override ── */
+nav{background:rgba(4,4,4,.95)}
+
+/* ── PAGE HERO ── */
+.ph{padding:160px 60px 64px;border-bottom:1px solid rgba(255,255,255,.07)}
+.ph-eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--rd);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.ph-eye::before{content:'';width:24px;height:1px;background:var(--rd);display:block}
+.ph-h{font-family:'Syne',sans-serif;font-size:clamp(52px,8vw,110px);line-height:.88;font-weight:800;letter-spacing:-.04em;text-transform:uppercase;color:var(--w);margin-bottom:24px}
+.ph-h em{font-style:italic;color:var(--ac)}
+.ph-sub{font-size:clamp(14px,1.2vw,18px);color:rgba(255,255,255,.5);max-width:540px;line-height:1.7;font-family:'Space Grotesk',sans-serif}
+
+/* ── STATS STRIP ── */
+.wsb{display:flex;border-bottom:1px solid rgba(255,255,255,.07)}
+.wsb-i{flex:1;padding:28px 40px;border-right:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:4px}
+.wsb-i:last-child{border-right:none}
+.wsb-v{font-family:'Syne',sans-serif;font-size:clamp(24px,2.5vw,40px);color:var(--ac);font-weight:800;letter-spacing:-.03em;line-height:1}
+.wsb-l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35)}
+
+/* ── WORK GRID ── */
+.work-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border-top:none;
+  padding:60px;
+  gap:60px 40px;
+  background:#040404;
+}
+
+/* ── WORK ITEM ── */
+.wi{
+  display:flex;flex-direction:column;gap:0;
+  cursor:none;
+  opacity:0;transform:translateY(50px); /* GSAP will animate these */
+}
+
+/* Image wrapper */
+.wi-img-w{
+  width:100%;
+  overflow:hidden;
+  border-radius:4px;
+  background:#111;
+  position:relative;
+}
+/* 16:10 ratio */
+.wi-img-w::before{content:'';display:block;padding-top:62.5%}
+.wi-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  transform:scale(1.05);
+  transition:transform .8s cubic-bezier(.16,1,.3,1);
+  will-change:transform;
+}
+.wi:hover .wi-img{transform:scale(1.12)}
+
+/* Meta row */
+.wi-meta{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 0 0;
+  border-top:none;
+}
+.wi-info{display:flex;flex-direction:column;gap:4px}
+.wi-name{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(18px,2vw,26px);
+  font-weight:700;color:var(--w);
+  letter-spacing:-.02em;line-height:1.1;
+}
+.wi-cat{
+  font-family:'Space Mono',monospace;font-size:10px;
+  letter-spacing:1px;text-transform:uppercase;
+  color:rgba(255,255,255,.35);
+}
+
+/* Circular arrow button */
+.wi-arrow{
+  width:48px;height:48px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;color:rgba(255,255,255,.7);
+  flex-shrink:0;
+  transition:background .3s,border-color .3s,color .3s,transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+.wi:hover .wi-arrow{
+  background:var(--ac);
+  border-color:var(--ac);
+  color:var(--bg);
+  transform:rotate(45deg);
+}
+
+/* First item spans full width */
+.wi--full{grid-column:1 / -1}
+.wi--full .wi-img-w::before{padding-top:46%}
+
+@media(max-width:900px){
+  .work-grid{grid-template-columns:1fr;padding:24px;gap:40px}
+  .wi--full{grid-column:1}
+  .ph{padding:120px 24px 48px}
+  .wsb{flex-wrap:wrap}
+  .wsb-i{min-width:50%;border-bottom:1px solid rgba(255,255,255,.07)}
+}
 </style>
 </head>
 <body>
+<div id="cur"></div><div id="cur2"></div>
 
-<!-- CURSOR -->
-<div id="cur"></div>
-<div id="cur2"></div>
-
-<!-- NAV -->
 <nav id="nav">
-  <a class="nlogo" href="index.html">UNSOCIALS <span class="nbadge">TH</span></a>
+  <a class="nlogo" href="index.html">UNSOCIALS <span class="nbadge">INTL</span></a>
   <div class="nlinks">
-    <a href="work.html" style="color:var(--ac)">Work</a>
-    <a href="services.html">Services</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html" data-th="หน้าแรก">Home</a>
+    <a href="work.html" style="color:var(--ac)" data-th="ผลงาน">Work</a>
+    <a href="services.html" data-th="บริการ">Services</a>
+    <a href="about.html" data-th="เกี่ยวกับเรา">About</a>
+    <a href="contact.html" data-th="ติดต่อ">Contact</a>
   </div>
-  <a href="contact.html" class="nbook">Book a Call</a>
+  <div class="lang-switch">
+    <span class="lang-btn active" data-lang="en">EN</span>
+    <span class="lang-div">|</span>
+    <span class="lang-btn" data-lang="th">TH</span>
+  </div>
+  <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20book%20a%20call." target="_blank" class="nbook" data-th="จองคิวพูดคุย">Book a Call</a>
 </nav>
 
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="page-hero-eye">Case Studies</div>
-  <h1 class="page-hero-h">Work That<br><em>Wins.</em></h1>
-  <p class="page-hero-sub">Real brands. Real strategies. Real results across Thailand. Every case study below represents a brand we took personally.</p>
+<section class="ph">
+  <div class="ph-eye" data-th="กรณีศึกษา">Case Studies</div>
+  <h1 class="ph-h" data-th="ผลงานที่<br><em>ยอดเยี่ยม.</em>">Work That<br><em>Wins.</em></h1>
+  <p class="ph-sub" data-th="แบรนด์จริง กลยุทธ์จริง ผลลัพธ์จริงทั่วประเทศไทย กรณีศึกษาแต่ละกรณีคือแบรนด์ที่เราดูแลอย่างใส่ใจ">Real brands. Real strategies. Real results across Thailand. Every case study below represents a brand we took personally.</p>
 </section>
 
-<!-- STATS BAR -->
-<div class="work-stats-bar">
-  <div class="wsb-item"><div class="wsb-val">50+</div><div class="wsb-lbl">Brands Transformed</div></div>
-  <div class="wsb-item"><div class="wsb-val">1M+</div><div class="wsb-lbl">THB Revenue Generated</div></div>
-  <div class="wsb-item"><div class="wsb-val">3×</div><div class="wsb-lbl">Avg Reach Growth</div></div>
-  <div class="wsb-item"><div class="wsb-val">0%</div><div class="wsb-lbl">OTA Dependency for Hotel Clients</div></div>
+<div class="wsb">
+  <div class="wsb-i"><div class="wsb-v">100+</div><div class="wsb-l">Global Brands</div></div>
+  <div class="wsb-i"><div class="wsb-v">5 Yrs</div><div class="wsb-l">Est. 2020</div></div>
+  <div class="wsb-i"><div class="wsb-v">2</div><div class="wsb-l">Countries</div></div>
+  <div class="wsb-i"><div class="wsb-v">50M+</div><div class="wsb-l">THB for Clients</div></div>
 </div>
 
-<!-- TICKER -->
-<div class="bstrip">
-  <div class="bstrip-in">
-    ELYSIUM PATTAYA <span>·</span> ALEXA BEACH CLUB <span>·</span> HOTEL SKYVIEW <span>·</span> NOMADS ASIA <span>·</span> BAMBOO KRABI <span>·</span> GPS GEMS <span>·</span> ELYSIUM PATTAYA <span>·</span> ALEXA BEACH CLUB <span>·</span> HOTEL SKYVIEW <span>·</span> NOMADS ASIA <span>·</span> BAMBOO KRABI <span>·</span> GPS GEMS <span>·</span>
+<div class="work-grid">
+
+  <!-- 01 ELYSIUM — full width hero -->
+  <div class="wi wi--full" onclick="openCase('elysium')">
+    <div class="wi-img-w"><img class="wi-img" src="assets/elysium-cover.jpg" alt="Elysium Pattaya"></div>
+    <div class="wi-meta">
+      <div class="wi-info">
+        <div class="wi-name">Elysium Pattaya</div>
+        <div class="wi-cat">Performance Marketing · Social Media · Content · Google Hotel Ads</div>
+      </div>
+      <div class="wi-arrow">↗</div>
+    </div>
   </div>
+
+  <!-- 02 ALEXA -->
+  <div class="wi" onclick="openCase('alexa')">
+    <div class="wi-img-w"><img class="wi-img" src="assets/alexa-cover.png" alt="Alexa Beach Club"></div>
+    <div class="wi-meta">
+      <div class="wi-info">
+        <div class="wi-name">Alexa Beach Club</div>
+        <div class="wi-cat">Meta Ads · Social Media · Brand Positioning</div>
+      </div>
+      <div class="wi-arrow">↗</div>
+    </div>
+  </div>
+
+  <!-- 03 SKYVIEW -->
+  <div class="wi" onclick="openCase('skyview')">
+    <div class="wi-img-w"><img class="wi-img" src="assets/skyview-cover.png" alt="Hotel Skyview BKK"></div>
+    <div class="wi-meta">
+      <div class="wi-info">
+        <div class="wi-name">Hotel Skyview BKK</div>
+        <div class="wi-cat">WhatsApp Marketing · Meta Ads · Direct Bookings</div>
+      </div>
+      <div class="wi-arrow">↗</div>
+    </div>
+  </div>
+
+  <!-- 04 NOMADS — full width -->
+  <div class="wi wi--full" onclick="openCase('nomads')">
+    <div class="wi-img-w"><img class="wi-img" src="assets/nomads-cover.png" alt="Nomads Hostel Asia"></div>
+    <div class="wi-meta">
+      <div class="wi-info">
+        <div class="wi-name">Nomads Hostel Asia</div>
+        <div class="wi-cat">UGC Strategy · Social Media · Direct Booking Funnel · 3 Properties</div>
+      </div>
+      <div class="wi-arrow">↗</div>
+    </div>
+  </div>
+
+  <!-- 05 BAMBOO -->
+  <div class="wi" onclick="openCase('bamboo')">
+    <div class="wi-img-w"><img class="wi-img" src="assets/bamboo-cover.png" alt="Bamboo Beach Club"></div>
+    <div class="wi-meta">
+      <div class="wi-info">
+        <div class="wi-name">Bamboo Beach Club</div>
+        <div class="wi-cat">Social Media · AI Graphics · Event Content · Krabi</div>
+      </div>
+      <div class="wi-arrow">↗</div>
+    </div>
+  </div>
+
+  <!-- 06 GPS GEMS -->
+  <div class="wi" onclick="openCase('gps')">
+    <div class="wi-img-w"><img class="wi-img" src="assets/gps-cover.jpg" alt="GPS Gems Thailand"></div>
+    <div class="wi-meta">
+      <div class="wi-info">
+        <div class="wi-name">GPS Gems</div>
+        <div class="wi-cat">Brand Identity · AI Content · Organic Growth Strategy</div>
+      </div>
+      <div class="wi-arrow">↗</div>
+    </div>
+  </div>
+
 </div>
 
-<!-- CASE GRID -->
-<section class="work-page-section">
-  <div class="case-grid-page">
-
-    <!-- ELYSIUM -->
-    <div class="cc" onclick="openCase('elysium')">
-      <div class="cc-bg" style="background-image: url('assets/cases/elysium/img1.png'); background-size: cover; background-position: center;"></div>
-      <div class="cc-grid" style="opacity:0.3"></div>
-      <div class="cc-ov"></div>
-      <div class="cc-tag">5-Star Hotel · Full Brand Transformation</div>
-      <div class="cc-body">
-        <div class="cc-ind">Pattaya · Google + Meta Ads · Social Revamp</div>
-        <div class="cc-name">Elysium Pattaya</div>
-        <div class="cc-stats">
-          <div><div class="cc-sn">1M THB</div><div class="cc-sl">Revenue / 2 Months</div></div>
-          <div><div class="cc-sn">0%</div><div class="cc-sl">OTA Dependency</div></div>
-          <div><div class="cc-sn">∞%</div><div class="cc-sl">Website Revenue Growth</div></div>
-        </div>
-        <div class="cc-desc">Zero website revenue to 1,000,000 THB in 2 months. Google Hotel Ads, Meta campaigns, luxury content shoots, AI visuals, and a direct booking strategy that eliminated OTA commission entirely.</div>
-        <div class="cc-cta">Read Full Case Study →</div>
-      </div>
-    </div>
-
-    <!-- ALEXA -->
-    <div class="cc" onclick="openCase('alexa')">
-      <div class="cc-bg" style="background-image: url('assets/cases/alexa/img1.jpg'); background-size: cover; background-position: center;"></div>
-      <div class="cc-grid" style="opacity:0.3"></div>
-      <div class="cc-ov"></div>
-      <div class="cc-tag">Beach Club · Social + Performance Ads</div>
-      <div class="cc-body">
-        <div class="cc-ind">Pattaya · Meta Ads · Brand Positioning</div>
-        <div class="cc-name">Alexa Beach Club</div>
-        <div class="cc-stats">
-          <div><div class="cc-sn">2.6M</div><div class="cc-sl">IG Reach</div></div>
-          <div><div class="cc-sn">#1</div><div class="cc-sl">Beach Club Pattaya</div></div>
-          <div><div class="cc-sn">280+</div><div class="cc-sl">Direct Reservations</div></div>
-        </div>
-        <div class="cc-desc">Positioned as Pattaya's #1 beach club. Lifestyle shoots with models, Meta awareness + WhatsApp reservation campaigns that turned Alexa into the city's most-booked venue.</div>
-        <div class="cc-cta">Read Full Case Study →</div>
-      </div>
-    </div>
-
-    <!-- SKYVIEW -->
-    <div class="cc" onclick="openCase('skyview')">
-      <div class="cc-bg"></div>
-      <div class="cc-grid"></div>
-      <div class="cc-ov"></div>
-      <div class="cc-tag">Hotel · WhatsApp Lead Generation</div>
-      <div class="cc-body">
-        <div class="cc-ind">Bangkok · Meta Ads · Direct Bookings</div>
-        <div class="cc-name">Hotel Skyview BKK</div>
-        <div class="cc-stats">
-          <div><div class="cc-sn">50–100</div><div class="cc-sl">THB Per Lead</div></div>
-          <div><div class="cc-sn">0%</div><div class="cc-sl">OTA Commission</div></div>
-        </div>
-        <div class="cc-desc">Replaced expensive website conversion ads with WhatsApp Click-to-Chat campaigns. Cost per lead dropped to 50–100 THB with higher conversion rates and direct guest relationships.</div>
-        <div class="cc-cta">Read Full Case Study →</div>
-      </div>
-    </div>
-
-    <!-- NOMADS -->
-    <div class="cc" onclick="openCase('nomads')">
-      <div class="cc-bg" style="background-image: url('assets/cases/nomads/img1.png'); background-size: cover; background-position: center;"></div>
-      <div class="cc-grid" style="opacity:0.3"></div>
-      <div class="cc-ov"></div>
-      <div class="cc-tag">Hostel · UGC + Social Media</div>
-      <div class="cc-body">
-        <div class="cc-ind">Thailand · 3 Properties · Hostelworld</div>
-        <div class="cc-name">Nomads Hostel Asia</div>
-        <div class="cc-stats">
-          <div><div class="cc-sn">#1</div><div class="cc-sl">Best Hostel Asia</div></div>
-          <div><div class="cc-sn">3</div><div class="cc-sl">Properties Managed</div></div>
-        </div>
-        <div class="cc-desc">UGC strategy putting real guests at the centre — pub crawls, parties, adventures. Won Best Hostel in Asia by Hostelworld. Organic leads poured through Instagram.</div>
-        <div class="cc-cta">Read Full Case Study →</div>
-      </div>
-    </div>
-
-    <!-- BAMBOO -->
-    <div class="cc" onclick="openCase('bamboo')">
-      <div class="cc-bg" style="background-image: url('assets/cases/bamboo/img1.png'); background-size: cover; background-position: center;"></div>
-      <div class="cc-grid" style="opacity:0.3"></div>
-      <div class="cc-ov"></div>
-      <div class="cc-tag">Beach Club · Social Revamp · Krabi</div>
-      <div class="cc-body">
-        <div class="cc-ind">Krabi · AI Graphics · Event Content</div>
-        <div class="cc-name">Bamboo Beach Club</div>
-        <div class="cc-stats">
-          <div><div class="cc-sn">Krabi #1</div><div class="cc-sl">Beach Club</div></div>
-          <div><div class="cc-sn">Daily</div><div class="cc-sl">Content Posting</div></div>
-        </div>
-        <div class="cc-desc">High-energy party reels, AI conceptual graphics, daily posting rhythm. Live Stories on every event night. Built the narrative: if you're in Krabi and haven't visited Bamboo — your trip isn't complete.</div>
-        <div class="cc-cta">Read Full Case Study →</div>
-      </div>
-    </div>
-
-    <!-- GPS -->
-    <div class="cc" onclick="openCase('gps')">
-      <div class="cc-bg" style="background-image: url('assets/cases/gps/img1.jpg'); background-size: cover; background-position: center;"></div>
-      <div class="cc-grid" style="opacity:0.3"></div>
-      <div class="cc-ov"></div>
-      <div class="cc-tag">Luxury Gems · Organic Growth</div>
-      <div class="cc-body">
-        <div class="cc-ind">Thailand · AI Content · Education Marketing</div>
-        <div class="cc-name">GPS Gems</div>
-        <div class="cc-stats">
-          <div><div class="cc-sn">Zero</div><div class="cc-sl">Paid Ads</div></div>
-          <div><div class="cc-sn">AI-Built</div><div class="cc-sl">Content Library</div></div>
-        </div>
-        <div class="cc-desc">Built from absolute zero. Full brand identity using AI-generated luxury visuals and an education-first content strategy. Buyers found them organically. No ads needed.</div>
-        <div class="cc-cta">Read Full Case Study →</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="ft-tick">
-    <div class="ftk">
-      UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp; PERFORMANCE &nbsp;·&nbsp; <strong>INEVITABLE</strong> &nbsp;·&nbsp; BANGKOK &nbsp;·&nbsp; <strong>SOCIAL MEDIA</strong> &nbsp;·&nbsp; CONTENT &nbsp;·&nbsp; <strong>GROWTH</strong> &nbsp;·&nbsp; UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp;
-    </div>
-  </div>
-  <div class="ft-g">
+<!-- MAP -->
+<section style="background:#040404;border-top:1px solid rgba(255,255,255,.07);padding:60px">
+  <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:40px;align-items:center">
     <div>
-      <div class="ft-br">UNSOCIALS<br><em>Thailand</em></div>
-      <p class="ft-brs">Performance Marketing Agency<br>Bangkok · Thailand</p>
+      <p style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:14px">📍 Find Us</p>
+      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,56px);font-weight:800;color:var(--w);line-height:.9;letter-spacing:-.04em;text-transform:uppercase;margin-bottom:14px">We're In<br><em style="font-style:italic;color:var(--ac)">Pattaya.</em></h2>
+      <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.6;max-width:300px;margin-bottom:24px;font-family:'Space Grotesk',sans-serif">Unsocials Thailand — your creative &amp; performance partner in Southeast Asia.</p>
+      <a href="https://www.google.com/search?kgmid=/g/11thsj4kpb&q=Unsocials+Thailand" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:var(--ac);color:var(--bg);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:12px 24px;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%);transition:transform .25s" onmouseover="this.style.transform='translate(-3px,-3px)'" onmouseout="this.style.transform='none'">Open in Google Maps ↗</a>
     </div>
-    <div class="ft-col">
-      <h5>Services</h5>
-      <a href="services.html">Performance Marketing</a>
-      <a href="services.html">Social Media</a>
-      <a href="services.html">Content Production</a>
-      <a href="services.html">AI Creative</a>
-      <a href="services.html">Brand Strategy</a>
-    </div>
-    <div class="ft-col">
-      <h5>Work</h5>
-      <a href="work.html">Elysium Pattaya</a>
-      <a href="work.html">Alexa Beach Club</a>
-      <a href="work.html">Hotel Skyview</a>
-      <a href="work.html">Nomads Asia</a>
-    </div>
-    <div class="ft-col">
-      <h5>Contact</h5>
-      <a href="https://wa.me/918209980262" target="_blank">WhatsApp: +91 820-9980262</a>
-      <a href="tel:+919829247707">Tel: +91 9829247707</a>
-    </div>
-    <div class="ft-col">
-      <h5>Connect</h5>
-      <a href="#">Instagram</a>
-      <a href="#">TikTok</a>
-      <a href="#">LinkedIn</a>
+    <div style="border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.06)">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3904.853!2d100.8785!3d12.9282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zUGF0dGF5YSwgVGhhaWxhbmQ!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth&q=Unsocials+Thailand+Pattaya" width="100%" height="280" style="border:0;display:block;filter:invert(90%) hue-rotate(180deg) saturate(.8) brightness(.85)" allowfullscreen loading="lazy"></iframe>
     </div>
   </div>
-  <div class="ft-bot">
-    <p>© 2025 Unsocials Thailand. All Rights Reserved.</p>
-    <p>We Make It Inevitable.</p>
+</section>
+
+<footer>
+  <div class="ft-tick"><div class="ftk">UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp; PERFORMANCE &nbsp;·&nbsp; <strong>INEVITABLE</strong> &nbsp;·&nbsp; PATTAYA &nbsp;·&nbsp; <strong>JAIPUR</strong> &nbsp;·&nbsp; <strong>SOCIAL MEDIA</strong> &nbsp;·&nbsp; CONTENT &nbsp;·&nbsp; <strong>GROWTH</strong> &nbsp;·&nbsp; UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp;</div></div>
+  <div class="ft-g">
+    <div><div class="ft-br">UNSOCIALS<br><em>Thailand</em></div><p class="ft-brs">Global Creative Marketing Agency<br>Pattaya · Jaipur</p></div>
+    <div class="ft-col"><h5>Services</h5><a href="services.html">Performance Marketing</a><a href="services.html">Social Media</a><a href="services.html">Content Production</a><a href="services.html">AI Creative</a><a href="services.html">Brand Strategy</a></div>
+    <div class="ft-col"><h5>Work</h5><a href="work.html">Elysium Pattaya</a><a href="work.html">Alexa Beach Club</a><a href="work.html">Hotel Skyview</a><a href="work.html">Nomads Asia</a></div>
+    <div class="ft-col"><h5>Contact</h5><a href="https://wa.me/66960531394" target="_blank">WhatsApp: +66 9605 31394</a><a href="tel:+66960531394">Tel: +66 960531394</a></div>
+    <div class="ft-col"><h5>Connect</h5><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">LinkedIn</a></div>
   </div>
+  <div class="ft-bot"><p>© 2026 Unsocials · India &amp; Thailand · All Rights Reserved.</p><p>We Make It Inevitable.</p></div>
 </footer>
 
-<!-- CASE STUDY OVERLAY -->
-<div id="case-overlay">
-  <div id="case-content"></div>
-</div>
+<div id="case-overlay"><div id="case-content"></div></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
 <script src="script.js"></script>
 <script>
+// Cursor
+var cur=document.getElementById('cur'),cur2=document.getElementById('cur2'),mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+function animCur(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cur2.style.left=cx+'px';cur2.style.top=cy+'px';requestAnimationFrame(animCur)}animCur();
+document.querySelectorAll('a,button,.wi').forEach(function(el){
+  el.addEventListener('mouseenter',function(){document.body.classList.add('hov')});
+  el.addEventListener('mouseleave',function(){document.body.classList.remove('hov')});
+});
+
+// Nav compact
 window.addEventListener('scroll',function(){
   document.getElementById('nav').classList.toggle('compact',window.scrollY>80);
+});
+
+// Lenis smooth scroll
+const lenis=new Lenis({duration:1.2,easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)),smoothWheel:true});
+gsap.ticker.add((time)=>{lenis.raf(time*1000)});
+gsap.ticker.lagSmoothing(0);
+lenis.on('scroll',ScrollTrigger.update);
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero reveal
+gsap.from('.ph-eye,.ph-h,.ph-sub',{
+  y:40,opacity:0,duration:1,stagger:.15,ease:'power3.out'
+});
+
+// Each work item: fade up from below on scroll — exactly like DZiNR
+document.querySelectorAll('.wi').forEach(function(item,i){
+  gsap.to(item,{
+    y:0,opacity:1,duration:.9,ease:'power3.out',
+    scrollTrigger:{
+      trigger:item,
+      start:'top 88%',
+      toggleActions:'play none none none'
+    },
+    delay: (i % 2) * 0.12  // slight stagger for paired columns
+  });
 });
 </script>
 </body>

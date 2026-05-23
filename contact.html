@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — UNSOCIALS Thailand</title>
-<meta name="description" content="Ready to build your growth engine? Book a strategy call with Unsocials Thailand. We respond within 24 hours. Every time.">
+<title>Contact — UNSOCIALS Global</title>
+<meta name="description" content="Ready to build your growth engine? Two countries. One standard. Book a strategy call with Unsocials Global. We respond within 24 hours.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -264,29 +264,60 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <a class="nlogo" href="index.html">UNSOCIALS <span class="nbadge">TH</span></a>
+  <a class="nlogo" href="index.html">UNSOCIALS <span class="nbadge">INTL</span></a>
   <div class="nlinks">
-    <a href="work.html">Work</a>
-    <a href="services.html">Services</a>
-    <a href="about.html">About</a>
-    <a href="contact.html" style="color:var(--ac)">Contact</a>
+    <a href="index.html" data-th="หน้าแรก">Home</a>
+    <a href="work.html" data-th="ผลงาน">Work</a>
+    <a href="services.html" data-th="บริการ">Services</a>
+    <a href="about.html" data-th="เกี่ยวกับเรา">About</a>
+    <a href="contact.html" style="color:var(--ac)" data-th="ติดต่อ">Contact</a>
   </div>
-  <a href="contact.html" class="nbook">Book a Call</a>
+  <div class="lang-switch">
+    <span class="lang-btn active" data-lang="en">EN</span>
+    <span class="lang-div">|</span>
+    <span class="lang-btn" data-lang="th">TH</span>
+  </div>
+  <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20book%20a%20call." target="_blank" class="nbook" data-th="จองคิวพูดคุย">Book a Call</a>
 </nav>
 
 <!-- CONTACT HERO -->
 <section class="contact-hero">
-  <div class="ch-eye">Ready?</div>
-  <h1 class="ch-h">Let's Build Your<br><em>Growth Engine.</em></h1>
-  <p class="ch-sub">Tell us about your brand and what you need. We'll come back to you within 24 hours with a clear, honest assessment of how we can help.</p>
+  <div class="ch-eye" data-th="เริ่มเลย">Ready?</div>
+  <h1 class="ch-h" data-th="ทำให้มัน<br><em>หลีกเลี่ยงไม่ได้.</em>">Let's Build Your<br><em>Growth Engine.</em></h1>
+  <p class="ch-sub" data-th="ไม่ว่าคุณจะอยู่ที่พัทยา ชัยปุระ หรือที่ใดในโลก หากคุณพร้อมที่จะครอบงำตลาดของคุณ เราพร้อมพูดคุย">Tell us about your brand and what you need. We'll come back to you within 24 hours with a clear, honest assessment of how we can help.</p>
 </section>
 
 <!-- TICKER -->
 <div class="bstrip">
   <div class="bstrip-in">
-    WE RESPOND IN 24 HOURS <span>·</span> EVERY TIME <span>·</span> NO PITCH DECKS <span>·</span> JUST RESULTS <span>·</span> BOOK A CALL <span>·</span> BANGKOK · THAILAND <span>·</span> WE RESPOND IN 24 HOURS <span>·</span> EVERY TIME <span>·</span> NO PITCH DECKS <span>·</span> JUST RESULTS <span>·</span> BOOK A CALL <span>·</span>
+    WE RESPOND IN 24 HOURS <span>·</span> EVERY TIME <span>·</span> NO PITCH DECKS <span>·</span> JUST RESULTS <span>·</span> BOOK A CALL <span>·</span> JAIPUR <span>·</span> PATTAYA <span>·</span> WE RESPOND IN 24 HOURS <span>·</span> EVERY TIME <span>·</span> NO PITCH DECKS <span>·</span> JUST RESULTS <span>·</span> BOOK A CALL <span>·</span> JAIPUR <span>·</span> PATTAYA
   </div>
 </div>
+
+<!-- DUAL HQ STRIP -->
+<section style="background:#080808; border-bottom:1px solid var(--border); padding:60px 8vw;">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--border);">
+    <div class="hq-card" style="background:#050505; padding:40px; transition:all 0.4s ease;">
+      <div style="display:flex; align-items:center; gap:20px; margin-bottom:10px;">
+        <span style="font-size:32px;">🇮🇳</span>
+        <h3 style="font-family:'Syne', sans-serif; font-size:24px; color:var(--w); font-weight:800; letter-spacing:-0.02em;">JAIPUR, INDIA</h3>
+      </div>
+      <p style="font-family:'Space Mono',monospace; font-size:10px; color:var(--ac); letter-spacing:2px; text-transform:uppercase;">Strategy & Performance HQ</p>
+    </div>
+    <div class="hq-card" style="background:#050505; padding:40px; transition:all 0.4s ease;">
+      <div style="display:flex; align-items:center; gap:20px; margin-bottom:10px;">
+        <span style="font-size:32px;">🇹🇭</span>
+        <h3 style="font-family:'Syne', sans-serif; font-size:24px; color:var(--w); font-weight:800; letter-spacing:-0.02em;">PATTAYA, THAILAND</h3>
+      </div>
+      <p style="font-family:'Space Mono',monospace; font-size:10px; color:var(--ac); letter-spacing:2px; text-transform:uppercase;">Creative & Operations Hub</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hq-card:hover { background: #0d0d0d !important; }
+  .hq-card:hover h3 { color: var(--ac) !important; }
+</style>
 
 <!-- CONTACT BODY -->
 <div class="contact-body">
@@ -323,7 +354,7 @@
         <label>Tell Us More</label>
         <textarea rows="3" placeholder="Brief overview of your brand and goals..."></textarea>
       </div>
-      <button class="cta-btn" type="submit">Send it → <span style="font-size:16px">↗</span></button>
+      <button class="cta-btn" type="button" onclick="window.open('https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20get%20in%20touch.', '_blank')">Send it → <span style="font-size:16px">↗</span></button>
       <p class="cta-note">We respond within 24 hours. Every time.</p>
     </form>
   </div>
@@ -333,13 +364,13 @@
     <div class="ci-block">
       <div class="ci-tag">Direct Contact</div>
       <div class="ci-val"><a href="https://wa.me/918209980262" target="_blank" style="color:var(--w);text-decoration:none">+91 820-9980262</a></div>
-      <div class="ci-sub">Primary (WhatsApp) &bull; Secondary: <a href="tel:+919829247707" style="color:inherit;text-decoration:none">+91 9829247707</a></div>
+      <div class="ci-sub">Primary (WhatsApp) &bull; Secondary: <a href="tel:+66960531394" style="color:inherit;text-decoration:none">+66 960531394</a></div>
     </div>
     <div class="ci-divider"></div>
     <div class="ci-block">
-      <div class="ci-tag">Location</div>
-      <div class="ci-val">Bangkok, Thailand</div>
-      <div class="ci-sub">Operating across Thailand — Pattaya, Krabi, and Bangkok.</div>
+      <div class="ci-tag">Office Locations</div>
+      <div class="ci-val">Pattaya · Jaipur</div>
+      <div class="ci-sub"><strong>Pattaya, Thailand:</strong> Southeast Asia Creative Hub.<br><strong>Jaipur, India:</strong> Global Strategy & Performance HQ.</div>
     </div>
     <div class="ci-divider"></div>
     <div class="ci-block">
@@ -390,17 +421,42 @@
   </a>
 </div>
 
+<!-- MAP SECTION -->
+<section id="map-section" style="background:#040404; border-top:1px solid var(--border); padding:48px 6vw; overflow:hidden;">
+  <div style="max-width:100%; display:grid; grid-template-columns:1fr 1.5fr; gap:36px; align-items:center;">
+    <div style="display:flex; flex-direction:column; justify-content:center;">
+      <p style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--ac); margin-bottom:14px;">📍 Find Us</p>
+      <h2 style="font-family:'Syne',sans-serif; font-size:clamp(22px,3vw,44px); font-weight:800; color:var(--w); line-height:0.9; letter-spacing:-0.04em; text-transform:uppercase; margin-bottom:14px;">We're In<br><em style="font-family:'Space Mono',monospace; font-style:italic; color:var(--ac);">Pattaya.</em></h2>
+      <p style="font-family:'Space Grotesk',sans-serif; font-size:13px; color:rgba(255,255,255,0.45); line-height:1.6; max-width:300px; margin-bottom:22px;">Unsocials Thailand — your creative &amp; performance partner in Southeast Asia.</p>
+      <a href="https://www.google.com/search?kgmid=/g/11thsj4kpb&amp;q=Unsocials+Thailand" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; background:var(--ac); color:var(--bg); font-family:'Space Mono',monospace; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; padding:12px 24px; clip-path:polygon(6px 0,100% 0,calc(100%-6px) 100%,0 100%); transition:transform .25s; width:fit-content;"
+        onmouseover="this.style.transform='translate(-3px,-3px)'" onmouseout="this.style.transform='none'">
+        Open in Google Maps ↗
+      </a>
+    </div>
+    <div style="position:relative; border-radius:20px; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.06);">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3904.853!2d100.8785!3d12.9282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zUGF0dGF5YSwgVGhhaWxhbmQ!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth&amp;q=Unsocials+Thailand+Pattaya"
+        width="100%" height="280"
+        style="border:0; display:block; border-radius:20px; filter:invert(90%) hue-rotate(180deg) saturate(0.8) brightness(0.85);"
+        allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Unsocials Thailand Location Map">
+      </iframe>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="ft-tick">
     <div class="ftk">
-      UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp; PERFORMANCE &nbsp;·&nbsp; <strong>INEVITABLE</strong> &nbsp;·&nbsp; BANGKOK &nbsp;·&nbsp; <strong>SOCIAL MEDIA</strong> &nbsp;·&nbsp; CONTENT &nbsp;·&nbsp; <strong>GROWTH</strong> &nbsp;·&nbsp; UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp;
+      UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp; PERFORMANCE &nbsp;·&nbsp; <strong>INEVITABLE</strong> &nbsp;·&nbsp; PATTAYA &nbsp;·&nbsp; <strong>JAIPUR</strong> &nbsp;·&nbsp; <strong>SOCIAL MEDIA</strong> &nbsp;·&nbsp; CONTENT &nbsp;·&nbsp; <strong>GROWTH</strong> &nbsp;·&nbsp; UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp;
     </div>
   </div>
   <div class="ft-g">
     <div>
       <div class="ft-br">UNSOCIALS<br><em>Thailand</em></div>
-      <p class="ft-brs">Performance Marketing Agency<br>Bangkok · Thailand</p>
+      <p class="ft-brs">Global Creative Marketing Agency<br>Pattaya · Jaipur</p>
     </div>
     <div class="ft-col">
       <h5>Services</h5>
@@ -419,8 +475,9 @@
     </div>
     <div class="ft-col">
       <h5>Contact</h5>
-      <a href="https://wa.me/918209980262" target="_blank">WhatsApp: +91 820-9980262</a>
-      <a href="tel:+919829247707">Tel: +91 9829247707</a>
+      <a href="https://wa.me/66960531394" target="_blank">WhatsApp: +66 9605 31394</a>
+      <a href="tel:+66960531394">Tel: +66 960531394</a>
+      <a href="https://www.google.com/search?kgmid=/g/11thsj4kpb&q=Unsocials+Thailand" target="_blank" rel="noopener">📍 Find Us on Google Maps</a>
     </div>
     <div class="ft-col">
       <h5>Connect</h5>
@@ -430,7 +487,7 @@
     </div>
   </div>
   <div class="ft-bot">
-    <p>© 2025 Unsocials Thailand. All Rights Reserved.</p>
+    <p>© 2026 Unsocials · India & Thailand · All Rights Reserved.</p>
     <p>We Make It Inevitable.</p>
   </div>
 </footer>

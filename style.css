@@ -45,11 +45,11 @@ body::after{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;o
 .pre-txt{font-family:'Space Mono',monospace;font-size:10px;top:2px;letter-spacing:.3em;color:var(--m2);text-transform:uppercase}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;padding:20px 52px;background:rgba(8,8,8,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:padding .3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:20px 52px;background:rgba(8,8,8,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:padding .3s}
 nav.compact{padding:14px 52px}
 .nlogo{font-family:'Syne',sans-serif;font-size:18px;letter-spacing:-0.01em;color:var(--w);text-decoration:none;display:flex;align-items:center;gap:10px;font-weight:800;text-transform:uppercase}
 .nbadge{background:var(--ac);color:var(--bg);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.05em;padding:4px 8px;font-weight:700;border-radius:2px}
-.nlinks{display:flex;gap:36px;align-items:center;margin-left:auto}
+.nlinks{display:flex;gap:36px;align-items:center}
 .nlinks a{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--m2);text-decoration:none;transition:color .2s}
 .nlinks a:hover{color:var(--w)}
 .lang-switch{display:flex;align-items:center;gap:8px;margin-left:16px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px}

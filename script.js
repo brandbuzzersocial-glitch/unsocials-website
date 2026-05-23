@@ -2,10 +2,51 @@
 var cur=document.getElementById('cur'),cur2=document.getElementById('cur2'),mx=0,my=0,cx=0,cy=0;
 document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
 function animCur(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cur2.style.left=cx+'px';cur2.style.top=cy+'px';requestAnimationFrame(animCur)}animCur();
-document.querySelectorAll('a,button,.cc,.si,.sb').forEach(function(el){
+document.querySelectorAll('a,button,.cc,.si,.sb,.lang-btn').forEach(function(el){
   el.addEventListener('mouseenter',function(){document.body.classList.add('hov')});
   el.addEventListener('mouseleave',function(){document.body.classList.remove('hov')});
 });
+
+// ─── LANGUAGE SWITCHER ───
+function initLang(){
+  var savedLang = localStorage.getItem('unsocials_lang') || 'en';
+  setLang(savedLang);
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var lang = this.getAttribute('data-lang');
+      setLang(lang);
+    });
+  });
+}
+
+function setLang(lang){
+  localStorage.setItem('unsocials_lang', lang);
+  
+  // Update UI buttons
+  document.querySelectorAll('.lang-btn').forEach(function(btn){
+    if(btn.getAttribute('data-lang') === lang){
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
+  // Swap text content
+  document.querySelectorAll('[data-th]').forEach(function(el){
+    if(!el.dataset.en) {
+      el.dataset.en = el.innerHTML; // Store original English HTML
+    }
+    el.innerHTML = (lang === 'th') ? el.dataset.th : el.dataset.en;
+  });
+  
+  // Refresh ScrollTrigger if loaded, since heights might change
+  if(typeof ScrollTrigger !== 'undefined'){
+    setTimeout(function(){ ScrollTrigger.refresh(); }, 100);
+  }
+}
+document.addEventListener('DOMContentLoaded', initLang);
 
 // ─── PRELOADER ───
 var pf=document.getElementById('pf'),pt=document.getElementById('pt'),pct=0;
@@ -15,37 +56,39 @@ var isEn=true,flipDur=320; // ms per half-flip
 var labels=['INITIALISING','กำลังโหลด','LOADING','เริ่มต้น','BUILDING','กำลังสร้าง','ALMOST','เกือบแล้ว'];
 var labelIdx=0;
 
-// flip between EN and TH on a fixed interval
-function doFlip(){
-  var outEl=isEn?enEl:thEl;
-  var inEl=isEn?thEl:enEl;
-  // outgoing: slide up away
-  outEl.style.animation='none'; outEl.offsetHeight; // reflow
-  outEl.style.animation='flipOut '+flipDur+'ms cubic-bezier(.4,0,.2,1) forwards';
-  // incoming: slide up in
-  inEl.style.animation='none'; inEl.offsetHeight;
-  inEl.style.animation='flipIn '+flipDur+'ms cubic-bezier(.4,0,.2,1) forwards';
-  isEn=!isEn;
-  // cycle label
-  labelIdx=(labelIdx+1)%labels.length;
-  pt.textContent=labels[labelIdx];
-}
-
-var flipTimer=setInterval(doFlip,700);
-
-var pi=setInterval(function(){
-  pct+=Math.random()*14+2;
-  if(pct>=100){
-    pct=100;
-    clearInterval(pi);
-    clearInterval(flipTimer);
-    // final snap to EN
-    if(!isEn) doFlip();
-    pt.textContent='LET\'S GO';
-    setTimeout(function(){document.getElementById('pre').classList.add('out')},600);
+if (pf && pt && enEl && thEl) {
+  // flip between EN and TH on a fixed interval
+  function doFlip(){
+    var outEl=isEn?enEl:thEl;
+    var inEl=isEn?thEl:enEl;
+    // outgoing: slide up away
+    outEl.style.animation='none'; outEl.offsetHeight; // reflow
+    outEl.style.animation='flipOut '+flipDur+'ms cubic-bezier(.4,0,.2,1) forwards';
+    // incoming: slide up in
+    inEl.style.animation='none'; inEl.offsetHeight;
+    inEl.style.animation='flipIn '+flipDur+'ms cubic-bezier(.4,0,.2,1) forwards';
+    isEn=!isEn;
+    // cycle label
+    labelIdx=(labelIdx+1)%labels.length;
+    pt.textContent=labels[labelIdx];
   }
-  pf.style.width=pct+'%';
-},90);
+
+  var flipTimer=setInterval(doFlip,700);
+
+  var pi=setInterval(function(){
+    pct+=Math.random()*14+2;
+    if(pct>=100){
+      pct=100;
+      clearInterval(pi);
+      clearInterval(flipTimer);
+      // final snap to EN
+      if(!isEn) doFlip();
+      pt.textContent='LET\'S GO';
+      setTimeout(function(){document.getElementById('pre').classList.add('out')},600);
+    }
+    pf.style.width=pct+'%';
+  },90);
+}
 
 // ─── NAV SCROLL ───
 window.addEventListener('scroll',function(){
@@ -200,8 +243,11 @@ if(typeof gsap !== 'undefined') {
 // ─── HERO WEBGL SHADER ───
 (function(){
   var canvas=document.getElementById('hero-canvas');
-  var gl=canvas.getContext('webgl', { powerPreference: "high-performance" });
+  var gl=canvas.getContext('webgl', { powerPreference: "high-performance", alpha: true, premultipliedAlpha: false });
   if(!gl) return;
+  gl.clearColor(0,0,0,0);
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
   function resize(){canvas.width=window.innerWidth/2;canvas.height=window.innerHeight/2;gl.viewport(0,0,canvas.width,canvas.height)}
   resize();window.addEventListener('resize',resize);
 
@@ -236,7 +282,9 @@ if(typeof gsap !== 'undefined') {
       col=mix(col,vec3(0.91,1.0,0.0),clamp(length(q)*0.4,0.0,1.0));
       col*=1.0-0.6*d;
       col+=0.06*vec3(0.91,1.0,0.0)*max(0.0,0.5-d);
-      gl_FragColor=vec4(col*0.65,1.0);
+      float brightness = dot(col, vec3(0.299, 0.587, 0.114));
+      float a = smoothstep(0.0, 0.25, brightness) * 0.85;
+      gl_FragColor=vec4(col*0.75, a);
     }
   `;
 
@@ -264,6 +312,7 @@ if(typeof gsap !== 'undefined') {
   function draw(){
     requestAnimationFrame(draw);
     if(!isHeroVis) return;
+    gl.clear(gl.COLOR_BUFFER_BIT);
     var t=(performance.now()-start)/1000;
     gl.uniform1f(tLoc,t);
     gl.uniform2f(rLoc,canvas.width,canvas.height);
@@ -374,52 +423,56 @@ const caseData = {
   elysium: {
     eye: '5-Star Hotel · Pattaya Prathumnak Hill · End-to-End Brand Transformation',
     title: 'Elysium Pattaya',
-    tags: ['Social Revamp', 'Google Hotel Ads', 'Meta Performance', 'AI Content', 'Direct Bookings'],
+    tags: ['Performance Marketing', 'Social Media Management', 'Content Production', 'AI Creative Automation', 'Brand Strategy'],
     media: ["assets/cases/elysium/img1.png","assets/cases/elysium/img2.jpg","assets/cases/elysium/img3.jpg","assets/cases/elysium/img4.jpg","assets/cases/elysium/img5.jpg","assets/cases/elysium/img6.jpg","assets/cases/elysium/img7.jpg","assets/cases/elysium/vid1.mp4","assets/cases/elysium/vid2.mp4","assets/cases/elysium/vid3.mp4"],
     problemHtml: `<div class="cs-sec-title">A 5-star hotel that looked like a 2-star on social.</div>
-<p class="cs-p">Elysium Pattaya is one of the city's most premium properties — a 5-star boutique hotel perched on Prathumnak Hill, one of Pattaya's most coveted luxury locations. But when they came to us, their digital presence told a very different story.</p>
-<p class="cs-p">Their social media was a graveyard of basic offer graphics, stock vectors, and promotional banners that screamed discount hotel — not luxury destination. Website bookings were at zero. Every single reservation came through OTAs — Agoda, Booking.com, Expedia — with commission fees eating directly into revenue. No customer data. No direct relationship with guests. No control over their own brand.</p>
-<p class="cs-p">Elysium had the product. They needed the story — and the system to monetise it.</p>`,
-    strategyHtml: `<div class="cs-sec-title">Luxury content. Performance ads. Direct revenue.</div>
-<p class="cs-p"><strong>Phase 1 — Social Transformation:</strong> We stripped the account back to zero and rebuilt it from the ground up. Luxury lifestyle shoots capturing the hotel's rooftop pool, panoramic Prathumnak Hill views, and intimate suite experiences. Travel-led editorial reels designed to trigger aspiration, not just awareness. AI-enhanced visuals that elevated the property into something cinematic — giving potential guests the feeling of Elysium before they ever arrived.</p>
-<p class="cs-p"><strong>Phase 2 — Google Hotel Search Ads:</strong> We launched Hotel Search campaigns targeting travellers actively searching for hotels in Pattaya — worldwide. Guests from Europe, the Middle East, and Asia saw Elysium at the top of Google results. We also ran direct call ads targeting domestic Thai travellers, giving every type of guest the fastest route to conversion.</p>
-<p class="cs-p"><strong>Phase 3 — Meta Awareness & Direct Booking Incentives:</strong> Awareness campaigns ran across Meta targeting the top feeder countries visiting Pattaya. We offered a complimentary mini bar and 20% off for guests who booked directly via Instagram or WhatsApp — bypassing OTAs entirely. Guests had a reason to reach out directly. Elysium had a reason to celebrate.</p>`,
+<p class="cs-p">Elysium Pattaya had everything a luxury hotel needs to succeed — a stunning rooftop infinity pool, breathtaking Gulf of Thailand views, a prime location on Prathumnak Hill, and a product that genuinely deserved to be Pattaya's most talked-about boutique property.</p>
+<p class="cs-p">What they didn't have was visibility. No direct booking system. No social presence worth speaking of. Zero website revenue. Every guest that found them came through OTAs — Agoda, Booking.com, Expedia — each taking a commission slice that was bleeding the business dry.</p>
+<p class="cs-p">They were invisible online in a city that runs on digital discovery. The brief was simple: fix it.</p>`,
+    strategyHtml: `<div class="cs-sec-title">Brand foundation, worldwide hotel search, and AI-powered performance scaling.</div>
+<p class="cs-p"><strong>Phase 01 — Brand & Content Foundation:</strong> We conducted a full content shoot at Elysium — golden hour pool sessions, rooftop sunset sequences, room interiors, and panoramic views. We rebuilt the Instagram feed from the ground up to establish a cinematic, luxury brand aesthetic.</p>
+<p class="cs-p"><strong>Phase 02 — Direct Booking Infrastructure:</strong> We built and launched a Google Hotel Ads campaign — putting Elysium in front of high-intent travellers actively searching for Pattaya hotels at the exact moment of decision, driving them directly to the hotel's own booking page.</p>
+<p class="cs-p"><strong>Phase 03 — Meta Performance Campaigns:</strong> Targeted Meta campaigns reached high-value travelers globally. Awareness campaigns built the brand, while Lookalike audiences and dynamic retargeting captured outstanding intent.</p>
+<p class="cs-p"><strong>Phase 04 — AI Creative at Scale:</strong> We generated a vast library of luxury campaign graphics, story templates, and ad creatives, enabling us to test dozens of variations simultaneously without additional shoot days.</p>
+<p class="cs-p"><strong>Phase 05 — WhatsApp Lead Capture:</strong> We implemented a WhatsApp click-to-chat layer to campaigns, giving potential guests an instant, direct path to secure bookings in real time.</p>`,
     sidebar: [
       { title: 'The Brand', text: "Elysium Pattaya — 5-star boutique hotel on Prathumnak Hill, one of Pattaya's most prestigious luxury addresses." },
-      { title: 'The Challenge', text: "Zero website revenue. 100% OTA dependency. Social media that didn't reflect the property's luxury positioning or 5-star calibre." },
-      { title: 'Services Delivered', text: "Full social media revamp · Luxury lifestyle shoots · AI-enhanced content · Google Hotel Search Ads (worldwide) · Call ads (domestic) · Meta awareness campaigns · WhatsApp direct booking system · Direct booking incentive strategy" },
-      { title: 'Key Innovation', text: "A complimentary mini bar + 20% pre-booking offer positioned Elysium's direct channel as more attractive than any OTA — turning social followers into direct-paying guests." }
+      { title: 'The Challenge', text: "Zero direct revenue, 100% OTA dependency with 15–25% commission fees, and no unified digital strategy or paid infrastructure." },
+      { title: 'Services Delivered', text: "Full luxury content shoot · Instagram feed rebuild · Google Hotel Ads setup & management · Meta awareness & conversion campaigns · Retargeting & lookalike audience strategy · AI creative library · WhatsApp click-to-chat lead generation" },
+      { title: 'Key Quote', text: "\"From zero website revenue to one million baht in two months. I've worked with agencies before. None of them showed me a number like that. Unsocials didn't just run ads — they built us a system.\" — Management, Elysium Pattaya" }
     ],
     results: [
-      { num: '1M THB', lbl: 'Direct website revenue generated within 2 months of campaign launch' },
-      { num: '∞%', lbl: 'Website revenue growth — from absolute zero to 7-figure monthly revenue' },
-      { num: '0% OTA', lbl: 'Direct booking channel built — guests choosing Elysium over OTA platforms' },
-      { num: '5★', lbl: "Social presence finally matching the luxury reality of Prathumnak Hill's finest hotel" }
+      { num: '฿1,000,000', lbl: 'Direct booking revenue generated within 60 days of campaign launch' },
+      { num: '0%', lbl: 'OTA commission dependency for new bookings from Unsocials campaigns' },
+      { num: '฿0 → ฿1M', lbl: 'Website revenue growth from absolute zero to 7-figure direct monthly revenue' },
+      { num: '3×', lbl: "Instagram reach and engagement growth, building an owned luxury audience" }
     ]
   },
   alexa: {
-    eye: 'Beach Club · Pattaya · Brand Positioning + Performance Ads',
+    eye: 'Beach Club · Pattaya, Thailand · Social Media + Performance Marketing',
     title: 'Alexa Beach Club',
-    tags: ['Brand Positioning', 'Lifestyle Content', 'Meta Ads', 'Pre-Reservations', 'Event Marketing'],
+    tags: ['Performance Marketing', 'Social Media Management', 'Content Production', 'Brand Strategy'],
     media: ["assets/cases/alexa/img1.jpg","assets/cases/alexa/img2.jpg","assets/cases/alexa/img3.jpg","assets/cases/alexa/img4.jpg","assets/cases/alexa/vid1.mp4","assets/cases/alexa/vid2.mp4","assets/cases/alexa/vid3.mp4","assets/cases/alexa/vid4.mp4","assets/cases/alexa/vid5.mp4"],
-    problemHtml: `<div class="cs-sec-title">The best beach club in Pattaya that nobody knew existed.</div>
-<p class="cs-p">Alexa Beach Club had everything — an infinity pool, a private beach, world-class DJs, foam parties, and an Ibiza-style atmosphere that Pattaya had never seen before. There was just one problem: it sat outside the main tourist strip, and the world had no idea it existed.</p>
-<p class="cs-p">Their online presence was minimal. Their social wasn't telling the story. Without visibility, the reservations weren't coming. They came to Unsocials Thailand with a clear brief: they didn't just want reach — they wanted to be positioned as the number one beach club in Pattaya.</p>`,
-    strategyHtml: `<div class="cs-sec-title">Show the experience. Build the desire. Drive the bookings.</div>
-<p class="cs-p"><strong>Phase 1 — Lifestyle Content Production:</strong> We went in and shot everything. Models in the infinity pool. Birthdays on the beach. Couples at sunset dinners. Foam party madness. DJ sets. Activities. Lunches. Edited into scroll-stopping reels and carousels, we built a content library that made Pattaya look like Ibiza.</p>
-<p class="cs-p"><strong>Phase 2 — Brand Awareness:</strong> Meta awareness campaigns showed Pattaya wasn't just a city for nightlife — Alexa Beach Club was where your day belonged. Targeting tourists in Thailand, expats in Pattaya, and Bangkok weekenders, we repositioned the narrative: if you're in Pattaya and haven't been to Alexa, your trip isn't complete.</p>
-<p class="cs-p"><strong>Phase 3 — Pre-Reservation Campaigns:</strong> Website click ads and WhatsApp/Facebook DM campaigns drove active bookings. Birthdays. Girls' day outs. Corporate events. Weddings. The weekend campaign specifically targeting Bangkok residents produced repeat waves of traffic every Friday — turning Alexa into Pattaya's most-booked beach club.</p>`,
+    problemHtml: `<div class="cs-sec-title">The best beach club in Pattaya that looked like everyone else online.</div>
+<p class="cs-p">Pattaya has no shortage of beach clubs. Pools, sun loungers, cocktails, music — the formula is the same everywhere. When Alexa Beach Club came to us, they had a beautiful venue, a great product, and a team that genuinely cared about the experience. But online, they looked like everyone else.</p>
+<p class="cs-p">Their Instagram was inconsistent, paid ads were non-existent, and reservations came through walk-ins and word of mouth — leaving the venue half-empty on days it should have been packed. In a city where beach club scene discovery runs on social media, invisibility is a death sentence.</p>`,
+    strategyHtml: `<div class="cs-sec-title">Lifestyle narrative, high-reach Meta campaigns, and frictionless WhatsApp bookings.</div>
+<p class="cs-p"><strong>Phase 01 — Brand Positioning:</strong> We defined Alexa as Pattaya's premium yet accessible Ibiza-style beach club. A visual and textual language was built around that positioning: bold, sun-drenched, aspirational, and energetic.</p>
+<p class="cs-p"><strong>Phase 02 — Lifestyle Content with Models:</strong> We shot premium lifestyle content featuring models, pool scenes, and signature cocktails. This created an aspirational, highly shareable visual library that stopped the scroll.</p>
+<p class="cs-p"><strong>Phase 03 — Meta Awareness Campaigns:</strong> We launched targeted Meta campaigns targeting tourists, expats in Pattaya, and Bangkok residents searching for weekend escapes, utilizing retargeting to capture high-intent audiences.</p>
+<p class="cs-p"><strong>Phase 04 — WhatsApp Reservation Campaigns:</strong> We built a direct WhatsApp reservation system powered by click-to-chat Meta campaigns, sending potential guests straight into a booking conversation with the Alexa team.</p>
+<p class="cs-p"><strong>Phase 05 — Event Night Coverage:</strong> Every event night at Alexa became content. Real-time live Stories and recap reels broadcast the energy, creating a highly effective FOMO loop that drove continuous traffic.</p>`,
     sidebar: [
-      { title: 'The Brand', text: "Alexa Beach Club — Pattaya's premier Ibiza-style beach club featuring an infinity pool, private beach, international DJs, foam parties, and full dining experiences." },
-      { title: 'The Goal', text: "Positioning. Not just reach. Become undeniably the #1 beach club in Pattaya and generate consistent pre-reservations across all event types." },
-      { title: 'Services Delivered', text: "Lifestyle content production with models · Social media management · Meta brand awareness campaigns · Website click ads · WhatsApp + DM lead generation · Bangkok weekend targeting · Event marketing" },
-      { title: 'Breakthrough Moment', text: "Bangkok weekend campaigns unlocked a recurring revenue stream — local Thai travellers booking Alexa as their Pattaya itinerary centrepiece, not an afterthought." }
+      { title: 'The Brand', text: "Alexa Beach Club — Pattaya's premier Ibiza-style beach club featuring an infinity pool, private beach, international DJs, and foam parties." },
+      { title: 'The Challenge', text: "No dominant brand identity, zero paid acquisition, and unpredictable reservations relying heavily on walk-ins." },
+      { title: 'Services Delivered', text: "Lifestyle content shoot with models · Instagram feed strategy & visual curation · Meta awareness campaigns · WhatsApp reservation click-to-chat campaigns · Influencer coordination · Event night live coverage" },
+      { title: 'Key Quote', text: "\"Alexa went from just another beach club to THE beach club in Pattaya. 2.6 million reach. Our tables fill weeks in advance now. I stopped worrying about marketing the day I signed with Unsocials.\" — Owner, Alexa Beach Club" }
     ],
     results: [
-      { num: '26K→2.6M', lbl: 'Instagram reach in 3 months — a 9,700% increase in content visibility' },
-      { num: '280+', lbl: 'Direct reservation messages — birthdays, corporate events, weddings via WhatsApp & DMs' },
-      { num: '20,103', lbl: 'Ad clicks in 3 months — qualified traffic from tourists, Bangkok weekenders, expats' },
-      { num: '#1', lbl: "Positioned as Pattaya's number one beach club — the goal from day one, achieved" }
+      { num: '2.6M', lbl: 'Total Instagram reach generated across the campaign period' },
+      { num: '#1', lbl: 'Ranked as the most talked-about and most-booked beach club in Pattaya' },
+      { num: '280+', lbl: 'Direct reservations driven through WhatsApp campaigns with zero OTA fees' },
+      { num: '10×', lbl: "Increase in organic engagement rate from pre-campaign baseline" }
     ]
   },
   skyview: {
@@ -447,78 +500,85 @@ const caseData = {
     ]
   },
   nomads: {
-    eye: 'Global Hostel Brand · Thailand · UGC + Social Media',
+    eye: 'Hostel · Thailand · 3 Properties · UGC Strategy + Direct Booking Funnel',
     title: 'Nomads Hostel Asia',
-    tags: ['UGC Content', 'Social Media', 'Direct Bookings', 'Community Building'],
+    tags: ['Social Media Management', 'UGC Content Strategy', 'Content Production', 'Direct Booking Funnel'],
     media: ["assets/cases/nomads/img1.png","assets/cases/nomads/img2.png","assets/cases/nomads/img3.png","assets/cases/nomads/img4.png","assets/cases/nomads/vid1.mp4","assets/cases/nomads/vid2.mp4","assets/cases/nomads/vid3.mp4"],
-    problemHtml: `<div class="cs-sec-title">Three hostels. A global brand. Nobody talking about them online.</div>
-<p class="cs-p">Nomads is a globally recognised hostel brand — built for solo travellers, backpackers, and adventure seekers who live for connecting with strangers and turning them into travel companions. When they launched three hostels across Thailand, the brand recognition was there. The local social presence wasn't.</p>
-<p class="cs-p">After 4–5 months of operation, bookings were almost entirely OTA-driven. People knew the Nomads name but didn't know what made these Thailand properties different — the pub crawls, the activities, the community nights, the experiences that don't show up in a booking engine listing.</p>`,
-    strategyHtml: `<div class="cs-sec-title">Let the guests tell the story. Make the world jealous.</div>
-<p class="cs-p">The most credible voice for a hostel isn't the brand — it's the traveller. We built a UGC strategy that put real guests at the centre of every piece of content. Real faces. Real friendships. Real experiences — pub crawls, night markets, rooftop parties, sunrise beach runs, and everything in between.</p>
-<p class="cs-p">We captured and edited content featuring guests in their most authentic moments, then distributed it across all social platforms in a format that made the Nomads Thailand experience unmissable. For solo travellers scrolling Instagram at 2am wondering where to go next — Nomads became the answer.</p>
-<p class="cs-p">The content generated organic leads directly on social — travellers DMing for booking information, asking how to join activities, enquiring about availability. We directed them to the direct booking website, growing Nomads' owned revenue channel alongside its community.</p>`,
+    problemHtml: `<div class="cs-sec-title">An exceptional guest experience with zero content and high OTA dependency.</div>
+<p class="cs-p">Nomads Hostel Asia had three properties across Thailand and a genuinely exceptional product — legendary pub crawls, pool parties, and island adventures. The experiences were happening every night, but the content wasn't. Because of this, bookings were heavily OTA-dependent (Hostelworld, Booking.com), eating into their margins with high commission fees.</p>
+<p class="cs-p">The target audience of backpackers and solo travellers lives on Instagram, making booking decisions based on social proof. Nomads was invisible at the exact moment those decisions were being made.</p>`,
+    strategyHtml: `<div class="cs-sec-title">Authentic UGC systems, unscripted guest reviews, and commission-free direct booking funnels.</div>
+<p class="cs-p"><strong>Phase 01 — UGC Content System:</strong> We established a systematic UGC capture process. We briefed guest content creators at each property to capture real pool parties, adventures, and pub crawls, producing authentic, high-energy content that no professional shoot could replicate.</p>
+<p class="cs-p"><strong>Phase 02 — Direct Booking Funnel:</strong> We engineered the entire social strategy to get potential guests off Instagram and onto the Nomads website. Bio links, swipe-up Stories, and caption CTAs pointed directly to their own booking system, bypassing OTAs entirely.</p>
+<p class="cs-p"><strong>Phase 03 — Unified Brand Identity:</strong> We unified the social presence of all three properties under a single Nomads Asia brand voice, building institutional brand authority and a consistent aesthetic.</p>
+<p class="cs-p"><strong>Phase 04 — Event Night Live Coverage:</strong> Real-time event coverage on Stories and rapid 24-hour recap reels created a continuous FOMO loop that drove next-day direct bookings.</p>
+<p class="cs-p"><strong>Phase 05 — Guest Review Reel Programme:</strong> We introduced a guest review reel program featuring unscripted, direct-to-camera reviews. Real backpackers reviewing their stay became the highest-converting content format.</p>`,
     sidebar: [
-      { title: 'The Brand', text: "Nomads Hostel Asia — global hostel brand operating 3 properties across Thailand, catering to solo travellers, backpackers, and adventure tourism." },
-      { title: 'The Challenge', text: "No social presence communicating the Nomads experience. 100% OTA reliance. Travellers didn't know what made Nomads Thailand different from any other hostel." },
-      { title: 'Services Delivered', text: "UGC content strategy and production · Full social media management · Community building · Direct booking lead generation · Activity and event content marketing" },
-      { title: 'Recognition', text: "During our partnership, Nomads Thailand was awarded Best Hostel in Thailand and Best Hostel in Asia by Hostelworld — the industry's most prestigious recognition." }
+      { title: 'The Brand', text: "Nomads Hostel Asia — premier hostel brand operating 3 high-energy properties across Thailand, serving solo travellers and backpackers." },
+      { title: 'The Challenge', text: "Great experiences with zero systematic content capture, high dependency on commission-heavy OTA platforms, and fragmented social channels." },
+      { title: 'Services Delivered', text: "UGC content strategy · Instagram feed management & curation · Guest review reel program · Pub crawl live coverage · Direct booking funnel · Hostelworld profile optimization" },
+      { title: 'Key Quote', text: "\"We had the best hostel experience in Asia happening every night — we just weren't showing the world. Unsocials built the content system that captured it all and sent every guest directly to our website.\" — Management, Nomads Hostel Asia" }
     ],
     results: [
       { num: '#1 Asia', lbl: 'Best Hostel in Asia — awarded by Hostelworld during our partnership' },
-      { num: 'Best TH', lbl: 'Best Hostel in Thailand — Hostelworld recognition across all 3 properties' },
-      { num: 'Direct', lbl: 'Organic social-to-booking leads — travellers reaching out via Instagram and Facebook DMs' },
-      { num: 'Real', lbl: 'UGC content strategy capturing authentic experiences that no stock photo could replicate' }
+      { num: '3', lbl: 'Properties managed under one unified social media strategy and brand voice' },
+      { num: '0%', lbl: 'OTA commission on bookings generated through the direct social strategy' },
+      { num: 'Direct', lbl: "All social traffic successfully routed to Nomads' commission-free website funnel" }
     ]
   },
   bamboo: {
-    eye: 'Beach Club · Krabi · Social Media Revamp',
+    eye: 'Beach Club · Krabi, Thailand · Daily Social Engine + Multi-Format Visibility',
     title: 'Bamboo Beach Club',
-    tags: ['Social Revamp', 'Event Content', 'AI Graphics', 'Daily Posting', 'Experience Marketing'],
+    tags: ['Social Media Management', 'Content Production', 'AI Creative Automation', 'Brand Strategy'],
     media: ["assets/cases/bamboo/img1.png","assets/cases/bamboo/img2.png","assets/cases/bamboo/vid1.mov","assets/cases/bamboo/vid2.mp4","assets/cases/bamboo/vid3.mp4","assets/cases/bamboo/vid4.mp4"],
-    problemHtml: `<div class="cs-sec-title">An incredible venue with an invisible social presence.</div>
-<p class="cs-p">Bamboo Beach Club in Krabi is one of the island's most vibrant venues — packed with events, parties, themed nights, and the kind of tropical energy that makes for exceptional content. People visiting Krabi already knew about Bamboo. Word of mouth was working. But social media? It was a complete afterthought.</p>
-<p class="cs-p">The account had a basic presence but wasn't capturing what actually happened inside. No event promotion. No night coverage. No stories showing the atmosphere. No content that made someone in Bangkok say "we need to be there this weekend." The experience existed — the social proof didn't.</p>`,
-    strategyHtml: `<div class="cs-sec-title">Show Krabi what it's been missing. Then show the world.</div>
-<p class="cs-p">We took over Bamboo's social from the ground up. High-energy party reels edited to match the music, the mood, and the crowd. Every major event got its own content series: fire shows, foam nights, live DJ sets, themed pool parties. The kind of footage that makes your phone screen feel like a portal.</p>
-<p class="cs-p">We introduced conceptual AI-generated graphics that gave Bamboo a visual identity beyond photography — cosmic beach-party aesthetics, event announcement designs, and branded content that stood out in feeds dominated by generic tropical imagery.</p>
-<p class="cs-p">A daily posting rhythm combined with live Stories coverage on every event night gave followers a real-time window into Bamboo's world. The narrative became undeniable: if you are in Krabi and you haven't visited Bamboo Beach Club, your trip is not complete.</p>`,
+    problemHtml: `<div class="cs-sec-title">An incredible beach club venue operating in a digital vacuum.</div>
+<p class="cs-p">Bamboo Beach Club in Krabi is one of the island's most vibrant venues. While word of mouth was working locally, their social media presence was a complete afterthought. Great event nights were happening with live fire shows and foam parties, but the right people — tourists planning Krabi trips or actively looking for nightly entertainment — weren't seeing them.</p>
+<p class="cs-p">With an inconsistent posting schedule and lack of format diversity, Bamboo sat invisible behind competitors who posted daily to capture the high-value tourist market.</p>`,
+    strategyHtml: `<div class="cs-sec-title">A six-format content engine, daily consistency, and real-time FOMO loops.</div>
+<p class="cs-p"><strong>Phase 01 — Daily Posting Rhythm:</strong> We committed to a relentless, daily posting schedule to align with the Instagram algorithm and ensure constant feed presence for active travellers.</p>
+<p class="cs-p"><strong>Phase 02 — Multi-Format Content Engine:</strong> We built a six-format engine running simultaneously: High-energy reels for reach, AI reels for brand elevation, Hook-led content to stop the scroll, Stories for live FOMO, Trial reels for algorithm testing, and Creator reposts for authentic social proof.</p>
+<p class="cs-p"><strong>Phase 03 — Hook-First Strategy:</strong> Every single piece of content opened with a powerful visual or textual hook to stop scrollers in under two seconds (e.g. 'Your Krabi trip isn't complete without this').</p>
+<p class="cs-p"><strong>Phase 04 — Live Event Night Stories:</strong> Stories went live in real time during peak party hours, creating a highly effective FOMO loop that drove direct bookings for the next night.</p>
+<p class="cs-p"><strong>Phase 05 — Trial Reels:</strong> We tested edit styles, hooks, and audios regularly to let algorithmic data shape our content iteration systematically.</p>
+<p class="cs-p"><strong>Phase 06 — Creator Curation:</strong> We actively curated and reposted high-quality user-generated content from guests to establish absolute social proof.</p>`,
     sidebar: [
-      { title: 'The Brand', text: "Bamboo Beach Club Krabi — one of Krabi's most energetic beach venues, known for themed events, parties, and an electric tropical atmosphere." },
-      { title: 'The Challenge', text: "Great venue with a weak social presence. Events happening nightly with zero documentation. No content strategy communicating the Bamboo experience." },
-      { title: 'Services Delivered', text: "Full social media revamp · Party and event reel production · AI-generated conceptual graphics · Daily posting strategy · Live Stories event coverage · Ongoing social media management" },
-      { title: 'The Narrative', text: "\"If you're in Krabi and haven't been to Bamboo Beach Club — your trip isn't finished.\" A positioning line that became the brand's social identity." }
+      { title: 'The Brand', text: "Bamboo Beach Club Krabi — one of Krabi's most energetic beach venues, famous for themed events, fire shows, and pool parties." },
+      { title: 'The Challenge', text: "Low visibility despite excellent real-world events, lack of a daily posting rhythm, and no format diversity to capture modern social algorithms." },
+      { title: 'Services Delivered', text: "Social media strategy & positioning · Daily content calendar · High-energy reel creation · AI-generated creative & graphics · Live event night Stories · Trial reel testing" },
+      { title: 'Key Quote', text: "\"Unsocials turned every event night into content that worked for days. We went from a beach club in Krabi to THE beach club in Krabi. Total visibility. That's what they built.\" — Management, Bamboo Beach Club Krabi" }
     ],
     results: [
-      { num: 'Krabi #1', lbl: "Bamboo positioned as Krabi's must-visit beach club — the destination, not just an option" },
-      { num: 'Daily', lbl: 'Consistent posting with live Stories coverage on every major event night' },
-      { num: 'AI + Real', lbl: 'AI conceptual graphics combined with real event footage — a premium, distinctive aesthetic' },
-      { num: 'Ongoing', lbl: 'Full social media management — continuous content, community growth, event marketing' }
+      { num: 'Krabi #1', lbl: "Bamboo positioned as Krabi's undisputed must-visit beach club destination" },
+      { num: 'Daily', lbl: 'Consistent daily content output maintained with zero gaps or quiet weeks' },
+      { num: '100%', lbl: 'Event nights covered live in real time during peak party hours to drive FOMO' },
+      { num: '6 Formats', lbl: "Simultaneous multi-format content engine optimized for reach, trust, and conversion" }
     ]
   },
   gps: {
-    eye: 'Luxury Gemstones · Thailand · Organic Social Growth',
+    eye: 'Luxury Gems · Thailand · AI Content + Organic Growth + Education Strategy',
     title: 'GPS Gems',
-    tags: ['AI Content Strategy', 'Social from Scratch', 'Organic Lead Gen', 'Education Marketing'],
+    tags: ['Brand Strategy', 'AI Creative Automation', 'Social Media Management', 'Content Production'],
     media: ["assets/cases/gps/img1.jpg","assets/cases/gps/vid1.mp4","assets/cases/gps/vid2.mp4","assets/cases/gps/vid3.mp4","assets/cases/gps/vid4.mp4"],
-    problemHtml: `<div class="cs-sec-title">Extraordinary gems. Zero digital presence to show for it.</div>
-<p class="cs-p">GPS Gems came to us at the very beginning — no social media, no content library, no digital footprint. Just an exceptional product: exclusive, rare gemstones crafted into bespoke jewellery for discerning collectors and buyers. The kind of inventory that commands attention when people know it exists. The challenge was making sure they did.</p>
-<p class="cs-p">Starting from scratch in the luxury goods market requires more than product posts. Buyers need education. They need provenance. They need to understand why a particular stone is extraordinary before they can justify the investment. Without content, GPS Gems was completely invisible.</p>`,
-    strategyHtml: `<div class="cs-sec-title">Educate. Elevate. Let the stones do the selling.</div>
-<p class="cs-p">With no existing content to work with, we built GPS Gems' entire social identity using AI-generated visuals. High-end, editorial-quality imagery of gemstones — rubies, sapphires, rare coloured stones — in environments that communicated luxury, rarity, and craftsmanship. No photography budget required. Just creative vision and the power of AI production.</p>
-<p class="cs-p">We built an education-first content strategy around four core pillars: the origin stories of where each gem is sourced, the craftsmanship journey from raw stone to finished jewellery, gem knowledge posts teaching followers how to identify quality, and exclusive collection reveals that created genuine anticipation and desire.</p>
-<p class="cs-p">The approach worked not because we advertised — but because we informed. Followers came for the knowledge and stayed for the gems. Without running a single paid lead ad, enquiries began arriving organically through Instagram — collectors, buyers, and gifters reaching out directly.</p>`,
+    problemHtml: `<div class="cs-sec-title">Exceptional rare gemstones with absolute zero digital footprint.</div>
+<p class="cs-p">GPS Gems Thailand came to us with no brand, no social media presence, and no content library. In the high-ticket luxury goods industry, trust is the entire product. Buyers spend significant money on gemstones they cannot physically inspect beforehand. Without a digital presence that demonstrated authority, GPS Gems was invisible and uncompetitive.</p>
+<p class="cs-p">Furthermore, luxury gemstone marketing traditionally demands expensive macro photography, studio setups, and ongoing production budgets that present serious bottlenecks for a startup brand.</p>`,
+    strategyHtml: `<div class="cs-sec-title">Education-first content pillars, custom AI macro photography, and pre-educated organic lead generation.</div>
+<p class="cs-p"><strong>Phase 01 — Brand Identity from Zero:</strong> We built their visual identity, colour palette, typography, and tone of voice, positioning GPS Gems as the premier, transparent gem authority online.</p>
+<p class="cs-p"><strong>Phase 02 — AI-Powered Content Library:</strong> We generated high-end, studio-quality macro gem photography and editorial lifestyle visuals entirely using AI creative tools, bypassing traditional photography production costs and bottlenecks.</p>
+<p class="cs-p"><strong>Phase 03 — Education-First Strategy:</strong> We structured their social presence around education-first pillars — explaining gem origins, grading, and value factors to build a trust deficit competitors couldn't match.</p>
+<p class="cs-p"><strong>Phase 04 — Behind-the-Scenes Provenance:</strong> We documented their sourcing, grading, and cutting processes. This radical transparency eliminated buyer friction by showing absolute authenticity.</p>
+<p class="cs-p"><strong>Phase 05 — Organic Growth Engine:</strong> Genuinely educational, high-value content drove viral saves and shares, attracting highly targeted gemstone collectors organically without spent advertising.</p>`,
     sidebar: [
-      { title: 'The Brand', text: "GPS Gems — Thailand-based luxury gemstone brand dealing in exclusive, rare stones and bespoke jewellery crafted for collectors and high-value buyers." },
-      { title: 'The Challenge', text: "Zero content. Zero social presence. Zero digital history. Built entirely from the ground up — content strategy and brand identity created simultaneously from scratch." },
-      { title: 'Services Delivered', text: "Full social media strategy from scratch · AI-generated luxury content production · Education-first content pillars · Gem origin and craftsmanship storytelling · Collection reveal campaigns · Organic lead generation" },
-      { title: 'The Proof', text: "Organic Instagram leads with zero paid advertising. Buyers already educated, already trusting the brand. The most efficient lead generation possible — no ad spend required." }
+      { title: 'The Brand', text: "GPS Gems Thailand — luxury gemstone brand dealing in rare collector-grade stones and custom bespoke jewellery." },
+      { title: 'The Challenge', text: "Absolute zero brand identity, an industry built on deep trust, and extremely high production costs for luxury macro photography." },
+      { title: 'Services Delivered', text: "Brand identity from zero · AI-generated luxury content library · Education-first content pillars · Sourcing & craftsmanship storytelling · Organic lead generation strategy" },
+      { title: 'Key Quote', text: "\"Our customers understand our gems before they even contact us. The organic strategy they created is still paying dividends — and we haven't spent a single baht on ads.\" — Founder, GPS Gems Thailand" }
     ],
     results: [
-      { num: 'Zero Ads', lbl: 'No paid lead generation — every enquiry came through organic social content' },
-      { num: 'Organic', lbl: 'Instagram leads from collectors who discovered GPS Gems through educational content' },
-      { num: 'AI-Built', lbl: 'Full luxury content library created from AI visuals — world-class output, zero photography budget' },
-      { num: 'From Zero', lbl: 'Complete brand social identity built from scratch — strategy, content, and community by Unsocials' }
+      { num: '฿0', lbl: 'Paid ad spend needed — 100% organic, commission-free buyer acquisition' },
+      { num: 'AI-Built', lbl: 'Full luxury macro content library generated using AI with zero photography overhead' },
+      { num: '100%', lbl: 'Organic growth driven entirely by high-value educational content pillars' },
+      { num: 'Pre-Educated', lbl: "Inbound leads arrived highly informed and trust-established, accelerating sales cycles" }
     ]
   }
 };
@@ -527,16 +587,16 @@ function openCase(id) {
   const data = caseData[id];
   if (!data) return;
 
-  // Background map (fallback if not defined in object, but we matched the file)
-  const bgMap = {
-    elysium: 'linear-gradient(180deg,#0e0120 0%,#220840 60%,#080808 100%)',
-    alexa: 'linear-gradient(180deg,#0d0820 0%,#1a0a50 60%,#080808 100%)',
-    skyview: 'linear-gradient(180deg,#020810 0%,#0a2840 60%,#080808 100%)',
-    nomads: 'linear-gradient(180deg,#020c18 0%,#062840 60%,#080808 100%)',
-    bamboo: 'linear-gradient(180deg,#041204 0%,#0e2c0e 60%,#080808 100%)',
-    gps: 'linear-gradient(180deg,#160e02 0%,#362408 60%,#080808 100%)'
+  // Background cover map
+  const coverMap = {
+    elysium: 'assets/elysium-cover.jpg',
+    alexa: 'assets/alexa-cover.png',
+    skyview: 'assets/skyview-cover.png',
+    nomads: 'assets/nomads-cover.png',
+    bamboo: 'assets/bamboo-cover.png',
+    gps: 'assets/gps-cover.jpg'
   };
-  const bg = bgMap[id] || bgMap.elysium;
+  const coverImg = coverMap[id] || 'assets/elysium-cover.jpg';
   
   let tagsHtml = data.tags.map(t => `<span class="cs-tag">${t}</span>`).join('');
   
@@ -573,7 +633,8 @@ function openCase(id) {
   }
 
   const html = `
-    <div class="cs-hero" style="background:${bg};">
+    <div class="cs-hero" style="background-image: url('${coverImg}');">
+      <div class="cs-hero-wire"></div>
       <button class="cs-back" onclick="closeCase()">← Back to All Cases</button>
       <div class="cs-eye">${data.eye}</div>
       <div class="cs-title">${data.title.replace(' ', '<br>')}</div>
@@ -616,6 +677,70 @@ function scrollMedia(dir, event) {
   grid.scrollBy({ left: dir * 300, behavior: 'smooth' });
 }
 
+// Enable horizontal mousewheel scrolling and click-and-drag scrolling for premium horizontal scroll UX
+(function() {
+  let isDown = false;
+  let startX;
+  let scrollLeftVal;
+
+  document.addEventListener('mousedown', function(e) {
+    const grid = e.target.closest('.cs-media-grid');
+    if (!grid) return;
+    isDown = true;
+    grid.classList.add('active');
+    startX = e.pageX - grid.offsetLeft;
+    scrollLeftVal = grid.scrollLeft;
+    grid.style.scrollBehavior = 'auto'; // Disable smooth scroll while dragging
+  });
+
+  document.addEventListener('mouseleave', function() {
+    isDown = false;
+    const grids = document.querySelectorAll('.cs-media-grid');
+    grids.forEach(grid => {
+      grid.classList.remove('active');
+      grid.style.scrollBehavior = 'smooth';
+    });
+  });
+
+  document.addEventListener('mouseup', function() {
+    isDown = false;
+    const grids = document.querySelectorAll('.cs-media-grid');
+    grids.forEach(grid => {
+      grid.classList.remove('active');
+      grid.style.scrollBehavior = 'smooth';
+    });
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    if (!isDown) return;
+    const grid = e.target.closest('.cs-media-grid');
+    if (!grid) return;
+    e.preventDefault();
+    const x = e.pageX - grid.offsetLeft;
+    const walk = (x - startX) * 1.5; // multiplier for speed
+    grid.scrollLeft = scrollLeftVal - walk;
+  });
+
+  // Prevent default native browser image dragging inside the media grid
+  document.addEventListener('dragstart', function(e) {
+    if (e.target.closest('.cs-media-grid')) {
+      e.preventDefault();
+    }
+  });
+
+  // Enable mouse wheel horizontal scrolling when hovering over cs-media-grid
+  document.addEventListener('wheel', function(e) {
+    const grid = e.target.closest('.cs-media-grid');
+    if (!grid) return;
+    
+    // Check if the element actually has horizontal overflow
+    if (grid.scrollWidth > grid.clientWidth) {
+      e.preventDefault();
+      grid.scrollLeft += e.deltaY;
+    }
+  }, { passive: false });
+})();
+
 // ─── SERVICE OVERLAY LOGIC ───
 const serviceData = {
   performance: {
@@ -634,7 +759,12 @@ const serviceData = {
       { title: 'Meta & TikTok Conversion', desc: 'Scroll-stopping creative paired with ruthless machine-learning targeting to acquire customers at the lowest possible cost.' },
       { title: 'Direct Booking Funnels', desc: 'Bypass OTAs and middlemen. We build funnels that train your customers to buy directly from you.' }
     ],
-    pitchHtml: '<p class="svc-text">The internet is an auction, and most brands are bidding blindly. We operate differently. We use data to understand exactly what a customer is worth, and we build <strong>performance marketing engines</strong> designed to acquire them for less.</p><p class="svc-text">No vanity metrics. No excuses. Just a transparent, aggressive pursuit of ROI.</p>'
+    pitchHtml: '<p class="svc-text">The internet is an auction, and most brands are bidding blindly. We operate differently. We use data to understand exactly what a customer is worth, and we build <strong>performance marketing engines</strong> designed to acquire them for less.</p><p class="svc-text">No vanity metrics. No excuses. Just a transparent, aggressive pursuit of ROI.</p>',
+    works: [
+      { media: 'assets/elysium-cover.jpg', tag: 'Performance Funnel', title: 'Elysium Pattaya — Direct Bookings' },
+      { media: 'assets/showcase/ai-marketing.mp4', tag: 'Paid Acquisition', title: 'AI Lead Gen Engine' },
+      { media: 'assets/skyview-cover.png', tag: 'Paid Social', title: 'Skyview Bangkok — Premium Scaling' }
+    ]
   },
   social: {
     eye: '02 · Digital Identity',
@@ -652,7 +782,12 @@ const serviceData = {
       { title: 'Daily Execution', desc: 'We handle everything. Copywriting, hashtag strategy, posting schedules, and algorithm optimization.' },
       { title: 'Community Growth', desc: 'Active outbound engagement to steal market share and build a fiercely loyal community around your brand.' }
     ],
-    pitchHtml: '<p class="svc-text">In a world where attention is the only currency that matters, a mediocre social presence is brand suicide. We treat your social channels as <strong>premium editorial publications</strong>.</p><p class="svc-text">We don\'t just post; we curate. We dictate the narrative, engage with intent, and ensure that every pixel represents the highest echelon of your market.</p>'
+    pitchHtml: '<p class="svc-text">In a world where attention is the only currency that matters, a mediocre social presence is brand suicide. We treat your social channels as <strong>premium editorial publications</strong>.</p><p class="svc-text">We don\'t just post; we curate. We dictate the narrative, engage with intent, and ensure that every pixel represents the highest echelon of your market.</p>',
+    works: [
+      { media: 'assets/bamboo-cover.png', tag: 'Content & Curation', title: 'Bamboo Beach Club — Daily Social' },
+      { media: 'assets/alexa-cover.png', tag: 'Community Curation', title: 'Alexa Beach Club — 2.6M Reach' },
+      { media: 'assets/showcase/ai-social.mp4', tag: 'Content Automation', title: 'AI-Generated Social Feed' }
+    ]
   },
   content: {
     eye: '03 · Visual Domination',
@@ -670,7 +805,12 @@ const serviceData = {
       { title: 'Lifestyle & Editorial Photography', desc: 'High-end imagery that elevates your product or service into an aspirational lifestyle choice.' },
       { title: 'UGC & Authentic Experiences', desc: 'Raw, native-feeling content that builds trust by showing real people experiencing your brand.' }
     ],
-    pitchHtml: '<p class="svc-text">You can have the best product in the world, but if your content looks cheap, you are cheap. We operate a <strong>high-velocity production studio</strong> that bridges the gap between premium aesthetics and raw social performance.</p><p class="svc-text">We shoot to convert. Every frame, every transition, and every hook is reverse-engineered to hold attention and drive action.</p>'
+    pitchHtml: '<p class="svc-text">You can have the best product in the world, but if your content looks cheap, you are cheap. We operate a <strong>high-velocity production studio</strong> that bridges the gap between premium aesthetics and raw social performance.</p><p class="svc-text">We shoot to convert. Every frame, every transition, and every hook is reverse-engineered to hold attention and drive action.</p>',
+    works: [
+      { media: 'assets/reels/r1.mp4', tag: 'Short-form Video', title: 'Bamboo Krabi — Event Reels' },
+      { media: 'assets/reels/r2.mp4', tag: 'Cinematic Promo', title: 'Alexa Beach Club — Lifestyle Reel' },
+      { media: 'assets/reels/r3.mp4', tag: 'Social Shorts', title: 'Nomads Hostel — UGC Experience' }
+    ]
   },
   ai: {
     eye: '04 · The Future is Here',
@@ -688,7 +828,12 @@ const serviceData = {
       { title: 'Generative Product Photography', desc: 'Place your products in impossible, ultra-luxury environments that would cost hundreds of thousands to build physically.' },
       { title: 'Automated Content Scaling', desc: 'Generate a month\'s worth of high-end social content in a single afternoon.' }
     ],
-    pitchHtml: '<p class="svc-text">This is the unfair advantage. While your competitors are waiting weeks for a weather-delayed photoshoot, we are <strong>generating perfection in a vacuum.</strong></p><p class="svc-text">Our AI creative pipeline allows us to visualize concepts that are physically impossible or prohibitively expensive, giving your brand an aesthetic that punches far above its weight class.</p>'
+    pitchHtml: '<p class="svc-text">This is the unfair advantage. While your competitors are waiting weeks for a weather-delayed photoshoot, we are <strong>generating perfection in a vacuum.</strong></p><p class="svc-text">Our AI creative pipeline allows us to visualize concepts that are physically impossible or prohibitively expensive, giving your brand an aesthetic that punches far above its weight class.</p>',
+    works: [
+      { media: 'assets/showcase/2.mp4', tag: 'AI Fashion Model', title: 'Virtual Brand Ambassador' },
+      { media: 'assets/showcase/ai-fashion.mp4', tag: 'Generative Video', title: 'AI Luxury Runway Campaign' },
+      { media: 'assets/gps-cover.jpg', tag: 'Generative Photography', title: 'GPS Gems — AI Macro Content' }
+    ]
   },
   strategy: {
     eye: '05 · The Blueprint',
@@ -706,7 +851,12 @@ const serviceData = {
       { title: 'Narrative & Copywriting', desc: 'Developing a brand voice that is sharp, authoritative, and impossible to ignore.' },
       { title: 'Visual Identity Systems', desc: 'A cohesive design language that ensures absolute consistency from your website to your WhatsApp profile picture.' }
     ],
-    pitchHtml: '<p class="svc-text">A strong brand is the ultimate cheat code for customer acquisition. When they know who you are and what you stand for, the ads become cheaper and the conversions become easier.</p><p class="svc-text">We strip your business down to its studs and rebuild it as a <strong>category king</strong>. We find your unique angle and we amplify it until the rest of the market sounds like an echo.</p>'
+    pitchHtml: '<p class="svc-text">A strong brand is the ultimate cheat code for customer acquisition. When they know who you are and what you stand for, the ads become cheaper and the conversions become easier.</p><p class="svc-text">We strip your business down to its studs and rebuild it as a <strong>category king</strong>. We find your unique angle and we amplify it until the rest of the market sounds like an echo.</p>',
+    works: [
+      { media: 'assets/nomads-cover.png', tag: 'Brand Positioning', title: 'Nomads Hostel Asia — Category Design' },
+      { media: 'assets/reels/r4.mp4', tag: 'Brand Storytelling', title: 'Unsocials Global — Global Identity' },
+      { media: 'assets/gps-cover.jpg', tag: 'Content Blueprint', title: 'GPS Gems — Educational Pillar' }
+    ]
   }
 };
 
@@ -728,6 +878,19 @@ function openService(id) {
     </div>
   `).join('');
 
+  let mediaHtml = '';
+  if (id === 'performance') {
+    mediaHtml = `<img src="assets/elysium-cover.jpg" class="svc-exp-media" alt="Elysium Pattaya">`;
+  } else if (id === 'social') {
+    mediaHtml = `<img src="assets/bamboo-cover.png" class="svc-exp-media" alt="Bamboo Beach Club">`;
+  } else if (id === 'content') {
+    mediaHtml = `<video src="assets/reels/r2.mp4" autoplay loop muted playsinline class="svc-exp-media"></video>`;
+  } else if (id === 'ai') {
+    mediaHtml = `<video src="assets/showcase/2.mp4" autoplay loop muted playsinline class="svc-exp-media"></video>`;
+  } else if (id === 'strategy') {
+    mediaHtml = `<img src="assets/nomads-cover.png" class="svc-exp-media" alt="Nomads Hostel Asia">`;
+  }
+
   const html = `
     <div class="svc-hero" style="background:${data.bg};">
       <button class="cs-back" onclick="closeService()">← Back to Services</button>
@@ -747,6 +910,11 @@ function openService(id) {
           </div>
         </div>
         <div class="svc-content-right">
+          <div class="svc-label">Original Content</div>
+          <div class="svc-exp-media-w" style="margin-bottom:40px;">
+            ${mediaHtml}
+          </div>
+
           <div class="svc-label">The Output</div>
           <div class="svc-metrics">
             ${metricsHtml}
@@ -765,3 +933,98 @@ function closeService() {
   document.getElementById('service-overlay').classList.remove('open');
   document.body.style.overflow = '';
 }
+
+// ─── ODOMETER STAT ANIMATION ───
+(function(){
+  var statEls = document.querySelectorAll('.u-sn');
+  if(!statEls.length) return;
+
+  function buildOdometer(el) {
+    // Guard: already animated
+    if(el.getAttribute('data-animated')) return;
+    el.setAttribute('data-animated','1');
+
+    var text = el.textContent.trim();
+    el.innerHTML = '';
+    el.style.display = 'inline-flex';
+    el.style.alignItems = 'center';
+    el.style.lineHeight = '1';
+
+    var reels = [];
+
+    text.split('').forEach(function(ch, idx) {
+      if(/[0-9]/.test(ch)) {
+        var target = parseInt(ch, 10);
+
+        // Clip window — hides everything except one row
+        var clip = document.createElement('span');
+        clip.style.cssText = [
+          'display:inline-block',
+          'overflow:hidden',
+          'height:1.05em',
+          'vertical-align:bottom'
+        ].join(';');
+
+        // Reel: digits 0–9 stacked
+        var reel = document.createElement('span');
+        reel.style.cssText = 'display:flex;flex-direction:column;will-change:transform;';
+
+        for(var d = 0; d <= 9; d++){
+          var dEl = document.createElement('span');
+          dEl.textContent = d;
+          dEl.style.cssText = 'display:block;height:1.05em;line-height:1.05;';
+          reel.appendChild(dEl);
+        }
+
+        clip.appendChild(reel);
+        el.appendChild(clip);
+        reels.push({ reel: reel, target: target, colIdx: idx });
+      } else {
+        // Non-numeric character (suffix: +, M, space, Y, r, s…)
+        var sfx = document.createElement('span');
+        sfx.textContent = ch;
+        sfx.style.display = 'inline-block';
+        // Slight fade-in for suffix
+        sfx.style.opacity = '0';
+        sfx.style.transition = 'opacity 0.4s ease 0.8s';
+        el.appendChild(sfx);
+        // Trigger suffix fade
+        requestAnimationFrame(function(s){ return function(){ setTimeout(function(){ s.style.opacity='1'; }, 50); }; }(sfx));
+      }
+    });
+
+    // Roll each digit reel into place
+    reels.forEach(function(item){
+      var yPct = -(item.target / 10) * 100; // percentage of total reel height
+      var delay = 0.1 + item.colIdx * 0.07;
+
+      if(typeof gsap !== 'undefined'){
+        gsap.fromTo(item.reel,
+          { y: '0%' },
+          {
+            y: yPct + '%',
+            duration: 1.1,
+            delay: delay,
+            ease: 'power3.out'
+          }
+        );
+      } else {
+        setTimeout(function(r, y){
+          r.style.transition = 'transform 1.1s cubic-bezier(0.16,1,0.3,1)';
+          r.style.transform = 'translateY(' + y + '%)';
+        }, delay * 1000, item.reel, yPct);
+      }
+    });
+  }
+
+  // Observe and trigger once on scroll into view
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        buildOdometer(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  statEls.forEach(function(el){ observer.observe(el); });
+})();

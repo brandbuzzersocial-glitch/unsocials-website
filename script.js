@@ -1,7 +1,18 @@
 // ─── CURSOR ───
-var cur=document.getElementById('cur'),cur2=document.getElementById('cur2'),mx=0,my=0,cx=0,cy=0;
-document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
-function animCur(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cur2.style.left=cx+'px';cur2.style.top=cy+'px';requestAnimationFrame(animCur)}animCur();
+var cur=document.getElementById('cur'),cur2=document.getElementById('cur2'),mx=0,my=0,cx=0,cy=0,facingRight=false;
+document.addEventListener('mousemove',function(e){
+  if(e.clientX > mx + 2) facingRight = true;
+  else if(e.clientX < mx - 2) facingRight = false;
+  mx=e.clientX; my=e.clientY;
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
+});
+function animCur(){
+  cx+=(mx-cx)*.12; cy+=(my-cy)*.12;
+  cur2.style.left=cx+'px'; cur2.style.top=cy+'px';
+  cur2.style.transform = 'translate(-50%, -50%) scaleX(' + (facingRight ? '-1' : '1') + ')';
+  requestAnimationFrame(animCur);
+}
+animCur();
 document.querySelectorAll('a,button,.cc,.si,.sb,.lang-btn').forEach(function(el){
   el.addEventListener('mouseenter',function(){document.body.classList.add('hov')});
   el.addEventListener('mouseleave',function(){document.body.classList.remove('hov')});

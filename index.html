@@ -733,124 +733,330 @@
 <!-- DYNAMIC BENTO CASE STUDIES -->
 <section id="work">
   <div class="wr-container">
-    <!-- LEFT SIDE -->
+    
+    <!-- LEFT SIDE COLUMN -->
     <div class="wr-left rv">
       <div class="wr-eyebrow" data-th="ผลงานของเรา">OUR WORK</div>
-      <h2 class="wr-h" data-th="หกเรื่องราว<br>ผลลัพธ์<br>ที่แท้จริง<br><span class='text-ac'>แน่นอน.</span>">SIX<br>STORIES.<br>REAL<br><span class="text-ac">IMPACT.</span></h2>
-      <p class="wr-sub" data-th="เราร่วมมือกับแบรนด์ที่กล้า<br>เพื่อสร้างผลลัพธ์ที่จับต้องได้<br>นี่คือสิ่งที่เราทำ">We partner with bold brands<br>to create chaos that converts.<br>Here's how we did it.</p>
-      <a href="work.html" class="wr-btn" data-th="ดูผลงานทั้งหมด ↗">VIEW ALL WORK ↗</a>
       
-      <!-- Decorative element -->
-      <div class="wr-deco">
-        <svg viewBox="0 0 100 100" class="wr-deco-text">
-          <path id="curve" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="transparent"/>
-          <text>
-            <textPath href="#curve" startOffset="0" data-th="ผลลัพธ์ที่แท้จริง • ผลงานที่โดดเด่น • ">RESULTS THAT SPEAK • RESULTS THAT SPEAK • </textPath>
-          </text>
-        </svg>
-        <div class="wr-globe">
-          <!-- Simple CSS globe -->
-          <div class="wrg-line wrg-hor"></div>
-          <div class="wrg-line wrg-vert"></div>
-          <div class="wrg-line wrg-ell1"></div>
-          <div class="wrg-line wrg-ell2"></div>
+      <h2 class="wr-h" data-th="ข้อพิสูจน์<br>ไม่ใช่<br>คำสัญญา<span class='dot'>.</span>">PROOF,<br>NOT<br>PROMISES<span class="dot">.</span>
+        <!-- Rotating SVG Badge -->
+        <div class="wr-badge-wrapper">
+          <svg viewBox="0 0 100 100" class="wr-badge-svg">
+            <path id="badge-path" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent"/>
+            <text><textPath href="#badge-path" startOffset="0" data-th="ผลลัพธ์ที่พูดแทนตัวเอง • ">RESULTS THAT SPEAK • </textPath></text>
+          </svg>
+          <div class="wr-badge-globe"></div>
+        </div>
+      </h2>
+      
+      <p class="wr-sub-title" data-th="การเติบโตที่แท้จริง บันทึกไว้แล้ว.">Real growth. Documented.</p>
+      <p class="wr-sub-desc" data-th="เราไม่ได้แค่รันแคมเปญ แต่เราสร้างระบบสร้างรายได้">We don't just run campaigns. We build revenue systems.</p>
+      
+      <!-- Social Proof Stack -->
+      <div class="wr-social-row">
+        <div class="wr-avatars">
+          <img src="assets/ava_alex/03 (5).png" alt="Client 1" class="wr-avatar">
+          <img src="assets/ava_alex/04 (5).png" alt="Client 2" class="wr-avatar">
+          <img src="assets/ava_alex/01 (4).png" alt="Client 3" class="wr-avatar">
+        </div>
+        <div class="wr-social-info">
+          <div class="wr-stars">★★★★★</div>
+          <div class="wr-social-text" data-th="ได้รับความไว้วางใจจาก <strong>แบรนด์กว่า 40+</strong> แบรนด์ใน 8 ประเทศ">Trusted by <strong>40+ brands</strong> across 8 countries.</div>
+        </div>
+        <div class="wr-stats-block">
+          <div class="wr-stats-val" data-th="₹50Cr+">₹50Cr+</div>
+          <div class="wr-stats-lbl" data-th="สร้างรายได้ให้ลูกค้า">Revenue Generated</div>
         </div>
       </div>
+      
+      <!-- Growth Plan CTA -->
+      <div class="wr-plan-card">
+        <div class="wr-plan-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M22 12h-4M4 12H0M12 2v4M12 18v4M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path></svg>
+        </div>
+        <div class="wr-plan-text">
+          <div class="wr-plan-h" data-th="ต้องการผลลัพธ์แบบนี้สำหรับแบรนด์ของคุณ?">Want similar results?</div>
+          <div class="wr-plan-p" data-th="มาสร้างกลไกการเติบโตของคุณกันเถอะ">Let's build your growth engine.</div>
+        </div>
+        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20get%20my%20growth%20plan." target="_blank" class="wr-plan-btn" data-th="รับแผนเติบโต ↗">Get My Growth Plan ↗</a>
+      </div>
     </div>
-
-    <!-- RIGHT SIDE GRID -->
+    
+    <!-- RIGHT SIDE GRID & FILTERS -->
     <div class="wr-right">
+      
+      <!-- Top Outcome Filter -->
+      <div class="wr-filters-bar">
+        <span class="wr-filters-label" data-th="กรองตามผลลัพธ์">Filter By Outcome</span>
+        <div class="wr-filters">
+          <button class="wr-filter-btn active" data-filter="all" data-th="ผลลัพธ์ทั้งหมด">All Outcomes</button>
+          <button class="wr-filter-btn" data-filter="revenue" data-th="การเติบโตของรายได้">Revenue Growth</button>
+          <button class="wr-filter-btn" data-filter="lead" data-th="การสร้างลูกค้ามุ่งหวัง">Lead Generation</button>
+          <button class="wr-filter-btn" data-filter="cac" data-th="การลดต้นทุนหาลูกค้า">CAC Reduction</button>
+          <button class="wr-filter-btn" data-filter="branding" data-th="การสร้างแบรนด์">Branding</button>
+        </div>
+      </div>
+      
+      <!-- Bento Grid Cards -->
       <div class="wr-grid rv" style="transition-delay: 0.2s">
-        <!-- 01 ELYSIUM -->
-        <div class="wr-card" style="transform: rotate(-2deg) translateY(10px);" onclick="openCase('elysium')">
+        
+        <!-- CASE 1 (FEATURED CASE) -->
+        <div class="wr-card featured" data-outcome="revenue branding" onclick="openCase('elysium')">
           <div class="wrc-bg" style="background-image: url('assets/cases/elysium/img1.png');"></div>
           <div class="wrc-ov"></div>
           <div class="wrc-top">
-            <div class="wrc-num">01</div>
-            <div class="wrc-dot"></div>
+            <span class="wrc-featured-badge" data-th="เคสเด่น">Featured Case</span>
+            <span class="wrc-num">01</span>
           </div>
-          <div class="wrc-tag" data-th="การบริการ">HOSPITALITY</div>
+          
+          <div class="wrc-stat-highlight">
+            <span class="wrc-stat-val" data-th="+₹10L">+₹10L</span>
+            <span class="wrc-stat-lbl" data-th="ใน 60 วัน">In 60 Days</span>
+          </div>
+          
           <h3 class="wrc-title" data-th="อิลิเซียม พัทยา">ELYSIUM PATTAYA</h3>
-          <p class="wrc-desc" data-th="จากยอดขายศูนย์สู่ 1,000,000 บาท ใน 2 เดือน กลยุทธ์การจองตรงที่กำจัดค่าคอมมิชชั่น OTA">Zero website revenue to 1,000,000 THB in 2 months. Direct booking strategy that eliminated OTA commission.</p>
-          <div class="wrc-cta" data-th="ดูเคส ↗">VIEW CASE ↗</div>
+          <div class="wrc-meta-row">
+            <span data-th="การบริการ">Hospitality</span>
+            <span>•</span>
+            <span data-th="ประเทศไทย">Thailand</span>
+          </div>
+          <p class="wrc-desc" data-th="ลดการพึ่งพา OTA และสร้างระบบจองตรงประสิทธิภาพสูงเพื่อเพิ่มอัตรากำไรสูงสุด">Eliminated OTA dependence and built a high-converting direct booking engine.</p>
+          
+          <!-- Floating Widget -->
+          <div class="wrc-widget">
+            <span class="wrc-widget-label" data-th="ผลลัพธ์หลัก">Key Result</span>
+            <div class="wrc-widget-row">
+              <span class="wrc-widget-val" data-th="+286%">+286%</span>
+              <span class="wrc-widget-lbl" data-th="ยอดจองตรง">Direct Bookings</span>
+            </div>
+            <div class="wrc-widget-row">
+              <span class="wrc-widget-val" data-th="-62%">-62%</span>
+              <span class="wrc-widget-lbl" data-th="ค่าคอมมิชชั่น OTA">OTA Commissions</span>
+            </div>
+            <div class="wrc-widget-row">
+              <span class="wrc-widget-val" data-th="3.4x">3.4x</span>
+              <span class="wrc-widget-lbl" data-th="บรรลุเป้าหมาย ROAS">ROAS Achieved</span>
+            </div>
+            <!-- Glow chart SVG -->
+            <div class="wrc-widget-chart">
+              <svg viewBox="0 0 60 30">
+                <path d="M5 25 Q15 22, 25 15 T45 5 T55 3" />
+              </svg>
+            </div>
+          </div>
+          
+          <div class="wrc-bottom-row">
+            <div class="wrc-platforms">
+              <span class="wrc-platform-badge" data-th="Meta โฆษณา">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0064e0" stroke-width="2.5" class="wrc-picon"><path d="M8 9c-2.2 0-4 1.8-4 4s1.8 4 4 4c1.8 0 3-1.2 4-3 1 1.8 2.2 3 4 3 2.2 0 4-1.8 4-4s-1.8-4-4-4c-1.8 0-3 1.2-4 3-1-1.8-2.2-3-4-3z"/></svg>
+                Meta Ads
+              </span>
+              <span class="wrc-platform-badge" data-th="Google โฆษณา">
+                <svg viewBox="0 0 24 24" class="wrc-picon"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 1.56-1.56 2.95-3.24 3.5v2.9h5.18c3.07-2.83 4.83-7 4.83-11.93 0-.4-.03-.8-.11-1.2z" fill="#4285F4"/><path d="M12.18 20.5c2.75 0 5.07-.9 6.75-2.47l-5.18-2.9c-.77.52-1.78.85-2.82.85-2.18 0-4.03-1.48-4.69-3.48H.92v3c1.68 3.32 5.12 5.5 9.07 5.5c.73 0 1.46-.08 2.19-.5z" fill="#34A853"/><path d="M7.49 12.5a5.55 5.55 0 0 1 0-3.52V5.98H.92a10 10 0 0 0 0 9.52l6.57-3z" fill="#FBBC05"/><path d="M12.18 3.5c1.49 0 2.83.51 3.89 1.52l2.9-2.9C17.22.9 14.9 0 12.18 0 8.23 0 4.79 2.18 3.11 5.5l6.57 3c.66-2 2.51-3.48 4.69-3.48z" fill="#EA4335"/></svg>
+                Google Ads
+              </span>
+              <span class="wrc-platform-badge" data-th="WhatsApp ระบบอัตโนมัติ">
+                <svg viewBox="0 0 24 24" fill="#25D366" class="wrc-picon"><path d="M12.008.01c-6.611 0-11.948 5.338-11.951 11.956 0 2.097.546 4.142 1.587 5.946l-1.687 6.163 6.3 1.653c1.751-.953 3.719-1.454 5.724-1.455h.005c6.613 0 11.95-5.34 11.953-11.997A11.92 11.92 0 0 0 12.008.01zm6.969 16.924c-.269.756-1.562 1.409-1.839 1.499-.277.09-.548.134-.853-.134a9.6 9.6 0 0 1-2.167-1.338c-2.705-1.167-4.472-3.892-4.607-4.072-.135-.18-.966-.461-.966-2.247 0-1.326.674-1.978.943-2.247.27-.27.563-.337.719-.337h.517c.18 0 .438-.01.607.01.169.009.389-.062.607.461.223.54.83 2 1.053 2.5 0 0-.225.269-.404.471-.18.202-.314.223-.583.067-.27-.134-1.138-.419-2.167-1.338-.802-.715-1.343-1.6-1.5-1.869-.157-.269-.017-.415.118-.55.122-.121.269-.314.404-.471.134-.157.18-.269.269-.449.09-.18.045-.337-.022-.472-.067-.134-.607-1.46-.83-2-.18-.45-.36-.45-.517-.45h-.517c-.247 0-.696.09-.943.337s-.943.921-.943 2.247c0 1.326.966 2.607 1.101 2.787.135.18 1.902 2.905 4.607 4.072 2.705 1.167 3.324 1.258 4.022 1.169.464-.069 1.543-.627 1.768-1.257.225-.63.225-1.169.157-1.28-.067-.113-.247-.18-.516-.314z"/></svg>
+                WhatsApp Automation
+              </span>
+            </div>
+            <button class="wrc-cta" data-th="ดูข้อมูลเจาะลึก ↗">View Breakdown ↗</button>
+          </div>
         </div>
-
-        <!-- 02 ALEXA -->
-        <div class="wr-card" onclick="openCase('alexa')">
+        
+        <!-- CASE 2 -->
+        <div class="wr-card" data-outcome="lead" onclick="openCase('alexa')">
           <div class="wrc-bg" style="background-image: url('assets/cases/alexa/img1.jpg');"></div>
           <div class="wrc-ov"></div>
           <div class="wrc-top">
-            <div class="wrc-num">02</div>
-            <div class="wrc-dot"></div>
+            <span class="wrc-label" data-th="ไนต์ไลฟ์">Nightlife</span>
+            <span class="wrc-num">02</span>
           </div>
-          <div class="wrc-tag" data-th="ไนต์ไลฟ์">NIGHTLIFE</div>
+          
+          <div class="wrc-stat-highlight">
+            <span class="wrc-stat-val" data-th="3.2x">3.2x</span>
+            <span class="wrc-stat-lbl" data-th="ROAS ใน 45 วัน">ROAS in 45 Days</span>
+          </div>
+          
           <h3 class="wrc-title" data-th="อเล็กซ่า บีชคลับ">ALEXA BEACH CLUB</h3>
-          <p class="wrc-desc" data-th="วางตำแหน่งเป็นบีชคลับอันดับ 1 ในพัทยา แคมเปญการจองผ่าน WhatsApp ที่มียอดจองสูงที่สุดในเมือง">Positioned as Pattaya's #1 beach club. WhatsApp reservation campaigns that turned Alexa into the city's most-booked venue.</p>
-          <div class="wrc-cta" data-th="ดูเคส ↗">VIEW CASE ↗</div>
+          <div class="wrc-meta-row">
+            <span data-th="ไนต์ไลฟ์">Nightlife</span>
+            <span>•</span>
+            <span data-th="พัทยา">Pattaya</span>
+          </div>
+          <p class="wrc-desc" data-th="เพิ่มยอดจองโต๊ะด้วยแคมเปญ Click-to-Chat และระบบจองอัตโนมัติผ่าน WhatsApp">Scaled table reservations with a full-funnel strategy and WhatsApp automation.</p>
+          
+          <div class="wrc-bottom-row">
+            <div class="wrc-platforms">
+              <span class="wrc-platform-badge only-icons" title="Meta Ads">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0064e0" stroke-width="2.5" class="wrc-picon"><path d="M8 9c-2.2 0-4 1.8-4 4s1.8 4 4 4c1.8 0 3-1.2 4-3 1 1.8 2.2 3 4 3 2.2 0 4-1.8 4-4s-1.8-4-4-4c-1.8 0-3 1.2-4 3-1-1.8-2.2-3-4-3z"/></svg>
+              </span>
+              <span class="wrc-platform-badge only-icons" title="Google Ads">
+                <svg viewBox="0 0 24 24" class="wrc-picon"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 1.56-1.56 2.95-3.24 3.5v2.9h5.18c3.07-2.83 4.83-7 4.83-11.93 0-.4-.03-.8-.11-1.2z" fill="#4285F4"/><path d="M12.18 20.5c2.75 0 5.07-.9 6.75-2.47l-5.18-2.9c-.77.52-1.78.85-2.82.85-2.18 0-4.03-1.48-4.69-3.48H.92v3c1.68 3.32 5.12 5.5 9.07 5.5c.73 0 1.46-.08 2.19-.5z" fill="#34A853"/><path d="M7.49 12.5a5.55 5.55 0 0 1 0-3.52V5.98H.92a10 10 0 0 0 0 9.52l6.57-3z" fill="#FBBC05"/><path d="M12.18 3.5c1.49 0 2.83.51 3.89 1.52l2.9-2.9C17.22.9 14.9 0 12.18 0 8.23 0 4.79 2.18 3.11 5.5l6.57 3c.66-2 2.51-3.48 4.69-3.48z" fill="#EA4335"/></svg>
+              </span>
+              <span class="wrc-platform-badge only-icons" title="WhatsApp Automation">
+                <svg viewBox="0 0 24 24" fill="#25D366" class="wrc-picon"><path d="M12.008.01c-6.611 0-11.948 5.338-11.951 11.956 0 2.097.546 4.142 1.587 5.946l-1.687 6.163 6.3 1.653c1.751-.953 3.719-1.454 5.724-1.455h.005c6.613 0 11.95-5.34 11.953-11.997A11.92 11.92 0 0 0 12.008.01zm6.969 16.924c-.269.756-1.562 1.409-1.839 1.499-.277.09-.548.134-.853-.134a9.6 9.6 0 0 1-2.167-1.338c-2.705-1.167-4.472-3.892-4.607-4.072-.135-.18-.966-.461-.966-2.247 0-1.326.674-1.978.943-2.247.27-.27.563-.337.719-.337h.517c.18 0 .438-.01.607.01.169.009.389-.062.607.461.223.54.83 2 1.053 2.5 0 0-.225.269-.404.471-.18.202-.314.223-.583.067-.27-.134-1.138-.419-2.167-1.338-.802-.715-1.343-1.6-1.5-1.869-.157-.269-.017-.415.118-.55.122-.121.269-.314.404-.471.134-.157.18-.269.269-.449.09-.18.045-.337-.022-.472-.067-.134-.607-1.46-.83-2-.18-.45-.36-.45-.517-.45h-.517c-.247 0-.696.09-.943.337s-.943.921-.943 2.247c0 1.326.966 2.607 1.101 2.787.135.18 1.902 2.905 4.607 4.072 2.705 1.167 3.324 1.258 4.022 1.169.464-.069 1.543-.627 1.768-1.257.225-.63.225-1.169.157-1.28-.067-.113-.247-.18-.516-.314z"/></svg>
+              </span>
+            </div>
+            <button class="wrc-cta" data-th="ดูเคส ↗">View Case ↗</button>
+          </div>
         </div>
-
-        <!-- 03 SKYVIEW -->
-        <div class="wr-card" style="transform: rotate(2deg) translateY(20px);" onclick="openCase('skyview')">
-          <div class="wrc-bg"></div>
+        
+        <!-- CASE 3 -->
+        <div class="wr-card" data-outcome="cac" onclick="openCase('skyview')">
+          <div class="wrc-bg" style="background-image: url('assets/cases/skyview-cover.png');"></div>
           <div class="wrc-ov"></div>
           <div class="wrc-top">
-            <div class="wrc-num">03</div>
-            <div class="wrc-dot"></div>
+            <span class="wrc-label" data-th="การบริการ">Hospitality</span>
+            <span class="wrc-num">03</span>
           </div>
-          <div class="wrc-tag" data-th="การบริการ">HOSPITALITY</div>
+          
+          <div class="wrc-stat-highlight">
+            <span class="wrc-stat-val" data-th="70%">70%</span>
+            <span class="wrc-stat-lbl" data-th="ลดค่าใช้จ่ายหาลูกค้า">Drop in CAC</span>
+          </div>
+          
           <h3 class="wrc-title" data-th="สกายวิว กรุงเทพฯ">HOTEL SKYVIEW</h3>
-          <p class="wrc-desc" data-th="เปลี่ยนโฆษณาเว็บไซต์ราคาแพงเป็นแคมเปญคลิกเพื่อแชทผ่าน WhatsApp ต้นทุนลดลงเหลือ 50 บาท">Replaced expensive website conversion ads with WhatsApp Click-to-Chat campaigns. Cost per lead dropped to 50 THB.</p>
-          <div class="wrc-cta" data-th="ดูเคส ↗">VIEW CASE ↗</div>
+          <div class="wrc-meta-row">
+            <span data-th="การบริการ">Hospitality</span>
+            <span>•</span>
+            <span data-th="ประเทศไทย">Thailand</span>
+          </div>
+          <p class="wrc-desc" data-th="แคมเปญเจาะจงเป้าหมายเพื่อลดต้นทุนการหาลูกค้าและเพิ่ม ROIs สูงสุด">Conversion-focused campaigns that reduced CAC and increased ROIs.</p>
+          
+          <div class="wrc-bottom-row">
+            <div class="wrc-platforms">
+              <span class="wrc-platform-badge only-icons" title="Meta Ads">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0064e0" stroke-width="2.5" class="wrc-picon"><path d="M8 9c-2.2 0-4 1.8-4 4s1.8 4 4 4c1.8 0 3-1.2 4-3 1 1.8 2.2 3 4 3 2.2 0 4-1.8 4-4s-1.8-4-4-4c-1.8 0-3 1.2-4 3-1-1.8-2.2-3-4-3z"/></svg>
+              </span>
+              <span class="wrc-platform-badge only-icons" title="Google Ads">
+                <svg viewBox="0 0 24 24" class="wrc-picon"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 1.56-1.56 2.95-3.24 3.5v2.9h5.18c3.07-2.83 4.83-7 4.83-11.93 0-.4-.03-.8-.11-1.2z" fill="#4285F4"/><path d="M12.18 20.5c2.75 0 5.07-.9 6.75-2.47l-5.18-2.9c-.77.52-1.78.85-2.82.85-2.18 0-4.03-1.48-4.69-3.48H.92v3c1.68 3.32 5.12 5.5 9.07 5.5c.73 0 1.46-.08 2.19-.5z" fill="#34A853"/><path d="M7.49 12.5a5.55 5.55 0 0 1 0-3.52V5.98H.92a10 10 0 0 0 0 9.52l6.57-3z" fill="#FBBC05"/><path d="M12.18 3.5c1.49 0 2.83.51 3.89 1.52l2.9-2.9C17.22.9 14.9 0 12.18 0 8.23 0 4.79 2.18 3.11 5.5l6.57 3c.66-2 2.51-3.48 4.69-3.48z" fill="#EA4335"/></svg>
+              </span>
+              <span class="wrc-platform-badge only-icons" title="WhatsApp Automation">
+                <svg viewBox="0 0 24 24" fill="#25D366" class="wrc-picon"><path d="M12.008.01c-6.611 0-11.948 5.338-11.951 11.956 0 2.097.546 4.142 1.587 5.946l-1.687 6.163 6.3 1.653c1.751-.953 3.719-1.454 5.724-1.455h.005c6.613 0 11.95-5.34 11.953-11.997A11.92 11.92 0 0 0 12.008.01zm6.969 16.924c-.269.756-1.562 1.409-1.839 1.499-.277.09-.548.134-.853-.134a9.6 9.6 0 0 1-2.167-1.338c-2.705-1.167-4.472-3.892-4.607-4.072-.135-.18-.966-.461-.966-2.247 0-1.326.674-1.978.943-2.247.27-.27.563-.337.719-.337h.517c.18 0 .438-.01.607.01.169.009.389-.062.607.461.223.54.83 2 1.053 2.5 0 0-.225.269-.404.471-.18.202-.314.223-.583.067-.27-.134-1.138-.419-2.167-1.338-.802-.715-1.343-1.6-1.5-1.869-.157-.269-.017-.415.118-.55.122-.121.269-.314.404-.471.134-.157.18-.269.269-.449.09-.18.045-.337-.022-.472-.067-.134-.607-1.46-.83-2-.18-.45-.36-.45-.517-.45h-.517c-.247 0-.696.09-.943.337s-.943.921-.943 2.247c0 1.326.966 2.607 1.101 2.787.135.18 1.902 2.905 4.607 4.072 2.705 1.167 3.324 1.258 4.022 1.169.464-.069 1.543-.627 1.768-1.257.225-.63.225-1.169.157-1.28-.067-.113-.247-.18-.516-.314z"/></svg>
+              </span>
+            </div>
+            <button class="wrc-cta" data-th="ดูเคส ↗">View Case ↗</button>
+          </div>
         </div>
-
-        <!-- 04 NOMADS -->
-        <div class="wr-card" onclick="openCase('nomads')">
+        
+        <!-- CASE 4 -->
+        <div class="wr-card" data-outcome="revenue branding" onclick="openCase('nomads')">
           <div class="wrc-bg" style="background-image: url('assets/cases/nomads/img1.png');"></div>
           <div class="wrc-ov"></div>
           <div class="wrc-top">
-            <div class="wrc-num">04</div>
-            <div class="wrc-dot"></div>
+            <span class="wrc-label" data-th="การบริการ">Hospitality</span>
+            <span class="wrc-num">04</span>
           </div>
-          <div class="wrc-tag" data-th="การบริการ">HOSPITALITY</div>
+          
+          <div class="wrc-stat-highlight">
+            <span class="wrc-stat-val" data-th="+158%">+158%</span>
+            <span class="wrc-stat-lbl" data-th="เติบโตของรายได้">Revenue Growth</span>
+          </div>
+          
           <h3 class="wrc-title" data-th="โนแมดส์ โฮสเทล">NOMADS HOSTEL</h3>
-          <p class="wrc-desc" data-th="ได้รับรางวัลโฮสเทลที่ดีที่สุดในเอเชียจาก Hostelworld ผู้ติดต่อหลั่งไหลผ่านอินสตาแกรม">Won Best Hostel in Asia by Hostelworld. Organic leads poured through Instagram via authentic UGC strategy.</p>
-          <div class="wrc-cta" data-th="ดูเคส ↗">VIEW CASE ↗</div>
+          <div class="wrc-meta-row">
+            <span data-th="การบริการ">Hospitality</span>
+            <span>•</span>
+            <span data-th="เอเชีย">Asia</span>
+          </div>
+          <p class="wrc-desc" data-th="การตลาดเชิงประสิทธิภาพและ UGC คอนเทนต์ที่สร้างยอดจองอัตโนมัติ">Performance marketing + UGC content that drove bookings on autopilot.</p>
+          
+          <div class="wrc-bottom-row">
+            <div class="wrc-platforms">
+              <span class="wrc-platform-badge only-icons" title="Meta Ads">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0064e0" stroke-width="2.5" class="wrc-picon"><path d="M8 9c-2.2 0-4 1.8-4 4s1.8 4 4 4c1.8 0 3-1.2 4-3 1 1.8 2.2 3 4 3 2.2 0 4-1.8 4-4s-1.8-4-4-4c-1.8 0-3 1.2-4 3-1-1.8-2.2-3-4-3z"/></svg>
+              </span>
+              <span class="wrc-platform-badge only-icons" title="Google Ads">
+                <svg viewBox="0 0 24 24" class="wrc-picon"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 1.56-1.56 2.95-3.24 3.5v2.9h5.18c3.07-2.83 4.83-7 4.83-11.93 0-.4-.03-.8-.11-1.2z" fill="#4285F4"/><path d="M12.18 20.5c2.75 0 5.07-.9 6.75-2.47l-5.18-2.9c-.77.52-1.78.85-2.82.85-2.18 0-4.03-1.48-4.69-3.48H.92v3c1.68 3.32 5.12 5.5 9.07 5.5c.73 0 1.46-.08 2.19-.5z" fill="#34A853"/><path d="M7.49 12.5a5.55 5.55 0 0 1 0-3.52V5.98H.92a10 10 0 0 0 0 9.52l6.57-3z" fill="#FBBC05"/><path d="M12.18 3.5c1.49 0 2.83.51 3.89 1.52l2.9-2.9C17.22.9 14.9 0 12.18 0 8.23 0 4.79 2.18 3.11 5.5l6.57 3c.66-2 2.51-3.48 4.69-3.48z" fill="#EA4335"/></svg>
+              </span>
+              <span class="wrc-platform-badge only-icons" title="WhatsApp Automation">
+                <svg viewBox="0 0 24 24" fill="#25D366" class="wrc-picon"><path d="M12.008.01c-6.611 0-11.948 5.338-11.951 11.956 0 2.097.546 4.142 1.587 5.946l-1.687 6.163 6.3 1.653c1.751-.953 3.719-1.454 5.724-1.455h.005c6.613 0 11.95-5.34 11.953-11.997A11.92 11.92 0 0 0 12.008.01zm6.969 16.924c-.269.756-1.562 1.409-1.839 1.499-.277.09-.548.134-.853-.134a9.6 9.6 0 0 1-2.167-1.338c-2.705-1.167-4.472-3.892-4.607-4.072-.135-.18-.966-.461-.966-2.247 0-1.326.674-1.978.943-2.247.27-.27.563-.337.719-.337h.517c.18 0 .438-.01.607.01.169.009.389-.062.607.461.223.54.83 2 1.053 2.5 0 0-.225.269-.404.471-.18.202-.314.223-.583.067-.27-.134-1.138-.419-2.167-1.338-.802-.715-1.343-1.6-1.5-1.869-.157-.269-.017-.415.118-.55.122-.121.269-.314.404-.471.134-.157.18-.269.269-.449.09-.18.045-.337-.022-.472-.067-.134-.607-1.46-.83-2-.18-.45-.36-.45-.517-.45h-.517c-.247 0-.696.09-.943.337s-.943.921-.943 2.247c0 1.326.966 2.607 1.101 2.787.135.18 1.902 2.905 4.607 4.072 2.705 1.167 3.324 1.258 4.022 1.169.464-.069 1.543-.627 1.768-1.257.225-.63.225-1.169.157-1.28-.067-.113-.247-.18-.516-.314z"/></svg>
+              </span>
+            </div>
+            <button class="wrc-cta" data-th="ดูเคส ↗">View Case ↗</button>
+          </div>
         </div>
-
-        <!-- 05 BAMBOO -->
-        <div class="wr-card" style="transform: translateY(-20px);" onclick="openCase('bamboo')">
+        
+        <!-- CASE 5 -->
+        <div class="wr-card" data-outcome="lead" onclick="openCase('bamboo')">
           <div class="wrc-bg" style="background-image: url('assets/cases/bamboo/img1.png');"></div>
           <div class="wrc-ov"></div>
           <div class="wrc-top">
-            <div class="wrc-num">05</div>
-            <div class="wrc-dot"></div>
+            <span class="wrc-label" data-th="ไนต์ไลฟ์">Nightlife</span>
+            <span class="wrc-num">05</span>
           </div>
-          <div class="wrc-tag" data-th="ไนต์ไลฟ์">NIGHTLIFE</div>
+          
+          <div class="wrc-stat-highlight">
+            <span class="wrc-stat-val" data-th="2.7x">2.7x</span>
+            <span class="wrc-stat-lbl" data-th="ลูกค้ามุ่งหวังเพิ่ม">More Leads</span>
+          </div>
+          
           <h3 class="wrc-title" data-th="แบมบู บีชคลับ">BAMBOO BEACH CLUB</h3>
-          <p class="wrc-desc" data-th="เนื้อหาปาร์ตี้พลังงานสูงและการโพสต์รายวัน สร้างเรื่องราวที่ดึงดูดผู้เข้าชมในกระบี่">High-energy party reels, AI conceptual graphics, and daily posting rhythm. Built the narrative in Krabi.</p>
-          <div class="wrc-cta" data-th="ดูเคส ↗">VIEW CASE ↗</div>
-        </div>
-
-        <!-- 06 GPS -->
-        <div class="wr-card" style="transform: rotate(-1deg) translateY(10px);" onclick="openCase('gps')">
-          <div class="wrc-bg" style="background-image: url('assets/cases/gps/img1.jpg');"></div>
-          <div class="wrc-ov"></div>
-          <div class="wrc-top">
-            <div class="wrc-num">06</div>
-            <div class="wrc-dot"></div>
+          <div class="wrc-meta-row">
+            <span data-th="ไนต์ไลฟ์">Nightlife</span>
+            <span>•</span>
+            <span data-th="ภูเก็ต">Phuket</span>
           </div>
-          <div class="wrc-tag" data-th="อีคอมเมิร์ซ">E-COMMERCE</div>
-          <h3 class="wrc-title" data-th="จีพีเอส เจมส์">GPS GEMS</h3>
-          <p class="wrc-desc" data-th="เริ่มต้นจากศูนย์ สร้างแบรนด์ด้วยภาพลักษณ์หรูหราที่สร้างโดย AI ลูกค้าค้นพบแบบออร์แกนิก">Built from zero. Full brand identity using AI luxury visuals and an education-first strategy. No ads needed.</p>
-          <div class="wrc-cta" data-th="ดูเคส ↗">VIEW CASE ↗</div>
+          <p class="wrc-desc" data-th="ระบบสร้างลูกค้ามุ่งหวังคุณภาพสูงด้วยการทำกรวยการขายและการตลาดเจาะจงเป้าหมายใหม่">Lead generation machine built with high-intent funnels & retargeting.</p>
+          
+          <div class="wrc-bottom-row">
+            <div class="wrc-platforms">
+              <span class="wrc-platform-badge only-icons" title="Meta Ads">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0064e0" stroke-width="2.5" class="wrc-picon"><path d="M8 9c-2.2 0-4 1.8-4 4s1.8 4 4 4c1.8 0 3-1.2 4-3 1 1.8 2.2 3 4 3 2.2 0 4-1.8 4-4s-1.8-4-4-4c-1.8 0-3 1.2-4 3-1-1.8-2.2-3-4-3z"/></svg>
+              </span>
+              <span class="wrc-platform-badge only-icons" title="Google Ads">
+                <svg viewBox="0 0 24 24" class="wrc-picon"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 1.56-1.56 2.95-3.24 3.5v2.9h5.18c3.07-2.83 4.83-7 4.83-11.93 0-.4-.03-.8-.11-1.2z" fill="#4285F4"/><path d="M12.18 20.5c2.75 0 5.07-.9 6.75-2.47l-5.18-2.9c-.77.52-1.78.85-2.82.85-2.18 0-4.03-1.48-4.69-3.48H.92v3c1.68 3.32 5.12 5.5 9.07 5.5c.73 0 1.46-.08 2.19-.5z" fill="#34A853"/><path d="M7.49 12.5a5.55 5.55 0 0 1 0-3.52V5.98H.92a10 10 0 0 0 0 9.52l6.57-3z" fill="#FBBC05"/><path d="M12.18 3.5c1.49 0 2.83.51 3.89 1.52l2.9-2.9C17.22.9 14.9 0 12.18 0 8.23 0 4.79 2.18 3.11 5.5l6.57 3c.66-2 2.51-3.48 4.69-3.48z" fill="#EA4335"/></svg>
+              </span>
+              <span class="wrc-platform-badge only-icons" title="WhatsApp Automation">
+                <svg viewBox="0 0 24 24" fill="#25D366" class="wrc-picon"><path d="M12.008.01c-6.611 0-11.948 5.338-11.951 11.956 0 2.097.546 4.142 1.587 5.946l-1.687 6.163 6.3 1.653c1.751-.953 3.719-1.454 5.724-1.455h.005c6.613 0 11.95-5.34 11.953-11.997A11.92 11.92 0 0 0 12.008.01zm6.969 16.924c-.269.756-1.562 1.409-1.839 1.499-.277.09-.548.134-.853-.134a9.6 9.6 0 0 1-2.167-1.338c-2.705-1.167-4.472-3.892-4.607-4.072-.135-.18-.966-.461-.966-2.247 0-1.326.674-1.978.943-2.247.27-.27.563-.337.719-.337h.517c.18 0 .438-.01.607.01.169.009.389-.062.607.461.223.54.83 2 1.053 2.5 0 0-.225.269-.404.471-.18.202-.314.223-.583.067-.27-.134-1.138-.419-2.167-1.338-.802-.715-1.343-1.6-1.5-1.869-.157-.269-.017-.415.118-.55.122-.121.269-.314.404-.471.134-.157.18-.269.269-.449.09-.18.045-.337-.022-.472-.067-.134-.607-1.46-.83-2-.18-.45-.36-.45-.517-.45h-.517c-.247 0-.696.09-.943.337s-.943.921-.943 2.247c0 1.326.966 2.607 1.101 2.787.135.18 1.902 2.905 4.607 4.072 2.705 1.167 3.324 1.258 4.022 1.169.464-.069 1.543-.627 1.768-1.257.225-.63.225-1.169.157-1.28-.067-.113-.247-.18-.516-.314z"/></svg>
+              </span>
+            </div>
+            <button class="wrc-cta" data-th="ดูเคส ↗">View Case ↗</button>
+          </div>
         </div>
+        
       </div>
     </div>
   </div>
   
-  <div class="wr-marquee-w">
-    <div class="wr-marquee" data-th="ผลลัพธ์ที่แท้จริง • ผลงานที่โดดเด่น • ผลลัพธ์ที่แท้จริง • ผลงานที่โดดเด่น • ผลลัพธ์ที่แท้จริง • ผลงานที่โดดเด่น • ผลลัพธ์ที่แท้จริง • ผลงานที่โดดเด่น • ผลลัพธ์ที่แท้จริง • ผลงานที่โดดเด่น • ผลลัพธ์ที่แท้จริง • ผลงานที่โดดเด่น • ผลลัพธ์ที่แท้จริง • ผลงานที่โดดเด่น • ">
-      REAL IMPACT • RESULTS THAT SPEAK • REAL IMPACT • RESULTS THAT SPEAK • REAL IMPACT • RESULTS THAT SPEAK • REAL IMPACT • RESULTS THAT SPEAK • REAL IMPACT • RESULTS THAT SPEAK • REAL IMPACT • RESULTS THAT SPEAK • REAL IMPACT • RESULTS THAT SPEAK • 
+  <!-- BOTTOM TRUST STRIP -->
+  <div class="wr-trust-strip">
+    <div class="wr-trust-item">
+      <div class="wr-trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      </div>
+      <div class="wr-trust-text">
+        <div class="wr-trust-h" data-th="โปร่งใส 100%">100% Transparent</div>
+        <div class="wr-trust-p" data-th="รายงานสดและแดชบอร์ดดูได้ตลอดเวลา">Live dashboards & reports</div>
+      </div>
+    </div>
+    <div class="wr-trust-item">
+      <div class="wr-trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+      </div>
+      <div class="wr-trust-text">
+        <div class="wr-trust-h" data-th="มุ่งเน้นผลลัพธ์เป็นหลัก">Results-First Approach</div>
+        <div class="wr-trust-p" data-th="เราชนะเมื่อคุณชนะเท่านั้น">We only win when you win</div>
+      </div>
+    </div>
+    <div class="wr-trust-item">
+      <div class="wr-trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+      </div>
+      <div class="wr-trust-text">
+        <div class="wr-trust-h" data-th="พิสูจน์แล้วในหลายอุตสาหกรรม">Proven Across Industries</div>
+        <div class="wr-trust-p" data-th="การบริการ, อีคอมเมิร์ซ, ไนต์ไลฟ์ & อื่นๆ">Hospitality, e-commerce, nightlife & more</div>
+      </div>
+    </div>
+    <div class="wr-trust-item">
+      <div class="wr-trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+      </div>
+      <div class="wr-trust-text">
+        <div class="wr-trust-h" data-th="กว่า 8+ ประเทศ">8+ Countries</div>
+        <div class="wr-trust-p" data-th="ประสบการณ์ระดับโลก สื่อสารและปรับตัวในระดับท้องถิ่น">Global experience. Local impact.</div>
+      </div>
     </div>
   </div>
 </section>

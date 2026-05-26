@@ -1134,3 +1134,93 @@ function closeService() {
     initMobileMenu();
   }
 })();
+
+// ─── OUTCOME FILTER LOGIC (GSAP POWERED) ───
+(function() {
+  function initOutcomeFilters() {
+    const filterBtns = document.querySelectorAll('.wr-filter-btn');
+    const grid = document.querySelector('.wr-grid');
+    const cards = document.querySelectorAll('.wr-card');
+    if (!filterBtns.length || !cards.length) return;
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (this.classList.contains('active')) return;
+
+        // Toggle active button class
+        filterBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        const filterValue = this.getAttribute('data-filter');
+
+        // Separate cards into targets to hide and show
+        const cardsToHide = [];
+        const cardsToShow = [];
+
+        cards.forEach(card => {
+          const outcomes = card.getAttribute('data-outcome') || '';
+          const outcomeArray = outcomes.split(' ');
+          
+          if (filterValue === 'all' || outcomeArray.includes(filterValue)) {
+            cardsToShow.push(card);
+          } else {
+            cardsToHide.push(card);
+          }
+        });
+
+        // GSAP Timeline for ultra-smooth transition
+        const tl = gsap.timeline({
+          onComplete: () => {
+            // Refresh ScrollTrigger to recalculate layout shifts
+            if (typeof ScrollTrigger !== 'undefined') {
+              ScrollTrigger.refresh();
+            }
+          }
+        });
+
+        // 1. Fade out unwanted cards
+        if (cardsToHide.length > 0) {
+          tl.to(cardsToHide, {
+            opacity: 0,
+            scale: 0.9,
+            y: 15,
+            duration: 0.35,
+            stagger: 0.05,
+            ease: 'power2.in',
+            onComplete: () => {
+              cardsToHide.forEach(c => c.style.display = 'none');
+            }
+          });
+        }
+
+        // 2. Prepare and fade/stagger in matching cards
+        tl.add(() => {
+          cardsToShow.forEach(c => {
+            c.style.display = 'flex';
+            // Reset starting state for entrance animation
+            gsap.set(c, { opacity: 0, scale: 0.92, y: 20 });
+          });
+        });
+
+        if (cardsToShow.length > 0) {
+          tl.to(cardsToShow, {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.08,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity' // Keep hover state interactions intact
+          });
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initOutcomeFilters);
+  } else {
+    initOutcomeFilters();
+  }
+})();

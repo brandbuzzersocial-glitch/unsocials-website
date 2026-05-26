@@ -598,7 +598,19 @@ function openCase(id) {
   const data = caseData[id];
   if (!data) return;
 
-  // Background cover map
+  // Dynamic branding configurations
+  const brandAccents = {
+    elysium: { rgb: '232, 255, 0', hex: '#E8FF00', label: 'Hospitality Case Study' },
+    alexa: { rgb: '255, 45, 45', hex: '#FF2D2D', label: 'Nightlife Case Study' },
+    skyview: { rgb: '0, 168, 255', hex: '#00a8ff', label: 'Hospitality Lead Gen' },
+    nomads: { rgb: '0, 255, 200', hex: '#00ffc8', label: 'Hospitality UGC Campaign' },
+    bamboo: { rgb: '46, 204, 113', hex: '#2ecc71', label: 'Nightlife Social Campaign' },
+    gps: { rgb: '168, 85, 247', hex: '#a855f7', label: 'Luxury E-commerce Case' }
+  };
+  const accent = brandAccents[id] || brandAccents.elysium;
+  document.documentElement.style.setProperty('--case-accent-color', accent.hex);
+  document.documentElement.style.setProperty('--case-accent-rgb', accent.rgb);
+
   const coverMap = {
     elysium: 'assets/elysium-cover.jpg',
     alexa: 'assets/alexa-cover.png',
@@ -611,23 +623,45 @@ function openCase(id) {
   
   let tagsHtml = data.tags.map(t => `<span class="cs-tag">${t}</span>`).join('');
   
-  let infoHtml = data.sidebar.map(s => `
-    <div class="sidebar-card">
-      <div class="sc-title">${s.title}</div>
-      <div class="sc-text">${s.text}</div>
-    </div>
-  `).join('');
-  
-  let resultsHtml = data.results.map(r => `
-    <div class="res-card">
-      <div class="res-num">${r.num}</div>
-      <div class="res-label">${r.lbl}</div>
+  // High-Impact Stats Strip
+  let statsHtml = data.results.map(r => `
+    <div class="cs-stat-item">
+      <div class="cs-stat-num">${r.num}</div>
+      <div class="cs-stat-lbl">${r.lbl}</div>
     </div>
   `).join('');
 
+  // Extract quotes or advantages for pull-quote styling
+  let keyQuote = '';
+  let filteredSidebar = [];
+  data.sidebar.forEach(s => {
+    if (s.title.toLowerCase().includes('quote') || s.title.toLowerCase().includes('advantage')) {
+      keyQuote = s.text;
+    } else {
+      filteredSidebar.push(s);
+    }
+  });
+
+  let sidebarItemsHtml = filteredSidebar.map(s => `
+    <div class="cs-brief-item">
+      <div class="cs-brief-title">${s.title}</div>
+      <div class="cs-brief-text">${s.text}</div>
+    </div>
+  `).join('');
+
+  let quoteHtml = '';
+  if (keyQuote) {
+    quoteHtml = `
+      <div class="cs-brief-quote">
+        <div class="cs-brief-quote-text">${keyQuote}</div>
+      </div>
+    `;
+  }
+
   let mediaHtml = '';
   if (data.media && data.media.length > 0) {
-    mediaHtml = `<div class="cs-sec-label" style="margin-top:60px">Project Media</div>
+    mediaHtml = `
+    <div class="cs-showcase-title">Visual Showcase</div>
     <div class="cs-media-container">
       <button class="cs-media-btn prev" onclick="scrollMedia(-1, event)">←</button>
       <div class="cs-media-grid">`;
@@ -644,16 +678,37 @@ function openCase(id) {
   }
 
   const html = `
-    <div class="cs-hero" style="background-image: url('${coverImg}');">
+    <div class="cs-container">
       <div class="cs-hero-wire"></div>
-      <button class="cs-back" onclick="closeCase()">← Back to All Cases</button>
-      <div class="cs-eye">${data.eye}</div>
-      <div class="cs-title">${data.title.replace(' ', '<br>')}</div>
-      <div class="cs-tags">${tagsHtml}</div>
-    </div>
-    <div class="cs-body">
-      <div class="cs-cols">
-        <div>
+      
+      <!-- Top Header Actions -->
+      <div class="cs-header-actions">
+        <button class="cs-back" onclick="closeCase()">← Back to Cases</button>
+      </div>
+
+      <!-- Split Hero Section -->
+      <div class="cs-hero-grid">
+        <div class="cs-hero-left">
+          <div class="cs-eye">${accent.label}</div>
+          <h1 class="cs-title">${data.title}</h1>
+          <div class="cs-tags">${tagsHtml}</div>
+        </div>
+        <div class="cs-hero-right">
+          <div class="cs-hero-img-wrap">
+            <img class="cs-hero-img" src="${coverImg}" alt="${data.title}">
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Strip -->
+      <div class="cs-stats-strip">
+        ${statsHtml}
+      </div>
+
+      <!-- Content Columns -->
+      <div class="cs-narrative-grid">
+        <!-- Left Column: Narrative -->
+        <div class="cs-narrative-left">
           <div class="cs-sec-label">The Problem</div>
           ${data.problemHtml}
           
@@ -662,12 +717,14 @@ function openCase(id) {
 
           ${mediaHtml}
         </div>
-        <div>
-          ${infoHtml}
+
+        <!-- Right Column: Brief summary card -->
+        <div class="cs-narrative-right">
+          <div class="cs-brief-card">
+            ${sidebarItemsHtml}
+            ${quoteHtml}
+          </div>
         </div>
-      </div>
-      <div class="results">
-        ${resultsHtml}
       </div>
     </div>
   `;
@@ -1038,4 +1095,42 @@ function closeService() {
   }, { threshold: 0.4 });
 
   statEls.forEach(function(el){ observer.observe(el); });
+})();
+
+// ─── MOBILE MENU TOGGLE ───
+(function() {
+  function initMobileMenu() {
+    var ham = document.querySelector('.nham');
+    var menu = document.querySelector('.mmenu');
+    if (!ham || !menu) return;
+
+    ham.addEventListener('click', function(e) {
+      e.preventDefault();
+      var isOpen = menu.classList.contains('active');
+      if (isOpen) {
+        menu.classList.remove('active');
+        ham.classList.remove('active');
+        document.body.style.overflow = '';
+      } else {
+        menu.classList.add('active');
+        ham.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+
+    // Close menu if a link is clicked
+    menu.querySelectorAll('.mmenu-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        menu.classList.remove('active');
+        ham.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  } else {
+    initMobileMenu();
+  }
 })();

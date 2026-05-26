@@ -228,8 +228,18 @@
   }
   .cc-channel:hover { background: #0a0a0a; }
   .cc-ch-icon {
-    font-size: 28px;
+    display: flex;
+    align-items: center;
     margin-bottom: 8px;
+  }
+  .cc-ch-icon svg {
+    width: 28px;
+    height: 28px;
+    color: var(--ac); /* Beautiful green/lime brand color */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .cc-channel:hover .cc-ch-icon svg {
+    transform: scale(1.15);
   }
   .cc-ch-name {
     font-family: 'Syne', sans-serif;
@@ -253,6 +263,80 @@
     .contact-form-side { padding: 60px 24px; }
     .contact-info-side { padding: 60px 24px; border-left: none; border-top: 1px solid var(--border); }
     .contact-channels { grid-template-columns: 1fr 1fr; padding: 0; }
+  }
+  @media(max-width: 600px) {
+    .contact-form .cta-row input,
+    .contact-form .cta-row select,
+    .contact-form .cta-row textarea {
+      font-size: 16px;
+    }
+  }
+
+  /* LAPTOP & MEDIUM SCREEN REFINEMENTS (width <= 1366px or height <= 850px) */
+  @media (max-width: 1366px), (max-height: 850px) {
+    /* Scale down DUAL HQ STRIP */
+    .hq-section {
+      padding: 30px 4vw !important;
+    }
+    .hq-card {
+      padding: 24px !important;
+    }
+    .hq-card h3 {
+      font-size: 18px !important;
+    }
+    
+    /* Scale down contact body layout and paddings */
+    .contact-form-side {
+      padding: 48px 5vw 48px !important;
+    }
+    .contact-info-side {
+      padding: 48px 40px !important;
+      gap: 36px !important;
+    }
+    
+    /* Make form elements more compact and readable at once */
+    .cf-label-s {
+      margin-bottom: 20px !important;
+    }
+    .contact-form .cta-row {
+      padding: 12px 0 !important;
+    }
+    .contact-form .cta-row label {
+      margin-bottom: 4px !important;
+    }
+    .contact-form .cta-row input,
+    .contact-form .cta-row select,
+    .contact-form .cta-row textarea {
+      font-size: 18px !important;
+    }
+    .contact-form .cta-btn {
+      margin-top: 24px !important;
+      padding: 14px 32px !important;
+      font-size: 10px !important;
+    }
+    .contact-form .cta-note {
+      margin-top: 10px !important;
+    }
+    
+    /* Scale down the office locations and direct contact sizes */
+    .ci-tag {
+      margin-bottom: 10px !important;
+    }
+    .ci-val {
+      font-size: clamp(16px, 1.8vw, 20px) !important;
+      margin-bottom: 4px !important;
+    }
+    .ci-sub {
+      font-size: 12px !important;
+      line-height: 1.5 !important;
+    }
+    .ci-promise {
+      padding: 20px 18px !important;
+    }
+    .ci-promise-h {
+      font-size: 15px !important;
+      margin-bottom: 6px !important;
+    }
   }
 </style>
 </head>
@@ -278,7 +362,32 @@
     <span class="lang-btn" data-lang="th">TH</span>
   </div>
   <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20book%20a%20call." target="_blank" class="nbook" data-th="จองคิวพูดคุย">Book a Call</a>
+  <button class="nham" aria-label="Toggle Menu">
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mmenu">
+  <div class="mmenu-inner">
+    <div class="mmenu-links">
+      <a href="index.html" class="mmenu-link" data-th="หน้าแรก">Home</a>
+      <a href="work.html" class="mmenu-link" data-th="ผลงาน">Work</a>
+      <a href="services.html" class="mmenu-link" data-th="บริการ">Services</a>
+      <a href="about.html" class="mmenu-link" data-th="เกี่ยวกับเรา">About</a>
+      <a href="contact.html" class="mmenu-link" style="color:var(--ac)" data-th="ติดต่อ">Contact</a>
+    </div>
+    <div class="mmenu-footer">
+      <div class="mmenu-lang">
+        <span class="lang-btn active" data-lang="en">EN</span>
+        <span class="lang-div">|</span>
+        <span class="lang-btn" data-lang="th">TH</span>
+      </div>
+      <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20book%20a%20call." target="_blank" class="mmenu-book" data-th="จองคิวพูดคุย">Book a Call</a>
+    </div>
+  </div>
+</div>
 
 <!-- CONTACT HERO -->
 <section class="contact-hero">
@@ -295,8 +404,8 @@
 </div>
 
 <!-- DUAL HQ STRIP -->
-<section style="background:#080808; border-bottom:1px solid var(--border); padding:60px 8vw;">
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--border);">
+<section class="hq-section" style="background:#080808; border-bottom:1px solid var(--border); padding:60px 8vw;">
+  <div class="hq-grid">
     <div class="hq-card" style="background:#050505; padding:40px; transition:all 0.4s ease;">
       <div style="display:flex; align-items:center; gap:20px; margin-bottom:10px;">
         <span style="font-size:32px;">🇮🇳</span>
@@ -400,22 +509,30 @@
 <!-- SOCIAL CHANNELS -->
 <div class="contact-channels">
   <a class="cc-channel rv" href="#" style="transition-delay:.05s">
-    <div class="cc-ch-icon">📸</div>
+    <div class="cc-ch-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+    </div>
     <div class="cc-ch-name">Instagram</div>
     <div class="cc-ch-handle">@unsocials.th</div>
   </a>
   <a class="cc-channel rv" href="#" style="transition-delay:.1s">
-    <div class="cc-ch-icon">🎵</div>
+    <div class="cc-ch-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path><path d="M15 8a4 4 0 1 0 0 8"></path></svg>
+    </div>
     <div class="cc-ch-name">TikTok</div>
     <div class="cc-ch-handle">@unsocials.th</div>
   </a>
   <a class="cc-channel rv" href="#" style="transition-delay:.15s">
-    <div class="cc-ch-icon">💼</div>
+    <div class="cc-ch-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+    </div>
     <div class="cc-ch-name">LinkedIn</div>
     <div class="cc-ch-handle">Unsocials Thailand</div>
   </a>
   <a class="cc-channel rv" href="https://wa.me/918209980262" target="_blank" style="transition-delay:.2s">
-    <div class="cc-ch-icon">💬</div>
+    <div class="cc-ch-icon">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.244 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-16.793c-.166-.369-.342-.377-.502-.384-.131-.005-.28-.006-.43-.006-.15 0-.395.056-.602.28-.206.225-.79.771-.79 1.882 0 1.111.808 2.185.92 2.335.113.15 1.59 2.429 3.853 3.407.538.233.957.372 1.285.477.54.172 1.03.148 1.417.09.431-.064 1.328-.542 1.516-1.064.188-.522.188-.97.132-1.064-.056-.094-.207-.15-.433-.263s-1.329-.655-1.536-.73c-.207-.075-.358-.112-.507.113-.15.225-.583.73-.715.88-.132.15-.264.169-.49.056-.226-.113-.956-.352-1.82-1.123-.673-.6-1.127-1.341-1.26-1.566-.131-.225-.014-.347.1-.459.102-.101.226-.263.339-.395.113-.131.15-.225.226-.375.075-.15.038-.281-.019-.394-.056-.113-.502-1.21-.688-1.657z"/></svg>
+    </div>
     <div class="cc-ch-name">WhatsApp</div>
     <div class="cc-ch-handle">+91 820-9980262</div>
   </a>
@@ -423,7 +540,7 @@
 
 <!-- MAP SECTION -->
 <section id="map-section" style="background:#040404; border-top:1px solid var(--border); padding:48px 6vw; overflow:hidden;">
-  <div style="max-width:100%; display:grid; grid-template-columns:1fr 1.5fr; gap:36px; align-items:center;">
+  <div class="map-grid">
     <div style="display:flex; flex-direction:column; justify-content:center;">
       <p style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--ac); margin-bottom:14px;" data-th="📍 ค้นหาเรา">📍 Find Us</p>
       <h2 style="font-family:'Syne',sans-serif; font-size:clamp(22px,3vw,44px); font-weight:800; color:var(--w); line-height:0.9; letter-spacing:-0.04em; text-transform:uppercase; margin-bottom:14px;" data-th="เราอยู่ที่<br><em style='font-family:\'Space Mono\',monospace; font-style:italic; color:var(--ac);'>พัทยา.</em>">We're In<br><em style="font-family:'Space Mono',monospace; font-style:italic; color:var(--ac);">Pattaya.</em></h2>
@@ -481,9 +598,17 @@
     </div>
     <div class="ft-col">
       <h5 data-th="เชื่อมต่อ">Connect</h5>
-      <a href="#">Instagram</a>
-      <a href="#">TikTok</a>
-      <a href="#">LinkedIn</a>
+      <div class="ft-social-icons">
+  <a href="#" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+  </a>
+  <a href="#" aria-label="TikTok">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path><path d="M15 8a4 4 0 1 0 0 8"></path></svg>
+  </a>
+  <a href="#" aria-label="LinkedIn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+  </a>
+</div>
     </div>
   </div>
   <div class="ft-bot">

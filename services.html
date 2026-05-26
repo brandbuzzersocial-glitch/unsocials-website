@@ -9,13 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=8">
 <style>
+html {
+  scroll-behavior: auto !important;
+}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 body{background:#040404;cursor:none;overflow-x:hidden}
 
 nav{background:rgba(4,4,4,.95)}
 
 /* ── PAGE HERO ── */
-.ph{padding:160px 60px 64px;background:#040404;position:relative;z-index:10;}
+.ph{padding:160px 5vw 64px;background:#040404;position:relative;z-index:10;}
 .ph-eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:20px;display:flex;align-items:center;gap:12px}
 .ph-eye::before{content:'';width:24px;height:1px;background:var(--ac);display:block}
 .ph-h{font-family:'Syne',sans-serif;font-size:clamp(52px,8vw,110px);line-height:.88;font-weight:800;letter-spacing:-.04em;text-transform:uppercase;color:var(--w);margin-bottom:24px}
@@ -30,32 +33,106 @@ nav{background:rgba(4,4,4,.95)}
   flex-direction: column;
 }
 
-/* Each card is a full viewport height sticky container */
+/* Each card is a full viewport height container */
 .svc-card {
-  position: sticky;
-  top: 0;
   height: 100vh;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* We use GSAP to handle the scale-down as the next card covers this one */
-  transform-origin: center top;
-  will-change: transform;
+  background: transparent;
 }
 
 /* Card Visuals */
 .svc-card-inner {
   width: 100%;
   height: 100vh;
-  padding: 100px 60px;
+  padding: 6vh 5vw; /* Fluid height-based padding aligned to 5vw screen baseline to prevent column squeezing */
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  grid-template-columns: 0.48fr 0.82fr 0.7fr; /* Premium 3-column layout: Menu, Details, Media */
+  gap: 4vw; /* Fluid column gap */
   align-items: center;
   border-top: 1px solid rgba(255,255,255,0.05);
-  box-shadow: 0 -20px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 -30px 60px rgba(0,0,0,0.85), 0 -10px 20px rgba(0,0,0,0.4);
+}
+
+.svc-menu-col {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-self: center;
+}
+
+.svc-global-menu {
+  position: absolute;
+  left: 5vw; /* Aligned horizontally to exact 5vw baseline matching card inner */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  pointer-events: all;
+}
+
+.svc-menu-num {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(48px, 4.5vw, 80px);
+  font-weight: 800;
+  color: var(--ac);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.svc-menu-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.svc-menu-list li {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--w);
+  opacity: 0.15; /* Dimmed state */
+  transition: opacity 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
+  position: relative;
+  padding-left: 0;
+  cursor: pointer;
+}
+
+.svc-menu-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 1px;
+  background: var(--ac);
+  opacity: 0;
+  transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+.svc-menu-list li.active {
+  opacity: 1;
+  font-weight: 700;
+  color: var(--ac);
+  padding-left: 14px;
+}
+
+.svc-menu-list li.active::before {
+  opacity: 1;
+  width: 8px;
+}
+
+.svc-global-menu .svc-menu-list li:hover {
+  opacity: 0.65;
+}
+
+.svc-global-menu .svc-menu-list li.active:hover {
+  opacity: 1;
 }
 
 /* Alternating dark themes for clear overlap visibility */
@@ -80,41 +157,55 @@ nav{background:rgba(4,4,4,.95)}
 
 .svc-num {
   font-family: 'Space Mono', monospace;
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 4px;
   color: var(--ac);
-  margin-bottom: 24px;
+  margin-bottom: 12px; /* Reduced from 24px */
 }
 
 .svc-title {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(40px, 5vw, 72px);
+  font-size: clamp(36px, 4.2vw, 64px); /* Slightly tighter title sizing */
   font-weight: 800;
   color: var(--w);
-  line-height: 0.9;
+  line-height: 0.95;
   text-transform: uppercase;
-  margin-bottom: 30px;
+  margin-bottom: 20px; /* Reduced from 30px */
   letter-spacing: -0.03em;
 }
 
 .svc-desc {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: 15px; /* Slightly tighter description */
+  line-height: 1.6;
   color: rgba(255,255,255,0.6);
-  max-width: 500px;
-  margin-bottom: 40px;
+  max-width: 480px;
+  margin-bottom: 24px; /* Reduced from 40px */
 }
 
-.svc-features {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-bottom: 40px;
+.svc-deliverables {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px; /* Reduced from 40px */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Tighter item gap */
 }
-.svc-feature { display: flex; flex-direction: column; gap: 8px; }
-.svc-f-val { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: var(--ac); line-height: 1;}
-.svc-f-lbl { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+.svc-deliverables li {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px; /* Slightly tighter list text */
+  color: rgba(255,255,255,0.7);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0; /* GSAP will animate this */
+  transform: translateY(20px);
+}
+.svc-deliverables li::before {
+  content: '•';
+  color: var(--ac);
+  font-size: 18px;
+}
 
 .svc-cta-btn {
   display: inline-flex;
@@ -125,7 +216,7 @@ nav{background:rgba(4,4,4,.95)}
   text-transform: uppercase;
   color: var(--bg);
   background: var(--ac);
-  padding: 16px 36px;
+  padding: 14px 32px; /* Tighter button padding */
   text-decoration: none;
   border-radius: 100px;
   font-weight: 700;
@@ -137,24 +228,33 @@ nav{background:rgba(4,4,4,.95)}
 .svc-right {
   position: relative;
   width: 100%;
-  aspect-ratio: 4/5;
+  max-height: 52vh; /* Never exceeds 52% of viewport height to prevent overflow on shorter displays */
+  aspect-ratio: 16/11; /* More horizontal ratio fits landscape viewport space elegantly */
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
-.svc-right img, .svc-right video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.1); /* For parallax */
-}
+  .card-media-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    overflow: hidden;
+  }
+  .card-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0; left: 0;
+  }
 
 /* BOTTOM CTA BAND */
 .svc-bottom-cta {
   background: var(--ac);
   color: var(--bg);
-  padding: 100px 60px;
+  padding: 100px 5vw; /* Broader padding matching standard section bounds */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -190,9 +290,22 @@ nav{background:rgba(4,4,4,.95)}
 /* GSAP Reveal States */
 .reveal-up { opacity: 0; transform: translateY(40px); }
 
+@media (max-width: 1366px), (max-height: 850px) {
+  .ph { padding: 120px 5vw 40px; }
+  .svc-card-inner { padding: 80px 5vw; gap: 4vw; }
+  .svc-title { font-size: clamp(32px, 3.8vw, 54px); margin-bottom: 20px; }
+  .svc-desc { margin-bottom: 24px; font-size: 15px; }
+  .svc-deliverables { margin-bottom: 24px; gap: 10px; }
+  .svc-deliverables li { font-size: 14px; }
+  .svc-cta-btn { padding: 14px 30px; }
+  .svc-right { aspect-ratio: 16/10; }
+}
+
 @media(max-width: 900px) {
+  .svc-menu-col { display: none !important; }
   .svc-card { height: auto; position: relative; top: auto; transform: none !important; margin-bottom: 24px; }
   .svc-card-inner { height: auto; grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); box-shadow: none; }
+  .svc-card-inner > div:first-child:empty { display: none; }
   .svc-right { aspect-ratio: 16/9; }
   .ph { padding: 120px 24px 48px; }
   .svc-deck { padding: 0 24px; }
@@ -217,7 +330,32 @@ nav{background:rgba(4,4,4,.95)}
     <span class="lang-btn" data-lang="th">TH</span>
   </div>
   <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20book%20a%20call." target="_blank" class="nbook" data-th="จองคิวพูดคุย">Book a Call</a>
+  <button class="nham" aria-label="Toggle Menu">
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mmenu">
+  <div class="mmenu-inner">
+    <div class="mmenu-links">
+      <a href="index.html" class="mmenu-link" data-th="หน้าแรก">Home</a>
+      <a href="work.html" class="mmenu-link" data-th="ผลงาน">Work</a>
+      <a href="services.html" class="mmenu-link" style="color:var(--ac)" data-th="บริการ">Services</a>
+      <a href="about.html" class="mmenu-link" data-th="เกี่ยวกับเรา">About</a>
+      <a href="contact.html" class="mmenu-link" data-th="ติดต่อ">Contact</a>
+    </div>
+    <div class="mmenu-footer">
+      <div class="mmenu-lang">
+        <span class="lang-btn active" data-lang="en">EN</span>
+        <span class="lang-div">|</span>
+        <span class="lang-btn" data-lang="th">TH</span>
+      </div>
+      <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20book%20a%20call." target="_blank" class="mmenu-book" data-th="จองคิวพูดคุย">Book a Call</a>
+    </div>
+  </div>
+</div>
 
 <section class="ph">
   <div class="ph-eye" data-th="สิ่งที่เราทำ">What We Do</div>
@@ -228,21 +366,37 @@ nav{background:rgba(4,4,4,.95)}
 <!-- THE STACKING DECK -->
 <div class="svc-deck">
   
+  <!-- Single Stationary Global Menu -->
+  <div class="svc-global-menu svc-menu-col">
+    <div class="svc-menu-num">01</div>
+    <ul class="svc-menu-list">
+      <li class="active" data-th="การตลาดเชิงประสิทธิภาพ">Performance Marketing</li>
+      <li data-th="โซเชียลมีเดีย">Social Media</li>
+      <li data-th="การผลิตคอนเทนต์">Content Production</li>
+      <li data-th="AI ครีเอทีฟ">AI Creative</li>
+      <li data-th="กลยุทธ์แบรนด์">Brand Strategy</li>
+    </ul>
+  </div>
+  
   <!-- CARD 1 -->
   <div class="svc-card">
     <div class="svc-card-inner">
+      <div></div>
       <div class="svc-left">
-        <div class="svc-num reveal-up">01</div>
         <h2 class="svc-title reveal-up" data-th="การตลาดเชิง<br>ประสิทธิภาพ">Performance<br>Marketing</h2>
         <p class="svc-desc reveal-up" data-th="เราไม่ได้แค่ล่าคลิก แต่เราสร้างระบบที่ล่ารายได้ ใช้แคมเปญเจาะจงเป้าหมายผ่าน Google, Meta และ TikTok เพื่อเปลี่ยนพื้นที่ดิจิทัลให้เป็นสินทรัพย์ที่ทำกำไรสูงสุดให้คุณ">We don't just chase clicks. We build systems that hunt for revenue. Using hyper-targeted campaigns across Google, Meta, and TikTok, we turn digital real estate into your most profitable asset.</p>
-        <div class="svc-features reveal-up">
-          <div class="svc-feature"><div class="svc-f-val">3×</div><div class="svc-f-lbl" data-th="ผลตอบแทนเฉลี่ย (ROAS)">Average ROAS</div></div>
-          <div class="svc-feature"><div class="svc-f-val">0%</div><div class="svc-f-lbl" data-th="งบโฆษณาที่เสียเปล่า">Wasted Spend</div></div>
-        </div>
+        <ul class="svc-deliverables">
+          <li data-th="การตลาดผ่านเครื่องมือค้นหา (Google Ads)">Search Engine Marketing (Google Ads)</li>
+          <li data-th="โฆษณา Meta (Facebook & Instagram)">Meta Ads (Facebook & Instagram)</li>
+          <li data-th="โฆษณา TikTok & YouTube">TikTok & YouTube Advertising</li>
+          <li data-th="การเพิ่มอัตราการเปลี่ยนลูกค้า (CRO)">Conversion Rate Optimization</li>
+        </ul>
         <a href="https://wa.me/66960531394" target="_blank" class="svc-cta-btn reveal-up" data-th="เริ่มแคมเปญ →">Start a Campaign →</a>
       </div>
       <div class="svc-right">
-        <img src="assets/elysium-cover.jpg" alt="Performance" class="card-media">
+        <div class="card-media-wrapper">
+          <img src="assets/elysium-cover.jpg" alt="Performance" class="card-media">
+        </div>
       </div>
     </div>
   </div>
@@ -250,18 +404,22 @@ nav{background:rgba(4,4,4,.95)}
   <!-- CARD 2 -->
   <div class="svc-card">
     <div class="svc-card-inner">
+      <div></div>
       <div class="svc-left">
-        <div class="svc-num reveal-up">02</div>
         <h2 class="svc-title reveal-up" data-th="การจัดการ<br>โซเชียลมีเดีย">Social Media<br>Management</h2>
         <p class="svc-desc reveal-up" data-th="ฟีดของคุณคือหน้าร้านของคุณ เรารับผิดชอบการปรากฏตัวบนโซเชียลของคุณอย่างเต็มรูปแบบ — ตั้งแต่กลยุทธ์และปฏิทินเนื้อหา ไปจนถึงการลงมือทำรายวันและการจัดการคอมมูนิตี้">Your feed is your storefront. We take complete ownership of your social presence — from strategy and editorial calendar to daily execution and community management.</p>
-        <div class="svc-features reveal-up">
-          <div class="svc-feature"><div class="svc-f-val" data-th="ทุกวัน">Daily</div><div class="svc-f-lbl" data-th="โพสต์ระดับไฮเอนด์">High-End Posts</div></div>
-          <div class="svc-feature"><div class="svc-f-val">10×</div><div class="svc-f-lbl" data-th="เพิ่มการมีส่วนร่วม">Engagement Boost</div></div>
-        </div>
+        <ul class="svc-deliverables">
+          <li data-th="กลยุทธ์โซเชียลออร์แกนิก">Organic Social Strategy</li>
+          <li data-th="อัตลักษณ์ทางภาพ & การวางแผนกริด">Visual Identity & Grid Planning</li>
+          <li data-th="การจัดการชุมชน">Community Management</li>
+          <li data-th="การวิเคราะห์ & การรายงาน">Analytics & Reporting</li>
+        </ul>
         <a href="https://wa.me/66960531394" target="_blank" class="svc-cta-btn reveal-up" data-th="เป็นเจ้าของฟีดของคุณ →">Own Your Feed →</a>
       </div>
       <div class="svc-right">
-        <img src="assets/bamboo-cover.png" alt="Social Media" class="card-media">
+        <div class="card-media-wrapper">
+          <img src="assets/bamboo-cover.png" alt="Social Media" class="card-media">
+        </div>
       </div>
     </div>
   </div>
@@ -269,18 +427,22 @@ nav{background:rgba(4,4,4,.95)}
   <!-- CARD 3 -->
   <div class="svc-card">
     <div class="svc-card-inner">
+      <div></div>
       <div class="svc-left">
-        <div class="svc-num reveal-up">03</div>
         <h2 class="svc-title reveal-up" data-th="การผลิต<br>คอนเทนต์">Content<br>Production</h2>
         <p class="svc-desc reveal-up" data-th="คอนเทนต์ที่หยุดการเลื่อนหน้าจอและบังคับให้คลิก ตั้งแต่คลิปวิดีโอคุณภาพระดับภาพยนตร์ไปจนถึงการถ่ายภาพระดับกองบรรณาธิการ เราผลิตอาวุธภาพที่แบรนด์ของคุณต้องการเพื่อครอบงำฟีด">Content that stops the scroll and forces the click. From cinematic reels to editorial photography, we produce the visual ammunition your brand needs to dominate feeds.</p>
-        <div class="svc-features reveal-up">
-          <div class="svc-feature"><div class="svc-f-val">4K</div><div class="svc-f-lbl" data-th="คุณภาพระดับภาพยนตร์">Cinema Quality</div></div>
-          <div class="svc-feature"><div class="svc-f-val" data-th="ไวรัล">Viral</div><div class="svc-f-lbl" data-th="พร้อมสำหรับอัลกอริทึม">Algorithm Ready</div></div>
-        </div>
+        <ul class="svc-deliverables">
+          <li data-th="วิดีโอสั้น (Reels/TikToks)">Short-form Video (Reels/TikToks)</li>
+          <li data-th="การถ่ายภาพเชิงพาณิชย์">Commercial Photography</li>
+          <li data-th="การถ่ายทำกองบรรณาธิการ & แฟชั่น">Editorial & Fashion Shoots</li>
+          <li data-th="การผลิตวิดีโอระดับไฮเอนด์">High-end Video Production</li>
+        </ul>
         <a href="https://wa.me/66960531394" target="_blank" class="svc-cta-btn reveal-up" data-th="เริ่มการผลิต →">Start Production →</a>
       </div>
       <div class="svc-right">
-        <video src="assets/reels/r2.mp4" autoplay loop muted playsinline class="card-media"></video>
+        <div class="card-media-wrapper">
+          <video src="assets/reels/r2.mp4" autoplay loop muted playsinline class="card-media"></video>
+        </div>
       </div>
     </div>
   </div>
@@ -288,18 +450,22 @@ nav{background:rgba(4,4,4,.95)}
   <!-- CARD 4 -->
   <div class="svc-card">
     <div class="svc-card-inner">
+      <div></div>
       <div class="svc-left">
-        <div class="svc-num reveal-up">04</div>
         <h2 class="svc-title reveal-up" data-th="AI<br>ครีเอทีฟ">AI Creative<br>Automation</h2>
         <p class="svc-desc reveal-up" data-th="ก้าวข้ามคอขวดของการผลิตแบบดั้งเดิม เราใช้โมเดล AI ขั้นสูงเพื่อสร้างภาพและสินทรัพย์ดิจิทัลที่เหมือนจริงและหรูหราอย่างไม่สิ้นสุด — โดยไม่ต้องใช้กล้อง ฉาก หรือนางแบบ">Bypass the bottlenecks of traditional production. We use advanced AI models to generate infinite, hyper-realistic, luxury visual assets — without a camera, a set, or a model.</p>
-        <div class="svc-features reveal-up">
-          <div class="svc-feature"><div class="svc-f-val" data-th="ศูนย์">Zero</div><div class="svc-f-lbl" data-th="ความยุ่งยากในกองถ่าย">Set Logistics</div></div>
-          <div class="svc-feature"><div class="svc-f-val" data-th="ไม่กี่วัน">Days</div><div class="svc-f-lbl" data-th="เวลาที่ใช้ส่งมอบ">Turnaround Time</div></div>
-        </div>
+        <ul class="svc-deliverables">
+          <li data-th="สินทรัพย์เชิงพาณิชย์ที่สร้างด้วย AI">AI-Generated Commercial Assets</li>
+          <li data-th="การเรนเดอร์ผลิตภัณฑ์เสมือนจริง">Hyper-realistic Product Renders</li>
+          <li data-th="การสร้างต้นแบบอย่างรวดเร็ว & มู้ดบอร์ด">Rapid Prototyping & Moodboards</li>
+          <li data-th="ภาพแคมเปญที่คุ้มต้นทุน">Cost-efficient Campaign Visuals</li>
+        </ul>
         <a href="https://wa.me/66960531394" target="_blank" class="svc-cta-btn reveal-up" data-th="ก้าวสู่อนาคต →">Enter the Future →</a>
       </div>
       <div class="svc-right">
-        <video src="assets/showcase/2.mp4" autoplay loop muted playsinline class="card-media"></video>
+        <div class="card-media-wrapper">
+          <video src="assets/showcase/2.mp4" autoplay loop muted playsinline class="card-media"></video>
+        </div>
       </div>
     </div>
   </div>
@@ -307,18 +473,22 @@ nav{background:rgba(4,4,4,.95)}
   <!-- CARD 5 -->
   <div class="svc-card">
     <div class="svc-card-inner">
+      <div></div>
       <div class="svc-left">
-        <div class="svc-num reveal-up">05</div>
         <h2 class="svc-title reveal-up" data-th="กลยุทธ์<br>แบรนด์">Brand<br>Strategy</h2>
-        <p class="svc-desc reveal-up" data-th="ยุทธวิธีที่ปราศจากกลยุทธ์เป็นเพียงเสียงรบกวน เราสร้าง DNA พื้นฐานของแบรนด์คุณ — ทั้งจุดยืน เรื่องราว และภาพลักษณ์ — เพื่อให้แน่ใจว่าคุณจะสร้างนิยามใหม่ในหมวดหมู่ของคุณ">Tactics without strategy is just noise. We build the foundational DNA of your brand — positioning, narrative, and visual identity — ensuring you completely redefine your category.</p>
-        <div class="svc-features reveal-up">
-          <div class="svc-feature"><div class="svc-f-val">Moat</div><div class="svc-f-lbl" data-th="ปกป้องแบรนด์">Brand Protection</div></div>
-          <div class="svc-feature"><div class="svc-f-val">Price</div><div class="svc-f-lbl" data-th="การวางตำแหน่งระดับพรีเมียม">Premium Positioning</div></div>
-        </div>
+        <p class="svc-desc reveal-up" data-th="ยุทธวิธีที่ปราศจากกลยุทธ์เป็นเพียงเสียงรบกวน เราสร้าง DNA พื้นฐาน of แบรนด์คุณ — ทั้งจุดยืน เรื่องราว และภาพลักษณ์ — เพื่อให้แน่ใจว่าคุณจะสร้างนิยามใหม่ในหมวดหมู่ของคุณ">Tactics without strategy is just noise. We build the foundational DNA of your brand — positioning, narrative, and visual identity — ensuring you completely redefine your category.</p>
+        <ul class="svc-deliverables">
+          <li data-th="การวางตำแหน่ง & อัตลักษณ์ของแบรนด์">Brand Positioning & Identity</li>
+          <li data-th="น้ำเสียง & เรื่องราว">Tone of Voice & Narrative</li>
+          <li data-th="การวิเคราะห์ตลาด & คู่แข่ง">Market & Competitor Analysis</li>
+          <li data-th="พิมพ์เขียวเข้าสู่ตลาดแบบเต็มรูปแบบ">Full Go-to-Market Blueprints</li>
+        </ul>
         <a href="https://wa.me/66960531394" target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างพิมพ์เขียว →">Build Blueprint →</a>
       </div>
       <div class="svc-right">
-        <img src="assets/nomads-cover.png" alt="Brand Strategy" class="card-media">
+        <div class="card-media-wrapper">
+          <img src="assets/nomads-cover.png" alt="Brand Strategy" class="card-media">
+        </div>
       </div>
     </div>
   </div>
@@ -330,8 +500,8 @@ nav{background:rgba(4,4,4,.95)}
   <a href="https://wa.me/66960531394" target="_blank" class="sbc-link" data-th="จองคิววางกลยุทธ์ →">Book a Strategy Call →</a>
 </div>
 
-<section style="background:#040404;padding:60px;position:relative;z-index:10;">
-  <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:40px;align-items:center">
+<section id="map-section" style="background:#040404;padding:80px 5vw;position:relative;z-index:10;">
+  <div class="map-grid">
     <div>
       <p style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--ac);margin-bottom:14px" data-th="📍 ค้นหาเรา">📍 Find Us</p>
       <h2 style="font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,56px);font-weight:800;color:var(--w);line-height:.9;letter-spacing:-.04em;text-transform:uppercase;margin-bottom:14px" data-th="เราอยู่ที่<br><em style='font-style:italic;color:var(--ac)'>พัทยา.</em>">We're In<br><em style="font-style:italic;color:var(--ac)">Pattaya.</em></h2>
@@ -351,13 +521,24 @@ nav{background:rgba(4,4,4,.95)}
     <div class="ft-col"><h5 data-th="บริการ">Services</h5><a href="services.html" data-th="การตลาดเชิงประสิทธิภาพ">Performance Marketing</a><a href="services.html" data-th="โซเชียลมีเดีย">Social Media</a><a href="services.html" data-th="การผลิตคอนเทนต์">Content Production</a><a href="services.html" data-th="AI ครีเอทีฟ">AI Creative</a><a href="services.html" data-th="กลยุทธ์แบรนด์">Brand Strategy</a></div>
     <div class="ft-col"><h5 data-th="ผลงาน">Work</h5><a href="work.html">Elysium Pattaya</a><a href="work.html">Alexa Beach Club</a><a href="work.html">Hotel Skyview</a><a href="work.html">Nomads Asia</a></div>
     <div class="ft-col"><h5 data-th="ติดต่อ">Contact</h5><a href="https://wa.me/66960531394" target="_blank">WhatsApp: +66 9605 31394</a><a href="tel:+66960531394">Tel: +66 960531394</a><a href="https://www.google.com/search?kgmid=/g/11thsj4kpb&q=Unsocials+Thailand" target="_blank" rel="noopener" data-th="📍 ค้นหาเราบน Google Maps">📍 Find Us on Google Maps</a></div>
-    <div class="ft-col"><h5 data-th="เชื่อมต่อ">Connect</h5><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">LinkedIn</a></div>
+    <div class="ft-col"><h5 data-th="เชื่อมต่อ">Connect</h5><div class="ft-social-icons">
+  <a href="#" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+  </a>
+  <a href="#" aria-label="TikTok">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path><path d="M15 8a4 4 0 1 0 0 8"></path></svg>
+  </a>
+  <a href="#" aria-label="LinkedIn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+  </a>
+</div></div>
   </div>
   <div class="ft-bot"><p data-th="© 2026 Unsocials · อินเดีย &amp; ไทย · สงวนลิขสิทธิ์">© 2026 Unsocials · India &amp; Thailand · All Rights Reserved.</p><p data-th="เราทำให้มันเกิดขึ้นอย่างหลีกเลี่ยงไม่ได้">We Make It Inevitable.</p></div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
 <script src="script.js?v=3"></script>
 <script>
 // Cursor
@@ -387,77 +568,260 @@ gsap.from('.ph-eye,.ph-h,.ph-sub',{
   y:40,opacity:0,duration:1,stagger:.15,ease:'power3.out'
 });
 
-// Overlapping Cards Animation
+// Stacking Cards Reveal Animations
 const cards = gsap.utils.toArray('.svc-card');
+let mm = gsap.matchMedia();
 
-ScrollTrigger.matchMedia({
-  // Desktop
-  "(min-width: 901px)": function() {
-    cards.forEach((card, i) => {
-      
-      // The fade up of content inside the card when it comes into view
-      gsap.to(card.querySelectorAll('.reveal-up'), {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 60%',
-          toggleActions: 'play none none none'
-        }
-      });
+// Desktop Stacking Card Deck with active card fade-out & overlap
+mm.add("(min-width: 901px)", function() {
+  const deck = document.querySelector('.svc-deck');
+  const menuItems = document.querySelectorAll('.svc-global-menu .svc-menu-list li');
+  const menuNum = document.querySelector('.svc-global-menu .svc-menu-num');
+  
+  // 1. Stack cards absolutely inside the pinned viewport container
+  gsap.set(deck, { height: '100vh', position: 'relative', overflow: 'hidden' });
+  gsap.set(cards, { position: 'absolute', top: 0, left: 0, width: '100%', height: '100vh', margin: 0 });
+  
+  // 2. Hide subsequent cards below the viewport on load
+  cards.forEach((card, i) => {
+    if (i > 0) gsap.set(card, { yPercent: 100 });
+  });
 
-      // The parallax on the image
-      const media = card.querySelector('.card-media');
-      if (media) {
-        gsap.to(media, {
-          yPercent: -10,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true
-          }
-        });
-      }
-
-      // The actual overlap and scale down of the PREVIOUS card
-      if (i < cards.length - 1) {
-        gsap.to(card, {
-          scale: 0.94,       // scale down slightly to push it to the background
-          filter: "brightness(0.6)", // dim it slightly
-          ease: "none",
-          scrollTrigger: {
-            trigger: cards[i + 1], // Trigger is the NEXT card arriving
-            start: "top bottom",   // When top of next card hits bottom of viewport
-            end: "top top",        // When top of next card hits top of viewport (fully covers)
-            scrub: true
-          }
+  // Helper to update global menu active state and text content
+  let currentActiveIndex = 0;
+  function updateActiveMenu(index) {
+    if (index === currentActiveIndex) return;
+    
+    // Toggle active class on list items
+    menuItems.forEach((li, idx) => {
+      li.classList.toggle('active', idx === index);
+    });
+    
+    // Animate the number change cleanly
+    gsap.killTweensOf(menuNum);
+    gsap.to(menuNum, {
+      opacity: 0,
+      y: -15,
+      duration: 0.2,
+      ease: 'power2.in',
+      onComplete: () => {
+        menuNum.textContent = '0' + (index + 1);
+        gsap.to(menuNum, {
+          opacity: 1,
+          y: 0,
+          duration: 0.2,
+          ease: 'power2.out'
         });
       }
     });
-  },
-  
-  // Mobile (no sticky overlapping, just normal flow)
-  "(max-width: 900px)": function() {
-    cards.forEach((card) => {
-      gsap.to(card.querySelectorAll('.reveal-up'), {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out',
+    
+    currentActiveIndex = index;
+  }
+
+  // 3. Create a master scrub timeline that pins the deck
+  let masterTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: deck,
+      start: 'top top',
+      end: '+=500%', // Elegant scroll distance (100% of screen height per card transition)
+      pin: true,
+      scrub: 1.2, // Added buttery-smooth catching-up scroll lag
+      onUpdate: (self) => {
+        // Precise scroll calculations to map timeline time back to active service index
+        const time = masterTl.time();
+        let activeIndex = 0;
+        if (time < 0.75) activeIndex = 0;
+        else if (time < 2.25) activeIndex = 1;
+        else if (time < 3.75) activeIndex = 2;
+        else if (time < 5.25) activeIndex = 3;
+        else activeIndex = 4;
+        
+        updateActiveMenu(activeIndex);
+      }
+    }
+  });
+
+  // Handle click-to-scroll interaction for the stationary menu items
+  menuItems.forEach((li, idx) => {
+    li.addEventListener('click', () => {
+      const targetTime = idx * 1.5;
+      const startScroll = masterTl.scrollTrigger.start;
+      const endScroll = masterTl.scrollTrigger.end;
+      const totalScrollDistance = endScroll - startScroll;
+      const targetScroll = startScroll + (targetTime / 6.0) * totalScrollDistance;
+      
+      lenis.scrollTo(targetScroll, {
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+      });
+    });
+  });
+
+  // 4. Build the transitions for each card
+  cards.forEach((card, i) => {
+    const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc');
+    const wrapper = card.querySelector('.card-media-wrapper');
+    const media = card.querySelector('.card-media');
+    const listItems = card.querySelectorAll('.svc-deliverables li, .svc-cta-btn');
+
+    if (i === 0) {
+      // Card 1 animates in immediately upon entering the viewport (not scrubbed, for a punchy entrance!)
+      gsap.set(textEls, { opacity: 0, y: 40 });
+      if (wrapper && media) {
+        gsap.set(wrapper, { clipPath: 'inset(0 100% 0 0)', overflow: 'hidden' });
+        gsap.set(media, { scale: 1.15, x: 30 });
+      }
+      if (listItems.length) gsap.set(listItems, { opacity: 0, y: 20 });
+
+      let tl0 = gsap.timeline({
         scrollTrigger: {
-          trigger: card,
+          trigger: deck,
           start: 'top 80%',
           toggleActions: 'play none none none'
         }
       });
+      tl0.to(textEls, { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out' }, 0);
+      if (wrapper && media) {
+        tl0.to(wrapper, { clipPath: 'inset(0 0% 0 0)', duration: 1.2, ease: 'power4.inOut' }, 0);
+        tl0.to(media, { scale: 1, x: 0, duration: 1.2, ease: 'power4.inOut' }, 0);
+      }
+      if (listItems.length) {
+        tl0.to(listItems, { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out' }, 0.8);
+      }
+    } else {
+      // Cards 2+ set initial hidden states
+      gsap.set(textEls, { opacity: 0, y: 40 });
+      if (wrapper && media) {
+        gsap.set(wrapper, { clipPath: 'inset(0 100% 0 0)', overflow: 'hidden' });
+        gsap.set(media, { scale: 1.15, x: 30 });
+      }
+      if (listItems.length) gsap.set(listItems, { opacity: 0, y: 20 });
+
+      const prevCardInner = cards[i - 1].querySelector('.svc-card-inner');
+      const label = 'card' + i;
+
+      masterTl.addLabel(label);
+
+      // Phase 1: Overlap Transition!
+      // As the new card slides up (yPercent: 0), the previous card inner content FADES AWAY and scales down!
+      masterTl.to(prevCardInner, {
+        scale: 0.90, // Scale down slightly for a depth effect
+        opacity: 0, // Fade out
+        filter: 'brightness(0.2) blur(3px)', // Fade to dark and blur slightly
+        y: -60, // Move up slightly
+        ease: 'power2.inOut', // Organic easing
+        duration: 1
+      }, label);
+
+      masterTl.to(card, {
+        yPercent: 0, // Slide the new card up over it
+        ease: 'power2.inOut', // Organic easing
+        duration: 1
+      }, label);
+
+      // Phase 2: Staggered reveal of the new card's inner content (starts at 0.6 to merge fluidly with the slide-up!)
+      const revealLabel = label + '+=0.6';
+      masterTl.to(textEls, { opacity: 1, y: 0, stagger: 0.05, ease: 'power2.out', duration: 0.5 }, revealLabel);
+      if (wrapper && media) {
+        masterTl.to(wrapper, { clipPath: 'inset(0 0% 0 0)', ease: 'power2.out', duration: 0.5 }, revealLabel);
+        masterTl.to(media, { scale: 1, x: 0, ease: 'power2.out', duration: 0.5 }, revealLabel);
+      }
+      if (listItems.length) {
+        masterTl.to(listItems, { opacity: 1, y: 0, stagger: 0.05, ease: 'power2.out', duration: 0.5 }, revealLabel + '+=0.15');
+      }
+
+      // Phase 3: Pause for reading before the next card overlaps it
+      masterTl.to({}, { duration: 0.5 });
+    }
+  });
+});
+
+// Mobile Fallback (normal flow layout with staggered reveals)
+mm.add("(max-width: 900px)", function() {
+  const deck = document.querySelector('.svc-deck');
+  if (deck) gsap.set(deck, { clearProps: "all" });
+  if (cards) gsap.set(cards, { clearProps: "all" });
+  
+  cards.forEach(card => {
+    const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc');
+    const wrapper = card.querySelector('.card-media-wrapper');
+    const media = card.querySelector('.card-media');
+    const listItems = card.querySelectorAll('.svc-deliverables li, .svc-cta-btn');
+    const inner = card.querySelector('.svc-card-inner');
+    if (textEls.length) gsap.set(textEls, { clearProps: "all" });
+    if (wrapper) gsap.set(wrapper, { clearProps: "all" });
+    if (media) gsap.set(media, { clearProps: "all" });
+    if (listItems.length) gsap.set(listItems, { clearProps: "all" });
+    if (inner) gsap.set(inner, { clearProps: "all" });
+  });
+
+  cards.forEach((card) => {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 80%',
+        toggleActions: 'play none none none'
+      }
     });
-  }
+
+    const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc');
+    const wrapper = card.querySelector('.card-media-wrapper');
+    const media = card.querySelector('.card-media');
+    const listItems = card.querySelectorAll('.svc-deliverables li, .svc-cta-btn');
+
+    // 1. Text entrance
+    gsap.set(textEls, { opacity: 0, y: 40 });
+    tl.to(textEls, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      stagger: 0.12,
+      ease: 'power3.out'
+    }, 0);
+
+    // 2. Image clip-path reveal
+    if (wrapper && media) {
+      let imgRevealTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 75%',
+          toggleActions: 'play none none none'
+        }
+      });
+      
+      gsap.set(wrapper, { clipPath: 'inset(0 100% 0 0)', overflow: 'hidden' });
+      gsap.set(media, { scale: 1.15, x: 30 });
+      
+      imgRevealTl.to(wrapper, {
+        clipPath: 'inset(0 0% 0 0)',
+        duration: 1.2,
+        ease: 'power4.inOut'
+      }, 0);
+      
+      imgRevealTl.to(media, {
+        scale: 1,
+        x: 0,
+        duration: 1.2,
+        ease: 'power4.inOut'
+      }, 0);
+
+      if (listItems.length > 0) {
+        gsap.set(listItems, { opacity: 0, y: 20 });
+        imgRevealTl.to(listItems, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: 'power2.out'
+        }, 0.8);
+      }
+    }
+  });
+});
+
+// Refresh ScrollTrigger calculations after all resources/images are loaded
+window.addEventListener('load', function() {
+  ScrollTrigger.refresh();
 });
 </script>
 </body>

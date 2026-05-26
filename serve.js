@@ -21,7 +21,13 @@ const MIME_TYPES = {
 };
 
 http.createServer((req, res) => {
-    let filePath = '.' + req.url;
+    let urlWithoutQuery = req.url.split('?')[0];
+    try {
+        urlWithoutQuery = decodeURIComponent(urlWithoutQuery);
+    } catch (e) {
+        // Fallback to original url without query if decoding fails
+    }
+    let filePath = '.' + urlWithoutQuery;
     if (filePath === './') {
         filePath = './index.html';
     }

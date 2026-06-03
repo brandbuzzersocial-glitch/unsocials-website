@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — UNSOCIALS Global</title>
-<meta name="description" content="Founded in India 2020. Scaled across Asia. 100+ global brands. Operating in 2 countries. Not an agency. An obsession.">
+<title>About Our Team & Vision | Unsocials Thailand</title>
+<meta name="description" content="Learn about Unsocials Thailand, our roots in Jaipur, India, and our creative agency hub in Pattaya. Meet our founders and explore our results-driven marketing approach.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=8">
@@ -284,6 +284,123 @@
     .about-cta-band { padding: 60px 24px; }
     .av-header { flex-direction: column; align-items: flex-start; }
   }
+
+  /* ── TEAM SECTION ── */
+  .team-section {
+    padding: 120px 8vw;
+    background: #040404;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    z-index: 10;
+  }
+  .team-header {
+    margin-bottom: 80px;
+  }
+  .team-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ac);
+    margin-bottom: 14px;
+  }
+  .team-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--w);
+    line-height: 0.92;
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .team-card {
+    background: rgba(10, 10, 10, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .team-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(232, 255, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+  .team-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #111;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--ac);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+    overflow: hidden;
+  }
+  .team-avatar.ai-avatar {
+    background: linear-gradient(135deg, rgba(232,255,0,0.2) 0%, rgba(168,85,247,0.2) 100%);
+    color: #a855f7;
+    border-color: rgba(168, 85, 247, 0.3);
+  }
+  .team-card:hover .team-avatar {
+    border-color: var(--ac);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(232, 255, 0, 0.2);
+  }
+  .team-card:hover .team-avatar.ai-avatar {
+    border-color: #a855f7;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  }
+  .team-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--w);
+    margin-bottom: 6px;
+  }
+  .team-role {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ac);
+    margin-bottom: 20px;
+  }
+  .team-card:hover .team-role {
+    color: var(--w);
+  }
+  .team-bio {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .team-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    .team-section {
+      padding: 80px 24px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -300,6 +417,8 @@
     <a href="work.html" data-th="ผลงาน">Work</a>
     <a href="services.html" data-th="บริการ">Services</a>
     <a href="about.html" style="color:var(--ac)" data-th="เกี่ยวกับเรา">About</a>
+    <a href="blog.html" data-th="บล็อก">Blog</a>
+    <a href="stats.html" data-th="ข้อมูลตลาด">Stats</a>
     <a href="contact.html" data-th="ติดต่อ">Contact</a>
   </div>
   <div class="lang-switch">
@@ -322,6 +441,8 @@
       <a href="work.html" class="mmenu-link" data-th="ผลงาน">Work</a>
       <a href="services.html" class="mmenu-link" data-th="บริการ">Services</a>
       <a href="about.html" class="mmenu-link" style="color:var(--ac)" data-th="เกี่ยวกับเรา">About</a>
+      <a href="blog.html" class="mmenu-link" data-th="บล็อก">Blog</a>
+      <a href="stats.html" class="mmenu-link" data-th="ข้อมูลตลาด">Stats</a>
       <a href="contact.html" class="mmenu-link" data-th="ติดต่อ">Contact</a>
     </div>
     <div class="mmenu-footer">
@@ -339,13 +460,13 @@
 <section class="about-page-hero">
   <div class="ape-eye" data-th="เบื้องหลัง">The Agency</div>
   <h1 class="ape-h" data-th="ไม่ใช่เอเจนซี่.<br><em>แต่คือความหลงใหล.</em>">Not an Agency.<br><em>An Obsession.</em></h1>
-  <p class="ape-sub" data-th="ก่อตั้งในชัยปุระ อินเดีย ปี 2020 ขยายธุรกิจทั่วเอเชีย บริหารแบรนด์ระดับโลกกว่า 100 แบรนด์ ดำเนินงานใน 2 ประเทศ ไม่ใช่แค่เอเจนซี่ แต่คือความหลงใหลอย่างแท้จริง">Founded in Jaipur, India in 2020. Scaled across Asia. 100+ global brands. Operating in 2 countries. Not an agency. An obsession.</p>
+  <p class="ape-sub" data-th="ทีมงานที่เหนียวแน่นของนักวางกลยุทธ์ ครีเอเตอร์ และชาวดิจิทัลโดยกำเนิด - เกิดที่ชัยปุระ ดำเนินงานในพัทยา">A tight team of strategists, creators and digital natives - born in Jaipur, operating in Pattaya.</p>
 </section>
 
 <!-- TICKER -->
 <div class="bstrip">
   <div class="bstrip-in">
-    FOUNDED IN INDIA 2020 <span>·</span> PATTAYA, THAILAND <span>·</span> 100+ GLOBAL BRANDS <span>·</span> 2 COUNTRIES <span>·</span> RESULTS DRIVEN <span>·</span> WE MAKE IT INEVITABLE <span>·</span> DIGITAL NATIVES <span>·</span> OBSESSED <span>·</span> PERFORMANCE FIRST <span>·</span> FOUNDED IN INDIA 2020 <span>·</span> PATTAYA, THAILAND <span>·</span> 100+ GLOBAL BRANDS <span>·</span> 2 COUNTRIES <span>·</span> RESULTS DRIVEN <span>·</span> WE MAKE IT INEVITABLE
+    PATTAYA BASED <span>·</span> RESULTS DRIVEN <span>·</span> DIGITAL NATIVES <span>·</span> OBSESSED <span>·</span> PERFORMANCE FIRST <span>·</span> INEVITABLE <span>·</span> PATTAYA BASED <span>·</span> RESULTS DRIVEN <span>·</span> DIGITAL NATIVES <span>·</span> OBSESSED <span>·</span> PERFORMANCE FIRST <span>·</span> INEVITABLE <span>·</span> PATTAYA BASED <span>·</span> RESULTS DRIVEN <span>·</span> DIGITAL NATIVES <span>·</span> OBSESSED <span>·</span> PERFORMANCE FIRST <span>·</span> INEVITABLE
   </div>
 </div>
 
@@ -402,8 +523,8 @@
     </div>
     <div class="av-card rv" style="transition-delay:.24s">
       <div class="av-num">06</div>
-      <div class="av-title" data-th="สร้างระดับโลก หยั่งรากระดับท้องถิ่น">Built Globally. Rooted Locally.</div>
-      <div class="av-desc" data-th="เราเริ่มต้นที่อินเดีย เราดำเนินงานในประเทศไทย เราคิดในระดับสากล เราได้สร้างผลงานให้กับแบรนด์บันเทิงระดับโลก กลุ่มโรงแรมหรู และอีคอมเมิร์ซยักษ์ใหญ่ เรานำมาตรฐานระดับโลกนั้นมาสู่ทุกตลาดที่เราเข้าไป และผสานรวมกับความรู้ท้องถิ่นเชิงลึก สองประเทศ หนึ่งมาตรฐาน นี่คือความได้เปรียบของเรา">We started in India. We operate in Thailand. We think internationally. We've delivered for global entertainment brands, luxury hospitality groups and e-commerce giants. We bring that global standard to every market we enter — and we combine it with deep local knowledge. Two countries. One standard. This is our unfair advantage.</div>
+      <div class="av-title" data-th="เราอยู่ที่นี่">We Live Here</div>
+      <div class="av-desc" data-th="เราใช้ชีวิตและทำงานในพัทยา ผู้ก่อตั้งของเราย้ายจากชัยปุระมาสร้างสิ่งนี้ขึ้นมา — ไม่ใช่ในฐานะบุคคลภายนอก แต่เป็นผู้ที่เลือกประเทศไทยเป็นบ้าน ความแตกต่างนั้นแสดงให้เห็นอย่างชัดเจนในทุกแคมเปญ">We live and operate in Pattaya. Our founder moved from Jaipur to build this - not as outsiders, but as people who chose Thailand as home. That difference shows in every campaign.</div>
     </div>
   </div>
 </section>
@@ -411,7 +532,7 @@
 <!-- MANIFESTO QUOTE -->
 <section class="about-manifesto rv">
   <div class="am-quote" data-th="&quot;เราไม่รับงานจากแบรนด์ที่เราไม่เชื่อมั่น <em>ทุกลูกค้าที่เราดูแล เรารับผิดชอบเหมือนเป็นเรื่องส่วนตัว</em>&quot;">"We don't do retainers for brands we don't believe in. <em>Every client we take, we take personally.</em>"</div>
-  <div class="am-attr" data-th="— UNSOCIALS · ก่อตั้งที่ชัยปุระ อินเดีย 2020 · พัทยา ไทย 2025">— UNSOCIALS · Founded Jaipur, India 2020 · Pattaya, Thailand 2025</div>
+  <div class="am-attr" data-th="— UNSOCIALS Thailand - พัทยา, ประเทศไทย">— UNSOCIALS Thailand - Pattaya, Thailand</div>
 </section>
 
 <!-- AWARDS & RECOGNITION SECTION -->
@@ -508,12 +629,43 @@
 
 <style>
   .journey-card:hover { border-color: var(--ac); transform: translateY(-10px); }
-  .journey-card:hover .j-overlay { transform: translateY(0); }
+  .journey-card:hover .j-overlay { transform: translateY(0) !important; }
   .journey-card:hover h3, 
   .journey-card:hover p, 
   .journey-card:hover ul, 
   .journey-card:hover li { color: var(--bg) !important; border-color: rgba(0,0,0,0.1) !important; }
 </style>
+
+<!-- TEAM SECTION -->
+<section class="team-section">
+  <div class="team-header">
+    <div class="team-eyebrow" data-th="ทีมงานของเรา">Our Team</div>
+    <h2 class="team-title" data-th="ผู้ขับเคลื่อนผลลัพธ์และนวัตกรรม">The Obsessive Minds</h2>
+  </div>
+  <div class="team-grid">
+    <!-- Rahul -->
+    <div class="team-card rv">
+      <div class="team-avatar">RK</div>
+      <div class="team-name">Rahul</div>
+      <div class="team-role" data-th="ผู้ก่อตั้ง &amp; ผู้อำนวยการด้านประสิทธิภาพ">Founder &amp; Performance Director</div>
+      <p class="team-bio" data-th="หมกมุ่นอยู่กับการเพิ่มอัตราส่วนการจอง ยอดขาย และการเติบโตของ ROI ดูแลการซื้อสื่อและกลยุทธ์ของแบรนด์ทั้งหมด">Obsessed with conversion, booking rates, and ROI scaling. Rahul oversees core growth strategy, media buying, and analytics across all client accounts.</p>
+    </div>
+    <!-- Anoop -->
+    <div class="team-card rv" style="transition-delay:.08s">
+      <div class="team-avatar">AK</div>
+      <div class="team-name">Anoop</div>
+      <div class="team-role" data-th="ผู้ร่วมก่อตั้ง &amp; ผู้นำด้านครีเอทีฟ">Co-Founder &amp; Creative Lead</div>
+      <p class="team-bio" data-th="ผลักดันขีดจำกัดการเล่าเรื่อง แผ้วถางงานออกแบบและทิศทางครีเอทีฟของแบรนด์ รวมถึงการพัฒนา AI ครีเอทีฟ">Pushing the boundaries of digital storytelling. Anoop leads visual production, design identity, and directs the development of custom AI creative pipelines.</p>
+    </div>
+    <!-- Ava & Alex -->
+    <div class="team-card rv" style="transition-delay:.16s">
+      <div class="team-avatar ai-avatar">A²</div>
+      <div class="team-name">Ava &amp; Alex</div>
+      <div class="team-role" data-th="ตัวแทนแบรนด์ AI ของเรา">AI Brand Representatives</div>
+      <p class="team-bio" data-th="ส่วนขยายเสมือนจริงของทีมงาน ทำงานร่วมกับนักกลยุทธ์มนุษย์ ผลิตคอนเทนต์ดึงดูดระดับพรีเมียมได้ไม่มีที่สิ้นสุดและไม่มีขีดจำกัด">The virtual division of Unsocials. Ava and Alex are proprietary AI models engineered to generate infinite high-end visual assets with zero production friction.</p>
+    </div>
+  </div>
+</section>
 
 <!-- CTA BAND -->
 <div class="about-cta-band rv">
@@ -556,7 +708,7 @@
   <div class="ft-g">
     <div>
       <div class="ft-br">UNSOCIALS<br><em data-th="ประเทศไทย">Thailand</em></div>
-      <p class="ft-brs" data-th="เอเจนซี่การตลาดสร้างสรรค์ระดับโลก<br>พัทยา · ชัยปุระ">Global Creative Marketing Agency<br>Pattaya · Jaipur</p>
+      <p class="ft-brs" data-th="เอเจนซี่ประสิทธิภาพเชิงสร้างสรรค์<br>พัทยา · ประเทศไทย">Creative Performance Agency<br>Pattaya - Thailand</p>
     </div>
     <div class="ft-col">
       <h5 data-th="บริการ">Services</h5>
@@ -568,10 +720,10 @@
     </div>
     <div class="ft-col">
       <h5 data-th="ผลงาน">Work</h5>
-      <a href="work.html">Elysium Pattaya</a>
-      <a href="work.html">Alexa Beach Club</a>
-      <a href="work.html">Hotel Skyview</a>
-      <a href="work.html">Nomads Asia</a>
+      <a href="work.html#elysium">Elysium Pattaya</a>
+      <a href="work.html#alexa">Alexa Beach Club</a>
+      <a href="work.html#skyview">Hotel Skyview</a>
+      <a href="work.html#nomads">Nomads Asia</a><a href="blog.html" data-th="บล็อก">Blog</a><a href="stats.html" data-th="ข้อมูลตลาด">Market Stats</a>
     </div>
     <div class="ft-col">
       <h5 data-th="ติดต่อ">Contact</h5>
@@ -582,13 +734,13 @@
     <div class="ft-col">
       <h5 data-th="เชื่อมต่อ">Connect</h5>
       <div class="ft-social-icons">
-  <a href="#" aria-label="Instagram">
+  <a href="https://www.instagram.com/unsocials.th/" target="_blank" aria-label="Instagram">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
   </a>
-  <a href="#" aria-label="TikTok">
+  <a href="https://www.tiktok.com/@unsocials.th" target="_blank" aria-label="TikTok">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path><path d="M15 8a4 4 0 1 0 0 8"></path></svg>
   </a>
-  <a href="#" aria-label="LinkedIn">
+  <a href="https://www.linkedin.com/company/unsocials" target="_blank" aria-label="LinkedIn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
   </a>
 </div>
@@ -634,5 +786,10 @@ if(typeof gsap !== 'undefined') {
   });
 }
 </script>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20start%20a%20conversation." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.244 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-16.793c-.166-.369-.342-.377-.502-.384-.131-.005-.28-.006-.43-.006-.15 0-.395.056-.602.28-.206.225-.79.771-.79 1.882 0 1.111.808 2.185.92 2.335.113.15 1.59 2.429 3.853 3.407.538.233.957.372 1.285.477.54.172 1.03.148 1.417.09.431-.064 1.328-.542 1.516-1.064.188-.522.188-.97.132-1.064-.056-.094-.207-.15-.433-.263s-1.329-.655-1.536-.73c-.207-.075-.358-.112-.507.113-.15.225-.583.73-.715.88-.132.15-.264.169-.49.056-.226-.113-.956-.352-1.82-1.123-.673-.6-1.127-1.341-1.26-1.566-.131-.225-.014-.347.1-.459.102-.101.226-.263.339-.395.113-.131.15-.225.226-.375.075-.15.038-.281-.019-.394-.056-.113-.502-1.21-.688-1.657z"/></svg>
+</a>
 </body>
 </html>

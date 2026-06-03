@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights & Articles — UNSOCIALS Thailand</title>
+<meta name="description" content="Read digital marketing insights, hotel OTA reduction strategies, and AI creative technology breakthroughs in Pattaya, Thailand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=8">
+<style>
+html {
+  scroll-behavior: auto !important;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#040404;cursor:none;overflow-x:hidden}
+
+/* ── NAV override ── */
+nav{background:rgba(4,4,4,.95)}
+
+/* ── PAGE HERO ── */
+.ph{padding:160px 60px 64px;border-bottom:1px solid rgba(255,255,255,.07)}
+.ph-eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--rd);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.ph-eye::before{content:'';width:24px;height:1px;background:var(--rd);display:block}
+.ph-h{font-family:'Syne',sans-serif;font-size:clamp(52px,8vw,110px);line-height:.88;font-weight:800;letter-spacing:-.04em;text-transform:uppercase;color:var(--w);margin-bottom:24px}
+.ph-h em{font-style:italic;color:var(--ac)}
+.ph-sub{font-size:clamp(14px,1.2vw,18px);color:rgba(255,255,255,.5);max-width:600px;line-height:1.7;font-family:'Space Grotesk',sans-serif}
+
+/* ── BLOG GRID ── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 80px 60px;
+  gap: 40px;
+  background: #040404;
+}
+
+/* ── BLOG CARD ── */
+.blog-card {
+  background: rgba(20, 20, 20, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  cursor: none;
+}
+.blog-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(232, 255, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+.bc-img-w {
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  position: relative;
+  background: #111;
+}
+.bc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.blog-card:hover .bc-img {
+  transform: scale(1.08);
+}
+.bc-content {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.bc-meta {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ac);
+  margin-bottom: 12px;
+}
+.bc-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--w);
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.bc-desc {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+.bc-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--w);
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  transition: color 0.3s;
+}
+.blog-card:hover .bc-btn {
+  color: var(--ac);
+}
+
+/* ── OVERLAY READER ── */
+#blog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 4, 4, 0.95);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 40px;
+  opacity: 0;
+}
+#blog-container {
+  width: 100%;
+  max-width: 900px;
+  background: #080808;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+  transform: scale(0.95);
+}
+.bo-close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--w);
+  font-family: 'Syne', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s, border-color 0.3s, transform 0.3s;
+}
+.bo-close:hover {
+  background: var(--ac);
+  border-color: var(--ac);
+  color: var(--bg);
+  transform: rotate(90deg);
+}
+.bo-body {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 60px 80px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+.bo-body::-webkit-scrollbar {
+  width: 6px;
+}
+.bo-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+.bo-meta {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ac);
+  margin-bottom: 20px;
+}
+.bo-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  color: var(--w);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 30px;
+}
+.bo-content {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(15px, 1.2vw, 17px);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+}
+.bo-content p {
+  margin-bottom: 24px;
+}
+.bo-content h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--w);
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+.bo-content strong {
+  color: var(--w);
+}
+.bo-cta {
+  margin-top: 50px;
+  padding: 40px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.bo-cta-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--w);
+}
+.bo-cta-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--ac);
+  color: var(--bg);
+  padding: 16px 36px;
+  text-decoration: none;
+  border-radius: 100px;
+  font-weight: 700;
+  transition: transform 0.3s, background 0.3s;
+}
+.bo-cta-btn:hover {
+  transform: translateY(-3px);
+  background: #fff;
+}
+
+@media(max-width: 900px){
+  .blog-grid {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+    gap: 30px;
+  }
+  .ph {
+    padding: 120px 24px 48px;
+  }
+  #blog-overlay {
+    padding: 16px;
+  }
+  .bo-body {
+    padding: 40px 24px;
+  }
+  .bo-close {
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="cur2"></div>
+
+<nav id="nav">
+  <a class="nlogo" href="index.html">UNSOCIALS <span class="nbadge">INTL</span></a>
+  <div class="nlinks">
+    <a href="index.html" data-th="หน้าแรก">Home</a>
+    <a href="work.html" data-th="ผลงาน">Work</a>
+    <a href="services.html" data-th="บริการ">Services</a>
+    <a href="about.html" data-th="เกี่ยวกับเรา">About</a>
+    <a href="blog.html" style="color:var(--ac)" data-th="บล็อก">Blog</a>
+    <a href="stats.html" data-th="ข้อมูลตลาด">Stats</a>
+    <a href="contact.html" data-th="ติดต่อ">Contact</a>
+  </div>
+  <div class="lang-switch">
+    <span class="lang-btn active" data-lang="en">EN</span>
+    <span class="lang-div">|</span>
+    <span class="lang-btn" data-lang="th">TH</span>
+  </div>
+  <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20book%20a%20call." target="_blank" class="nbook" data-th="จองคิวพูดคุย">Book a Call</a>
+  <button class="nham" aria-label="Toggle Menu">
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mmenu">
+  <div class="mmenu-inner">
+    <div class="mmenu-links">
+      <a href="index.html" class="mmenu-link" data-th="หน้าแรก">Home</a>
+      <a href="work.html" class="mmenu-link" data-th="ผลงาน">Work</a>
+      <a href="services.html" class="mmenu-link" data-th="บริการ">Services</a>
+      <a href="about.html" class="mmenu-link" data-th="เกี่ยวกับเรา">About</a>
+      <a href="blog.html" class="mmenu-link" style="color:var(--ac)" data-th="บล็อก">Blog</a>
+      <a href="stats.html" class="mmenu-link" data-th="ข้อมูลตลาด">Stats</a>
+      <a href="contact.html" class="mmenu-link" data-th="ติดต่อ">Contact</a>
+    </div>
+    <div class="mmenu-footer">
+      <div class="mmenu-lang">
+        <span class="lang-btn active" data-lang="en">EN</span>
+        <span class="lang-div">|</span>
+        <span class="lang-btn" data-lang="th">TH</span>
+      </div>
+      <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20book%20a%20call." target="_blank" class="mmenu-book" data-th="จองคิวพูดคุย">Book a Call</a>
+    </div>
+  </div>
+</div>
+
+<section class="ph">
+  <div class="ph-eye" data-th="บล็อก &amp; บทความ">Insights</div>
+  <h1 class="ph-h" data-th="ความรู้และ<br><em>กลยุทธ์แบรนด์</em>">Agency<br><em>Insights.</em></h1>
+  <p class="ph-sub" data-th="บทความเจาะลึกกลยุทธ์การตลาด การบริหารโรงแรม การลดสัดส่วน OTA และการนำโมเดล AI ครีเอทีฟมาปรับใช้ในไทย">Expert analyses, industry playbooks, and strategic deep-dives to accelerate hotel revenues and exploit AI capabilities in Thailand.</p>
+</section>
+
+<!-- BLOG GRID -->
+<div class="blog-grid">
+  <!-- Article 1 -->
+  <div class="blog-card" onclick="openBlog('ota')">
+    <div class="bc-img-w">
+      <img src="assets/elysium-cover.jpg" alt="OTA Dependence" class="bc-img">
+    </div>
+    <div class="bc-content">
+      <div class="bc-meta" data-th="กลยุทธ์การโรงแรม">Hospitality Strategy</div>
+      <h3 class="bc-title" data-th="วิธีที่โรงแรมในพัทยาจะสามารถลดการพึ่งพา OTA">How Pattaya Hotels Can Reduce OTA Dependence</h3>
+      <p class="bc-desc" data-th="ประหยัดค่าคอมมิชชั่น 15-25% ด้วยการปรับใช้กรวยโฆษณา Meta, คอนเทนต์ AI และการประสานช่องทางจองตรงทาง WhatsApp">Save 15-25% in commissions through direct booking systems, targeted Meta Ads, and WhatsApp reservation funnels.</p>
+      <span class="bc-btn" data-th="อ่านบทความ →">Read Article →</span>
+    </div>
+  </div>
+
+  <!-- Article 2 -->
+  <div class="blog-card" onclick="openBlog('ai-content')">
+    <div class="bc-img-w">
+      <img src="assets/showcase/2.mp4" style="display:none;" alt="AI Content" class="bc-img"> <!-- fallback if video doesn't play -->
+      <video src="assets/showcase/2.mp4" autoplay loop muted playsinline class="bc-img" style="object-fit:cover;height:100%;width:100%"></video>
+    </div>
+    <div class="bc-content">
+      <div class="bc-meta" data-th="เทคโนโลยี AI ครีเอทีฟ">AI Technology</div>
+      <h3 class="bc-title" data-th="คอนเทนต์ AI สำหรับธุรกิจบริการในไทย: ความได้เปรียบที่ไม่มีใครเทียบได้ในปี 2026">AI Content for Thai Hospitality: The Unfair Advantage</h3>
+      <p class="bc-desc" data-th="ผลิตคอนเทนต์วิดีโอได้ไม่จำกัดและไม่มีค่าบานปลายด้วย AI และตัวแทนแบรนด์เสมือนจริง Ava &amp; Alex">Infinite content output. Zero production delay. Virtual brand representatives Ava &amp; Alex showcase your hotel.</p>
+      <span class="bc-btn" data-th="อ่านบทความ →">Read Article →</span>
+    </div>
+  </div>
+
+  <!-- Article 3 -->
+  <div class="blog-card" onclick="openBlog('trends')">
+    <div class="bc-img-w">
+      <img src="assets/nomads-cover.png" alt="Marketing Trends" class="bc-img">
+    </div>
+    <div class="bc-content">
+      <div class="bc-meta" data-th="แนวโน้มตลาดเอเชีย">Market Trends</div>
+      <h3 class="bc-title" data-th="แนวโน้มการตลาดดิจิทัล: วิธีสร้างความโดดเด่นในตลาดเอเชียตะวันออกเฉียงใต้">Digital Marketing Trends: Stand Out in SE Asia</h3>
+      <p class="bc-desc" data-th="เจาะลึกพฤติกรรมผู้ใช้งานแบบ mobile-first วิดีโอสั้น (TikTok &amp; Reels) และการทำตลาดแบบ Conversational Commerce">Navigating mobile-first audiences, short-form video (TikTok &amp; Reels), and conversational commerce.</p>
+      <span class="bc-btn" data-th="อ่านบทความ →">Read Article →</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-tick"><div class="ftk">UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp; PERFORMANCE &nbsp;·&nbsp; <strong>INEVITABLE</strong> &nbsp;·&nbsp; PATTAYA &nbsp;·&nbsp; <strong>JAIPUR</strong> &nbsp;·&nbsp; <strong>SOCIAL MEDIA</strong> &nbsp;·&nbsp; CONTENT &nbsp;·&nbsp; <strong>GROWTH</strong> &nbsp;·&nbsp; UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp;</div></div>
+  <div class="ft-g">
+    <div><div class="ft-br">UNSOCIALS<br><em data-th="ประเทศไทย">Thailand</em></div><p class="ft-brs" data-th="เอเจนซี่ประสิทธิภาพเชิงสร้างสรรค์<br>พัทยา · ประเทศไทย">Creative Performance Agency<br>Pattaya - Thailand</p></div>
+    <div class="ft-col"><h5 data-th="บริการ">Services</h5><a href="services.html" data-th="การตลาดเชิงประสิทธิภาพ">Performance Marketing</a><a href="services.html" data-th="โซเชียลมีเดีย">Social Media</a><a href="services.html" data-th="การผลิตคอนเทนต์">Content Production</a><a href="services.html" data-th="AI ครีเอทีฟ">AI Creative</a><a href="services.html" data-th="กลยุทธ์แบรนด์">Brand Strategy</a></div>
+    <div class="ft-col"><h5 data-th="ผลงาน">Work</h5><a href="work.html#elysium">Elysium Pattaya</a><a href="work.html#alexa">Alexa Beach Club</a><a href="work.html#skyview">Hotel Skyview</a><a href="work.html#nomads">Nomads Asia</a><a href="blog.html" data-th="บล็อก">Blog</a><a href="stats.html" data-th="ข้อมูลตลาด">Market Stats</a></div>
+    <div class="ft-col"><h5 data-th="ติดต่อ">Contact</h5><a href="https://wa.me/66960531394" target="_blank">WhatsApp: +66 9605 31394</a><a href="tel:+66960531394">Tel: +66 960531394</a><a href="https://www.google.com/search?kgmid=/g/11thsj4kpb&q=Unsocials+Thailand" target="_blank" rel="noopener" data-th="📍 ค้นหาเราบน Google Maps">📍 Find Us on Google Maps</a></div>
+    <div class="ft-col"><h5 data-th="เชื่อมต่อ">Connect</h5><div class="ft-social-icons">
+  <a href="https://www.instagram.com/unsocials.th/" target="_blank" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+  </a>
+  <a href="https://www.tiktok.com/@unsocials.th" target="_blank" aria-label="TikTok">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path><path d="M15 8a4 4 0 1 0 0 8"></path></svg>
+  </a>
+  <a href="https://www.linkedin.com/company/unsocials" target="_blank" aria-label="LinkedIn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+  </a>
+</div></div>
+  </div>
+  <div class="ft-bot"><p data-th="© 2026 Unsocials · อินเดีย &amp; ไทย · สงวนลิขสิทธิ์">© 2026 Unsocials · India &amp; Thailand · All Rights Reserved.</p><p data-th="เราทำให้มันเกิดขึ้นอย่างหลีกเลี่ยงไม่ได้">We Make It Inevitable.</p></div>
+</footer>
+
+<!-- BLOG OVERLAY -->
+<div id="blog-overlay">
+  <div id="blog-container">
+    <button class="bo-close" onclick="closeBlog()">&times;</button>
+    <div class="bo-body">
+      <div class="bo-meta" id="bo-meta-text"></div>
+      <h2 class="bo-title" id="bo-title-text"></h2>
+      <div class="bo-content" id="bo-content-html"></div>
+      <div class="bo-cta">
+        <div class="bo-cta-text" data-th="พร้อมที่จะเพิ่มการจองตรงของคุณหรือยัง?">Ready to dominate your market?</div>
+        <a href="https://wa.me/66960531394?text=Hi!%20I%20read%20your%20blog%20post%20and%20would%20like%20to%20discuss%20our%20marketing." target="_blank" class="bo-cta-btn" data-th="พูดคุยกับเราทาง WhatsApp ↗">Chat on WhatsApp ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+<script src="script.js?v=3"></script>
+<script>
+// Cursor
+var cur=document.getElementById('cur'),cur2=document.getElementById('cur2'),mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+function animCur(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cur2.style.left=cx+'px';cur2.style.top=cy+'px';requestAnimationFrame(animCur)}animCur();
+document.querySelectorAll('a,button,.blog-card').forEach(function(el){
+  el.addEventListener('mouseenter',function(){document.body.classList.add('hov')});
+  el.addEventListener('mouseleave',function(){document.body.classList.remove('hov')});
+});
+
+// Nav compact
+window.addEventListener('scroll',function(){
+  document.getElementById('nav').classList.toggle('compact',window.scrollY>80);
+});
+
+// Lenis smooth scroll
+const lenis=new Lenis({duration:1.2,easing:(t)=>Math.min(1,1.001-Math.pow(2,-10*t)),smoothWheel:true});
+gsap.ticker.add((time)=>{lenis.raf(time*1000)});
+gsap.ticker.lagSmoothing(0);
+lenis.on('scroll',ScrollTrigger.update);
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero reveal
+gsap.from('.ph-eye,.ph-h,.ph-sub',{
+  y:40,opacity:0,duration:1,stagger:.15,ease:'power3.out'
+});
+
+// Blog items: fade up
+document.querySelectorAll('.blog-card').forEach(function(item,i){
+  gsap.fromTo(item,{
+    y:50,opacity:0
+  },{
+    y:0,opacity:1,duration:.9,ease:'power3.out',
+    scrollTrigger:{
+      trigger:item,
+      start:'top 88%',
+      toggleActions:'play none none none'
+    },
+    delay: i * 0.1
+  });
+});
+
+// Full Articles Content JSON Database
+const articlesData = {
+  ota: {
+    meta: { en: 'Hospitality Strategy', th: 'กลยุทธ์การโรงแรม' },
+    title: { en: 'How Hotels in Pattaya Can Reduce OTA Dependence', th: 'วิธีที่โรงแรมในพัทยาจะสามารถลดการพึ่งพา OTA' },
+    content: {
+      en: `
+        <p>Online Travel Agencies (OTAs) like Booking.com, Agoda, and Expedia are excellent channels for volume, but they extract a massive toll. With commission rates sitting between 15% and 25%, hotels are effectively giving away their entire profit margins on third-party bookings.</p>
+        <p>In Pattaya, where competition is fierce, reducing this dependence isn't just about marketing — it's about financial survival. Here is our three-step playbook to recapture direct bookings.</p>
+        
+        <h3>1. The Meta Ads Direct Booking Loop</h3>
+        <p>Don't try to compete with Agoda on broad keywords like "hotels in Pattaya." Instead, launch hyper-targeted Meta (Facebook and Instagram) campaigns aimed at travelers who are currently searching for getaway experiences. Showcase the actual experience: the sea views, rooftop cocktails, and private pool suites. Target them with ads that link directly to your direct booking engine with an automatic discount code applied.</p>
+        
+        <h3>2. Google Hotel Search Ads (GHA)</h3>
+        <p>When someone searches specifically for your hotel's name on Google, OTAs will bid on your name to steal the booking. You must own your brand term. By setting up Google Hotel Search Ads, your direct site will appear right next to Agoda and Booking.com. Ensure your direct price is always 5% lower or offers exclusive value-adds (like free breakfast or spa credits) to win the click.</p>
+        
+        <h3>3. The WhatsApp Conversational Funnel</h3>
+        <p>Thai and international travelers love chatting before booking. Setting up a direct conversational funnel via WhatsApp or Line allows your reservation team to close leads instantly. A customer clicking a "Chat to Book" CTA button is 4x more likely to book than someone browsing a complex booking engine. Give your team the power to offer customized packages in real time.</p>
+        
+        <p><strong>The Bottom Line:</strong> Shifting just 15% of your OTA bookings to direct channels can increase your annual hotel net margin by hundreds of thousands of Baht. Start building your direct loop today.</p>
+      `,
+      th: `
+        <p>เอเจนซี่ท่องเที่ยวออนไลน์ (OTAs) เช่น Booking.com, Agoda และ Expedia เป็นช่องทางที่ยอดเยี่ยมในการเพิ่มปริมาณลูกค้า แต่พวกเขาก็หักค่าคอมมิชชั่นสูงมาก ด้วยอัตราคอมมิชชั่นระหว่าง 15% ถึง 25% ทำให้โรงแรมต่างๆ เสียอัตรากำไรสุทธิทั้งหมดให้กับการจองผ่านบุคคลที่สาม</p>
+        <p>ในพัทยาที่การแข่งขันสูง การลดการพึ่งพาสิ่งนี้ไม่ใช่แค่เรื่องของการตลาด แต่เป็นเรื่องของความอยู่รอดทางการเงิน นี่คือแผนการเล่น 3 ขั้นตอนของเราในการดึงยอดจองตรงกลับคืนมา</p>
+        
+        <h3>1. ลูปการจองตรงผ่าน Meta Ads</h3>
+        <p>อย่าพยายามแข่งกับ Agoda ในคีย์เวิร์ดกว้างๆ เช่น "โรงแรมในพัทยา" แต่ให้เปิดแคมเปญ Meta (Facebook และ Instagram) ที่ตรงกลุ่มเป้าหมายไปยังนักท่องเที่ยวที่กำลังมองหาประสบการณ์พักผ่อนอย่างจริงจัง แสดงให้เห็นประสบการณ์จริง: วิวทะเล ค็อกเทลบนดาดฟ้า และพูลวิลล่าส่วนตัว ดึงดูดพวกเขาด้วยโฆษณาที่ลิงก์ตรงไปยังระบบจองตรงของคุณพร้อมรหัสส่วนลดพิเศษโดยอัตโนมัติ</p>
+        
+        <h3>2. โฆษณา Google Hotel Search (GHA)</h3>
+        <p>เมื่อมีคนค้นหาชื่อโรงแรมของคุณบน Google โดยเฉพาะ OTAs จะเสนอราคาแข่งกับชื่อแบรนด์ของคุณเพื่อแย่งชิงยอดจองไป คุณต้องเป็นเจ้าของชื่อแบรนด์ของคุณเอง การตั้งค่า Google Hotel Search Ads จะทำให้เว็บไซต์จองตรงของคุณปรากฏเคียงข้าง Agoda และ Booking.com ตรวจสอบให้แน่ใจว่าราคาจองตรงของคุณต่ำกว่า 5% เสมอ หรือเสนอสิทธิประโยชน์เพิ่มเติมเฉพาะ (เช่น อาหารเช้าฟรี หรือเครดิตสปา) เพื่อให้ได้คลิกนั้น</p>
+        
+        <h3>3. ช่องทางการสนทนาเพื่อการจองผ่าน WhatsApp</h3>
+        <p>นักท่องเที่ยวชาวไทยและต่างชาติชอบพูดคุยก่อนจองห้องพัก การตั้งค่าช่องทางสนทนาโดยตรงผ่าน WhatsApp หรือ Line ช่วยให้ทีมจองห้องพักของคุณปิดการขายได้ทันที ลูกค้าที่คลิกปุ่ม "แชทเพื่อจอง" มีแนวโน้มที่จะจองมากกว่าคนที่ดูระบบจองห้องพักที่ซับซ้อนถึง 4 เท่า มอบอำนาจให้ทีมของคุณเสนอแพ็คเกจราคาพิเศษในแบบเรียลไทม์</p>
+        
+        <p><strong>สรุปสั้นๆ:</strong> การเปลี่ยนยอดจองจาก OTA เพียง 15% มาเป็นช่องทางจองตรง สามารถเพิ่มกำไรสุทธิประจำปีของโรงแรมคุณได้หลายแสนบาท เริ่มสร้างลูปการจองตรงของคุณวันนี้</p>
+      `
+    }
+  },
+  'ai-content': {
+    meta: { en: 'AI Technology', th: 'เทคโนโลยี AI ครีเอทีฟ' },
+    title: { en: 'AI Content for Thailand Hospitality: The Unfair Advantage in 2026', th: 'คอนเทนต์ AI สำหรับธุรกิจบริการในไทย: ความได้เปรียบที่ไม่มีใครเทียบได้ในปี 2026' },
+    content: {
+      en: `
+        <p>For hotels, beach clubs, and resorts, content is the lifeblood of marketing. Feeds must be fed daily with high-quality photos and videos of dining, relaxation, and luxury rooms. But traditional content production is a major bottleneck: it requires scheduling crews, hiring expensive models, dealing with weather delays, and managing high coordination costs.</p>
+        <p>In 2026, AI creative automation is changing the rules. Brands that adopt an AI-first approach are gaining an unfair advantage.</p>
+        
+        <h3>1. Zero Production Delay, Infinite Asset Scale</h3>
+        <p>With custom-trained AI creative models, you no longer need a crew on-site to generate commercial assets. Want to showcase a morning breakfast scene by the pool, followed by an evening lounge party? AI models can generate studio-quality, hyper-realistic visual materials in hours, not weeks. This allows you to launch campaigns immediately based on seasonal demand or weekend events.</p>
+        
+        <h3>2. Proprietary Virtual Brand Representatives</h3>
+        <p>Influencer rates are skyrocketing, and managing creators comes with booking conflicts and brand safety risks. Unsocials' proprietary AI representatives, Ava and Alex, show what is possible. By training dedicated AI models specifically on your brand's style, you gain virtual ambassadors who shoot every day, never age, never cancel, and cost a fraction of traditional production.</p>
+        
+        <h3>3. Hyper-Personalization of Ads</h3>
+        <p>Traditional ads use one image for everyone. AI allows you to test 50 different variations of a room or lounge setting in minutes. You can serve customized visuals tailored precisely to different target groups: business travelers see sleek workspaces, families see warm dining layouts, and couples see romantic candle-lit views. Higher relevance directly translates into higher booking rates.</p>
+        
+        <p><strong>The Opportunity:</strong> AI is not replacing the human touch; it is freeing creators to focus on high-level strategy and storytelling while automation handles scale. Own the AI creative advantage before your competitors do.</p>
+      `,
+      th: `
+        <p>สำหรับโรงแรม บีชคลับ และรีสอร์ท คอนเทนต์คือหัวใจสำคัญของการตลาด ฟีดโซเชียลมีเดียต้องได้รับการอัปเดตทุกวันด้วยภาพถ่ายและวิดีโอคุณภาพสูงของอาหาร การพักผ่อน และห้องพักที่หรูหรา แต่การผลิตคอนเทนต์แบบดั้งเดิมถือเป็นคอขวดหลัก: ต้องนัดคิวทีมงาน จัดหาพรีเซนเตอร์ราคาแพง เผชิญปัญหาสภาพอากาศแปรปรวน และมีค่าประสานงานสูง</p>
+        <p>ในปี 2026 ระบบสร้างสรรค์ด้วย AI กำลังเปลี่ยนกฎเกณฑ์ แบรนด์ที่เริ่มนำแนวทาง AI-first มาใช้ก่อน กำลังสร้างความได้เปรียบที่เทียบไม่ได้</p>
+        
+        <h3>1. ระยะเวลาการผลิตเป็นศูนย์ ผลิตผลงานได้ไม่จำกัด</h3>
+        <p>ด้วยโมเดลภาพสร้างสรรค์ด้วย AI ที่ได้รับการฝึกฝนมาเป็นพิเศษ คุณไม่จำเป็นต้องมีทีมงานในสถานที่เพื่อสร้างภาพโฆษณาอีกต่อไป ต้องการแสดงฉากอาหารเช้าข้างสระว่ายน้ำ ตามด้วยปาร์ตี้เลานจ์ในตอนเย็นใช่หรือไม่? โมเดล AI สามารถสร้างผลงานภาพระดับสตูดิโอที่เหมือนจริงได้ในเวลาไม่กี่ชั่วโมง แทนที่จะเป็นหลายสัปดาห์ ช่วยให้คุณเปิดตัวแคมเปญการตลาดได้ทันทีตามความต้องการของฤดูกาลหรือกิจกรรมวันหยุดสุดสัปดาห์</p>
+        
+        <h3>2. ตัวแทนแบรนด์เสมือนจริงที่เป็นกรรมสิทธิ์เฉพาะ</h3>
+        <p>ค่าจ้างอินฟลูเอนเซอร์พุ่งสูงขึ้นอย่างต่อเนื่อง และการดูแลครีเอเตอร์ก็มีความเสี่ยงด้านคิวงานและความสอดคล้องกับภาพลักษณ์แบรนด์ ตัวแทนแบรนด์ AI ของ Unsocials อย่าง Ava และ Alex แสดงให้เห็นถึงสิ่งที่เป็นไปได้ ด้วยการฝึกฝนโมเดล AI เฉพาะตามสไตล์แบรนด์ของคุณ คุณจะได้ทูตตราสินค้าเสมือนจริงที่ทำงานได้ทุกวัน ไม่มีคิวชน ไม่มีอายุ และมีต้นทุนเพียงเศษเสี้ยวของการผลิตแบบเดิม</p>
+        
+        <h3>3. การทำโฆษณาเฉพาะกลุ่มขั้นสูงสุด</h3>
+        <p>โฆษณาแบบดั้งเดิมใช้รูปภาพเดียวสำหรับผู้ใช้ทุกคน แต่ AI ช่วยให้คุณทดสอบรูปภาพห้องพักหรือบรรยากาศที่แตกต่างกันได้ถึง 50 แบบในเวลาไม่กี่นาที คุณสามารถแสดงภาพโปรโมตที่ปรับแต่งให้เหมาะกับกลุ่มเป้าหมายเฉพาะ: นักธุรกิจเห็นพื้นที่ทำงานที่ทันสมัย ครอบครัวเห็นโต๊ะอาหารที่อบอุ่น และคู่รักเห็นวิวใต้แสงเทียนสุดโรแมนติก ความเกี่ยวข้องที่สูงขึ้นนี้จะส่งผลโดยตรงต่อยอดจองที่เพิ่มขึ้น</p>
+        
+        <p><strong>โอกาสทอง:</strong> AI ไม่ได้มาแทนที่ความเป็นมนุษย์ แต่ช่วยให้ครีเอเตอร์มุ่งเน้นไปที่การวางกลยุทธ์และการเล่าเรื่องในระดับที่สูงขึ้น ในขณะที่ระบบอัตโนมัติช่วยจัดการงานด้านปริมาณ คว้าโอกาสได้เปรียบจาก AI ครีเอทีฟก่อนที่คู่แข่งของคุณจะเริ่มใช้มัน</p>
+      `
+    }
+  },
+  trends: {
+    meta: { en: 'Market Trends', th: 'แนวโน้มตลาดเอเชีย' },
+    title: { en: 'Digital Marketing Trends: How to Stand Out in the Southeast Asian Market', th: 'แนวโน้มการตลาดดิจิทัล: วิธีสร้างความโดดเด่นในตลาดเอเชียตะวันออกเฉียงใต้' },
+    content: {
+      en: `
+        <p>Southeast Asia is home to some of the most digitally active populations in the world. Consumers here don't search the web like Western audiences — they are mobile-first, socially driven, and highly interactive. A marketing playbook designed for North America or Europe will fail in Thailand.</p>
+        <p>Here are the key digital marketing trends you must own to stand out in the Southeast Asian landscape in 2026.</p>
+        
+        <h3>1. The Rise of Short-Form Visual Commerce</h3>
+        <p>Consumers in Thailand consume short-form video (TikTok and Instagram Reels) at a higher rate than almost any other market. They do not read long product descriptions. To capture their attention, your ads must deliver value in under 3 seconds. The path from discovery to checkout must be direct — clicking a TikTok or Reel must lead immediately to a WhatsApp or Line chat where a deal can be completed.</p>
+        
+        <h3>2. Conversational Commerce as the Primary Channel</h3>
+        <p>In Southeast Asia, the checkout page is not a shopping cart — it is a direct chat window. Over 60% of digital transactions in Thailand start or end in a messaging app. Brands that force users to navigate a complex booking engine or checkout site will experience drop-offs. Integrating automated, friendly, and human-supported WhatsApp and Line booking lines into your campaigns is critical to convert clicks to revenue.</p>
+        
+        <h3>3. Hyper-Local Content Optimization</h3>
+        <p>International travelers and domestic tourists search differently. To succeed in regional destinations like Pattaya, your ad campaigns must target bilingual and multi-lingual flows. Setting up structured ad sets for local Thai visitors (focusing on weekend specials, staycations) alongside ad sets for international arrivals (focusing on airport transfers, long stays) ensures maximum ad relevance and efficiency.</p>
+        
+        <p><strong>Summary:</strong> Winning in Southeast Asia requires speed, video, and direct conversation. Keep your funnels short, your creative dynamic, and your communication direct.</p>
+      `,
+      th: `
+        <p>ภูมิภาคเอเชียตะวันออกเฉียงใต้เป็นที่อยู่อาศัยของประชากรที่มีการใช้งานดิจิทัลตื่นตัวมากที่สุดแห่งหนึ่งของโลก ผู้บริโภคที่นี่ไม่ได้ค้นหาเว็บเหมือนผู้ใช้ฝั่งตะวันตก — พวกเขาใช้งานผ่านมือถือเป็นหลัก ขับเคลื่อนด้วยโซเชียลมีเดีย และชอบโต้ตอบอย่างมาก แผนการตลาดที่ออกแบบมาสำหรับอเมริกาเหนือหรือยุโรปจะล้มเหลวอย่างสิ้นเชิงในประเทศไทย</p>
+        <p>นี่คือแนวโน้มการตลาดดิจิทัลที่สำคัญที่คุณต้องเป็นผู้นำเพื่อสร้างความโดดเด่นในภูมิภาคเอเชียตะวันออกเฉียงใต้ในปี 2026</p>
+        
+        <h3>1. การเติบโตของวิดีโอสั้นเพื่อการค้า</h3>
+        <p>ผู้บริโภคในประเทศไทยบริโภควิดีโอสั้น (TikTok และ Instagram Reels) ในอัตราที่สูงกว่าตลาดอื่นๆ เกือบทั้งหมด พวกเขาไม่อ่านรายละเอียดสินค้าขนาดยาว เพื่อดึงดูดความสนใจของพวกเขา โฆษณาของคุณต้องมอบคุณค่าภายใน 3 วินาทีแรก และเส้นทางจากการค้นพบไปจนถึงขั้นตอนชำระเงินจะต้องสั้นที่สุด — การคลิกจาก TikTok หรือ Reel ต้องนำเข้าสู่การแชททาง WhatsApp หรือ Line เพื่อปิดการขายได้ทันที</p>
+        
+        <h3>2. ช่องทางการสนทนาเป็นช่องทางการขายหลัก (Conversational Commerce)</h3>
+        <p>ในเอเชียตะวันออกเฉียงใต้ หน้าชำระเงินไม่ใช่ตะกร้าสินค้า แต่เป็นหน้าต่างแชทโดยตรง ธุรกรรมดิจิทัลมากกว่า 60% ในประเทศไทยเริ่มต้นหรือสิ้นสุดในแอปส่งข้อความ แบรนด์ที่บังคับให้ผู้ใช้ต้องทำตามขั้นตอนที่ซับซ้อนบนเว็บไซต์จะพบอัตราการเลิกซื้อสูง การรวมระบบจองและสนทนาผ่าน WhatsApp และ Line ที่รวดเร็วและเป็นมิตรเข้าไปในแคมเปญจึงเป็นสิ่งสำคัญในการเปลี่ยนผู้เข้าชมเป็นลูกค้าจริง</p>
+        
+        <h3>3. การจัดการเนื้อหาโฆษณาเฉพาะท้องถิ่น</h3>
+        <p>นักท่องเที่ยวต่างชาติและนักท่องเที่ยวในประเทศมีพฤติกรรมการค้นหาที่แตกต่างกัน การจะประสบความสำเร็จในแหล่งท่องเที่ยวระดับภูมิภาคเช่นพัทยา แคมเปญโฆษณาของคุณต้องกำหนดเป้าหมายทั้งกลุ่มภาษาไทยและต่างประเทศ การตั้งค่าชุดโฆษณาสำหรับผู้เยี่ยมชมชาวไทยในท้องถิ่น (เน้นแพ็คเกจวันหยุดสุดสัปดาห์ การพักผ่อนระยะสั้น) ควบคู่ไปกับชุดโฆษณาสำหรับนักท่องเที่ยวต่างชาติ (เน้นบริการรับส่งสนามบิน การเข้าพักระยะยาว) จะช่วยให้มั่นใจได้ถึงประสิทธิภาพโฆษณาสูงสุด</p>
+        
+        <p><strong>บทสรุป:</strong> การชนะใจลูกค้าในเอเชียตะวันออกเฉียงใต้ต้องการความรวดเร็ว วิดีโอสั้น และการสื่อสารโดยตรง ออกแบบช่องทางการซื้อขายให้สั้น คอนเทนต์เคลื่อนไหวสะดุดตา และการสื่อสารที่ตรงประเด็น</p>
+      `
+    }
+  }
+};
+
+function openBlog(id) {
+  const data = articlesData[id];
+  if (!data) return;
+
+  const currentLang = localStorage.getItem('unsocials_lang') || 'en';
+  
+  const metaText = (currentLang === 'th') ? data.meta.th : data.meta.en;
+  const titleText = (currentLang === 'th') ? data.title.th : data.title.en;
+  const contentHtml = (currentLang === 'th') ? data.content.th : data.content.en;
+
+  document.getElementById('bo-meta-text').innerHTML = metaText;
+  document.getElementById('bo-meta-text').setAttribute('data-th', data.meta.th);
+  document.getElementById('bo-meta-text').setAttribute('data-en', data.meta.en);
+  
+  document.getElementById('bo-title-text').innerHTML = titleText;
+  document.getElementById('bo-title-text').setAttribute('data-th', data.title.th);
+  document.getElementById('bo-title-text').setAttribute('data-en', data.title.en);
+  
+  document.getElementById('bo-content-html').innerHTML = contentHtml;
+  document.getElementById('bo-content-html').setAttribute('data-th', data.content.th);
+  document.getElementById('bo-content-html').setAttribute('data-en', data.content.en);
+
+  const overlay = document.getElementById('blog-overlay');
+  const container = document.getElementById('blog-container');
+
+  overlay.style.display = 'flex';
+  lenis.stop(); // stop smooth scroll background
+  
+  gsap.killTweensOf([overlay, container]);
+  gsap.to(overlay, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+  gsap.to(container, { scale: 1, duration: 0.5, ease: 'back.out(1.7)' });
+}
+
+function closeBlog() {
+  const overlay = document.getElementById('blog-overlay');
+  const container = document.getElementById('blog-container');
+
+  gsap.killTweensOf([overlay, container]);
+  gsap.to(container, { scale: 0.95, duration: 0.4, ease: 'power2.in' });
+  gsap.to(overlay, { 
+    opacity: 0, 
+    duration: 0.4, 
+    ease: 'power2.in',
+    onComplete: () => {
+      overlay.style.display = 'none';
+      lenis.start(); // resume smooth scroll
+    }
+  });
+}
+
+// Close on outside click
+document.getElementById('blog-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeBlog();
+});
+</script>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20start%20a%20conversation." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.244 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-16.793c-.166-.369-.342-.377-.502-.384-.131-.005-.28-.006-.43-.006-.15 0-.395.056-.602.28-.206.225-.79.771-.79 1.882 0 1.111.808 2.185.92 2.335.113.15 1.59 2.429 3.853 3.407.538.233.957.372 1.285.477.54.172 1.03.148 1.417.09.431-.064 1.328-.542 1.516-1.064.188-.522.188-.97.132-1.064-.056-.094-.207-.15-.433-.263s-1.329-.655-1.536-.73c-.207-.075-.358-.112-.507.113-.15.225-.583.73-.715.88-.132.15-.264.169-.49.056-.226-.113-.956-.352-1.82-1.123-.673-.6-1.127-1.341-1.26-1.566-.131-.225-.014-.347.1-.459.102-.101.226-.263.339-.395.113-.131.15-.225.226-.375.075-.15.038-.281-.019-.394-.056-.113-.502-1.21-.688-1.657z"/></svg>
+</a>
+</body>
+</html>

@@ -83,6 +83,9 @@ nav.compact{padding:14px 52px}
 .cta-s:hover{border-color:var(--w)}
 .scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fu .8s 1.5s forwards}
 .scroll-hint p{font-family:'Share Tech Mono',monospace;font-size:8px;letter-spacing:.45em;text-transform:uppercase;color:var(--m)}
+.scroll-arrow-wrap{animation:bounceArrow 1.6s infinite ease-in-out;color:var(--ac);margin-top:4px}
+.scroll-arrow-svg{width:14px;height:14px;display:block}
+@keyframes bounceArrow{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 .scrl-l{width:1px;height:48px;background:rgba(255,255,255,.06);overflow:hidden;position:relative}
 .scrl-l::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:50%;background:linear-gradient(transparent,var(--ac));animation:sd 2s ease-in-out infinite}
 @keyframes fu{to{opacity:1;transform:translateY(0)}}
@@ -1097,7 +1100,7 @@ nav.compact{padding:14px 52px}
   display: block;
 }
 
-#case-content {
+#case-content, #service-content {
   background: #080808;
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 20px;
@@ -2455,5 +2458,63 @@ footer{background:#040404;padding-bottom:40px}
     padding-top: 20px !important;
     line-height: 2 !important;
     font-size: 14px !important;
+  }
+}
+
+/* ── FLOATING WHATSAPP BUTTON ── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 6px 15px rgba(37, 211, 102, 0.5);
+  color: #fff;
+}
+.whatsapp-float svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
+.whatsapp-float::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.4;
+  z-index: -1;
+  animation: waPulse 2s infinite;
+}
+@keyframes waPulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+  .whatsapp-float svg {
+    width: 26px;
+    height: 26px;
   }
 }

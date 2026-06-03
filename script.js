@@ -87,7 +87,7 @@ if (pf && pt && enEl && thEl) {
   var flipTimer=setInterval(doFlip,700);
 
   var pi=setInterval(function(){
-    pct+=Math.random()*14+2;
+    pct+=Math.random()*16+4;
     if(pct>=100){
       pct=100;
       clearInterval(pi);
@@ -95,10 +95,10 @@ if (pf && pt && enEl && thEl) {
       // final snap to EN
       if(!isEn) doFlip();
       pt.textContent='LET\'S GO';
-      setTimeout(function(){document.getElementById('pre').classList.add('out')},600);
+      setTimeout(function(){document.getElementById('pre').classList.add('out')},450);
     }
     pf.style.width=pct+'%';
-  },90);
+  },65);
 }
 
 // ─── NAV SCROLL ───
@@ -841,7 +841,7 @@ const serviceData = {
     bg: 'linear-gradient(180deg,#001020 0%,#002040 60%,#080808 100%)',
     metrics: [
       { val: 'Daily', lbl: 'Consistent rhythm of high-end, brand-aligned posts' },
-      { val: '10×', lbl: 'Average increase in organic engagement and profile visits' },
+      { val: '10×', lbl: 'Average increase in organic engagement and profile visits within 90 days across active clients' },
       { val: '24/7', lbl: 'Community management, response, and lead nurturing' },
       { val: 'Owned', lbl: 'We build an audience you own, rather than renting one from ads' }
     ],
@@ -896,7 +896,7 @@ const serviceData = {
       { title: 'Generative Product Photography', desc: 'Place your products in impossible, ultra-luxury environments that would cost hundreds of thousands to build physically.' },
       { title: 'Automated Content Scaling', desc: 'Generate a month\'s worth of high-end social content in a single afternoon.' }
     ],
-    pitchHtml: '<p class="svc-text">This is the unfair advantage. While your competitors are waiting weeks for a weather-delayed photoshoot, we are <strong>generating perfection in a vacuum.</strong></p><p class="svc-text">Our AI creative pipeline allows us to visualize concepts that are physically impossible or prohibitively expensive, giving your brand an aesthetic that punches far above its weight class.</p>',
+    pitchHtml: '<p class="svc-text">This is the unfair advantage. While your competitors are waiting weeks for a weather-delayed photoshoot, we are <strong>generating studio-quality visuals in days, not weeks. No crew, no location, no delays.</strong></p><p class="svc-text">Our AI creative pipeline allows us to visualize concepts that are physically impossible or prohibitively expensive, giving your brand an aesthetic that punches far above its weight class.</p>',
     works: [
       { media: 'assets/showcase/2.mp4', tag: 'AI Fashion Model', title: 'Virtual Brand Ambassador' },
       { media: 'assets/showcase/ai-fashion.mp4', tag: 'Generative Video', title: 'AI Luxury Runway Campaign' },
@@ -961,7 +961,9 @@ function openService(id) {
 
   const html = `
     <div class="svc-hero" style="background:${data.bg};">
-      <button class="cs-back" onclick="closeService()">← Back to Services</button>
+      <div class="cs-header-actions" style="margin-bottom: auto; width: 100%;">
+        <button class="cs-back" onclick="closeService()">← Back to Services</button>
+      </div>
       <div class="svc-eye">${data.eye}</div>
       <div class="svc-title">${data.title}</div>
       <div class="svc-desc">${data.desc}</div>
@@ -1224,3 +1226,104 @@ function closeService() {
     initOutcomeFilters();
   }
 })();
+
+// URL Hash Case Study Auto-Open
+(function() {
+  function checkUrlHash() {
+    const hash = window.location.hash.substring(1);
+    if (hash && typeof openCase === 'function' && caseData[hash]) {
+      setTimeout(function() {
+        openCase(hash);
+      }, 400);
+    }
+  }
+  window.addEventListener('hashchange', checkUrlHash);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', checkUrlHash);
+  } else {
+    checkUrlHash();
+  }
+})();
+
+// Contact Form Submission & Validation
+function submitContactForm(event) {
+  if (event) event.preventDefault();
+  
+  var nameEl = document.getElementById('c-name');
+  var brandEl = document.getElementById('c-brand');
+  var emailEl = document.getElementById('c-email');
+  var serviceEl = document.getElementById('c-service');
+  var detailsEl = document.getElementById('c-details');
+  var formFeedback = document.getElementById('form-feedback');
+  
+  if (!nameEl || !brandEl || !emailEl || !serviceEl || !detailsEl) return;
+  
+  var hasError = false;
+  
+  // Reset input border colors
+  [nameEl, brandEl, emailEl, serviceEl].forEach(function(el) {
+    el.style.borderColor = '';
+  });
+  if (formFeedback) {
+    formFeedback.style.display = 'none';
+    formFeedback.textContent = '';
+    formFeedback.style.color = '';
+  }
+  
+  if (!nameEl.value.trim()) {
+    nameEl.style.borderColor = '#ff4d4d';
+    hasError = true;
+  }
+  if (!brandEl.value.trim()) {
+    brandEl.style.borderColor = '#ff4d4d';
+    hasError = true;
+  }
+  if (!emailEl.value.trim() || !emailEl.value.includes('@')) {
+    emailEl.style.borderColor = '#ff4d4d';
+    hasError = true;
+  }
+  if (!serviceEl.value) {
+    serviceEl.style.borderColor = '#ff4d4d';
+    hasError = true;
+  }
+  
+  if (hasError) {
+    if (formFeedback) {
+      formFeedback.style.display = 'block';
+      formFeedback.style.color = '#ff4d4d';
+      var currentLang = localStorage.getItem('unsocials_lang') || 'en';
+      if (currentLang === 'th') {
+        formFeedback.textContent = 'กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วนและถูกต้อง';
+      } else {
+        formFeedback.textContent = 'Please fill in all required fields correctly.';
+      }
+    }
+    return;
+  }
+  
+  var message = 'Hi Unsocials, I would like to get in touch!\n\n' +
+                '• Name: ' + nameEl.value.trim() + '\n' +
+                '• Brand: ' + brandEl.value.trim() + '\n' +
+                '• Email: ' + emailEl.value.trim() + '\n' +
+                '• Service: ' + serviceEl.value + '\n' +
+                '• Details: ' + (detailsEl.value.trim() || 'None');
+                
+  var encodedText = encodeURIComponent(message);
+  var waUrl = 'https://wa.me/66960531394?text=' + encodedText;
+  
+  window.open(waUrl, '_blank');
+  
+  if (formFeedback) {
+    formFeedback.style.display = 'block';
+    formFeedback.style.color = 'var(--ac, #E8FF00)';
+    var currentLang = localStorage.getItem('unsocials_lang') || 'en';
+    if (currentLang === 'th') {
+      formFeedback.textContent = 'สำเร็จ! กำลังเปิด WhatsApp เพื่อส่งข้อความของคุณ...';
+    } else {
+      formFeedback.textContent = 'Success! Opening WhatsApp to send your inquiry...';
+    }
+  }
+  
+  // Reset form
+  document.querySelector('.contact-form').reset();
+}

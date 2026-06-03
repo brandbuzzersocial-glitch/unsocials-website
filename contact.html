@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — UNSOCIALS Global</title>
-<meta name="description" content="Ready to build your growth engine? Two countries. One standard. Book a strategy call with Unsocials Global. We respond within 24 hours.">
+<title>Book a Strategy Call | Unsocials Thailand</title>
+<meta name="description" content="Get in touch with Unsocials Thailand in Pattaya. Book a performance marketing consultation, enquire about our custom pricing plans, or chat directly via WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=8">
@@ -338,6 +338,109 @@
       margin-bottom: 6px !important;
     }
   }
+
+  /* ── FAQ ACCORDION ── */
+  .faq-section {
+    padding: 100px 8vw;
+    background: #040404;
+    border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 10;
+  }
+  .faq-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  .faq-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ac);
+    margin-bottom: 14px;
+  }
+  .faq-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--w);
+  }
+  .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .faq-item {
+    background: rgba(10, 10, 10, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .faq-item:hover {
+    border-color: rgba(232, 255, 0, 0.2);
+    background: rgba(10, 10, 10, 0.6);
+  }
+  .faq-question {
+    padding: 24px 30px;
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(16px, 1.5vw, 20px);
+    font-weight: 700;
+    color: var(--w);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    user-select: none;
+  }
+  .faq-icon {
+    font-size: 20px;
+    color: rgba(255,255,255,0.4);
+    transition: transform 0.3s, color 0.3s;
+    font-weight: bold;
+  }
+  .faq-item.active {
+    border-color: var(--ac);
+    background: rgba(232, 255, 0, 0.01);
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+    color: var(--ac);
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s ease;
+    padding: 0 30px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .faq-item.active .faq-answer {
+    max-height: 300px;
+    padding-bottom: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .faq-section {
+      padding: 60px 24px;
+    }
+    .faq-question {
+      padding: 20px;
+    }
+    .faq-answer {
+      padding: 0 20px;
+    }
+    .faq-item.active .faq-answer {
+      padding-bottom: 20px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -354,6 +457,8 @@
     <a href="work.html" data-th="ผลงาน">Work</a>
     <a href="services.html" data-th="บริการ">Services</a>
     <a href="about.html" data-th="เกี่ยวกับเรา">About</a>
+    <a href="blog.html" data-th="บล็อก">Blog</a>
+    <a href="stats.html" data-th="ข้อมูลตลาด">Stats</a>
     <a href="contact.html" style="color:var(--ac)" data-th="ติดต่อ">Contact</a>
   </div>
   <div class="lang-switch">
@@ -376,6 +481,8 @@
       <a href="work.html" class="mmenu-link" data-th="ผลงาน">Work</a>
       <a href="services.html" class="mmenu-link" data-th="บริการ">Services</a>
       <a href="about.html" class="mmenu-link" data-th="เกี่ยวกับเรา">About</a>
+      <a href="blog.html" class="mmenu-link" data-th="บล็อก">Blog</a>
+      <a href="stats.html" class="mmenu-link" data-th="ข้อมูลตลาด">Stats</a>
       <a href="contact.html" class="mmenu-link" style="color:var(--ac)" data-th="ติดต่อ">Contact</a>
     </div>
     <div class="mmenu-footer">
@@ -434,36 +541,37 @@
   <!-- FORM -->
   <div class="contact-form-side rv-l">
     <div class="cf-label-s" data-th="ส่งข้อความ">Send a Message</div>
-    <form class="contact-form" onsubmit="return false;">
+    <form class="contact-form" onsubmit="submitContactForm(event)">
       <div class="cta-row">
         <label data-th="ชื่อของคุณ">Your Name</label>
-        <input type="text" placeholder="Full Name">
+        <input type="text" placeholder="Full Name" id="c-name" required>
       </div>
       <div class="cta-row">
         <label data-th="แบรนด์ / ธุรกิจ">Brand / Business</label>
-        <input type="text" placeholder="Brand Name">
+        <input type="text" placeholder="Brand Name" id="c-brand" required>
       </div>
       <div class="cta-row">
         <label data-th="อีเมล">Email</label>
-        <input type="email" placeholder="you@brand.com">
+        <input type="email" placeholder="you@brand.com" id="c-email" required>
       </div>
       <div class="cta-row">
         <label data-th="สิ่งที่คุณต้องการ">What You Need</label>
-        <select>
+        <select id="c-service" required>
           <option value="" data-th="เลือกบริการ">Select Service</option>
-          <option data-th="การตลาดเชิงประสิทธิภาพ">Performance Marketing</option>
-          <option data-th="การจัดการโซเชียลมีเดีย">Social Media Management</option>
-          <option data-th="การผลิตคอนเทนต์">Content Production</option>
-          <option data-th="AI ครีเอทีฟ">AI Creative Automation</option>
-          <option data-th="กลยุทธ์แบรนด์">Brand Strategy</option>
-          <option data-th="แพ็คเกจเต็มรูปแบบ">Full Package</option>
+          <option value="Performance Marketing" data-th="การตลาดเชิงประสิทธิภาพ">Performance Marketing</option>
+          <option value="Social Media Management" data-th="การจัดการโซเชียลมีเดีย">Social Media Management</option>
+          <option value="Content Production" data-th="การผลิตคอนเทนต์">Content Production</option>
+          <option value="AI Creative Automation" data-th="AI ครีเอทีฟ">AI Creative Automation</option>
+          <option value="Brand Strategy" data-th="กลยุทธ์แบรนด์">Brand Strategy</option>
+          <option value="Full Package" data-th="แพ็คเกจเต็มรูปแบบ">Full Package</option>
         </select>
       </div>
       <div class="cta-row">
         <label data-th="บอกเราเพิ่มเติม">Tell Us More</label>
-        <textarea rows="3" placeholder="Brief overview of your brand and goals..."></textarea>
+        <textarea rows="3" placeholder="Brief overview of your brand and goals..." id="c-details"></textarea>
       </div>
-      <button class="cta-btn" type="button" onclick="window.open('https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20get%20in%20touch.', '_blank')" data-th="ส่งข้อความ → <span style='font-size:16px'>↗</span>">Send it → <span style="font-size:16px">↗</span></button>
+      <button class="cta-btn" type="submit" data-th="ส่งข้อความ → <span style='font-size:16px'>↗</span>">Send it → <span style="font-size:16px">↗</span></button>
+      <div id="form-feedback" class="form-feedback" style="display:none; margin-top:15px; font-family:'Space Mono',monospace; font-size:11px; font-weight:700;"></div>
       <p class="cta-note" data-th="เราจะตอบกลับภายใน 24 ชั่วโมง ทุกครั้ง">We respond within 24 hours. Every time.</p>
     </form>
   </div>
@@ -472,7 +580,7 @@
   <div class="contact-info-side rv">
     <div class="ci-block">
       <div class="ci-tag" data-th="ติดต่อโดยตรง">Direct Contact</div>
-      <div class="ci-val"><a href="https://wa.me/918209980262" target="_blank" style="color:var(--w);text-decoration:none">+91 820-9980262</a></div>
+      <div class="ci-val"><a href="https://wa.me/66960531394" target="_blank" target="_blank" style="color:var(--w);text-decoration:none">+66 9605 31394</a></div>
       <div class="ci-sub" data-th="หลัก (WhatsApp) &bull; รอง: <a href='tel:+66960531394' style='color:inherit;text-decoration:none'>+66 960531394</a>">Primary (WhatsApp) &bull; Secondary: <a href="tel:+66960531394" style="color:inherit;text-decoration:none">+66 960531394</a></div>
     </div>
     <div class="ci-divider"></div>
@@ -506,35 +614,111 @@
   </div>
 </div>
 
+<!-- FAQ SECTION -->
+<section class="faq-section rv">
+  <div class="faq-header">
+    <div class="faq-eyebrow" data-th="คำถามที่พบบ่อย">FAQs</div>
+    <h2 class="faq-title" data-th="คำถามที่พบบ่อยที่สุด">Common Questions</h2>
+  </div>
+  
+  <div class="faq-container">
+    <!-- Q1 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-th="งบประมาณขั้นต่ำในการเริ่มต้นคือเท่าไหร่?">What is the minimum budget?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer" data-th="แพ็คเกจเริ่มต้นของเราอยู่ที่ 15,000 บาทต่อเดือน เราเชี่ยวชาญในการจัดสรรแผนกลยุทธ์ที่เหมาะสำหรับธุรกิจบริการ โรงแรม และร้านค้าในท้องถิ่นเพื่อให้ได้รับผลตอบแทนคุ้มค่าที่สุด">
+        Our packages start at 15,000 THB/month. We specialize in tailoring strategies for hospitality and local businesses that yield a high return on marketing spend.
+      </div>
+    </div>
+    
+    <!-- Q2 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-th="ใช้เวลานานแค่ไหนจึงจะเห็นผลลัพธ์?">How long does it take to see results?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer" data-th="แคมเปญโฆษณา (Meta/Google Ads) มักจะแสดงสัญญาณนำเข้าของยอดจองและลูกค้าติดต่อเข้ามาภายใน 14–30 วัน ในขณะที่การสร้างแบรนด์แบบออร์แกนิกและคอนเทนต์จะใช้เวลาประมาณ 60–90 วันในการสะสมยอดผู้ติดตามและแรงขับเคลื่อน">
+        Performance marketing campaigns (Meta/Google Ads) typically show lead and booking indicators within 14–30 days. Organic branding and content campaigns build authority and typically take 60–90 days for peak momentum.
+      </div>
+    </div>
+    
+    <!-- Q3 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-th="Ava และ Alex เป็นคนจริงหรือเป็น AI?">Are Ava and Alex real people or AI?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer" data-th="Ava และ Alex เป็นตัวแทนแบรนด์ AI ของ Unsocials พวกเขาคือเทคโนโลยีการสร้างตัวตนแบรนด์ด้วย AI ที่ล้ำหน้า สามารถถ่ายภาพและวิดีโอได้ทุกวันโดยไม่มีปัญหาคิวงานช้าหรือต้นทุนการถ่ายทำสถานที่ แต่เราจะนำกลยุทธ์ของพวกเขามารวมเข้ากับทีมงานมนุษย์เพื่อให้เกิดการตอบสนองที่สมบูรณ์แบบ">
+        Ava and Alex are proprietary AI brand representatives created by Unsocials. They represent the cutting edge of AI-driven brand talent, shooting content daily with zero production delays or location overhead. We combine them with human strategists to ensure maximum conversion.
+      </div>
+    </div>
+    
+    <!-- Q4 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-th="คุณรองรับภาษาอื่นๆ หรือไม่?">Do you cover other languages?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer" data-th="ใช่ เราให้บริการในภาษาอังกฤษ ภาษาไทย และภาษาฮินดีอย่างเต็มรูปแบบ แคมเปญโฆษณา คอนเทนต์ และการสื่อสารทั้งหมดจะถูกแปลเป็นภาษาท้องถิ่นเพื่อให้เชื่อมโยงกับฐานลูกค้าเป้าหมายอย่างเป็นธรรมชาติ">
+        Yes, we provide full support in English, Thai, and Hindi. All content, performance campaigns, and communications are localized to resonate with target local demographics.
+      </div>
+    </div>
+    
+    <!-- Q5 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-th="ข้อตกลงและสัญญาของแบรนด์มีเงื่อนไขอย่างไร?">What are your contract terms?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer" data-th="เราเริ่มต้นด้วยการจ้างงานขั้นต่ำ 3 เดือน การสร้างระบบและผลลัพธ์รายได้ที่ยั่งยืนจำเป็นต้องใช้ความสม่ำเสมอและการทดลองปรับปรุงอย่างต่อเนื่อง เราไม่รับบริการทำแคมเปญสั้นๆ แบบครั้งเดียวจบ">
+        We work on a 3-month initial retainer. Building sustained revenue growth requires consistency and optimization; we do not accept one-off campaign projects.
+      </div>
+    </div>
+    
+    <!-- Q6 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-th="คุณรายงานความคืบหน้าบ่อยแค่ไหน?">How frequently do you report progress?</span>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer" data-th="เราส่งรายงานผลลัพธ์ย่อยรายสัปดาห์ผ่าน WhatsApp หรือ Slack และทำการสรุปผลวิเคราะห์ที่สมบูรณ์เป็นรายเดือน โดยรายงานยอดรายได้ ค่าใช้จ่ายโฆษณา และแผนกลยุทธ์ระยะถัดไป">
+        We provide weekly performance summaries via WhatsApp/Slack and conduct comprehensive monthly reviews detailing revenue generated, ad spend, and strategic adjustments.
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SOCIAL CHANNELS -->
 <div class="contact-channels">
-  <a class="cc-channel rv" href="#" style="transition-delay:.05s">
+  <a class="cc-channel rv" href="https://www.instagram.com/unsocials.th/" target="_blank" style="transition-delay:.05s">
     <div class="cc-ch-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
     </div>
     <div class="cc-ch-name">Instagram</div>
     <div class="cc-ch-handle">@unsocials.th</div>
   </a>
-  <a class="cc-channel rv" href="#" style="transition-delay:.1s">
+  <a class="cc-channel rv" href="https://www.tiktok.com/@unsocials.th" target="_blank" style="transition-delay:.1s">
     <div class="cc-ch-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path><path d="M15 8a4 4 0 1 0 0 8"></path></svg>
     </div>
     <div class="cc-ch-name">TikTok</div>
     <div class="cc-ch-handle">@unsocials.th</div>
   </a>
-  <a class="cc-channel rv" href="#" style="transition-delay:.15s">
+  <a class="cc-channel rv" href="https://www.linkedin.com/company/unsocials" target="_blank" style="transition-delay:.15s">
     <div class="cc-ch-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
     </div>
     <div class="cc-ch-name">LinkedIn</div>
     <div class="cc-ch-handle">Unsocials Thailand</div>
   </a>
-  <a class="cc-channel rv" href="https://wa.me/918209980262" target="_blank" style="transition-delay:.2s">
+  <a class="cc-channel rv" href="https://wa.me/66960531394" target="_blank" target="_blank" style="transition-delay:.2s">
     <div class="cc-ch-icon">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.244 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-16.793c-.166-.369-.342-.377-.502-.384-.131-.005-.28-.006-.43-.006-.15 0-.395.056-.602.28-.206.225-.79.771-.79 1.882 0 1.111.808 2.185.92 2.335.113.15 1.59 2.429 3.853 3.407.538.233.957.372 1.285.477.54.172 1.03.148 1.417.09.431-.064 1.328-.542 1.516-1.064.188-.522.188-.97.132-1.064-.056-.094-.207-.15-.433-.263s-1.329-.655-1.536-.73c-.207-.075-.358-.112-.507.113-.15.225-.583.73-.715.88-.132.15-.264.169-.49.056-.226-.113-.956-.352-1.82-1.123-.673-.6-1.127-1.341-1.26-1.566-.131-.225-.014-.347.1-.459.102-.101.226-.263.339-.395.113-.131.15-.225.226-.375.075-.15.038-.281-.019-.394-.056-.113-.502-1.21-.688-1.657z"/></svg>
     </div>
     <div class="cc-ch-name">WhatsApp</div>
-    <div class="cc-ch-handle">+91 820-9980262</div>
+    <div class="cc-ch-handle">+66 9605 31394</div>
   </a>
 </div>
 
@@ -573,7 +757,7 @@
   <div class="ft-g">
     <div>
       <div class="ft-br">UNSOCIALS<br><em data-th="ประเทศไทย">Thailand</em></div>
-      <p class="ft-brs" data-th="เอเจนซี่การตลาดสร้างสรรค์ระดับโลก<br>พัทยา · ชัยปุระ">Global Creative Marketing Agency<br>Pattaya · Jaipur</p>
+      <p class="ft-brs" data-th="เอเจนซี่ประสิทธิภาพเชิงสร้างสรรค์<br>พัทยา · ประเทศไทย">Creative Performance Agency<br>Pattaya - Thailand</p>
     </div>
     <div class="ft-col">
       <h5 data-th="บริการ">Services</h5>
@@ -585,10 +769,10 @@
     </div>
     <div class="ft-col">
       <h5 data-th="ผลงาน">Work</h5>
-      <a href="work.html">Elysium Pattaya</a>
-      <a href="work.html">Alexa Beach Club</a>
-      <a href="work.html">Hotel Skyview</a>
-      <a href="work.html">Nomads Asia</a>
+      <a href="work.html#elysium">Elysium Pattaya</a>
+      <a href="work.html#alexa">Alexa Beach Club</a>
+      <a href="work.html#skyview">Hotel Skyview</a>
+      <a href="work.html#nomads">Nomads Asia</a><a href="blog.html" data-th="บล็อก">Blog</a><a href="stats.html" data-th="ข้อมูลตลาด">Market Stats</a>
     </div>
     <div class="ft-col">
       <h5 data-th="ติดต่อ">Contact</h5>
@@ -599,13 +783,13 @@
     <div class="ft-col">
       <h5 data-th="เชื่อมต่อ">Connect</h5>
       <div class="ft-social-icons">
-  <a href="#" aria-label="Instagram">
+  <a href="https://www.instagram.com/unsocials.th/" target="_blank" aria-label="Instagram">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
   </a>
-  <a href="#" aria-label="TikTok">
+  <a href="https://www.tiktok.com/@unsocials.th" target="_blank" aria-label="TikTok">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path><path d="M15 8a4 4 0 1 0 0 8"></path></svg>
   </a>
-  <a href="#" aria-label="LinkedIn">
+  <a href="https://www.linkedin.com/company/unsocials" target="_blank" aria-label="LinkedIn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
   </a>
 </div>
@@ -631,6 +815,24 @@ document.querySelectorAll('a,button,.cc-channel').forEach(function(el){
 window.addEventListener('scroll',function(){
   document.getElementById('nav').classList.toggle('compact',window.scrollY>80);
 });
+
+// FAQ Accordion Toggle Interaction
+document.querySelectorAll('.faq-question').forEach(function(q) {
+  q.addEventListener('click', function() {
+    const item = q.parentElement;
+    const isActive = item.classList.contains('active');
+    
+    // Close other items
+    document.querySelectorAll('.faq-item').forEach(function(innerItem) {
+      innerItem.classList.remove('active');
+    });
+    
+    // Toggle active state
+    if (!isActive) {
+      item.classList.add('active');
+    }
+  });
+});
 if(typeof gsap !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
   gsap.set('.rv', { y: 60, opacity: 0, rotateX: 15, transformPerspective: 800 });
@@ -645,5 +847,10 @@ if(typeof gsap !== 'undefined') {
   });
 }
 </script>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20start%20a%20conversation." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.244 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-16.793c-.166-.369-.342-.377-.502-.384-.131-.005-.28-.006-.43-.006-.15 0-.395.056-.602.28-.206.225-.79.771-.79 1.882 0 1.111.808 2.185.92 2.335.113.15 1.59 2.429 3.853 3.407.538.233.957.372 1.285.477.54.172 1.03.148 1.417.09.431-.064 1.328-.542 1.516-1.064.188-.522.188-.97.132-1.064-.056-.094-.207-.15-.433-.263s-1.329-.655-1.536-.73c-.207-.075-.358-.112-.507.113-.15.225-.583.73-.715.88-.132.15-.264.169-.49.056-.226-.113-.956-.352-1.82-1.123-.673-.6-1.127-1.341-1.26-1.566-.131-.225-.014-.347.1-.459.102-.101.226-.263.339-.395.113-.131.15-.225.226-.375.075-.15.038-.281-.019-.394-.056-.113-.502-1.21-.688-1.657z"/></svg>
+</a>
 </body>
 </html>

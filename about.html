@@ -199,6 +199,7 @@
     letter-spacing: -0.04em;
     color: var(--bg);
     line-height: 1;
+    white-space: nowrap;
   }
   .ast-lbl {
     font-family: 'Space Mono', monospace;
@@ -273,6 +274,10 @@
   }
   .acb-link:hover { transform: translate(-3px, -3px); }
 
+  @media(max-width: 1150px) {
+    .about-stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
   @media(max-width: 900px) {
     .about-statement { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
     .about-values { padding: 60px 24px; }
@@ -283,6 +288,10 @@
     .about-page-hero { padding: 120px 24px 60px; }
     .about-cta-band { padding: 60px 24px; }
     .av-header { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media(max-width: 600px) {
+    .about-stats { grid-template-columns: 1fr; }
   }
 
   /* ── TEAM SECTION ── */

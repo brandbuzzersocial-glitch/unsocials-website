@@ -62,6 +62,7 @@ nav{background:rgba(4,4,4,.95)}
   line-height: 1;
   letter-spacing: -0.04em;
   margin-bottom: 12px;
+  white-space: nowrap;
 }
 .sc-title {
   font-family: 'Syne', sans-serif;
@@ -175,6 +176,12 @@ nav{background:rgba(4,4,4,.95)}
   font-size: 13px;
   color: rgba(255,255,255,0.45);
   line-height: 1.5;
+}
+
+@media(max-width: 1150px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media(max-width: 900px){

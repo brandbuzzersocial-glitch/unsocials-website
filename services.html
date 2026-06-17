@@ -47,7 +47,7 @@ nav{background:rgba(4,4,4,.95)}
 .svc-card-inner {
   width: 100%;
   height: 100vh;
-  padding: 170px 5vw 6vh; /* Top padding increased to clear fixed nav and create beautiful margin */
+  padding: 170px 5vw 6vh; /* Increased to 170px to create a spacious gap below the navbar */
   display: grid;
   grid-template-columns: 0.48fr 0.82fr 0.7fr; /* Premium 3-column layout: Menu, Details, Media */
   gap: 4vw; /* Fluid column gap */
@@ -161,8 +161,8 @@ nav{background:rgba(4,4,4,.95)}
   font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;
   color: rgba(255, 255, 255, 0.4);
-  margin-top: 10px;
-  margin-bottom: 12px;
+  margin-top: 15px;
+  margin-bottom: 20px;
   border-left: 2px solid var(--ac);
   padding-left: 12px;
 }
@@ -180,8 +180,8 @@ nav{background:rgba(4,4,4,.95)}
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 .svc-outcome-card {
   background: rgba(255, 255, 255, 0.03);
@@ -236,7 +236,7 @@ nav{background:rgba(4,4,4,.95)}
   color: var(--w);
   line-height: 0.95;
   text-transform: uppercase;
-  margin-bottom: 14px; /* Reduced margin to fit viewports */
+  margin-bottom: 20px; /* Reduced from 30px */
   letter-spacing: -0.03em;
 }
 
@@ -246,13 +246,39 @@ nav{background:rgba(4,4,4,.95)}
   line-height: 1.6;
   color: rgba(255,255,255,0.6);
   max-width: 480px;
-  margin-bottom: 16px; /* Reduced margin to fit viewports */
+  margin-bottom: 24px; /* Reduced from 40px */
+}
+.svc-desc-container {
+  max-width: 480px;
+  margin-bottom: 24px;
+}
+.svc-desc-container .svc-desc {
+  margin-bottom: 0;
+}
+.read-more-btn {
+  background: none;
+  border: none;
+  color: var(--ac);
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 8px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 1px dashed var(--ac);
+  padding-bottom: 2px;
+  transition: color 0.3s, border-color 0.3s;
+}
+.read-more-btn:hover {
+  color: #fff;
+  border-bottom-color: #fff;
 }
 
 .svc-deliverables {
   list-style: none;
   padding: 0;
-  margin-bottom: 20px; /* Reduced margin to fit viewports */
+  margin-bottom: 30px; /* Reduced from 40px */
   display: flex;
   flex-direction: column;
   gap: 10px; /* Tighter item gap */
@@ -358,7 +384,7 @@ nav{background:rgba(4,4,4,.95)}
 
 @media (max-width: 1366px), (max-height: 850px) {
   .ph { padding: 120px 5vw 40px; }
-  .svc-card-inner { padding: 145px 5vw 40px; gap: 4vw; align-items: flex-start; }
+  .svc-card-inner { padding: 150px 5vw 40px; gap: 4vw; align-items: flex-start; }
   .svc-title { font-size: clamp(32px, 3.8vw, 54px); margin-bottom: 20px; }
   .svc-desc { margin-bottom: 24px; font-size: 15px; }
   .svc-deliverables { margin-bottom: 24px; gap: 10px; }
@@ -684,7 +710,13 @@ nav{background:rgba(4,4,4,.95)}
       <div class="svc-left">
         <div class="svc-num">01 · DIGITAL REAL ESTATE</div>
         <h2 class="svc-title reveal-up" data-th="การตลาดเชิง<br>ประสิทธิภาพ">Performance<br>Marketing</h2>
-        <p class="svc-desc reveal-up" data-th="ไม่ว่าคุณจะเป็นร้านอาหารที่ต้องการให้คนเต็มโต๊ะทุกคืน บีชคลับที่ต้องการขายบัตรเข้างานจนหมด แบรนด์สินค้าที่ต้องการก้าวข้ามขีดจำกัดเดิม หรือธุรกิจบริการที่ต้องการหาลูกค้าคุณภาพสูง — เราสร้างโครงสร้างพื้นฐานแบบชำระเงินที่เปลี่ยนงบการตลาดของคุณให้เป็นรายได้ที่วัดผลได้และขยายขนาดได้<br><br>Google, Meta, TikTok ช่องทางการขายแบบ Click-to-Chat บน WhatsApp ที่มีอัตราการเปลี่ยนลูกค้าสูงกว่าหน้าแลนดิ้งเพจทั่วไปถึง 3 เท่า ระบบการจองตรงและการสร้างลูกค้ามุ่งหวังที่ขจัดคนกลางออกไปโดยสิ้นเชิง ทุกบาทถูกติดตาม ทุกแคมเปญสร้างขึ้นเพื่อขยายขนาด">We don't run ads. We build revenue systems. Whether you're a restaurant filling tables every night, a beach club selling out events, a product brand scaling past its ceiling, or a service business generating qualified leads - we build the paid infrastructure that turns your marketing budget into trackable, scalable revenue.<br><br>Google, Meta, TikTok. WhatsApp click-to-chat funnels that convert at 3x the rate of any landing page. Direct booking and lead generation systems that eliminate middlemen entirely. Every baht tracked. Every campaign built to scale.</p>
+        <div class="svc-desc-container">
+          <p class="svc-desc reveal-up" data-th="ไม่ว่าคุณจะเป็นร้านอาหารที่ต้องการให้คนเต็มโต๊ะทุกคืน บีชคลับที่ต้องการขายบัตรเข้างานจนหมด แบรนด์สินค้าที่ต้องการก้าวข้ามขีดจำกัดเดิม หรือธุรกิจบริการที่ต้องการหาลูกค้าคุณภาพสูง — เราสร้างโครงสร้างพื้นฐานแบบชำระเงินที่เปลี่ยนงบการตลาดของคุณให้เป็นรายได้ที่วัดผลได้และขยายขนาดได้">We don't run ads. We build revenue systems. Whether you're a restaurant filling tables every night, a beach club selling out events, a product brand scaling past its ceiling, or a service business generating qualified leads - we build the paid infrastructure that turns your marketing budget into trackable, scalable revenue.</p>
+          <div class="svc-desc-more" style="display: none; margin-top: 12px;">
+            <p class="svc-desc" data-th="Google, Meta, TikTok ช่องทางการขายแบบ Click-to-Chat บน WhatsApp ที่มีอัตราการเปลี่ยนลูกค้าสูงกว่าหน้าแลนดิ้งเพจทั่วไปถึง 3 เท่า ระบบการจองตรงและการสร้างลูกค้ามุ่งหวังที่ขจัดคนกลางออกไปโดยสิ้นเชิง ทุกบาทถูกติดตาม ทุกแคมเปญสร้างขึ้นเพื่อขยายขนาด">Google, Meta, TikTok. WhatsApp click-to-chat funnels that convert at 3x the rate of any landing page. Direct booking and lead generation systems that eliminate middlemen entirely. Every baht tracked. Every campaign built to scale.</p>
+          </div>
+          <button class="read-more-btn" data-th="อ่านเพิ่มเติม +">Read More +</button>
+        </div>
         
         <div class="svc-target reveal-up">
           <span class="svc-target-lbl" data-th="สำหรับใคร">WHO THIS IS FOR:</span>
@@ -735,7 +767,13 @@ nav{background:rgba(4,4,4,.95)}
       <div class="svc-left">
         <div class="svc-num">02 · DIGITAL IDENTITY</div>
         <h2 class="svc-title reveal-up" data-th="การจัดการ<br>โซเชียลมีเดีย">Social Media<br>Management</h2>
-        <p class="svc-desc reveal-up" data-th="ฟีดของคุณคือหน้าร้านที่มีค่าที่สุดของคุณ แบรนด์ส่วนใหญ่ปล่อยทิ้งไว้โดยไม่มีใครดูแล เรารับผิดชอบการดูแลโซเชียลของคุณอย่างเต็มรูปแบบ — ทั้งกลยุทธ์ ปฏิทินเนื้อหา การดำเนินงานรายวัน การจัดการคอมมูนิตี้ และการเติบโต ตั้งแต่แบรนด์ไลฟ์สไตล์ บีชคลับ ไปจนถึงสินค้าหรูหรา ร้านอาหาร F&B และธุรกิจอีคอมเมิร์ซ เราเปลี่ยนช่องทางที่เงียบเหงาให้เป็นเครื่องมือขายและสร้างแบรนด์ที่ทรงพลังที่สุดที่คุณมี<br><br>เราไม่ได้โพสต์ไปวันๆ ทุกชิ้นงานมีเป้าหมาย ทุกสัปดาห์สร้างขึ้นเพื่อหนุนเนื่องสัปดาห์ก่อนหน้า ทุกเดือนตัวเลขจะต้องเติบโตขึ้น">Your feed is your most valuable storefront. Most brands leave it unmanned. We take complete ownership of your social presence — strategy, content calendar, daily execution, community management, growth. From lifestyle brands and beach clubs to luxury goods, F&amp;B concepts and e-commerce businesses, we turn dormant channels into the most powerful sales and brand-building tool your business has.<br><br>We don't post for the sake of posting. Every piece of content has a purpose. Every week builds on the last. Every month the numbers go up.</p>
+        <div class="svc-desc-container">
+          <p class="svc-desc reveal-up" data-th="ฟีดของคุณคือหน้าร้านที่มีค่าที่สุดของคุณ แบรนด์ส่วนใหญ่ปล่อยทิ้งไว้โดยไม่มีใครดูแล เรารับผิดชอบการดูแลโซเชียลของคุณอย่างเต็มรูปแบบ — ทั้งกลยุทธ์ ปฏิทินเนื้อหา การดำเนินงานรายวัน การจัดการคอมมูนิตี้ และการเติบโต ตั้งแต่แบรนด์ไลฟ์สไตล์ บีชคลับ ไปจนถึงสินค้าหรูหรา ร้านอาหาร F&B และธุรกิจอีคอมเมิร์ซ เราเปลี่ยนช่องทางที่เงียบเหงาให้เป็นเครื่องมือขายและสร้างแบรนด์ที่ทรงพลังที่สุดที่คุณมี">Your feed is your most valuable storefront. Most brands leave it unmanned. We take complete ownership of your social presence — strategy, content calendar, daily execution, community management, growth. From lifestyle brands and beach clubs to luxury goods, F&amp;B concepts and e-commerce businesses, we turn dormant channels into the most powerful sales and brand-building tool your business has.</p>
+          <div class="svc-desc-more" style="display: none; margin-top: 12px;">
+            <p class="svc-desc" data-th="เราไม่ได้โพสต์ไปวันๆ ทุกชิ้นงานมีเป้าหมาย ทุกสัปดาห์สร้างขึ้นเพื่อหนุนเนื่องสัปดาห์ก่อนหน้า ทุกเดือนตัวเลขจะต้องเติบโตขึ้น">We don't post for the sake of posting. Every piece of content has a purpose. Every week builds on the last. Every month the numbers go up.</p>
+          </div>
+          <button class="read-more-btn" data-th="อ่านเพิ่มเติม +">Read More +</button>
+        </div>
         
         <div class="svc-target reveal-up">
           <span class="svc-target-lbl" data-th="สำหรับใคร">WHO THIS IS FOR:</span>
@@ -786,7 +824,13 @@ nav{background:rgba(4,4,4,.95)}
       <div class="svc-left">
         <div class="svc-num">03 · VISUAL DOMINATION</div>
         <h2 class="svc-title reveal-up" data-th="การผลิต<br>คอนเทนต์">Content<br>Production</h2>
-        <p class="svc-desc reveal-up" data-th="ถ่ายทำเพื่อการเปลี่ยนลูกค้า ทุกเฟรมถูกวิเคราะห์ย้อนกลับเพื่อกระตุ้นให้เกิดการตัดสินใจ เราผลิตเนื้อหาภาพและวิดีโอที่แบรนด์ของคุณต้องการเพื่อครอบงำหน้าฟีด — วิดีโอสั้น (Reels) ที่ทรงพลัง วิดีโอสั้นเน้นส่วนดึงดูด (Hook) ภาพถ่ายไลฟ์สไตล์และภาพถ่ายแฟชั่นคอนเซปต์ UGC การรายงานบรรยากาศงานอีเวนต์ และภาพที่ปรับแต่งด้วย AI สำหรับร้านอาหาร คลับ แบรนด์สินค้า งานอีเวนต์ ธุรกิจไลฟ์สไตล์ และอื่นๆ<br><br>คอนเทนต์ไม่ใช่ของประดับตกแต่ง แต่มันคือพนักงานขายที่ขยายขนาดได้มากที่สุดของคุณ — ทำงานตลอด 24 ชั่วโมงเพื่อหาลูกค้าใหม่ให้คุณในขณะที่คุณนอนหลับ">Shoot to convert. Every frame reverse-engineered to drive action. We produce the visual content your brand needs to dominate feeds — high-energy reels, hook-led short form, lifestyle and editorial photography, UGC, event coverage, AI-enhanced visuals. For restaurants, clubs, product brands, events, lifestyle businesses and everything in between.<br><br>Content is not decoration. It is your most scalable salesperson — working 24 hours a day, finding your next customer while you sleep.</p>
+        <div class="svc-desc-container">
+          <p class="svc-desc reveal-up" data-th="ถ่ายทำเพื่อการเปลี่ยนลูกค้า ทุกเฟรมถูกวิเคราะห์ย้อนกลับเพื่อกระตุ้นให้เกิดการตัดสินใจ เราผลิตเนื้อหาภาพและวิดีโอที่แบรนด์ของคุณต้องการเพื่อครอบงำหน้าฟีด — วิดี้อสั้น (Reels) ที่ทรงพลัง วิดีโอสั้นเน้นส่วนดึงดูด (Hook) ภาพถ่ายไลฟ์สไตล์และภาพถ่ายแฟชั่นคอนเซปต์ UGC การรายงานบรรยากาศงานอีเวนต์ และภาพที่ปรับแต่งด้วย AI สำหรับร้านอาหาร คลับ แบรนด์สินค้า งานอีเวนต์ ธุรกิจไลฟ์สไตล์ และอื่นๆ">Shoot to convert. Every frame reverse-engineered to drive action. We produce the visual content your brand needs to dominate feeds — high-energy reels, hook-led short form, lifestyle and editorial photography, UGC, event coverage, AI-enhanced visuals. For restaurants, clubs, product brands, events, lifestyle businesses and everything in between.</p>
+          <div class="svc-desc-more" style="display: none; margin-top: 12px;">
+            <p class="svc-desc" data-th="คอนเทนต์ไม่ใช่ของประดับตกแต่ง แต่มันคือพนักงานขายที่ขยายขนาดได้มากที่สุดของคุณ — ทำงานตลอด 24 ชั่วโมงเพื่อหาลูกค้าใหม่ให้คุณในขณะที่คุณนอนหลับ">Content is not decoration. It is your most scalable salesperson — working 24 hours a day, finding your next customer while you sleep.</p>
+          </div>
+          <button class="read-more-btn" data-th="อ่านเพิ่มเติม +">Read More +</button>
+        </div>
         
         <div class="svc-target reveal-up">
           <span class="svc-target-lbl" data-th="สำหรับใคร">WHO THIS IS FOR:</span>
@@ -838,7 +882,13 @@ nav{background:rgba(4,4,4,.95)}
       <div class="svc-left">
         <div class="svc-num">04 · THE FUTURE IS HERE</div>
         <h2 class="svc-title reveal-up" data-th="AI ครีเอทีฟ<br>อัตโนมัติ">AI Creative<br>Automation</h2>
-        <p class="svc-desc reveal-up" data-th="ในขณะที่คู่แข่งต้องรอถ่ายทำเป็นสัปดาห์ — เราสร้างความสมบูรณ์แบบได้ในระดับชั่วโมง เราใช้ AI ขั้นสูงเพื่อผลิตภาพสินค้าหรูหรา ตัวแทนแบรนด์เสมือนจริง กราฟิกแคมเปญ และเนื้อหาโซเชียลในระดับไม่จำกัด — สำหรับทุกอุตสาหกรรม ทุกแบรนด์ ทุกโจทย์ แบรนด์สินค้า ไลฟ์สไตล์ อัญมณี แฟชั่น อีเวนต์ ร้านอาหารและเครื่องดื่ม หากต้องการให้ดูหรูหราพรีเมียม ครีเอทีฟ AI ทำได้เร็วกว่า ถูกกว่า และหลากหลายกว่าสายงานผลิตแบบดั้งเดิม<br><br>พบกับ Ava & Alex: ตัวแทนแบรนด์ AI ของเราที่ทำงานให้กับลูกค้าทั่วประเทศไทยแล้ววันนี้ ความได้เปรียบที่ไม่เป็นธรรมพร้อมให้คุณใช้งานแล้ว">While competitors wait weeks for a shoot day - we generate perfection in hours. We use advanced AI to produce luxury visual assets, brand representatives, campaign graphics and social content at infinite scale - for any industry, any brand, any brief. Product brands. Lifestyle. Gems. Fashion. Events. F&B. If it needs to look incredible, AI creative does it faster, cheaper and with more variation than any traditional production workflow.<br><br>Meet Ava & Alex: Our AI brand representatives already working for clients across Thailand. The unfair advantage is available right now.</p>
+        <div class="svc-desc-container">
+          <p class="svc-desc reveal-up" data-th="ในขณะที่คู่แข่งต้องรอถ่ายทำเป็นสัปดาห์ — เราสร้างความสมบูรณ์แบบได้ในระดับชั่วโมง เราใช้ AI ขั้นสูงเพื่อผลิตภาพสินค้าหรูหรา ตัวแทนแบรนด์เสมือนจริง กราฟิกแคมเปญ และเนื้อหาโซเชียลในระดับไม่จำกัด — สำหรับทุกอุตสาหกรรม ทุกแบรนด์ ทุกโจทย์ แบรนด์สินค้า ไลฟ์สไตล์ อัญมณี แฟชั่น อีเวนต์ ร้านอาหารและเครื่องดื่ม หากต้องการให้ดูหรูหราพรีเมียม ครีเอทีฟ AI ทำได้เร็วกว่า ถูกกว่า และหลากหลายกว่าสายงานผลิตแบบดั้งเดิม">While competitors wait weeks for a shoot day - we generate perfection in hours. We use advanced AI to produce luxury visual assets, brand representatives, campaign graphics and social content at infinite scale - for any industry, any brand, any brief. Product brands. Lifestyle. Gems. Fashion. Events. F&B. If it needs to look incredible, AI creative does it faster, cheaper and with more variation than any traditional production workflow.</p>
+          <div class="svc-desc-more" style="display: none; margin-top: 12px;">
+            <p class="svc-desc" data-th="พบกับ Ava & Alex: ตัวแทนแบรนด์ AI ของเราที่ทำงานให้กับลูกค้าทั่วประเทศไทยแล้ววันนี้ ความได้เปรียบที่ไม่เป็นธรรมพร้อมให้คุณใช้งานแล้ว">Meet Ava & Alex: Our AI brand representatives already working for clients across Thailand. The unfair advantage is available right now.</p>
+          </div>
+          <button class="read-more-btn" data-th="อ่านเพิ่มเติม +">Read More +</button>
+        </div>
         
         <div class="svc-target reveal-up">
           <span class="svc-target-lbl" data-th="สำหรับใคร">WHO THIS IS FOR:</span>
@@ -890,7 +940,13 @@ nav{background:rgba(4,4,4,.95)}
       <div class="svc-left">
         <div class="svc-num">05 · YOUR DIGITAL HEADQUARTERS</div>
         <h2 class="svc-title reveal-up" data-th="การพัฒนา<br>เว็บไซต์">Website<br>Development</h2>
-        <p class="svc-desc reveal-up" data-th="เว็บไซต์ของคุณคือสถานที่แห่งเดียวบนอินเทอร์เน็ตที่คุณเป็นเจ้าของอย่างเต็มตัว ทำให้มันคุ้มค่าที่สุด ทุกโฆษณาที่คุณรัน ทุกโพสต์ที่คุณทำ ทุกเนื้อหาที่คุณผลิต — ท้ายที่สุดแล้วทั้งหมดจะนำพามาที่นี่ หากสิ่งที่พวกเขาพบบนหน้าเว็บไม่สามารถเปลี่ยนเป็นยอดขายได้ ทุกสิ่งก่อนหน้านั้นย่อมสูญเปล่า<br><br>เราสร้างเว็บไซต์ที่ได้ผลจริง รวดเร็ว คมชัด หรูหราทางสายตา และออกแบบมาเพื่อเปลี่ยนผู้เข้าชมให้เป็นลูกค้า ไม่มีเทมเพลตทั่วไปที่ซ้ำซาก ไม่มีขั้นตอนของเอเจนซี่ที่เทอะทะ มีเพียงประสบการณ์ดิจิทัลที่สะอาดตาและมีเป้าหมาย ที่ดูดีสมกับที่แบรนด์ของคุณคู่ควร และทำงานได้ทรงประสิทธิภาพตามที่ธุรกิจของคุณต้องการ">Your website is the one place on the internet you fully own. Make it count. Every ad you run, every post you make, every piece of content you produce — it all eventually leads here. If what they find doesn't convert, everything before it was wasted.<br><br>We build websites that work. Fast, sharp, visually premium and engineered to turn visitors into customers. No generic templates. No bloated agency processes. Just clean, purposeful digital experiences that look as good as your brand deserves and perform as hard as your business demands.</p>
+        <div class="svc-desc-container">
+          <p class="svc-desc reveal-up" data-th="เว็บไซต์ของคุณคือสถานที่แห่งเดียวบนอินเทอร์เน็ตที่คุณเป็นเจ้าของอย่างเต็มตัว ทำให้มันคุ้มค่าที่สุด ทุกโฆษณาที่คุณรัน ทุกโพสต์ที่คุณทำ ทุกเนื้อหาที่คุณผลิต — ท้ายที่สุดแล้วทั้งหมดจะนำพามาที่นี่ หากสิ่งที่พวกเขาพบบนหน้าเว็บไม่สามารถเปลี่ยนเป็นยอดขายได้ ทุกสิ่งก่อนหน้านั้นย่อมสูญเปล่า">Your website is the one place on the internet you fully own. Make it count. Every ad you run, every post you make, every piece of content you produce — it all eventually leads here. If what they find doesn't convert, everything before it was wasted.</p>
+          <div class="svc-desc-more" style="display: none; margin-top: 12px;">
+            <p class="svc-desc" data-th="เราสร้างเว็บไซต์ที่ได้ผลจริง รวดเร็ว คมชัด หรูหราทางสายตา และออกแบบมาเพื่อเปลี่ยนผู้เข้าชมให้เป็นลูกค้า ไม่มีเทมเพลตทั่วไปที่ซ้ำซาก ไม่มีขั้นตอนของเอเจนซี่ที่เทอะทะ มีเพียงประสบการณ์ดิจิทัลที่สะอาดตาและมีเป้าหมาย ที่ดูดีสมกับที่แบรนด์ของคุณคู่ควร และทำงานได้ทรงประสิทธิภาพตามที่ธุรกิจของคุณต้องการ">We build websites that work. Fast, sharp, visually premium and engineered to turn visitors into customers. No generic templates. No bloated agency processes. Just clean, purposeful digital experiences that look as good as your brand deserves and perform as hard as your business demands.</p>
+          </div>
+          <button class="read-more-btn" data-th="อ่านเพิ่มเติม +">Read More +</button>
+        </div>
         
         <div class="svc-target reveal-up">
           <span class="svc-target-lbl" data-th="สำหรับใคร">WHO THIS IS FOR:</span>
@@ -942,7 +998,13 @@ nav{background:rgba(4,4,4,.95)}
       <div class="svc-left">
         <div class="svc-num">06 · THE BLUEPRINT</div>
         <h2 class="svc-title reveal-up" data-th="กลยุทธ์<br>แบรนด์">Brand<br>Strategy</h2>
-        <p class="svc-desc reveal-up" data-th="ยุทธวิธีที่ปราศจากกลยุทธ์เป็นเพียงเสียงรบกวน แบรนด์ส่วนใหญ่กำลังสร้างเสียงรบกวนมากมาย เราสร้าง DNA ที่เป็นรากฐานของแบรนด์ของคุณ — ทั้งจุดยืน เรื่องราว และอัตลักษณ์ทางภาพ — เพื่อให้แน่ใจว่าทุกโฆษณาที่คุณรัน ทุกโพสต์ที่คุณเขียน ทุกคอนเทนต์ที่คุณสร้าง และทุกหน้าของเว็บไซต์ จะส่งผลกระทบอย่างแรงกล้าและมีความสม่ำเสมอ<br><br>เราทำงานร่วมกับธุรกิจบริการ ร้าน F&B แบรนด์ไลฟ์สไตล์ สินค้าลักชัวรี อีคอมเมิร์ซ และธุรกิจบริการต่างๆ เพราะบีชคลับในกระบี่ต้องการกลยุทธ์ที่แตกต่างจากแบรนด์อัญมณีในกรุงเทพฯ อย่างสิ้นเชิง — และเราเข้าใจความแตกต่างนั้นเป็นอย่างดี">Tactics without strategy is noise. Most brands are making a lot of noise. We build the foundational DNA of your brand — positioning, narrative, visual identity — so that every ad you run, every post you make, every piece of content you produce and every page of your website lands with force and consistency.<br><br>We work across hospitality, F&amp;B, lifestyle, luxury goods, e-commerce and service businesses. Because a beach club in Krabi needs a completely different strategy than a gem brand in Bangkok — and we know the difference.</p>
+        <div class="svc-desc-container">
+          <p class="svc-desc reveal-up" data-th="ยุทธวิธีที่ปราศจากกลยุทธ์เป็นเพียงเสียงรบกวน แบรนด์ส่วนใหญ่กำลังสร้างเสียงรบกวนมากมาย เราสร้าง DNA ที่เป็นรากฐานของแบรนด์ของคุณ — ทั้งจุดยืน เรื่องราว และอัตลักษณ์ทางภาพ — เพื่อให้แน่ใจว่าทุกโฆษณาที่คุณรัน ทุกโพสต์ที่คุณเขียน ทุกคอนเทนต์ที่คุณสร้าง และทุกหน้าของเว็บไซต์ จะส่งผลกระทบอย่างแรงกล้าและมีความสม่ำเสมอ">Tactics without strategy is noise. Most brands are making a lot of noise. We build the foundational DNA of your brand — positioning, narrative, visual identity — so that every ad you run, every post you make, every piece of content you produce and every page of your website lands with force and consistency.</p>
+          <div class="svc-desc-more" style="display: none; margin-top: 12px;">
+            <p class="svc-desc" data-th="เราทำงานร่วมกับธุรกิจบริการ ร้าน F&B แบรนด์ไลฟ์สไตล์ สินค้าลักชัวรี อีคอมเมิร์ซ และธุรกิจบริการต่างๆ เพราะบีชคลับในกระบี่ต้องการกลยุทธ์ที่แตกต่างจากแบรนด์อัญมณีในกรุงเทพฯ อย่างสิ้นเชิง — และเราเข้าใจความแตกต่างนั้นเป็นอย่างดี">We work across hospitality, F&amp;B, lifestyle, luxury goods, e-commerce and service businesses. Because a beach club in Krabi needs a completely different strategy than a gem brand in Bangkok — and we know the difference.</p>
+          </div>
+          <button class="read-more-btn" data-th="อ่านเพิ่มเติม +">Read More +</button>
+        </div>
         
         <div class="svc-target reveal-up">
           <span class="svc-target-lbl" data-th="สำหรับใคร">WHO THIS IS FOR:</span>
@@ -993,7 +1055,13 @@ nav{background:rgba(4,4,4,.95)}
       <div class="svc-left">
         <div class="svc-num">07 · THE OUTSIDE EYE</div>
         <h2 class="svc-title reveal-up" data-th="ที่ปรึกษา<br>แบรนด์">Brand<br>Consultancy</h2>
-        <p class="svc-desc reveal-up" data-th="บางครั้งคุณไม่ต้องการเอเจนซี่เพื่อมาบริหารจัดการทุกอย่าง แต่คุณต้องการคนที่บอกว่าควรทำอะไรเป็นลำดับถัดไป บริการที่ปรึกษาแบรนด์มอบโอกาสให้คุณเข้าถึงนักวางกลยุทธ์ระดับอาวุโสของเราโดยตรง — สำหรับธุรกิจที่ต้องการการนำทางจากผู้เชี่ยวชาญโดยไม่มีข้อผูกมัดแบบสัญญาเต็มรูปแบบ เพียงเซสชันเดียวก็สามารถประหยัดงบที่อาจสูญเปล่าไปได้หลายเดือน ความสัมพันธ์แบบที่ปรึกษารายเดือนสามารถปรับเปลี่ยนทิศทางทั้งหมดของแบรนด์คุณได้<br><br>ซื่อสัตย์ ตรงไปตรงมา ไม่มีเป้าหมายอื่นใดนอกจากความเติบโตของคุณ ไม่มีผู้ดูแลบัญชี (Account Manager) คอยคั่นกลาง ไม่มีเรื่องการเมืองในองค์กร มีเพียงผู้สร้างกลยุทธ์ที่สร้างผลลัพธ์จริง ที่จะมาบอกคุณถึงสิ่งที่พวกเขาเห็นและสิ่งที่ต้องเปลี่ยนอย่างตรงจุด">Sometimes you don't need an agency to run everything. You need someone who tells you exactly what to do next. Our Brand Consultancy service gives you direct access to our senior strategists — for businesses that want expert guidance without a full retainer. One session can save months of wasted budget. A monthly advisory relationship can reshape the entire trajectory of your brand.<br><br>Honest. Direct. No agenda except your growth. No account managers in the middle. No politics. Just the people who built the strategies that generated results — telling you exactly what they see and exactly what to change.</p>
+        <div class="svc-desc-container">
+          <p class="svc-desc reveal-up" data-th="บางครั้งคุณไม่ต้องการเอเจนซี่เพื่อมาบริหารจัดการทุกอย่าง แต่คุณต้องการคนที่บอกว่าควรทำอะไรเป็นลำดับถัดไป บริการที่ปรึกษาแบรนด์มอบโอกาสให้คุณเข้าถึงนักวางกลยุทธ์ระดับอาวุโสของเราโดยตรง — สำหรับธุรกิจที่ต้องการการนำทางจากผู้เชี่ยวชาญโดยไม่มีข้อผูกมัดแบบสัญญาเต็มรูปแบบ เพียงเซสชันเดียวก็สามารถประหยัดงบที่อาจสูญเปล่าไปได้หลายเดือน ความสัมพันธ์แบบที่ปรึกษารายเดือนสามารถปรับเปลี่ยนทิศทางทั้งหมดของแบรนด์คุณได้">Sometimes you don't need an agency to run everything. You need someone who tells you exactly what to do next. Our Brand Consultancy service gives you direct access to our senior strategists — for businesses that want expert guidance without a full retainer. One session can save months of wasted budget. A monthly advisory relationship can reshape the entire trajectory of your brand.</p>
+          <div class="svc-desc-more" style="display: none; margin-top: 12px;">
+            <p class="svc-desc" data-th="ซื่อสัตย์ ตรงไปตรงมา ไม่มีเป้าหมายอื่นใดนอกจากความเติบโตของคุณ ไม่มีผู้ดูแลบัญชี (Account Manager) คอยคั่นกลาง ไม่มีเรื่องการเมืองในองค์กร มีเพียงผู้สร้างกลยุทธ์ที่สร้างผลลัพธ์จริง ที่จะมาบอกคุณถึงสิ่งที่พวกเขาเห็นและสิ่งที่ต้องเปลี่ยนอย่างตรงจุด">Honest. Direct. No agenda except your growth. No account managers in the middle. No politics. Just the people who built the strategies that generated results — telling you exactly what they see and exactly what to change.</p>
+          </div>
+          <button class="read-more-btn" data-th="อ่านเพิ่มเติม +">Read More +</button>
+        </div>
         
         <div class="svc-target reveal-up">
           <span class="svc-target-lbl" data-th="สำหรับใคร">WHO THIS IS FOR:</span>
@@ -1045,7 +1113,13 @@ nav{background:rgba(4,4,4,.95)}
       <div class="svc-left">
         <div class="svc-num">08 · THE THIRD DIMENSION</div>
         <h2 class="svc-title reveal-up" data-th="การผลิต<br>CGI และ 3D">CGI &amp; 3D<br>Production</h2>
-        <p class="svc-desc reveal-up" data-th="เมื่อความจริงยังไม่เพียงพอ — เราสร้างโลกใบใหม่ขึ้นมา สินค้าบางประเภทไม่สามารถถ่ายภาพได้ พื้นที่บางแห่งยังไม่มีอยู่จริง แนวคิดบางอย่างก็กว้างใหญ่เกินกว่าที่กล้องตัวหนึ่งจะบันทึกได้ งานสร้างสรรค์ CGI และ 3D มอบขีดความสามารถให้แบรนด์ของคุณในการแสดงสิ่งที่เป็นไปไม่ได้ — ด้วยความแม่นยำและเสมือนจริงในทุกระดับสเกล สำหรับทุกสื่อนำเสนอ<br><br>ตั้งแต่ภาพเรนเดอร์อสังหาริมทรัพย์ระดับหรูที่ช่วยขายโครงการได้ก่อนสร้างเสร็จ ไปจนถึงโมเดลภาพผลิตภัณฑ์แบบ 3 มิติที่กระตุ้นยอดขายอีคอมเมิร์ซอย่างไม่เคยมีมาก่อน ไปจนถึงสินทรัพย์ 3 มิติของแบรนด์ที่ใช้งานบนดิจิทัล โซเชียล และการออกอากาศ — เราสร้างภาพที่ไม่มีกล้องตัวใดสามารถเก็บรายละเอียดได้">When reality is not enough - we build worlds. Some products cannot be photographed. Some spaces do not exist yet. Some ideas are too big for a camera. CGI and 3D production gives your brand the ability to show the impossible - with photorealistic precision, at any scale, for any medium.<br><br>From luxury real estate renders that sell properties before they are built, to product visualisations that make e-commerce convert like never before, to 3D brand assets that live across digital, social and broadcast - we create the visuals that no camera can capture.</p>
+        <div class="svc-desc-container">
+          <p class="svc-desc reveal-up" data-th="เมื่อความจริงยังไม่เพียงพอ — เราสร้างโลกใบใหม่ขึ้นมา สินค้าบางประเภทไม่สามารถถ่ายภาพได้ พื้นที่บางแห่งยังไม่มีอยู่จริง แนวคิดบางอย่างก็กว้างใหญ่เกินกว่าที่กล้องตัวหนึ่งจะบันทึกได้ งานสร้างสรรค์ CGI และ 3D มอบขีดความสามารถให้แบรนด์ของคุณในการแสดงสิ่งที่เป็นไปไม่ได้ — ด้วยความแม่นยำและเสมือนจริงในทุกระดับสเกล สำหรับทุกสื่อนำเสนอ">When reality is not enough - we build worlds. Some products cannot be photographed. Some spaces do not exist yet. Some ideas are too big for a camera. CGI and 3D production gives your brand the ability to show the impossible - with photorealistic precision, at any scale, for any medium.</p>
+          <div class="svc-desc-more" style="display: none; margin-top: 12px;">
+            <p class="svc-desc" data-th="ตั้งแต่ภาพเรนเดอร์อสังหาริมทรัพย์ระดับหรูที่ช่วยขายโครงการได้ก่อนสร้างเสร็จ ไปจนถึงโมเดลภาพผลิตภัณฑ์แบบ 3 มิติที่กระตุ้นยอดขายอีคอมเมิร์ซอย่างไม่เคยมีมาก่อน ไปจนถึงสินทรัพย์ 3 มิติของแบรนด์ที่ใช้งานบนดิจิทัล โซเชียล และการออกอากาศ — เราสร้างภาพที่ไม่มีกล้องตัวใดสามารถเก็บรายละเอียดได้">From luxury real estate renders that sell properties before they are built, to product visualisations that make e-commerce convert like never before, to 3D brand assets that live across digital, social and broadcast - we create the visuals that no camera can capture.</p>
+          </div>
+          <button class="read-more-btn" data-th="อ่านเพิ่มเติม +">Read More +</button>
+        </div>
         
         <div class="svc-target reveal-up">
           <span class="svc-target-lbl" data-th="สำหรับใคร">WHO THIS IS FOR:</span>
@@ -1097,7 +1171,13 @@ nav{background:rgba(4,4,4,.95)}
       <div class="svc-left">
         <div class="svc-num">09 · THE FUTURE OF FILM</div>
         <h2 class="svc-title reveal-up" data-th="การผลิตภาพยนตร์<br>ด้วย AI">AI Film<br>Production</h2>
-        <p class="svc-desc reveal-up" data-th="การเล่าเรื่องคุณภาพระดับโรงภาพยนตร์ ไม่มีทีมงาน ไม่มีสถานที่ถ่ายทำ ไม่มีข้อจำกัด การผลิตภาพยนตร์ด้วย AI คือการเปลี่ยนแปลงที่สำคัญที่สุดในโลกการสร้างคอนเทนต์นับตั้งแต่เกิดสมาร์ทโฟน เราใช้เครื่องมือสร้างวิดีโอ AI ขั้นสูงเพื่อผลิตภาพยนตร์แบรนด์ ภาพยนตร์ผลิตภัณฑ์ และวิดีโอแคมเปญระดับภาพยนตร์ — โดยจ่ายเพียงเศษเสี้ยวของต้นทุนการผลิตปกติและใช้เวลาน้อยลงอย่างมาก<br><br>นี่ไม่ใช่คอนเทนต์ AI คุณภาพต่ำ แต่เป็นงานเล่าเรื่องภาพยนตร์เชิงลึกที่ผ่านการวางแผนเชิงกลยุทธ์ เขียนบท กำกับ และผลิตโดยทีมงานของเรา พร้อมกับขุมพลังของ AI การเล่าเรื่องแคมเปญภาพที่เดิมทีต้องใช้กองถ่ายเต็มรูปแบบ พร้อมส่งมอบในเวลาไม่กี่วันในราคาที่สมเหตุสมผลสำหรับทุกงบประมาณ">Cinema-quality storytelling. No crew. No location. No limits. AI film production is the most significant shift in content creation since the smartphone. We use advanced AI video generation tools to produce cinematic brand films, product films and campaign videos — at a fraction of traditional production cost and in a fraction of the time.<br><br>This is not low-quality AI content. This is high-concept, strategically crafted film storytelling — written, directed and produced by our team, powered by AI. Campaign-grade visual storytelling that used to require a full film crew, delivered in days at a price that makes sense for any budget.</p>
+        <div class="svc-desc-container">
+          <p class="svc-desc reveal-up" data-th="การเล่าเรื่องคุณภาพระดับโรงภาพยนตร์ ไม่มีทีมงาน ไม่มีสถานที่ถ่ายทำ ไม่มีข้อจำกัด การผลิตภาพยนตร์ด้วย AI คือการเปลี่ยนแปลงที่สำคัญที่สุดในโลกการสร้างคอนเทนต์นับตั้งแต่เกิดสมาร์ทโฟน เราใช้เครื่องมือสร้างวิดีโอ AI ขั้นสูงเพื่อผลิตภาพยนตร์แบรนด์ ภาพยนตร์ผลิตภัณฑ์ และวิดีโอแคมเปญระดับภาพยนตร์ — โดยจ่ายเพียงเศษเสี้ยวของต้นทุนการผลิตปกติและใช้เวลาน้อยลงอย่างมาก">Cinema-quality storytelling. No crew. No location. No limits. AI film production is the most significant shift in content creation since the smartphone. We use advanced AI video generation tools to produce cinematic brand films, product films and campaign videos — at a fraction of traditional production cost and in a fraction of the time.</p>
+          <div class="svc-desc-more" style="display: none; margin-top: 12px;">
+            <p class="svc-desc" data-th="นี่ไม่ใช่คอนเทนต์ AI คุณภาพต่ำ แต่เป็นงานเล่าเรื่องภาพยนตร์เชิงลึกที่ผ่านการวางแผนเชิงกลยุทธ์ เขียนบท กำกับ และผลิตโดยทีมงานของเรา พร้อมกับขุมพลังของ AI การเล่าเรื่องแคมเปญภาพที่เดิมทีต้องใช้กองถ่ายเต็มรูปแบบ พร้อมส่งมอบในเวลาไม่กี่วันในราคาที่สมเหตุสมผลสำหรับทุกงบประมาณ">This is not low-quality AI content. This is high-concept, strategically crafted film storytelling — written, directed and produced by our team, powered by AI. Campaign-grade visual storytelling that used to require a full film crew, delivered in days at a price that makes sense for any budget.</p>
+          </div>
+          <button class="read-more-btn" data-th="อ่านเพิ่มเติม +">Read More +</button>
+        </div>
         
         <div class="svc-target reveal-up">
           <span class="svc-target-lbl" data-th="สำหรับใคร">WHO THIS IS FOR:</span>
@@ -1372,10 +1452,10 @@ mm.add("(min-width: 901px)", function() {
 
   // 4. Build the transitions for each card
   cards.forEach((card, i) => {
-    const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc, .svc-target, .svc-deliverables, .svc-outcomes-grid, .svc-cta-btn');
+    const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc');
     const wrapper = card.querySelector('.card-media-wrapper');
     const media = card.querySelector('.card-media');
-    const listItems = card.querySelectorAll('.svc-deliverables li');
+    const listItems = card.querySelectorAll('.svc-deliverables li, .svc-cta-btn');
 
     if (i === 0) {
       // Card 1 animates in immediately upon entering the viewport (not scrubbed, for a punchy entrance!)
@@ -1458,10 +1538,10 @@ mm.add("(max-width: 900px)", function() {
   if (cards) gsap.set(cards, { clearProps: "all" });
   
   cards.forEach(card => {
-    const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc, .svc-target, .svc-deliverables, .svc-outcomes-grid, .svc-cta-btn');
+    const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc');
     const wrapper = card.querySelector('.card-media-wrapper');
     const media = card.querySelector('.card-media');
-    const listItems = card.querySelectorAll('.svc-deliverables li');
+    const listItems = card.querySelectorAll('.svc-deliverables li, .svc-cta-btn');
     const inner = card.querySelector('.svc-card-inner');
     if (textEls.length) gsap.set(textEls, { clearProps: "all" });
     if (wrapper) gsap.set(wrapper, { clearProps: "all" });
@@ -1479,10 +1559,10 @@ mm.add("(max-width: 900px)", function() {
       }
     });
 
-    const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc, .svc-target, .svc-deliverables, .svc-outcomes-grid, .svc-cta-btn');
+    const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc');
     const wrapper = card.querySelector('.card-media-wrapper');
     const media = card.querySelector('.card-media');
-    const listItems = card.querySelectorAll('.svc-deliverables li');
+    const listItems = card.querySelectorAll('.svc-deliverables li, .svc-cta-btn');
 
     // 1. Text entrance
     gsap.set(textEls, { opacity: 0, y: 40 });
@@ -1531,6 +1611,30 @@ mm.add("(max-width: 900px)", function() {
         }, 0.8);
       }
     }
+  });
+});
+
+// Read More toggle logic
+document.querySelectorAll('.read-more-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const container = this.parentElement;
+    const moreDiv = container.querySelector('.svc-desc-more');
+    const isExpanded = moreDiv.style.display !== 'none';
+    
+    if (isExpanded) {
+      moreDiv.style.display = 'none';
+      this.textContent = 'Read More +';
+      this.setAttribute('data-th', 'อ่านเพิ่มเติม +');
+    } else {
+      moreDiv.style.display = 'block';
+      this.textContent = 'Show Less -';
+      this.setAttribute('data-th', 'แสดงน้อยลง -');
+    }
+    
+    const currentLang = localStorage.getItem('unsocials_lang') || 'en';
+    this.innerHTML = (currentLang === 'th') ? this.getAttribute('data-th') : this.textContent;
+    
+    ScrollTrigger.refresh();
   });
 });
 

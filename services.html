@@ -47,11 +47,11 @@ nav{background:rgba(4,4,4,.95)}
 .svc-card-inner {
   width: 100%;
   height: 100vh;
-  padding: 6vh 5vw; /* Fluid height-based padding aligned to 5vw screen baseline to prevent column squeezing */
+  padding: 170px 5vw 6vh; /* Top padding increased to clear fixed nav and create beautiful margin */
   display: grid;
   grid-template-columns: 0.48fr 0.82fr 0.7fr; /* Premium 3-column layout: Menu, Details, Media */
   gap: 4vw; /* Fluid column gap */
-  align-items: center;
+  align-items: flex-start; /* Align elements to the top so image and text start together */
   border-top: 1px solid rgba(255,255,255,0.05);
   box-shadow: 0 -30px 60px rgba(0,0,0,0.85), 0 -10px 20px rgba(0,0,0,0.4);
 }
@@ -161,8 +161,8 @@ nav{background:rgba(4,4,4,.95)}
   font-family: 'Space Grotesk', sans-serif;
   font-size: 13px;
   color: rgba(255, 255, 255, 0.4);
-  margin-top: 15px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 12px;
   border-left: 2px solid var(--ac);
   padding-left: 12px;
 }
@@ -180,8 +180,8 @@ nav{background:rgba(4,4,4,.95)}
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .svc-outcome-card {
   background: rgba(255, 255, 255, 0.03);
@@ -236,7 +236,7 @@ nav{background:rgba(4,4,4,.95)}
   color: var(--w);
   line-height: 0.95;
   text-transform: uppercase;
-  margin-bottom: 20px; /* Reduced from 30px */
+  margin-bottom: 14px; /* Reduced margin to fit viewports */
   letter-spacing: -0.03em;
 }
 
@@ -246,13 +246,13 @@ nav{background:rgba(4,4,4,.95)}
   line-height: 1.6;
   color: rgba(255,255,255,0.6);
   max-width: 480px;
-  margin-bottom: 24px; /* Reduced from 40px */
+  margin-bottom: 16px; /* Reduced margin to fit viewports */
 }
 
 .svc-deliverables {
   list-style: none;
   padding: 0;
-  margin-bottom: 30px; /* Reduced from 40px */
+  margin-bottom: 20px; /* Reduced margin to fit viewports */
   display: flex;
   flex-direction: column;
   gap: 10px; /* Tighter item gap */
@@ -358,7 +358,7 @@ nav{background:rgba(4,4,4,.95)}
 
 @media (max-width: 1366px), (max-height: 850px) {
   .ph { padding: 120px 5vw 40px; }
-  .svc-card-inner { padding: 80px 5vw; gap: 4vw; }
+  .svc-card-inner { padding: 145px 5vw 40px; gap: 4vw; align-items: flex-start; }
   .svc-title { font-size: clamp(32px, 3.8vw, 54px); margin-bottom: 20px; }
   .svc-desc { margin-bottom: 24px; font-size: 15px; }
   .svc-deliverables { margin-bottom: 24px; gap: 10px; }
@@ -1341,11 +1341,11 @@ mm.add("(min-width: 901px)", function() {
       start: 'top top',
       end: '+=' + (cards.length * 100) + '%', // Elegant dynamic scroll distance based on number of cards
       pin: true,
-      scrub: 1.2, // Added buttery-smooth catching-up scroll lag
+      scrub: 0.1, // Highly responsive scrub to prevent over-scrolling and jumping
       onUpdate: (self) => {
         // Precise scroll calculations to map timeline time back to active service index
         const time = masterTl.time();
-        let activeIndex = Math.min(cards.length - 1, Math.max(0, Math.floor((time + 0.75) / 1.5)));
+        let activeIndex = Math.min(cards.length - 1, Math.max(0, Math.floor((time + 1.5) / 2.0)));
         updateActiveMenu(activeIndex);
       }
     }
@@ -1357,7 +1357,11 @@ mm.add("(min-width: 901px)", function() {
       const startScroll = masterTl.scrollTrigger.start;
       const endScroll = masterTl.scrollTrigger.end;
       const totalScrollDistance = endScroll - startScroll;
-      const targetScroll = startScroll + (idx / (cards.length - 1)) * totalScrollDistance;
+      
+      // Calculate target time based on 2.0s duration per card transition
+      let targetTime = idx === 0 ? 0 : (idx - 1) * 2.0 + 1.0;
+      const totalTimelineDuration = (cards.length - 1) * 2.0;
+      const targetScroll = startScroll + (targetTime / totalTimelineDuration) * totalScrollDistance;
       
       lenis.scrollTo(targetScroll, {
         duration: 1.2,
@@ -1368,10 +1372,10 @@ mm.add("(min-width: 901px)", function() {
 
   // 4. Build the transitions for each card
   cards.forEach((card, i) => {
-    const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc');
+    const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc, .svc-target, .svc-deliverables, .svc-outcomes-grid, .svc-cta-btn');
     const wrapper = card.querySelector('.card-media-wrapper');
     const media = card.querySelector('.card-media');
-    const listItems = card.querySelectorAll('.svc-deliverables li, .svc-cta-btn');
+    const listItems = card.querySelectorAll('.svc-deliverables li');
 
     if (i === 0) {
       // Card 1 animates in immediately upon entering the viewport (not scrubbed, for a punchy entrance!)
@@ -1413,34 +1417,36 @@ mm.add("(min-width: 901px)", function() {
 
       // Phase 1: Overlap Transition!
       // As the new card slides up (yPercent: 0), the previous card inner content FADES AWAY and scales down!
+      // Using linear easing for scrubbed transitions links animations directly to scrollbar movement.
       masterTl.to(prevCardInner, {
         scale: 0.90, // Scale down slightly for a depth effect
         opacity: 0, // Fade out
         filter: 'brightness(0.2) blur(3px)', // Fade to dark and blur slightly
         y: -60, // Move up slightly
-        ease: 'power2.inOut', // Organic easing
+        ease: 'none',
         duration: 1
       }, label);
 
       masterTl.to(card, {
         yPercent: 0, // Slide the new card up over it
-        ease: 'power2.inOut', // Organic easing
+        ease: 'none',
         duration: 1
       }, label);
 
-      // Phase 2: Staggered reveal of the new card's inner content (starts at 0.6 to merge fluidly with the slide-up!)
-      const revealLabel = label + '+=0.6';
-      masterTl.to(textEls, { opacity: 1, y: 0, stagger: 0.05, ease: 'power2.out', duration: 0.5 }, revealLabel);
+      // Phase 2: Staggered reveal of the new card's inner content (starts at 0.4 to merge fluidly with the slide-up!)
+      const revealLabel = label + '+=0.4';
+      masterTl.to(textEls, { opacity: 1, y: 0, stagger: 0.05, ease: 'power2.out', duration: 0.6 }, revealLabel);
       if (wrapper && media) {
-        masterTl.to(wrapper, { clipPath: 'inset(0 0% 0 0)', ease: 'power2.out', duration: 0.5 }, revealLabel);
-        masterTl.to(media, { scale: 1, x: 0, ease: 'power2.out', duration: 0.5 }, revealLabel);
+        masterTl.to(wrapper, { clipPath: 'inset(0 0% 0 0)', ease: 'power2.out', duration: 0.6 }, revealLabel);
+        masterTl.to(media, { scale: 1, x: 0, ease: 'power2.out', duration: 0.6 }, revealLabel);
       }
       if (listItems.length) {
-        masterTl.to(listItems, { opacity: 1, y: 0, stagger: 0.05, ease: 'power2.out', duration: 0.5 }, revealLabel + '+=0.15');
+        masterTl.to(listItems, { opacity: 1, y: 0, stagger: 0.05, ease: 'power2.out', duration: 0.6 }, revealLabel + '+=0.2');
       }
 
       // Phase 3: Pause for reading before the next card overlaps it
-      masterTl.to({}, { duration: 0.5 });
+      // Total duration for each card section on timeline is exactly 2.0s
+      masterTl.to({}, { duration: 0.8 });
     }
   });
 });
@@ -1452,10 +1458,10 @@ mm.add("(max-width: 900px)", function() {
   if (cards) gsap.set(cards, { clearProps: "all" });
   
   cards.forEach(card => {
-    const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc');
+    const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc, .svc-target, .svc-deliverables, .svc-outcomes-grid, .svc-cta-btn');
     const wrapper = card.querySelector('.card-media-wrapper');
     const media = card.querySelector('.card-media');
-    const listItems = card.querySelectorAll('.svc-deliverables li, .svc-cta-btn');
+    const listItems = card.querySelectorAll('.svc-deliverables li');
     const inner = card.querySelector('.svc-card-inner');
     if (textEls.length) gsap.set(textEls, { clearProps: "all" });
     if (wrapper) gsap.set(wrapper, { clearProps: "all" });
@@ -1473,10 +1479,10 @@ mm.add("(max-width: 900px)", function() {
       }
     });
 
-    const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc');
+    const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc, .svc-target, .svc-deliverables, .svc-outcomes-grid, .svc-cta-btn');
     const wrapper = card.querySelector('.card-media-wrapper');
     const media = card.querySelector('.card-media');
-    const listItems = card.querySelectorAll('.svc-deliverables li, .svc-cta-btn');
+    const listItems = card.querySelectorAll('.svc-deliverables li');
 
     // 1. Text entrance
     gsap.set(textEls, { opacity: 0, y: 40 });

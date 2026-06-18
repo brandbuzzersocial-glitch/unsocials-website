@@ -1422,6 +1422,12 @@ mm.add("(min-width: 901px)", function() {
       end: '+=' + (cards.length * 100) + '%', // Elegant dynamic scroll distance based on number of cards
       pin: true,
       scrub: 0.1, // Highly responsive scrub to prevent over-scrolling and jumping
+      snap: {
+        snapTo: 1 / (cards.length - 1),
+        duration: { min: 0.2, max: 0.5 },
+        delay: 0.15,
+        ease: 'power1.inOut'
+      },
       onUpdate: (self) => {
         // Precise scroll calculations to map timeline time back to active service index
         const time = masterTl.time();
@@ -1439,7 +1445,7 @@ mm.add("(min-width: 901px)", function() {
       const totalScrollDistance = endScroll - startScroll;
       
       // Calculate target time based on 2.0s duration per card transition
-      let targetTime = idx === 0 ? 0 : (idx - 1) * 2.0 + 1.0;
+      let targetTime = idx * 2.0;
       const totalTimelineDuration = (cards.length - 1) * 2.0;
       const targetScroll = startScroll + (targetTime / totalTimelineDuration) * totalScrollDistance;
       

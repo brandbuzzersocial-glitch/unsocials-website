@@ -33,9 +33,9 @@ nav{background:rgba(4,4,4,.95)}
   flex-direction: column;
 }
 
-/* Each card is a full viewport height container */
+/* Each card is a full viewport height container minus the navbar */
 .svc-card {
-  height: 100vh;
+  height: calc(100vh - 75px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,8 +46,8 @@ nav{background:rgba(4,4,4,.95)}
 /* Card Visuals */
 .svc-card-inner {
   width: 100%;
-  height: 100vh;
-  padding: 170px 5vw 6vh; /* Increased to 170px to create a spacious gap below the navbar */
+  height: calc(100vh - 75px);
+  padding: 80px 5vw 6vh; /* Reduced from 170px since the deck starts below the navbar */
   display: grid;
   grid-template-columns: 0.48fr 0.82fr 0.7fr; /* Premium 3-column layout: Menu, Details, Media */
   gap: 4vw; /* Fluid column gap */
@@ -384,7 +384,7 @@ nav{background:rgba(4,4,4,.95)}
 
 @media (max-width: 1366px), (max-height: 850px) {
   .ph { padding: 120px 5vw 40px; }
-  .svc-card-inner { padding: 150px 5vw 40px; gap: 4vw; align-items: flex-start; }
+  .svc-card-inner { padding: 60px 5vw 40px; gap: 4vw; align-items: flex-start; }
   .svc-title { font-size: clamp(32px, 3.8vw, 54px); margin-bottom: 20px; }
   .svc-desc { margin-bottom: 24px; font-size: 15px; }
   .svc-deliverables { margin-bottom: 24px; gap: 10px; }
@@ -395,12 +395,12 @@ nav{background:rgba(4,4,4,.95)}
 
 @media(max-width: 900px) {
   .svc-menu-col { display: none !important; }
-  .svc-card { height: auto; position: relative; top: auto; transform: none !important; margin-bottom: 24px; }
-  .svc-card-inner { height: auto; grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.08); box-shadow: none; }
-  .svc-card-inner > div:first-child:empty { display: none; }
-  .svc-right { aspect-ratio: 16/9; }
-  .ph { padding: 120px 24px 48px; }
-  .svc-deck { padding: 0 24px; }
+  .svc-card { height: auto !important; position: relative !important; top: auto !important; transform: none !important; margin-bottom: 24px !important; }
+  .svc-card-inner { height: auto !important; grid-template-columns: 1fr !important; padding: 60px 24px !important; gap: 40px !important; border-radius: 20px !important; border: 1px solid rgba(255,255,255,0.08) !important; box-shadow: none !important; }
+  .svc-card-inner > div:first-child:empty { display: none !important; }
+  .svc-right { aspect-ratio: 16/9 !important; }
+  .ph { padding: 120px 24px 48px !important; }
+  .svc-deck { padding: 0 24px !important; height: auto !important; }
 
 /* ── PRICING SECTION ── */
 .pricing-section {
@@ -1149,7 +1149,7 @@ nav{background:rgba(4,4,4,.95)}
             <div class="svc-outcome-lbl" data-th="การเรนเดอร์งานที่ส่งมอบได้เร็วกว่าการถ่ายทำจริง">Renders delivered faster than traditional shoot days</div>
           </div>
           <div class="svc-outcome-card">
-            <div class="svc-outcome-val">∞</div>
+            <div class="svc-outcome-val">Inf</div>
             <div class="svc-outcome-lbl" data-th="การแก้ไขปรับปรุงมุมมองได้โดยไม่ต้องถ่ายทำใหม่">Revisions and angles without reshooting</div>
           </div>
         </div>
@@ -1207,7 +1207,7 @@ nav{background:rgba(4,4,4,.95)}
             <div class="svc-outcome-lbl" data-th="คุณภาพของงานภาพระดับโรงภาพยนตร์ ขับเคลื่อนด้วย AI">Grade visual quality. AI-powered.</div>
           </div>
           <div class="svc-outcome-card">
-            <div class="svc-outcome-val">∞</div>
+            <div class="svc-outcome-val">Inf</div>
             <div class="svc-outcome-lbl" data-th="ทิศทางครีเอทีฟและไอเดียที่ทดสอบก่อนจัดทำจริง">Creative directions explored before committing</div>
           </div>
         </div>
@@ -1374,9 +1374,9 @@ mm.add("(min-width: 901px)", function() {
   const menuItems = document.querySelectorAll('.svc-global-menu .svc-menu-list li');
   const menuNum = document.querySelector('.svc-global-menu .svc-menu-num');
   
-  // 1. Stack cards absolutely inside the pinned viewport container
-  gsap.set(deck, { height: '100vh', position: 'relative', overflow: 'hidden' });
-  gsap.set(cards, { position: 'absolute', top: 0, left: 0, width: '100%', height: '100vh', margin: 0 });
+  // 1. Stack cards absolutely inside the pinned viewport container below the navbar
+  gsap.set(deck, { height: 'calc(100vh - 75px)', position: 'relative', overflow: 'hidden' });
+  gsap.set(cards, { position: 'absolute', top: 0, left: 0, width: '100%', height: 'calc(100vh - 75px)', margin: 0 });
   
   // 2. Hide subsequent cards below the viewport on load
   cards.forEach((card, i) => {
@@ -1418,7 +1418,7 @@ mm.add("(min-width: 901px)", function() {
   let masterTl = gsap.timeline({
     scrollTrigger: {
       trigger: deck,
-      start: 'top top',
+      start: 'top 75px', // Pinned exactly below the 75px tall compact navbar
       end: '+=' + (cards.length * 100) + '%', // Elegant dynamic scroll distance based on number of cards
       pin: true,
       scrub: 0.1, // Highly responsive scrub to prevent over-scrolling and jumping

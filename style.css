@@ -2439,13 +2439,13 @@ footer{background:#040404;padding-bottom:40px}
   
   /* Services Stack scaling for laptops */
   .svc-card {
-    height: auto !important;
-    min-height: 85vh !important;
+    height: calc(100vh - 75px) !important;
+    min-height: auto !important;
   }
   .svc-card-inner {
-    height: auto !important;
-    min-height: 85vh !important;
-    padding: 70px 40px !important;
+    height: 100% !important;
+    min-height: auto !important;
+    padding: 60px 40px !important;
     gap: 40px !important;
   }
   .svc-title {

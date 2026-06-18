@@ -2445,8 +2445,9 @@ footer{background:#040404;padding-bottom:40px}
   .svc-card-inner {
     height: 100% !important;
     min-height: auto !important;
-    padding: 60px 40px !important;
+    padding: 0 40px !important;
     gap: 40px !important;
+    align-content: center !important;
   }
   .svc-title {
     font-size: clamp(32px, 3.8vw, 54px) !important;

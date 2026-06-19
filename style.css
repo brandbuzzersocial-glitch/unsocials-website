@@ -1039,7 +1039,7 @@ nav.compact{padding:14px 52px}
 #case-overlay.open, #service-overlay.open {display:block;}
 
 /* SERVICE DETAIL SPECIFICS */
-.svc-hero {padding:100px 52px 60px;position:relative;overflow:hidden;border-bottom:1px solid var(--border);display:flex;flex-direction:column;justify-content:flex-end;min-height:50vh;}
+.svc-hero {padding:120px 52px 60px;position:relative;overflow:hidden;border-bottom:1px solid var(--border);display:flex;flex-direction:column;justify-content:flex-end;min-height:65vh;gap:40px;}
 .svc-eye {font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:18px;}
 .svc-title {font-family:'Syne',sans-serif;font-size:clamp(48px,8vw,110px);line-height:0.88;margin-bottom:24px;font-weight:800;letter-spacing:-0.03em;text-transform:uppercase;color:var(--w);}
 .svc-desc {font-family:'Space Grotesk',sans-serif;font-size:clamp(16px,1.5vw,22px);line-height:1.6;color:rgba(255,255,255,0.7);max-width:800px;}
@@ -1914,7 +1914,15 @@ footer{background:#040404;padding-bottom:40px}
   transition: opacity 0.3s, height 0.3s;
 }
 .aic-inner { position: relative; z-index: 1; }
-.aic-header { margin-bottom: 64px; max-width: 720px; }
+.aic-header {
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+  margin-bottom: 80px;
+  padding: 40px 0;
+}
 .aic-sub {
   font-size: clamp(15px, 1.4vw, 18px);
   color: var(--m2);
@@ -1925,20 +1933,21 @@ footer{background:#040404;padding-bottom:40px}
 }
 .aic-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  grid-template-rows: 60vh;
+  gap: 16px;
   margin-bottom: 48px;
 }
 .aic-card-full {
-  grid-column: 1 / -1;
-  flex-direction: column;
+  grid-column: auto;
 }
 .aic-card-full .aic-vid-w {
-  aspect-ratio: 16/9;
-  max-height: 55vh;
+  aspect-ratio: auto;
+  max-height: none;
+  height: 100%;
 }
 .aic-card-full .aic-vid {
-  object-fit: contain;
+  object-fit: cover;
   background: #000;
 }
 
@@ -1960,14 +1969,14 @@ footer{background:#040404;padding-bottom:40px}
 .aic-vid-w {
   position: relative;
   width: 100%;
-  aspect-ratio: 9/16;
+  height: 100%;
   overflow: hidden;
   background: #000;
 }
 .aic-vid {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
   transition: transform 0.6s ease;
 }
@@ -1992,10 +2001,7 @@ footer{background:#040404;padding-bottom:40px}
   clip-path: polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
 }
 .aic-info {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: none;
 }
 .aic-label {
   font-family: 'Space Mono', monospace;
@@ -2035,7 +2041,9 @@ footer{background:#040404;padding-bottom:40px}
 }
 /* Mobile stacking */
 @media(max-width:900px) {
-  .aic-grid { grid-template-columns: 1fr; gap: 20px; }
+  .aic-grid { grid-template-columns: 1fr; grid-template-rows: auto; gap: 20px; }
+  .aic-vid-w { height: 50vh; }
+  .aic-card-full .aic-vid-w { height: 40vh; }
   .aic-bg-video {
     opacity: 0.15;
     height: 600px;
@@ -2445,30 +2453,56 @@ footer{background:#040404;padding-bottom:40px}
   .svc-card-inner {
     height: 100% !important;
     min-height: auto !important;
-    padding: 0 40px !important;
-    gap: 40px !important;
-    align-content: center !important;
+    padding: 40px 40px 20px calc(300px + 6vw) !important;
+    gap: 30px !important;
+    align-content: start !important;
   }
   .svc-title {
-    font-size: clamp(32px, 3.8vw, 54px) !important;
-    margin-bottom: 20px !important;
+    font-size: clamp(24px, 3vw, 40px) !important;
+    margin-bottom: 12px !important;
   }
   .svc-desc {
-    margin-bottom: 24px !important;
-    font-size: 15px !important;
+    margin-bottom: 12px !important;
+    font-size: 13.5px !important;
+  }
+  .svc-target {
+    margin-top: 8px !important;
+    margin-bottom: 10px !important;
+    padding-left: 8px !important;
   }
   .svc-deliverables {
-    margin-bottom: 24px !important;
-    gap: 10px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6px 20px !important;
+    margin-bottom: 12px !important;
   }
   .svc-deliverables li {
-    font-size: 14px !important;
+    font-size: 12px !important;
+  }
+  .svc-outcomes-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 6px !important;
+    margin-top: 10px !important;
+    margin-bottom: 12px !important;
+  }
+  .svc-outcome-card {
+    padding: 8px 12px !important;
+  }
+  .svc-outcome-val {
+    font-size: clamp(14px, 1.5vw, 20px) !important;
+    margin-bottom: 1px !important;
+  }
+  .svc-outcome-lbl {
+    font-size: 9px !important;
   }
   .svc-cta-btn {
-    padding: 14px 30px !important;
+    padding: 10px 24px !important;
+    font-size: 10px !important;
+    margin-top: 4px !important;
   }
   .svc-right {
-    aspect-ratio: 16/10 !important;
+    aspect-ratio: 16/11 !important;
+    top: 40px !important;
   }
   
   /* Case studies details overlay scaling on laptops */
@@ -2568,4 +2602,26 @@ footer{background:#040404;padding-bottom:40px}
     width: 26px;
     height: 26px;
   }
+}
+
+/* ── THAI TYPOGRAPHY OVERRIDES (to prevent overlapping diacritics) ── */
+html[lang="th"] h1,
+html[lang="th"] h2,
+html[lang="th"] h3,
+html[lang="th"] h4,
+html[lang="th"] h5,
+html[lang="th"] h6,
+html[lang="th"] .ph-h,
+html[lang="th"] .svc-title,
+html[lang="th"] .sbc-h,
+html[lang="th"] .sec-h,
+html[lang="th"] .ab-h,
+html[lang="th"] .wr-h,
+html[lang="th"] .cs-title,
+html[lang="th"] .cta-h,
+html[lang="th"] .si-n,
+html[lang="th"] .sn,
+html[lang="th"] .h-big {
+  line-height: 1.25 !important;
+  letter-spacing: 0 !important;
 }

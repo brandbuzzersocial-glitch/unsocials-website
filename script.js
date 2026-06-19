@@ -34,6 +34,7 @@ function initLang(){
 
 function setLang(lang){
   localStorage.setItem('unsocials_lang', lang);
+  document.documentElement.setAttribute('lang', lang);
   
   // Update UI buttons
   document.querySelectorAll('.lang-btn').forEach(function(btn){
@@ -928,9 +929,13 @@ const serviceData = {
   }
 };
 
-function openService(id) {
+function openService(id, fromPopState = false) {
   const data = serviceData[id];
   if (!data) return;
+
+  if (!fromPopState) {
+    history.pushState({ overlay: 'service', id: id }, '', '#service=' + id);
+  }
 
   let metricsHtml = data.metrics.map(m => `
     <div class="svc-metric">
@@ -1002,7 +1007,20 @@ function openService(id) {
 function closeService() {
   document.getElementById('service-overlay').classList.remove('open');
   document.body.style.overflow = '';
+  if (window.location.hash.startsWith('#service=')) {
+    history.pushState('', document.title, window.location.pathname + window.location.search);
+  }
 }
+
+window.addEventListener('popstate', function(e) {
+  if (window.location.hash.startsWith('#service=')) {
+    const id = window.location.hash.split('=')[1];
+    if (id) openService(id, true);
+  } else {
+    document.getElementById('service-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
 
 // ─── ODOMETER STAT ANIMATION ───
 (function(){

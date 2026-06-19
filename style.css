@@ -991,11 +991,11 @@ nav.compact{padding:14px 52px}
 /* TRUST STRIP (inside left column, vertical layout) */
 .wr-trust-strip {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 14px;
-  margin-top: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  padding-top: 32px;
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 24px;
   z-index: 2;
   position: relative;
 }
@@ -2645,6 +2645,27 @@ footer{background:#040404;padding-bottom:40px}
   .cs-title {
     font-size: clamp(28px, 3.5vw, 44px) !important;
     margin-bottom: 18px !important;
+  }
+  .wr-trust-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .wr-trust-icon {
+    width: 40px;
+    height: 40px;
+    color: var(--ac);
+    flex-shrink: 0;
+  }
+  .wr-trust-h {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .wr-trust-p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
   }
   .cs-p {
     font-size: 15.5px !important;

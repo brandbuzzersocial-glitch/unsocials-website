@@ -991,11 +991,11 @@ nav.compact{padding:14px 52px}
 /* TRUST STRIP (inside left column, vertical layout) */
 .wr-trust-strip {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 32px;
-  margin-top: 32px;
+  padding-top: 48px;
+  margin-top: 64px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px 24px;
+  gap: 40px 32px;
   z-index: 2;
   position: relative;
 }

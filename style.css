@@ -345,8 +345,8 @@ nav.compact{padding:14px 52px}
 }
 .wr-container {
   display: flex;
-  padding: 0 4vw;
-  gap: 48px;
+  padding: 0 6vw;
+  gap: 60px;
   position: relative;
   z-index: 2;
   align-items: flex-start;
@@ -692,7 +692,7 @@ nav.compact{padding:14px 52px}
 .wr-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columns to fit all 5 cards in a 2-row bento layout */
-  gap: 16px;
+  gap: 32px;
 }
 .wr-card {
   position: relative;

@@ -2813,3 +2813,7 @@ html[lang="th"] .h-big {
 .cs-grid img, .cs-grid video {
   cursor: pointer;
 }
+
+
+.split-flush-right { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; width: 100%; align-items: center; }
+@media(max-width:900px) { .split-flush-right { grid-template-columns: 1fr; gap: 40px; padding-right: max(6vw, calc(50vw - 650px)); } }

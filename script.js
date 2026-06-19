@@ -938,31 +938,34 @@ function openService(id, fromPopState = false) {
   }
 
   let metricsHtml = data.metrics.map(m => `
-    <div class="svc-metric">
-      <div class="svc-m-val">${m.val}</div>
-      <div class="svc-m-lbl">${m.lbl}</div>
+    <div class="bento-metric">
+      <div class="bento-m-val">${m.val}</div>
+      <div class="bento-m-lbl">${m.lbl}</div>
     </div>
   `).join('');
 
   let featuresHtml = data.features.map(f => `
-    <div class="svc-feature">
-      <div class="svc-f-title">${f.title}</div>
-      <div class="svc-f-desc">${f.desc}</div>
+    <div class="bento-feature">
+      <div class="bento-f-title">${f.title}</div>
+      <div class="bento-f-desc">${f.desc}</div>
     </div>
   `).join('');
 
   let mediaHtml = '';
   if (id === 'performance') {
-    mediaHtml = `<img src="assets/elysium-cover.jpg" class="svc-exp-media" alt="Elysium Pattaya">`;
+    mediaHtml = `<img src="assets/elysium-cover.jpg" alt="Elysium Pattaya">`;
   } else if (id === 'social') {
-    mediaHtml = `<img src="assets/bamboo-cover.png" class="svc-exp-media" alt="Bamboo Beach Club">`;
+    mediaHtml = `<img src="assets/bamboo-cover.png" alt="Bamboo Beach Club">`;
   } else if (id === 'content') {
-    mediaHtml = `<video src="assets/reels/r2.mp4" autoplay loop muted playsinline class="svc-exp-media"></video>`;
+    mediaHtml = `<video src="assets/reels/r2.mp4" autoplay loop muted playsinline></video>`;
   } else if (id === 'ai') {
-    mediaHtml = `<video src="assets/showcase/2.mp4" autoplay loop muted playsinline class="svc-exp-media"></video>`;
+    mediaHtml = `<video src="assets/showcase/2.mp4" autoplay loop muted playsinline></video>`;
   } else if (id === 'strategy') {
-    mediaHtml = `<img src="assets/nomads-cover.png" class="svc-exp-media" alt="Nomads Hostel Asia">`;
+    mediaHtml = `<img src="assets/nomads-cover.png" alt="Nomads Hostel Asia">`;
   }
+
+  // Ensure pitchHtml uses bento-text instead of svc-text
+  let pitchHtml = data.pitchHtml.replace(/svc-text/g, 'bento-text');
 
   const html = `
     <div class="svc-hero" style="background:${data.bg};">
@@ -973,28 +976,35 @@ function openService(id, fromPopState = false) {
       <div class="svc-title">${data.title}</div>
       <div class="svc-desc">${data.desc}</div>
     </div>
-    <div class="svc-body">
-      <div class="svc-grid">
-        <div class="svc-content-left">
-          <div class="svc-label">The Approach</div>
-          ${data.pitchHtml}
-          
-          <div class="svc-label" style="margin-top:60px">Core Capabilities</div>
-          <div class="svc-features">
+    <div class="svc-bento-body">
+      <div class="svc-bento-grid">
+        
+        <!-- PITCH CARD -->
+        <div class="svc-bento-card pitch-card">
+          <div class="bento-label">The Approach</div>
+          ${pitchHtml}
+        </div>
+
+        <!-- MEDIA CARD -->
+        <div class="svc-bento-card media-card">
+          <div class="bento-media-w">
+            ${mediaHtml}
+          </div>
+        </div>
+
+        <!-- METRICS CARD -->
+        <div class="svc-bento-card metrics-card">
+          ${metricsHtml}
+        </div>
+
+        <!-- FEATURES CARD -->
+        <div class="svc-bento-card features-card">
+          <div class="bento-label">Core Capabilities</div>
+          <div class="bento-features-grid">
             ${featuresHtml}
           </div>
         </div>
-        <div class="svc-content-right">
-          <div class="svc-label">Original Content</div>
-          <div class="svc-exp-media-w" style="margin-bottom:40px;">
-            ${mediaHtml}
-          </div>
 
-          <div class="svc-label">The Output</div>
-          <div class="svc-metrics">
-            ${metricsHtml}
-          </div>
-        </div>
       </div>
     </div>
   `;
@@ -1345,3 +1355,109 @@ function submitContactForm(event) {
   // Reset form
   document.querySelector('.contact-form').reset();
 }
+
+// ─── LIGHTBOX GALLERY ───
+(function(){
+  const initLightbox = function() {
+    const galleryItems = document.querySelectorAll('.cs-grid img, .cs-grid video');
+    if(galleryItems.length === 0) return;
+
+    let currentIndex = 0;
+    
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'lb-overlay';
+    
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'lb-close';
+    closeBtn.innerHTML = '✕';
+    
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'lb-prev';
+    prevBtn.innerHTML = '←';
+    
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'lb-next';
+    nextBtn.innerHTML = '→';
+    
+    const content = document.createElement('div');
+    content.className = 'lb-content';
+    
+    const mediaElements = [];
+    
+    galleryItems.forEach((item, index) => {
+      let clone = item.cloneNode(true);
+      clone.classList.remove('active');
+      if(clone.tagName.toLowerCase() === 'video'){
+        clone.controls = true;
+      }
+      content.appendChild(clone);
+      mediaElements.push(clone);
+      
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLightbox(index);
+      });
+    });
+    
+    overlay.appendChild(closeBtn);
+    overlay.appendChild(prevBtn);
+    overlay.appendChild(nextBtn);
+    overlay.appendChild(content);
+    document.body.appendChild(overlay);
+    
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightbox();
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeLightbox() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      mediaElements.forEach(el => {
+        if(el.tagName.toLowerCase() === 'video') el.pause();
+      });
+    }
+    
+    function updateLightbox() {
+      mediaElements.forEach((el, i) => {
+        if(i === currentIndex) {
+          el.classList.add('active');
+          if(el.tagName.toLowerCase() === 'video') el.play();
+        } else {
+          el.classList.remove('active');
+          if(el.tagName.toLowerCase() === 'video') el.pause();
+        }
+      });
+    }
+    
+    closeBtn.addEventListener('click', closeLightbox);
+    
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex > 0) ? currentIndex - 1 : mediaElements.length - 1;
+      updateLightbox();
+    });
+    
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex < mediaElements.length - 1) ? currentIndex + 1 : 0;
+      updateLightbox();
+    });
+    
+    overlay.addEventListener('click', (e) => {
+      if(e.target === overlay || e.target === content) {
+        closeLightbox();
+      }
+    });
+  };
+
+  // Run immediately since script is at the bottom of the body
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLightbox);
+  } else {
+    initLightbox();
+  }
+})();

@@ -16,7 +16,7 @@
 .cs-d1{transition-delay:.1s}.cs-d2{transition-delay:.2s}.cs-d3{transition-delay:.3s}
 .cs-d4{transition-delay:.35s}.cs-d5{transition-delay:.4s}.cs-d6{transition-delay:.45s}
 .cs-d7{transition-delay:.5s}.cs-d8{transition-delay:.55s}.cs-d9{transition-delay:.6s}
-.cs-hero{padding:160px 8vw 24px;background:#040404;position:relative;z-index:10}
+.cs-hero{padding:160px 8vw 0px;background:#040404;position:relative;z-index:10}
 .cs-back{display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--ac);text-decoration:none;margin-bottom:32px;transition:opacity .3s,transform .3s}
 .cs-back:hover{opacity:.7;transform:translateX(-4px)}
 .cs-eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:20px;display:flex;align-items:center;gap:12px}
@@ -32,7 +32,7 @@
 .cs-platforms{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
 .cs-platform{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.08);padding:6px 14px;border-radius:100px;transition:border-color .3s,color .3s}
 .cs-platform:hover{border-color:rgba(232,255,0,.2);color:rgba(255,255,255,.7)}
-.cs-story{padding:32px 8vw;background:#060606}
+.cs-story{padding:16px 8vw 32px;background:#060606}
 .cs-story-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:32px;display:flex;align-items:center;gap:12px}
 .cs-story-label::before{content:'';width:24px;height:1px;background:var(--ac)}
 .cs-story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -89,8 +89,8 @@
   .cs-media-col.showcase-col{grid-column:span 2}
 }
 @media(max-width:900px){
-  .cs-hero{padding:140px 24px 40px}
-  .cs-story,.cs-media-section{padding:48px 24px}
+  .cs-hero{padding:140px 24px 16px}
+  .cs-story{padding:24px 24px 48px}.cs-media-section{padding:48px 24px}
   .cs-stats{grid-template-columns:1fr 1fr}
   .cs-cta-band{padding:60px 24px;flex-direction:column;align-items:flex-start}
   .cs-media-grid{grid-template-columns:1fr;gap:48px}

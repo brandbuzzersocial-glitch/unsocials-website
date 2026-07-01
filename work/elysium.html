@@ -9,37 +9,91 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css?v=10">
 <style>
-.cs-hero{padding:180px 8vw 40px;background:#040404;position:relative;z-index:10}
-.cs-eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+/* ===== SCROLL REVEAL ANIMATIONS ===== */
+.cs-reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.cs-reveal.cs-visible{opacity:1;transform:translateY(0)}
+.cs-reveal-scale{opacity:0;transform:scale(.92);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.cs-reveal-scale.cs-visible{opacity:1;transform:scale(1)}
+.cs-d1{transition-delay:.1s}.cs-d2{transition-delay:.2s}.cs-d3{transition-delay:.3s}
+.cs-d4{transition-delay:.35s}.cs-d5{transition-delay:.4s}.cs-d6{transition-delay:.45s}
+.cs-d7{transition-delay:.5s}.cs-d8{transition-delay:.55s}.cs-d9{transition-delay:.6s}
+
+/* ===== HERO ===== */
+.cs-hero{padding:160px 8vw 56px;background:#040404;position:relative;z-index:10}
+.cs-back{display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--ac);text-decoration:none;margin-bottom:32px;transition:opacity .3s,transform .3s}
+.cs-back:hover{opacity:.7;transform:translateX(-4px)}
+.cs-eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:20px;display:flex;align-items:center;gap:12px}
 .cs-eyebrow::before{content:'';width:24px;height:1px;background:var(--ac)}
-.cs-title{font-family:'Syne',sans-serif;font-size:clamp(48px,8vw,96px);font-weight:800;color:var(--w);line-height:.88;text-transform:uppercase;letter-spacing:-0.03em;margin-bottom:24px}
+.cs-title{font-family:'Syne',sans-serif;font-size:clamp(48px,8vw,96px);font-weight:800;color:var(--w);line-height:.88;text-transform:uppercase;letter-spacing:-.03em;margin-bottom:24px}
 .cs-title em{font-style:italic;color:var(--ac)}
-.cs-meta{display:flex;gap:24px;font-family:'Space Grotesk',sans-serif;font-size:14px;color:rgba(255,255,255,.5);margin-bottom:40px}
-.cs-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;margin-bottom:40px}
-.cs-stat{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:24px;text-align:center}
+.cs-meta{display:flex;gap:24px;font-family:'Space Grotesk',sans-serif;font-size:14px;color:rgba(255,255,255,.45);margin-bottom:40px}
+
+/* ===== STATS ===== */
+.cs-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:32px}
+.cs-stat{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px 24px;text-align:center;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:border-color .4s,transform .4s}
+.cs-stat:hover{border-color:rgba(232,255,0,.15);transform:translateY(-2px)}
 .cs-stat-val{font-family:'Syne',sans-serif;font-size:clamp(28px,3vw,42px);font-weight:800;color:var(--ac);margin-bottom:6px}
-.cs-stat-lbl{font-family:'Space Grotesk',sans-serif;font-size:12px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px}
-.cs-body{padding:40px 8vw;background:#060606}
-.cs-body p{font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:1.8;color:rgba(255,255,255,.65);max-width:720px;margin-bottom:24px}
-.cs-body h3{font-family:'Syne',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:800;color:var(--w);text-transform:uppercase;margin-bottom:16px;letter-spacing:-0.02em}
-.cs-gallery{padding:60px 8vw;background:#040404}
-.cs-gallery h3{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--w);text-transform:uppercase;margin-bottom:32px;letter-spacing:-0.02em}
-.cs-grid{display:block;column-count:4;column-gap:16px}
-.cs-grid img,.cs-grid video{width:100%;height:auto;border-radius:12px;background:#111;margin-bottom:16px;display:block;break-inside:avoid}
+.cs-stat-lbl{font-family:'Space Grotesk',sans-serif;font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1.5px}
+
+/* ===== PLATFORMS ===== */
+.cs-platforms{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.cs-platform{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.08);padding:6px 14px;border-radius:100px;transition:border-color .3s,color .3s}
+.cs-platform:hover{border-color:rgba(232,255,0,.2);color:rgba(255,255,255,.7)}
+
+/* ===== STORY SECTION (3-col cards) ===== */
+.cs-story{padding:64px 8vw;background:#060606}
+.cs-story-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:32px;display:flex;align-items:center;gap:12px}
+.cs-story-label::before{content:'';width:24px;height:1px;background:var(--ac)}
+.cs-story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cs-story-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:36px 32px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:border-color .4s,transform .4s}
+.cs-story-card:hover{border-color:rgba(232,255,0,.12);transform:translateY(-3px)}
+.cs-story-card h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:16px}
+.cs-story-card p{font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.75;color:rgba(255,255,255,.5)}
+
+/* ===== GALLERY ===== */
+.cs-gallery{padding:64px 8vw 80px;background:#040404}
+.cs-gallery-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:32px;display:flex;align-items:center;gap:12px}
+.cs-gallery-label::before{content:'';width:24px;height:1px;background:var(--ac)}
+
+/* 3D CAROUSEL COVERFLOW */
+.cs-carousel-wrapper{position:relative;width:100%;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;perspective:1200px;padding:40px 0;overflow:hidden}
+.cs-grid{position:relative;width:100%;height:460px;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d;overflow:visible;padding:0;margin:0}
+.cs-grid-item{position:absolute !important;width:300px;height:375px;transition:transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s, z-index 0.6s;transform-style:preserve-3d;margin:0;cursor:pointer;border-radius:16px;overflow:hidden;background:#0a0a0a;border:1px solid rgba(255,255,255,.06)}
+.cs-grid-item:hover{box-shadow:0 24px 48px rgba(0,0,0,.5);border-color:rgba(232,255,0,.1)}
+.cs-grid-item img,.cs-grid-item video{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+
+/* Arrow Navigation */
+.cs-carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;background:rgba(255, 255, 255, 0.05);border:1px solid rgba(255, 255, 255, 0.1);color:var(--w);font-size:18px;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;transition:background 0.3s, border-color 0.3s, transform 0.3s;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.cs-carousel-arrow:hover{background:var(--ac);border-color:var(--ac);color:var(--bg)}
+.cs-carousel-arrow.prev{left:20px}
+.cs-carousel-arrow.next{right:20px}
+.cs-carousel-arrow:hover.prev{transform:translateY(-50%) translateX(-4px)}
+.cs-carousel-arrow:hover.next{transform:translateY(-50%) translateX(4px)}
+
+/* ===== CTA BAND ===== */
 .cs-cta-band{background:var(--ac);padding:80px 8vw;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
-.cs-cta-band h2{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,52px);font-weight:800;text-transform:uppercase;color:var(--bg);letter-spacing:-0.03em;line-height:.9}
-.cs-cta-link{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;background:var(--bg);color:var(--ac);padding:16px 36px;text-decoration:none;border-radius:100px;font-weight:700;transition:transform .25s}
-.cs-cta-link:hover{transform:translateY(-4px);background:#fff;color:var(--bg)}
-.cs-back{display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--ac);text-decoration:none;margin-bottom:24px;transition:opacity .3s}
-.cs-back:hover{opacity:.7}
-.cs-platforms{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-.cs-platform{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.1);padding:6px 14px;border-radius:100px}
+.cs-cta-band h2{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,52px);font-weight:800;text-transform:uppercase;color:var(--bg);letter-spacing:-.03em;line-height:.9}
+.cs-cta-link{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;background:var(--bg);color:var(--ac);padding:16px 36px;text-decoration:none;border-radius:100px;font-weight:700;transition:transform .25s,box-shadow .25s}
+.cs-cta-link:hover{transform:translateY(-4px);background:#fff;color:var(--bg);box-shadow:0 12px 32px rgba(0,0,0,.3)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .cs-story-grid{grid-template-columns:1fr}
+}
 @media(max-width:900px){
-  .cs-hero{padding:140px 24px 30px}
-  .cs-body,.cs-gallery{padding:30px 24px}
-  .cs-grid{column-count:2}
-  .cs-cta-band{padding:60px 24px;flex-direction:column;align-items:flex-start}
+  .cs-hero{padding:140px 24px 40px}
+  .cs-story,.cs-gallery{padding:48px 24px}
   .cs-stats{grid-template-columns:1fr 1fr}
+  .cs-cta-band{padding:60px 24px;flex-direction:column;align-items:flex-start}
+  .cs-carousel-wrapper{padding:20px 0}
+  .cs-grid{height:400px}
+  .cs-grid-item{width:240px;height:300px}
+  .cs-carousel-arrow{width:40px;height:40px;font-size:14px}
+  .cs-carousel-arrow.prev{left:10px}
+  .cs-carousel-arrow.next{right:10px}
+}
+@media(max-width:540px){
+  .cs-stats{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -60,20 +114,20 @@
 </nav>
 
 <section class="cs-hero">
-  <a href="../work.html" class="cs-back">← Back to Work</a>
-  <div class="cs-eyebrow">Case Study · 01</div>
-  <h1 class="cs-title">Elysium<br><em>Pattaya.</em></h1>
-  <div class="cs-meta">
+  <a href="../work.html" class="cs-back cs-reveal">← Back to Work</a>
+  <div class="cs-eyebrow cs-reveal cs-d1">Case Study · 01</div>
+  <h1 class="cs-title cs-reveal cs-d2">Elysium<br><em>Pattaya.</em></h1>
+  <div class="cs-meta cs-reveal cs-d3">
     <span>Hospitality</span>
     <span>•</span>
     <span>Thailand</span>
   </div>
-  <div class="cs-stats">
+  <div class="cs-stats cs-reveal cs-d3">
     <div class="cs-stat"><div class="cs-stat-val">+286%</div><div class="cs-stat-lbl">Direct Bookings</div></div>
     <div class="cs-stat"><div class="cs-stat-val">-62%</div><div class="cs-stat-lbl">OTA Commissions</div></div>
     <div class="cs-stat"><div class="cs-stat-val">3.4x</div><div class="cs-stat-lbl">ROAS Achieved</div></div>
   </div>
-  <div class="cs-platforms">
+  <div class="cs-platforms cs-reveal cs-d4">
     <span class="cs-platform">Meta Ads</span>
     <span class="cs-platform">Google Hotel Ads</span>
     <span class="cs-platform">WhatsApp Automation</span>
@@ -82,37 +136,150 @@
   </div>
 </section>
 
-<section class="cs-body">
-  <h3>The Challenge</h3>
-  <p>Elysium Pattaya was bleeding revenue through OTA commissions — Agoda, Booking.com, and Expedia were taking 15-25% of every reservation. Direct bookings were almost non-existent, and the property had no performance marketing infrastructure.</p>
-  <h3>Our Approach</h3>
-  <p>We built a complete direct booking engine from scratch. Google Hotel Ads captured high-intent travellers searching for Pattaya accommodation. Meta campaigns targeted lookalike audiences based on past guest data. WhatsApp click-to-chat funnels replaced the traditional landing page, converting at 3x the industry rate.</p>
-  <p>Every baht of ad spend was tracked end-to-end — from click to check-in. We eliminated guesswork and built a system that scales.</p>
-  <h3>The Result</h3>
-  <p>Within 60 days, direct bookings surged by 286%. OTA commissions dropped by 62%. The property achieved a sustained 3.4x ROAS across all channels, turning their marketing spend into a profitable revenue engine.</p>
-</section>
-
-<section class="cs-gallery">
-  <h3>Campaign Gallery</h3>
-  <div class="cs-grid">
-    <img src="../assets/cases/elysium/img1.png" alt="Elysium campaign visual 1" loading="lazy">
-    <img src="../assets/cases/elysium/img2.jpg" alt="Elysium campaign visual 2" loading="lazy">
-    <img src="../assets/cases/elysium/img3.jpg" alt="Elysium campaign visual 3" loading="lazy">
-    <video src="../assets/cases/elysium/vid1.mp4" autoplay loop muted playsinline></video>
-    <img src="../assets/cases/elysium/img4.jpg" alt="Elysium campaign visual 4" loading="lazy">
-    <img src="../assets/cases/elysium/img5.jpg" alt="Elysium campaign visual 5" loading="lazy">
-    <video src="../assets/cases/elysium/vid2.mp4" autoplay loop muted playsinline></video>
-    <img src="../assets/cases/elysium/img6.jpg" alt="Elysium campaign visual 6" loading="lazy">
-    <img src="../assets/cases/elysium/img7.jpg" alt="Elysium campaign visual 7" loading="lazy">
+<section class="cs-story">
+  <div class="cs-story-label cs-reveal">The Story</div>
+  <div class="cs-story-grid">
+    <div class="cs-story-card cs-reveal cs-d1">
+      <h3>The Challenge</h3>
+      <p>Elysium was bleeding revenue through OTA commissions — Agoda, Booking.com, and Expedia taking 15-25% per reservation. Direct bookings were nearly non-existent with zero performance marketing infrastructure.</p>
+    </div>
+    <div class="cs-story-card cs-reveal cs-d2">
+      <h3>Our Approach</h3>
+      <p>We built a complete direct booking engine from scratch. Google Hotel Ads captured high-intent travellers, Meta targeted lookalike audiences, and WhatsApp click-to-chat funnels replaced landing pages — converting at 3x the industry rate.</p>
+    </div>
+    <div class="cs-story-card cs-reveal cs-d3">
+      <h3>The Result</h3>
+      <p>Within 60 days, direct bookings surged 286%. OTA commissions dropped 62%. The property hit a sustained 3.4x ROAS, turning ad spend into a profitable revenue engine.</p>
+    </div>
   </div>
 </section>
 
-<div class="cs-cta-band">
+<section class="cs-gallery">
+  <div class="cs-gallery-label cs-reveal">Campaign Gallery</div>
+  <div class="cs-carousel-wrapper cs-reveal">
+    <button class="cs-carousel-arrow prev" aria-label="Previous image">←</button>
+    <div class="cs-grid">
+      <div class="cs-grid-item cs-reveal-scale cs-d1"><img src="../assets/cases/elysium/img1.png" alt="Elysium campaign visual 1" loading="lazy"></div>
+      <div class="cs-grid-item cs-reveal-scale cs-d2"><img src="../assets/cases/elysium/img2.jpg" alt="Elysium campaign visual 2" loading="lazy"></div>
+      <div class="cs-grid-item cs-reveal-scale cs-d3"><img src="../assets/cases/elysium/img3.jpg" alt="Elysium campaign visual 3" loading="lazy"></div>
+      <div class="cs-grid-item cs-reveal-scale cs-d4"><video src="../assets/cases/elysium/vid1.mp4" autoplay loop muted playsinline></video></div>
+      <div class="cs-grid-item cs-reveal-scale cs-d5"><img src="../assets/cases/elysium/img4.jpg" alt="Elysium campaign visual 4" loading="lazy"></div>
+      <div class="cs-grid-item cs-reveal-scale cs-d6"><img src="../assets/cases/elysium/img5.jpg" alt="Elysium campaign visual 5" loading="lazy"></div>
+      <div class="cs-grid-item cs-reveal-scale cs-d7"><video src="../assets/cases/elysium/vid2.mp4" autoplay loop muted playsinline></video></div>
+      <div class="cs-grid-item cs-reveal-scale cs-d8"><img src="../assets/cases/elysium/img6.jpg" alt="Elysium campaign visual 6" loading="lazy"></div>
+      <div class="cs-grid-item cs-reveal-scale cs-d9"><img src="../assets/cases/elysium/img7.jpg" alt="Elysium campaign visual 7" loading="lazy"></div>
+    </div>
+    <button class="cs-carousel-arrow next" aria-label="Next image">→</button>
+  </div>
+</section>
+
+<div class="cs-cta-band cs-reveal">
   <h2>Want Results<br>Like This?</h2>
   <a href="https://wa.me/66960531394?text=Hi!%20I%20saw%20the%20Elysium%20case%20study%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" class="cs-cta-link">Start a Project →</a>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="../script.js?v=10"></script>
+<script>
+(function(){
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('cs-visible');io.unobserve(e.target)}})
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.cs-reveal,.cs-reveal-scale').forEach(el=>io.observe(el));
+})();
+
+// 3D Carousel Coverflow Logic
+(function(){
+  function init3DCarousels() {
+    const wrappers = document.querySelectorAll('.cs-carousel-wrapper');
+    wrappers.forEach(wrapper => {
+      const track = wrapper.querySelector('.cs-grid, .cs-showcase-grid');
+      if (!track) return;
+      const items = track.querySelectorAll('.cs-grid-item, .cs-showcase-item');
+      if (items.length === 0) return;
+
+      let activeIndex = Math.floor(items.length / 2);
+      
+      const prevBtn = wrapper.querySelector('.cs-carousel-arrow.prev');
+      const nextBtn = wrapper.querySelector('.cs-carousel-arrow.next');
+
+      function updatePositions() {
+        items.forEach((item, index) => {
+          const diff = index - activeIndex;
+          const absDiff = Math.abs(diff);
+
+          if (diff === 0) {
+            item.style.transform = `translateX(0) scale(1.15) translateZ(100px) rotateY(0deg)`;
+            item.style.zIndex = '10';
+            item.style.opacity = '1';
+            item.style.pointerEvents = 'auto';
+          } else if (diff < 0) {
+            const tx = -110 * absDiff - 40;
+            item.style.transform = `translateX(${tx}px) scale(${1 - 0.12 * absDiff}) rotateY(40deg) translateZ(${-80 * absDiff}px)`;
+            item.style.zIndex = `${10 - absDiff}`;
+            item.style.opacity = `${Math.max(0.2, 1 - 0.25 * absDiff)}`;
+            item.style.pointerEvents = 'none';
+          } else {
+            const tx = 110 * absDiff + 40;
+            item.style.transform = `translateX(${tx}px) scale(${1 - 0.12 * absDiff}) rotateY(-40deg) translateZ(${-80 * absDiff}px)`;
+            item.style.zIndex = `${10 - absDiff}`;
+            item.style.opacity = `${Math.max(0.2, 1 - 0.25 * absDiff)}`;
+            item.style.pointerEvents = 'none';
+          }
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (activeIndex > 0) {
+            activeIndex--;
+            updatePositions();
+          }
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (activeIndex < items.length - 1) {
+            activeIndex++;
+            updatePositions();
+          }
+        });
+      }
+
+      items.forEach((item, index) => {
+        item.addEventListener('click', () => {
+          if (index !== activeIndex) {
+            activeIndex = index;
+            updatePositions();
+          }
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (wrapper.matches(':hover')) {
+          if (e.key === 'ArrowLeft' && activeIndex > 0) {
+            activeIndex--;
+            updatePositions();
+          } else if (e.key === 'ArrowRight' && activeIndex < items.length - 1) {
+            activeIndex++;
+            updatePositions();
+          }
+        }
+      });
+
+      updatePositions();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init3DCarousels);
+  } else {
+    init3DCarousels();
+  }
+})();
+</script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 // ─── CURSOR ───
-var cur=document.getElementById('cur'),cur2=document.getElementById('cur2'),mx=0,my=0,cx=0,cy=0,facingRight=false;
+var cur=document.getElementById('cur'),cur2=document.getElementById('cur2'),mx=-100,my=-100,cx=-100,cy=-100,facingRight=false;
 document.addEventListener('mousemove',function(e){
   if(e.clientX > mx + 2) facingRight = true;
   else if(e.clientX < mx - 2) facingRight = false;
@@ -283,8 +283,10 @@ if(typeof gsap !== 'undefined') {
     }
     
     void main(){
-      vec2 uv=(gl_FragCoord.xy-.5*res)/min(res.x,res.y);
-      vec2 m=(mouse-.5*res)/min(res.x,res.y);
+      vec2 uv=(gl_FragCoord.xy-.5*res)/res.y;
+      uv.x*=(res.x/res.y);
+      vec2 m=(mouse-.5*res)/res.y;
+      m.x*=(res.x/res.y);
       float d=length(uv-m*0.3);
       vec2 q=vec2(fbm(uv+t*0.06),fbm(uv+vec2(1.3,0.8)+t*0.05));
       vec2 r=vec2(fbm(uv+2.5*q+vec2(1.7,9.2)+t*0.035),fbm(uv+2.5*q+vec2(8.3,2.8)+t*0.025));

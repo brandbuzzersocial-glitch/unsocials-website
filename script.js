@@ -466,7 +466,7 @@ const caseData = {
     eye: 'Beach Club · Pattaya, Thailand · Social Media + Performance Marketing',
     title: 'Alexa Beach Club',
     tags: ['Performance Marketing', 'Social Media Management', 'Content Production', 'Brand Strategy'],
-    media: ["assets/cases/alexa/img1.jpg","assets/cases/alexa/img2.jpg","assets/cases/alexa/img3.jpg","assets/cases/alexa/img4.jpg","assets/cases/alexa/vid1.mp4","assets/cases/alexa/vid2.mp4","assets/cases/alexa/vid3.mp4","assets/cases/alexa/vid4.mp4","assets/cases/alexa/vid5.mp4"],
+    media: ["assets/cases/alexa/feed_before.jpg","assets/cases/alexa/feed_after.jpg","assets/cases/alexa/img2.jpg","assets/cases/alexa/img3.jpg","assets/cases/alexa/vid1.mp4","assets/cases/alexa/vid2.mp4","assets/cases/alexa/vid3.mp4","assets/cases/alexa/vid4.mp4","assets/cases/alexa/vid5.mp4"],
     problemHtml: `<div class="cs-sec-title">The best beach club in Pattaya that looked like everyone else online.</div>
 <p class="cs-p">Pattaya has no shortage of beach clubs. Pools, sun loungers, cocktails, music — the formula is the same everywhere. When Alexa Beach Club came to us, they had a beautiful venue, a great product, and a team that genuinely cared about the experience. But online, they looked like everyone else.</p>
 <p class="cs-p">Their Instagram was inconsistent, paid ads were non-existent, and reservations came through walk-ins and word of mouth — leaving the venue half-empty on days it should have been packed. In a city where beach club scene discovery runs on social media, invisibility is a death sentence.</p>`,

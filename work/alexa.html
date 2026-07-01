@@ -41,14 +41,6 @@
 .cs-story-card h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:16px}
 .cs-story-card p{font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.75;color:rgba(255,255,255,.5)}
 
-/* ===== BEFORE / AFTER RESULTS ===== */
-.cs-results{padding:32px 8vw 48px;background:#040404}
-.cs-results-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:32px;display:flex;align-items:center;gap:12px}
-.cs-results-label::before{content:'';width:24px;height:1px;background:var(--ac)}
-.cs-results-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.cs-result-card{border-radius:16px;overflow:hidden;background:#0a0a0a;border:1px solid rgba(255,255,255,.06);transition:transform .5s cubic-bezier(.16,1,.3,1),box-shadow .5s}
-.cs-result-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.4)}
-.cs-result-card img{width:100%;display:block;object-fit:cover}
 
 /* ===== SIDE-BY-SIDE MEDIA SECTION ===== */
 .cs-media-section{padding:32px 8vw 48px;background:#040404}
@@ -98,7 +90,7 @@
 }
 @media(max-width:900px){
   .cs-hero{padding:140px 24px 40px}
-  .cs-story,.cs-results,.cs-media-section{padding:48px 24px}
+  .cs-story,.cs-media-section{padding:48px 24px}
   .cs-stats{grid-template-columns:1fr 1fr}
   .cs-cta-band{padding:60px 24px;flex-direction:column;align-items:flex-start}
   .cs-media-grid{grid-template-columns:1fr;gap:48px}
@@ -160,18 +152,6 @@
     <div class="cs-story-card cs-reveal cs-d3">
       <h3>The Result</h3>
       <p>3.2x ROAS achieved within 45 days. Table reservations scaled dramatically with WhatsApp automation handling the majority of bookings. The system runs and optimises on autopilot.</p>
-    </div>
-  </div>
-</section>
-
-<section class="cs-results">
-  <div class="cs-results-label cs-reveal">Platform Performance & Insights</div>
-  <div class="cs-results-grid">
-    <div class="cs-result-card cs-reveal-scale cs-d1">
-      <img src="../assets/cases/alexa/img1.jpg" alt="Alexa Instagram Insights — Before vs After" loading="lazy">
-    </div>
-    <div class="cs-result-card cs-reveal-scale cs-d2">
-      <img src="../assets/cases/alexa/img4.jpg" alt="Alexa Facebook Insights — Before vs After" loading="lazy">
     </div>
   </div>
 </section>

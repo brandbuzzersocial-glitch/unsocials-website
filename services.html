@@ -23,28 +23,26 @@ nav{background:rgba(4,4,4,.95)}
 .ph-h em{font-style:italic;color:var(--ac)}
 .ph-sub{font-size:clamp(14px,1.2vw,18px);color:rgba(255,255,255,.5);max-width:540px;line-height:1.7;font-family:'Space Grotesk',sans-serif}
 
-/* ── SERVICES DECK — clean vertical flow ── */
+/* ── SERVICES DECK — sticky stacking cards ── */
 .svc-deck {
   position: relative;
   width: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
-/* Each card fills the full viewport height and centres its content */
+/* Each card sticks to the top of the viewport (below nav) as you scroll */
 .svc-card {
-  min-height: 100svh;
+  position: sticky;
+  top: 0; /* Sticks to viewport top — nav overlays via position:fixed */
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
   background: transparent;
-  position: relative;
 }
 
-/* Card inner — compact 2-column grid: text + vector, left-aligned content */
+/* Card inner — content starts below the fixed nav with breathing room */
 .svc-card-inner {
   width: 100%;
-  padding: 180px 6vw 60px calc(260px + 4vw);
+  padding: 90px 6vw 50px calc(260px + 4vw); /* 90px top = nav(~55px) + 35px gap */
   display: grid;
   grid-template-columns: 1fr 280px;
   gap: 50px;
@@ -59,20 +57,26 @@ nav{background:rgba(4,4,4,.95)}
   align-self: center;
 }
 
-/* Global menu: absolute positioning so it crawls along with the deck */
+/* Global menu: fixed on screen, shown/hidden via JS */
 .svc-global-menu {
-  position: absolute;
+  position: fixed;
   left: 5vw;
   top: 50%;
   transform: translateY(-50%);
   z-index: 200;
-  pointer-events: all;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
   background: rgba(4,4,4,0.85);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 24px 20px;
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,0.06);
+}
+.svc-global-menu.is-visible {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .svc-menu-num {
@@ -309,7 +313,7 @@ nav{background:rgba(4,4,4,.95)}
 /* ── Laptop / smaller desktop adjustments ── */
 @media (max-width: 1366px) {
   .ph { padding: 100px 5vw 40px; }
-  .svc-card-inner { padding: 50px 5vw 50px calc(240px + 3vw); grid-template-columns: 1fr 220px; gap: 36px; }
+  .svc-card-inner { padding: 80px 5vw 40px calc(240px + 3vw); grid-template-columns: 1fr 220px; gap: 36px; }
   .svc-title { font-size: clamp(26px, 3vw, 40px); margin-bottom: 12px; }
   .svc-desc { font-size: 13px; margin-bottom: 10px; line-height: 1.55; }
   .svc-cta-btn { padding: 12px 24px; font-size: 10px; }
@@ -1715,7 +1719,7 @@ gsap.from('.ph-eye,.ph-h,.ph-sub',{
 const cards = gsap.utils.toArray('.svc-card');
 let mm = gsap.matchMedia();
 
-// Desktop: Stacking card deck with active card fade-out & overlap
+// Desktop: Sticky stacking cards (no GSAP pin, no overflow:hidden)
 mm.add("(min-width: 901px)", function() {
   const deck = document.querySelector('.svc-deck');
   const menuEl = document.querySelector('.svc-global-menu');
@@ -1725,161 +1729,122 @@ mm.add("(min-width: 901px)", function() {
   // Clear any previously applied GSAP inline styles
   gsap.set([deck, ...cards], { clearProps: 'all' });
 
-  // 1. Stack cards absolutely inside the pinned viewport container below the navbar
-  gsap.set(deck, { height: 'calc(100svh - 75px)', position: 'relative', overflow: 'hidden' });
-  gsap.set(cards, { position: 'absolute', top: 0, left: 0, width: '100%', height: 'calc(100svh - 75px)', margin: 0 });
-  
-  // 2. Hide subsequent cards below the viewport on load
-  cards.forEach((card, i) => {
-    if (i > 0) gsap.set(card, { yPercent: 100 });
+  // Show/hide the fixed global menu when deck is in view
+  ScrollTrigger.create({
+    trigger: deck,
+    start: 'top 60%',
+    end: 'bottom 20%',
+    onEnter: () => menuEl && menuEl.classList.add('is-visible'),
+    onLeave: () => menuEl && menuEl.classList.remove('is-visible'),
+    onEnterBack: () => menuEl && menuEl.classList.add('is-visible'),
+    onLeaveBack: () => menuEl && menuEl.classList.remove('is-visible'),
   });
 
-
-
-  // Helper to update global menu active state and text content
+  // Update menu active state
   let currentActiveIndex = 0;
   function updateActiveMenu(index) {
     if (index === currentActiveIndex) return;
-    
-    // Toggle active class on list items
-    menuItems.forEach((li, idx) => {
-      li.classList.toggle('active', idx === index);
-    });
-    
-    // Animate the number change cleanly
+    menuItems.forEach((li, idx) => li.classList.toggle('active', idx === index));
     if (menuNum) {
       gsap.killTweensOf(menuNum);
       gsap.to(menuNum, {
-        opacity: 0,
-        y: -15,
-        duration: 0.2,
-        ease: 'power2.in',
+        opacity: 0, y: -15, duration: 0.2, ease: 'power2.in',
         onComplete: () => {
           menuNum.textContent = '0' + (index + 1);
-          gsap.to(menuNum, {
-            opacity: 1,
-            y: 0,
-            duration: 0.2,
-            ease: 'power2.out'
-          });
+          gsap.to(menuNum, { opacity: 1, y: 0, duration: 0.2, ease: 'power2.out' });
         }
       });
     }
-    
     currentActiveIndex = index;
   }
 
-  // 3. Create a master scrub timeline that pins the deck
-  let masterTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: deck,
-      start: 'top 75px', // Pinned exactly below the 75px tall compact navbar
-      end: '+=' + (cards.length * 100) + '%', // Elegant dynamic scroll distance based on number of cards
-      pin: true,
-      scrub: 0.1, // Highly responsive scrub to prevent over-scrolling and jumping
-      onUpdate: (self) => {
-        // Precise scroll calculations to map timeline time back to active service index
-        const time = masterTl.time();
-        let activeIndex = Math.min(cards.length - 1, Math.max(0, Math.floor((time + 1.5) / 2.0)));
-        updateActiveMenu(activeIndex);
-      }
-    }
-  });
-
-  // Handle click-to-scroll interaction for the stationary menu items
-  menuItems.forEach((li, idx) => {
-    li.addEventListener('click', () => {
-      const startScroll = masterTl.scrollTrigger.start;
-      const endScroll = masterTl.scrollTrigger.end;
-      const totalScrollDistance = endScroll - startScroll;
-      
-      // Calculate target time based on 2.0s duration per card transition
-      let targetTime = idx === 0 ? 0 : (idx - 1) * 2.0 + 1.0;
-      const totalTimelineDuration = (cards.length - 1) * 2.0;
-      const targetScroll = startScroll + (targetTime / totalTimelineDuration) * totalScrollDistance;
-      
-      lenis.scrollTo(targetScroll, {
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-      });
+  // Track which card is active via ScrollTrigger
+  cards.forEach((card, i) => {
+    ScrollTrigger.create({
+      trigger: card,
+      start: 'top 40%',
+      end: 'bottom 40%',
+      onEnter: () => updateActiveMenu(i),
+      onEnterBack: () => updateActiveMenu(i)
     });
   });
 
-  // 4. Build the transitions for each card
-  cards.forEach((card, i) => {
+  // Menu click scrolls to that card
+  menuItems.forEach((li, idx) => {
+    li.addEventListener('click', () => {
+      lenis.scrollTo(cards[idx], { offset: -20, duration: 1.0, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    });
+  });
+
+  // JS Scroll-snap: after scrolling stops, snap to the nearest card
+  let snapTimer = null;
+  let isSnapping = false;
+  lenis.on('scroll', () => {
+    if (isSnapping) return;
+    clearTimeout(snapTimer);
+    snapTimer = setTimeout(() => {
+      const deckRect = deck.getBoundingClientRect();
+      const deckTopY = window.scrollY + deckRect.top;
+      const deckBottomY = deckTopY + deck.offsetHeight;
+      const sy = window.scrollY;
+      // Only snap when scroll position is inside the deck area
+      if (sy < deckTopY - 50 || sy > deckBottomY - window.innerHeight + 50) return;
+
+      // Find the nearest card
+      let nearestIdx = 0;
+      let nearestDist = Infinity;
+      cards.forEach((card, i) => {
+        const cardTop = card.getBoundingClientRect().top + window.scrollY;
+        const dist = Math.abs(sy - cardTop);
+        if (dist < nearestDist) {
+          nearestDist = dist;
+          nearestIdx = i;
+        }
+      });
+
+      if (nearestDist > 30) {
+        isSnapping = true;
+        const targetCard = cards[nearestIdx];
+        const targetY = targetCard.getBoundingClientRect().top + window.scrollY;
+        lenis.scrollTo(targetY, {
+          duration: 0.6,
+          easing: (t) => t < 0.5 ? 2*t*t : -1+(4-2*t)*t,
+          onComplete: () => { isSnapping = false; }
+        });
+        setTimeout(() => { isSnapping = false; }, 1000);
+      }
+    }, 200);
+  });
+
+  // Content reveal animations (trigger-based, no scrub)
+  cards.forEach((card) => {
     const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc');
     const wrapper = card.querySelector('.card-media-wrapper');
     const media = card.querySelector('.card-media');
     const listItems = card.querySelectorAll('.svc-deliverables li, .svc-cta-btn');
 
-    if (i === 0) {
-      // Card 1 animates in immediately upon entering the viewport (not scrubbed, for a punchy entrance!)
-      gsap.set(textEls, { opacity: 0, y: 40 });
-      if (wrapper && media) {
-        gsap.set(wrapper, { clipPath: 'inset(0 100% 0 0)', overflow: 'hidden' });
-        gsap.set(media, { scale: 1.15, x: 30 });
+    gsap.set(textEls, { opacity: 0, y: 30 });
+    if (wrapper && media) {
+      gsap.set(wrapper, { clipPath: 'inset(0 100% 0 0)', overflow: 'hidden' });
+      gsap.set(media, { scale: 1.1 });
+    }
+    if (listItems.length) gsap.set(listItems, { opacity: 0, y: 15 });
+
+    const revealTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 70%',
+        toggleActions: 'play none none none'
       }
-      if (listItems.length) gsap.set(listItems, { opacity: 0, y: 20 });
+    });
 
-      let tl0 = gsap.timeline({
-        scrollTrigger: {
-          trigger: deck,
-          start: 'top 80%',
-          toggleActions: 'play none none none'
-        }
-      });
-      tl0.to(textEls, { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out' }, 0);
-      if (wrapper && media) {
-        tl0.to(wrapper, { clipPath: 'inset(0 0% 0 0)', duration: 1.2, ease: 'power4.inOut' }, 0);
-        tl0.to(media, { scale: 1, x: 0, duration: 1.2, ease: 'power4.inOut' }, 0);
-      }
-      if (listItems.length) {
-        tl0.to(listItems, { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out' }, 0.8);
-      }
-    } else {
-      // Cards 2+ set initial hidden states
-      gsap.set(textEls, { opacity: 0, y: 40 });
-      if (wrapper && media) {
-        gsap.set(wrapper, { clipPath: 'inset(0 100% 0 0)', overflow: 'hidden' });
-        gsap.set(media, { scale: 1.15, x: 30 });
-      }
-      if (listItems.length) gsap.set(listItems, { opacity: 0, y: 20 });
-
-      const prevCardInner = cards[i - 1].querySelector('.svc-card-inner');
-      const label = 'card' + i;
-
-      masterTl.addLabel(label);
-
-      // Phase 1: Overlap Transition!
-      // As the new card slides up (yPercent: 0), the previous card inner content FADES AWAY and scales down!
-      masterTl.to(prevCardInner, {
-        scale: 0.90, // Scale down slightly for a depth effect
-        opacity: 0, // Fade out
-        filter: 'brightness(0.2) blur(3px)', // Fade to dark and blur slightly
-        y: -60, // Move up slightly
-        ease: 'none',
-        duration: 1
-      }, label);
-
-      masterTl.to(card, {
-        yPercent: 0, // Slide the new card up over it
-        ease: 'none',
-        duration: 1
-      }, label);
-
-      // Phase 2: Staggered reveal of the new card's inner content
-      const revealLabel = label + '+=0.4';
-      masterTl.to(textEls, { opacity: 1, y: 0, stagger: 0.05, ease: 'power2.out', duration: 0.6 }, revealLabel);
-      if (wrapper && media) {
-        masterTl.to(wrapper, { clipPath: 'inset(0 0% 0 0)', ease: 'power2.out', duration: 0.6 }, revealLabel);
-        masterTl.to(media, { scale: 1, x: 0, ease: 'power2.out', duration: 0.6 }, revealLabel);
-      }
-      if (listItems.length) {
-        masterTl.to(listItems, { opacity: 1, y: 0, stagger: 0.05, ease: 'power2.out', duration: 0.6 }, revealLabel + '+=0.2');
-      }
-
-      // Phase 3: Pause for reading before the next card overlaps it
-      masterTl.to({}, { duration: 0.8 });
+    revealTl.to(textEls, { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out' }, 0);
+    if (wrapper && media) {
+      revealTl.to(wrapper, { clipPath: 'inset(0 0% 0 0)', duration: 1.1, ease: 'power4.inOut' }, 0);
+      revealTl.to(media, { scale: 1, duration: 1.1, ease: 'power4.inOut' }, 0);
+    }
+    if (listItems.length) {
+      revealTl.to(listItems, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: 'power2.out' }, 0.7);
     }
   });
 });

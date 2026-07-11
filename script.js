@@ -844,7 +844,7 @@ const serviceData = {
     bg: 'linear-gradient(180deg,#001020 0%,#002040 60%,#080808 100%)',
     metrics: [
       { val: 'Daily', lbl: 'Consistent rhythm of high-end, brand-aligned posts' },
-      { val: '10×', lbl: 'Average increase in organic engagement and profile visits within 90 days across active clients' },
+      { val: '2×', lbl: 'Average increase in organic engagement and profile visits within 90 days across active clients' },
       { val: '24/7', lbl: 'Community management, response, and lead nurturing' },
       { val: 'Owned', lbl: 'We build an audience you own, rather than renting one from ads' }
     ],
@@ -867,7 +867,7 @@ const serviceData = {
     bg: 'linear-gradient(180deg,#200000 0%,#400000 60%,#080808 100%)',
     metrics: [
       { val: '4K', lbl: 'Cinema-grade production quality for all major assets' },
-      { val: 'Viral', lbl: 'Format-engineered specifically for algorithmic success' },
+      { val: 'Reach', lbl: 'Format-engineered specifically for algorithmic success' },
       { val: 'Speed', lbl: 'Rapid turnaround times to keep your brand culturally relevant' },
       { val: 'Scale', lbl: 'Vast content libraries built from single shoot days' }
     ],
@@ -1275,7 +1275,7 @@ window.addEventListener('popstate', function(e) {
   }
 })();
 
-// Contact Form Submission & Validation
+// Contact Form Submission & Validation (contact.html)
 function submitContactForm(event) {
   if (event) event.preventDefault();
   
@@ -1283,15 +1283,16 @@ function submitContactForm(event) {
   var brandEl = document.getElementById('c-brand');
   var emailEl = document.getElementById('c-email');
   var serviceEl = document.getElementById('c-service');
+  var budgetEl = document.getElementById('c-budget');
   var detailsEl = document.getElementById('c-details');
   var formFeedback = document.getElementById('form-feedback');
   
-  if (!nameEl || !brandEl || !emailEl || !serviceEl || !detailsEl) return;
+  if (!nameEl || !brandEl || !emailEl || !serviceEl || !budgetEl || !detailsEl) return;
   
   var hasError = false;
   
   // Reset input border colors
-  [nameEl, brandEl, emailEl, serviceEl].forEach(function(el) {
+  [nameEl, brandEl, emailEl, serviceEl, budgetEl].forEach(function(el) {
     el.style.borderColor = '';
   });
   if (formFeedback) {
@@ -1316,6 +1317,10 @@ function submitContactForm(event) {
     serviceEl.style.borderColor = '#ff4d4d';
     hasError = true;
   }
+  if (!budgetEl.value) {
+    budgetEl.style.borderColor = '#ff4d4d';
+    hasError = true;
+  }
   
   if (hasError) {
     if (formFeedback) {
@@ -1336,6 +1341,7 @@ function submitContactForm(event) {
                 '• Brand: ' + brandEl.value.trim() + '\n' +
                 '• Email: ' + emailEl.value.trim() + '\n' +
                 '• Service: ' + serviceEl.value + '\n' +
+                '• Estimated Budget: ' + budgetEl.value + '\n' +
                 '• Details: ' + (detailsEl.value.trim() || 'None');
                 
   var encodedText = encodeURIComponent(message);
@@ -1356,6 +1362,64 @@ function submitContactForm(event) {
   
   // Reset form
   document.querySelector('.contact-form').reset();
+}
+
+// Homepage Contact Form Submission & Validation
+function submitHomepageForm(event) {
+  if (event) event.preventDefault();
+  
+  var nameEl = document.getElementById('h-name');
+  var brandEl = document.getElementById('h-brand');
+  var serviceEl = document.getElementById('h-service');
+  var budgetEl = document.getElementById('h-budget');
+  var formFeedback = document.getElementById('h-form-feedback');
+  
+  if (!nameEl || !brandEl || !serviceEl || !budgetEl) return;
+  
+  var hasError = false;
+  
+  [nameEl, brandEl, serviceEl, budgetEl].forEach(function(el) {
+    el.style.borderColor = '';
+  });
+  if (formFeedback) {
+    formFeedback.style.display = 'none';
+    formFeedback.textContent = '';
+  }
+  
+  if (!nameEl.value.trim()) { nameEl.style.borderColor = '#ff4d4d'; hasError = true; }
+  if (!brandEl.value.trim()) { brandEl.style.borderColor = '#ff4d4d'; hasError = true; }
+  if (!serviceEl.value) { serviceEl.style.borderColor = '#ff4d4d'; hasError = true; }
+  if (!budgetEl.value) { budgetEl.style.borderColor = '#ff4d4d'; hasError = true; }
+  
+  if (hasError) {
+    if (formFeedback) {
+      formFeedback.style.display = 'block';
+      formFeedback.style.color = '#ff4d4d';
+      var currentLang = localStorage.getItem('unsocials_lang') || 'en';
+      formFeedback.textContent = currentLang === 'th' ? 'กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน' : 'Please fill in all required fields.';
+    }
+    return;
+  }
+  
+  var message = 'Hi Unsocials, I would like to get in touch!\n\n' +
+                '• Name: ' + nameEl.value.trim() + '\n' +
+                '• Brand: ' + brandEl.value.trim() + '\n' +
+                '• Service: ' + serviceEl.value + '\n' +
+                '• Estimated Budget: ' + budgetEl.value;
+                
+  var encodedText = encodeURIComponent(message);
+  var waUrl = 'https://wa.me/66960531394?text=' + encodedText;
+  
+  window.open(waUrl, '_blank');
+  
+  if (formFeedback) {
+    formFeedback.style.display = 'block';
+    formFeedback.style.color = 'var(--ac, #E8FF00)';
+    var currentLang = localStorage.getItem('unsocials_lang') || 'en';
+    formFeedback.textContent = currentLang === 'th' ? 'สำเร็จ! กำลังเปิด WhatsApp เพื่อส่งข้อความของคุณ...' : 'Success! Opening WhatsApp to send your inquiry...';
+  }
+  
+  document.querySelector('#cta-sec .contact-form').reset();
 }
 
 // ─── LIGHTBOX GALLERY ───

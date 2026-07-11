@@ -7,7 +7,7 @@
 <meta name="description" content="Learn about Unsocials Thailand, our roots in Jaipur, India, and our creative agency hub in Pattaya. Meet our founders and explore our results-driven marketing approach.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=22">
+<link rel="stylesheet" href="style.css?v=28">
 <style>
   /* PAGE HERO */
   .about-page-hero {
@@ -324,14 +324,14 @@
   }
   .team-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
   }
   .team-card {
     background: rgba(10, 10, 10, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
-    padding: 40px 30px;
+    padding: 40px 24px;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     backdrop-filter: blur(10px);
@@ -346,8 +346,8 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
   }
   .team-avatar {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     background: #111;
     margin-bottom: 24px;
@@ -376,12 +376,32 @@
     border-color: #a855f7;
     box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
   }
+  .team-name-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
   .team-name {
     font-family: 'Syne', sans-serif;
     font-size: 24px;
     font-weight: 800;
     color: var(--w);
-    margin-bottom: 6px;
+  }
+  .team-ln {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.4);
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  .team-ln:hover {
+    color: var(--ac) !important;
+    transform: scale(1.15);
+  }
+  .team-card:hover .team-ln {
+    color: rgba(255, 255, 255, 0.7);
   }
   .team-role {
     font-family: 'Space Mono', monospace;
@@ -399,6 +419,12 @@
     font-size: 14px;
     color: rgba(255, 255, 255, 0.5);
     line-height: 1.6;
+  }
+
+  @media (max-width: 1200px) {
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @media (max-width: 900px) {
@@ -615,24 +641,51 @@
     <h2 class="team-title" data-th="ผู้ขับเคลื่อนผลลัพธ์และนวัตกรรม">The Obsessive Minds</h2>
   </div>
   <div class="team-grid">
-    <!-- Rahul -->
+    <!-- Rohan -->
     <div class="team-card rv">
-      <div class="team-avatar">RK</div>
-      <div class="team-name">Rahul</div>
+      <div class="team-avatar">RB</div>
+      <div class="team-name-row">
+        <div class="team-name">Rohan</div>
+        <a class="team-ln" href="https://www.linkedin.com/in/rohan-bansal-unsocials" target="_blank" aria-label="Rohan Bansal LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+      </div>
       <div class="team-role" data-th="ผู้ก่อตั้ง &amp; ผู้อำนวยการด้านประสิทธิภาพ">Founder &amp; Performance Director</div>
-      <p class="team-bio" data-th="หมกมุ่นอยู่กับการเพิ่มอัตราส่วนการจอง ยอดขาย และการเติบโตของ ROI ดูแลการซื้อสื่อและกลยุทธ์ของแบรนด์ทั้งหมด">Obsessed with conversion, booking rates, and ROI scaling. Rahul oversees core growth strategy, media buying, and analytics across all client accounts.</p>
+      <p class="team-bio" data-th="หมกมุ่นอยู่กับการเพิ่มอัตราส่วนการจอง ยอดขาย และการเติบโตของ ROI ดูแลการซื้อสื่อและกลยุทธ์ของแบรนด์ทั้งหมด">Obsessed with conversion, booking rates, and ROI scaling. Rohan oversees core growth strategy, media buying, and analytics across all client accounts.</p>
     </div>
-    <!-- Anoop -->
+    <!-- Sumitra -->
     <div class="team-card rv" style="transition-delay:.08s">
-      <div class="team-avatar">AK</div>
-      <div class="team-name">Anoop</div>
+      <div class="team-avatar">SK</div>
+      <div class="team-name-row">
+        <div class="team-name">Sumitra</div>
+        <a class="team-ln" href="https://www.linkedin.com/company/unsocials" target="_blank" aria-label="Sumitra LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+      </div>
       <div class="team-role" data-th="ผู้ร่วมก่อตั้ง &amp; ผู้นำด้านครีเอทีฟ">Co-Founder &amp; Creative Lead</div>
-      <p class="team-bio" data-th="ผลักดันขีดจำกัดการเล่าเรื่อง แผ้วถางงานออกแบบและทิศทางครีเอทีฟของแบรนด์ รวมถึงการพัฒนา AI ครีเอทีฟ">Pushing the boundaries of digital storytelling. Anoop leads visual production, design identity, and directs the development of custom AI creative pipelines.</p>
+      <p class="team-bio" data-th="ผลักดันขีดจำกัดการเล่าเรื่อง แผ้วถางงานออกแบบและทิศทางครีเอทีฟของแบรนด์ รวมถึงการพัฒนา AI ครีเอทีฟ">Pushing the boundaries of digital storytelling. Sumitra leads visual production, design identity, and directs the development of custom AI creative pipelines.</p>
+    </div>
+    <!-- Tushar -->
+    <div class="team-card rv" style="transition-delay:.16s">
+      <div class="team-avatar">TK</div>
+      <div class="team-name-row">
+        <div class="team-name">Tushar</div>
+        <a class="team-ln" href="https://www.linkedin.com/company/unsocials" target="_blank" aria-label="Tushar LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+      </div>
+      <div class="team-role" data-th="ผู้อำนวยการฝ่ายเทคโนโลยี">Technology Lead</div>
+      <p class="team-bio" data-th="ดูแลโครงสร้างพื้นฐานเว็บ การรวมระบบ AI และโซลูชันเทคโนโลยีการตลาดทั้งหมดของเรา มั่นใจในสเกลที่เสถียรและเร็ว">Overseeing our web infrastructure, AI integrations, and custom martech solutions. Engineering stable, lightning-fast pipelines for scaling brands.</p>
     </div>
     <!-- Ava & Alex -->
-    <div class="team-card rv" style="transition-delay:.16s">
+    <div class="team-card rv" style="transition-delay:.24s">
       <div class="team-avatar ai-avatar">A²</div>
-      <div class="team-name">Ava &amp; Alex</div>
+      <div class="team-name-row">
+        <div class="team-name">Ava &amp; Alex</div>
+        <a class="team-ln" href="https://www.linkedin.com/company/unsocials" target="_blank" aria-label="Ava &amp; Alex LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+      </div>
       <div class="team-role" data-th="ตัวแทนแบรนด์ AI ของเรา">AI Brand Representatives</div>
       <p class="team-bio" data-th="ส่วนขยายเสมือนจริงของทีมงาน ทำงานร่วมกับนักกลยุทธ์มนุษย์ ผลิตคอนเทนต์ดึงดูดระดับพรีเมียมได้ไม่มีที่สิ้นสุดและไม่มีขีดจำกัด">The virtual division of Unsocials. Ava and Alex are proprietary AI models engineered to generate infinite high-end visual assets with zero production friction.</p>
     </div>
@@ -649,13 +702,13 @@
 <footer>
   <div class="ft-tick">
     <div class="ftk">
-      UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp; PERFORMANCE &nbsp;·&nbsp; <strong>INEVITABLE</strong> &nbsp;·&nbsp; PATTAYA &nbsp;·&nbsp; <strong>JAIPUR</strong> &nbsp;·&nbsp; <strong>SOCIAL MEDIA</strong> &nbsp;·&nbsp; CONTENT &nbsp;·&nbsp; <strong>GROWTH</strong> &nbsp;·&nbsp; UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp;
+      UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp; PERFORMANCE &nbsp;·&nbsp; <strong>INEVITABLE</strong> &nbsp;·&nbsp; <strong>SOCIAL MEDIA</strong> &nbsp;·&nbsp; CONTENT &nbsp;·&nbsp; <strong>GROWTH</strong> &nbsp;·&nbsp; UNSOCIALS &nbsp;·&nbsp; <strong>THAILAND</strong> &nbsp;·&nbsp;
     </div>
   </div>
   <div class="ft-g">
     <div>
       <div class="ft-br">UNSOCIALS<br><em data-th="ประเทศไทย">Thailand</em></div>
-      <p class="ft-brs" data-th="เอเจนซี่ประสิทธิภาพเชิงสร้างสรรค์<br>พัทยา · ประเทศไทย">Creative Performance Agency<br>Pattaya - Thailand</p>
+      <p class="ft-brs" data-th="เอเจนซี่ครีเอทีฟระดับโลก">Global Creative Agency</p>
     </div>
     <div class="ft-col">
       <h5 data-th="บริการ">Services</h5>
@@ -676,7 +729,8 @@
       <a href="work/skyview.html">Hotel Skyview</a>
       <a href="work/nomads.html" data-th="โนแมดส์ เอเชีย">Nomads Asia</a>
       <a href="work/bamboo.html" data-th="แบมบู บีชคลับ">Bamboo Beach Club</a>
-      <a href="work/gps.html" data-th="จีพี ซิกเนเจอร์">GP Signature</a>
+      <a href="work/gps.html" data-th="จีพีเอส เจมส์">GPS Gems</a>
+      <a href="work/huay-yai.html" data-th="ห้วยใหญ่ พาร์ค วิลล่า">Huay Yai Park Villas</a>
     </div>
     <div class="ft-col">
       <h5 data-th="ติดต่อ">Contact</h5>
@@ -699,7 +753,7 @@
     </div>
   </div>
   <div class="ft-bot">
-    <p data-th="© 2026 Unsocials · อินเดีย &amp; ไทย · สงวนลิขสิทธิ์">© 2026 Unsocials · India & Thailand · All Rights Reserved.</p>
+    <p data-th="© 2026 Unsocials · สงวนลิขสิทธิ์">© 2026 Unsocials · All Rights Reserved.</p>
     <p data-th="เราทำให้มันเกิดขึ้นอย่างหลีกเลี่ยงไม่ได้">We Make It Inevitable.</p>
   </div>
 </footer>

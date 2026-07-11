@@ -703,7 +703,7 @@ nav.compact{padding:14px 52px}
   display: flex;
   flex-direction: column;
   padding: 24px;
-  min-height: 300px;
+  min-height: 340px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s;
   cursor: pointer;
@@ -830,7 +830,7 @@ nav.compact{padding:14px 52px}
 /* DOUBLE-WIDE FEATURED CARD SPECIFICS */
 .wr-card.featured {
   grid-column: span 2;
-  min-height: 360px;
+  min-height: 380px;
   padding-right: 260px; /* Make space for absolutely floated widget */
 }
 .wr-card.featured .wrc-bg {
@@ -994,8 +994,8 @@ nav.compact{padding:14px 52px}
   padding-top: 48px;
   margin-top: 64px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px 32px;
+  grid-template-columns: 1fr;
+  gap: 32px;
   z-index: 2;
   position: relative;
 }
@@ -1088,8 +1088,8 @@ nav.compact{padding:14px 52px}
 .svc-bento-card.metrics-card {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 32px;
 }
 .svc-bento-card.features-card {
@@ -1144,12 +1144,13 @@ nav.compact{padding:14px 52px}
 }
 .bento-m-val {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(48px, 6vw, 80px);
+  font-size: clamp(28px, 3vw, 40px);
   color: var(--ac);
   font-weight: 800;
   line-height: 1;
   margin-bottom: 12px;
   letter-spacing: -0.04em;
+  white-space: nowrap;
 }
 .bento-m-lbl {
   font-family: 'Space Grotesk', sans-serif;
@@ -1663,9 +1664,9 @@ nav.compact{padding:14px 52px}
 .cta-form{flex:1;width:100%;max-width:580px;position:relative;z-index:2}
 .cta-row{border-bottom:2px solid rgba(0,0,0,.1);padding:20px 0}
 .cta-row label{display:block;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(0,0,0,.35);margin-bottom:8px}
-.cta-row input,.cta-row select{background:transparent;border:none;outline:none;font-family:'Syne',sans-serif;font-size:32px;letter-spacing:-0.02em;color:var(--bg);width:100%;font-weight:700}
+.cta-row input,.cta-row select{background:transparent;border:none;outline:none;font-family:'Space Grotesk',sans-serif;font-size:32px;letter-spacing:-0.02em;color:var(--bg);width:100%;font-weight:700}
 .cta-row input::placeholder{color:rgba(0,0,0,.15)}
-.cta-row select option{background:#fff;font-family:sans-serif;font-size:16px}
+.cta-row select option{background:#fff;font-family:'Space Grotesk',sans-serif;font-size:16px}
 .cta-btn{margin-top:40px;display:inline-flex;align-items:center;gap:14px;background:var(--bg);color:var(--ac);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;padding:18px 40px;border:none;cursor:none;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);transition:transform .25s;font-weight:700;position:relative;z-index:2}
 .cta-btn:hover{transform:translate(-4px,-4px)}
 .cta-note{margin-top:14px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.05em;color:rgba(0,0,0,.3);position:relative;z-index:2}
@@ -1807,7 +1808,7 @@ footer{background:#040404;padding-bottom:40px}
   padding:0 4vw 0 0;
   display:flex;flex-direction:column;gap:28px;align-items:flex-end;
 }
-.u-stat{ display:flex;flex-direction:column;align-items:flex-end;gap:2px; }
+.u-stat{ display:flex;flex-direction:column;align-items:flex-end;gap:2px; text-align:right; }
 .u-sn{
   font-family:'Syne',sans-serif;
   font-size:clamp(32px,5vw,56px);
@@ -2054,7 +2055,7 @@ footer{background:#040404;padding-bottom:40px}
 }
 .aic-sub {
   font-size: clamp(15px, 1.4vw, 18px);
-  color: var(--m2);
+  color: #ffffff;
   line-height: 1.8;
   max-width: 580px;
   margin-top: 24px;
@@ -2213,6 +2214,12 @@ footer{background:#040404;padding-bottom:40px}
 .ai-reps-sec {
     padding: 80px 8vw;
 }
+#ai-results .ab-body,
+#nexus-section .ab-body,
+#journey .ab-body,
+#ai-reps .ab-body {
+    color: #ffffff;
+}
 .rep-collage {
     display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
     padding: 0; margin-top: 0; width: 100%;
@@ -2237,6 +2244,12 @@ footer{background:#040404;padding-bottom:40px}
     font-weight: 700; letter-spacing: 0.05em;
     clip-path: polygon(4px 0, 100% 0, calc(100% - 4px) 100%, 0 100%);
     z-index: 5;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rep-tag-premium:hover {
+    background: #ffffff;
+    color: #000000;
+    transform: scale(1.05);
 }
 
 .rep-img-w-premium {
@@ -2359,7 +2372,7 @@ footer{background:#040404;padding-bottom:40px}
 /* Global Responsive Layout Utilities */
 .hq-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 2px;
   background: var(--border);
 }

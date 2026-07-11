@@ -172,7 +172,7 @@ const newCard2 = `  <!-- CARD 2 -->
             <div class="svc-outcome-lbl" data-th="โพสต์เนื้อหาหรูหราที่ตรงกับภาพลักษณ์แบรนด์สม่ำเสมอ">Consistent high-end brand-aligned posts</div>
           </div>
           <div class="svc-outcome-card">
-            <div class="svc-outcome-val">10×</div>
+            <div class="svc-outcome-val">2×</div>
             <div class="svc-outcome-lbl" data-th="อัตราการเติบโตของเอนเกจเมนต์ออร์แกนิกเฉลี่ย">Average increase in organic engagement</div>
           </div>
           <div class="svc-outcome-card">
@@ -220,7 +220,7 @@ const oldCard3 = `  <!-- CARD 3 -->
             <div class="svc-outcome-lbl" data-th="คุณภาพระดับภาพยนตร์สำหรับทุกผลงาน">Cinema-grade quality for all assets</div>
           </div>
           <div class="svc-outcome-card">
-            <div class="svc-outcome-val">Viral</div>
+            <div class="svc-outcome-val">Reach</div>
             <div class="svc-outcome-lbl" data-th="รูปแบบที่ออกแบบมาเพื่อดึงดูดอัลกอริทึม">Format-engineered for the algorithm</div>
           </div>
           <div class="svc-outcome-card">
@@ -265,7 +265,7 @@ const newCard3 = `  <!-- CARD 3 -->
             <div class="svc-outcome-lbl" data-th="คุณภาพระดับภาพยนตร์สำหรับทุกผลงาน">Cinema-grade quality for all assets</div>
           </div>
           <div class="svc-outcome-card">
-            <div class="svc-outcome-val">Viral</div>
+            <div class="svc-outcome-val">Reach</div>
             <div class="svc-outcome-lbl" data-th="รูปแบบที่ออกแบบมาเพื่อดึงดูดอัลกอริทึม">Format-engineered for the algorithm</div>
           </div>
           <div class="svc-outcome-card">

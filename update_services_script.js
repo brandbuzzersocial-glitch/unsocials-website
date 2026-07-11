@@ -7,7 +7,7 @@ const content = [
     title: "Performance Marketing",
     intro: "We don't run ads. We build revenue systems.",
     p1: "Whether you're a restaurant filling tables every night, a beach club selling out events, a product brand scaling past its ceiling, or a service business generating qualified leads — we build the paid infrastructure that turns your marketing budget into trackable, scalable revenue.",
-    p2: "Google, Meta, TikTok. WhatsApp click-to-chat funnels that convert at 3x the rate of any landing page. Direct booking and lead generation systems that eliminate middlemen entirely. Every baht tracked. Every campaign built to scale.",
+    p2: "Google, Meta, TikTok. WhatsApp click-to-chat funnels built to outperform a standard landing page. Direct booking and lead generation systems that eliminate middlemen entirely. Every baht tracked. Every campaign built to scale.",
     bullets: [
       "Google Search & Shopping Ads",
       "Meta & TikTok Conversion Campaigns",
@@ -20,7 +20,7 @@ const content = [
       desc: "Any brand spending money on ads that isn't seeing a clear, trackable return."
     },
     stats: [
-      { val: "3×", lbl: "Average ROAS across active campaigns" },
+      { val: "3x", lbl: "Average ROAS across active campaigns" },
       { val: "฿0", lbl: "Wasted spend — every baht tracked" },
       { val: "Direct", lbl: "Bookings & leads. No middlemen." },
       { val: "Scale", lbl: "When the math works, we push harder" }
@@ -45,7 +45,7 @@ const content = [
     },
     stats: [
       { val: "Daily", lbl: "Consistent high-end brand-aligned posts" },
-      { val: "10×", lbl: "Average increase in organic engagement" },
+      { val: "3x", lbl: "Average increase in organic engagement" },
       { val: "24/7", lbl: "Community management & lead nurturing" },
       { val: "Owned", lbl: "An audience you own, not renting from ads" }
     ]
@@ -70,7 +70,7 @@ const content = [
     },
     stats: [
       { val: "4K", lbl: "Cinema-grade quality for all assets" },
-      { val: "Viral", lbl: "Format-engineered for the algorithm" },
+      { val: "Consistent", lbl: "Format-engineered for the algorithm" },
       { val: "Fast", lbl: "Rapid turnaround, culturally relevant" },
       { val: "Scale", lbl: "Vast content libraries from single shoots" }
     ]
@@ -78,9 +78,9 @@ const content = [
   {
     num: "04  ·  THE FUTURE IS HERE",
     title: "AI Creative Automation",
-    intro: "While competitors wait weeks for a shoot day — we generate perfection in hours.",
-    p1: "We use advanced AI to produce luxury visual assets, brand representatives, campaign graphics and social content at infinite scale — for any industry, any brand, any brief. Product brands. Lifestyle. Gems. Fashion. Events. F&B. If it needs to look incredible, AI creative does it faster, cheaper and with more variation than any traditional production workflow.",
-    p2: "Meet Ava & Alex: Our AI brand representatives already working for clients across Thailand. The unfair advantage is available right now.",
+    intro: "While competitors wait weeks for a shoot day — we generate at pace, in hours.",
+    p1: "We use advanced AI to produce luxury visual assets, brand representatives, campaign graphics and social content at scale — for any industry, any brand, any brief. Product brands. Lifestyle. Gems. Fashion. Events. F&B. If it needs to look incredible, AI creative does it faster and with more variation than traditional production workflows.",
+    p2: "Meet Ava & Alex — our in-house AI models, already appearing in campaigns for clients across Thailand. The unfair advantage is available right now.",
     bullets: [
       "AI Brand Representatives — Ava & Alex",
       "Generative Product & Lifestyle Photography",
@@ -95,9 +95,9 @@ const content = [
     },
     stats: [
       { val: "Zero", lbl: "Need for crews, sets or traditional talent" },
-      { val: "100%", lbl: "Ownership and control over every detail" },
-      { val: "Days", lbl: "Not weeks. Campaigns delivered instantly." },
-      { val: "∞", lbl: "Variations, angles and concepts on demand" }
+      { val: "Full", lbl: "Ownership and control over every detail" },
+      { val: "Days", lbl: "Not weeks. Campaigns delivered fast." },
+      { val: "Wide", lbl: "A wide range of variations, angles and concepts" }
     ]
   },
   {
@@ -119,7 +119,7 @@ const content = [
       desc: "Brands launching for the first time, brands whose current site doesn't reflect who they've become, and brands whose website traffic converts at a rate that embarrasses them."
     },
     stats: [
-      { val: "Fast", lbl: "Sub 3-second load times, always" },
+      { val: "Fast", lbl: "Optimised for fast load times" },
       { val: "Sharp", lbl: "Design that matches your brand ambition" },
       { val: "Built", lbl: "To convert, not just to look good" },
       { val: "Yours", lbl: "Full ownership. No platform dependency." }
@@ -128,7 +128,7 @@ const content = [
   {
     num: "06  ·  THE BLUEPRINT",
     title: "Brand Strategy",
-    intro: "Tactics without strategy is noise. Most brands are making a lot of noise.",
+    intro: "Tactics without strategy is just noise. Most brands are making a lot of noise.",
     p1: "We build the foundational DNA of your brand — positioning, narrative, visual identity — so that every ad you run, every post you make, every piece of content you produce and every page of your website lands with force and consistency.",
     p2: "We work across hospitality, F&B, lifestyle, luxury goods, e-commerce and service businesses. Because a beach club in Krabi needs a completely different strategy than a gem brand in Bangkok — and we know the difference.",
     bullets: [
@@ -144,8 +144,8 @@ const content = [
     },
     stats: [
       { val: "One", lbl: "Unified voice across every touchpoint" },
-      { val: "Moat", lbl: "Psychological barriers competitors can't cross" },
-      { val: "Price", lbl: "Positioning that commands premium pricing" },
+      { val: "Moat", lbl: "Positioning barriers competitors struggle to cross" },
+      { val: "Price", lbl: "Positioning that supports stronger pricing" },
       { val: "Clarity", lbl: "Absolute alignment on who you are" }
     ]
   },
@@ -168,18 +168,18 @@ const content = [
       desc: "Founders and business owners who want expert eyes on their brand without a full-service retainer. Also ideal for in-house marketing teams that need senior strategic direction."
     },
     stats: [
-      { val: "Honest", lbl: "No fluff. No politics. Just what to change." },
-      { val: "Senior", lbl: "Direct access — not account managers" },
-      { val: "Flexible", lbl: "One session or ongoing — you decide" },
-      { val: "Fast", lbl: "Clarity in hours, not months" }
+      { val: "Honest", lbl: "Straight answers, no sugar-coating" },
+      { val: "Senior", lbl: "Direct access to senior strategists, not junior staff" },
+      { val: "Flexible", lbl: "Sessions or ongoing — your call" },
+      { val: "Fast", lbl: "Insights and next steps, not a 6-week onboarding" }
     ]
   },
   {
     num: "08  ·  THE THIRD DIMENSION",
     title: "CGI & 3D Production",
     intro: "When reality is not enough — we build worlds.",
-    p1: "Some products cannot be photographed. Some spaces do not exist yet. Some ideas are too big for a camera. CGI and 3D production gives your brand the ability to show the impossible — with photorealistic precision, at any scale, for any medium.",
-    p2: "From luxury real estate renders that sell properties before they are built, to product visualisations that make e-commerce convert like never before, to 3D brand assets that live across digital, social and broadcast — we create the visuals that no camera can capture.",
+    p1: "Some products cannot be photographed. Some spaces do not exist yet. Some ideas are too big for a camera. CGI and 3D production gives your brand the ability to show the impossible — with high-precision detail, at any scale, for any medium.",
+    p2: "From luxury real estate renders that sell properties before they are built, to product visualisations that help e-commerce convert more effectively, to 3D brand assets that live across digital, social and broadcast — we create the visuals that no camera can capture.",
     bullets: [
       "Photorealistic Product Visualisation & Rendering",
       "Architectural & Real Estate 3D Renders",
@@ -193,18 +193,18 @@ const content = [
       desc: "Real estate developers, product brands, luxury goods, architecture firms, and any brand that needs to show something that does not exist yet — or cannot be captured on a standard shoot."
     },
     stats: [
-      { val: "Real", lbl: "Photorealistic quality — indistinguishable from photography" },
+      { val: "Real", lbl: "High-precision quality, close to real photography" },
       { val: "Any", lbl: "Scale — from hero product to full environment" },
-      { val: "Fast", lbl: "Renders delivered faster than traditional shoot days" },
-      { val: "Inf", lbl: "Revisions and angles without reshooting" }
+      { val: "Fast", lbl: "Renders typically faster than traditional shoot days" },
+      { val: "Flexible", lbl: "Revisions and new angles without reshooting" }
     ]
   },
   {
     num: "09  ·  THE FUTURE OF FILM",
     title: "AI Film Production",
-    intro: "Cinema-quality storytelling. No crew. No location. No limits.",
-    p1: "AI film production is the most significant shift in content creation since the smartphone. We use advanced AI video generation tools to produce cinematic brand films, product films and campaign videos — at a fraction of traditional production cost and in a fraction of the time.",
-    p2: "This is not low-quality AI content. This is high-concept, strategically crafted film storytelling — written, directed and produced by our team, powered by AI. Campaign-grade visual storytelling that used to require a full film crew, delivered in days at a price that makes sense for any budget.",
+    intro: "Cinema-style storytelling. No crew. No location. Fewer limits.",
+    p1: "AI film production is one of the most significant shifts in content creation since the smartphone. We use advanced AI video generation tools to produce cinematic brand films, product films and campaign videos — at a fraction of traditional production cost and time.",
+    p2: "This is not low-quality AI content. This is strategically crafted film storytelling — written, directed and produced by our team, powered by AI. Visual storytelling that used to require a full film crew, delivered in days at a price that makes sense for more budgets.",
     bullets: [
       "AI Brand Films & Campaign Videos",
       "AI Product & Launch Films",
@@ -218,10 +218,10 @@ const content = [
       desc: "Brands that want the impact of a film production without the cost or timeline. Startups launching products. Established brands refreshing campaign content. Any business with a story worth telling cinematically."
     },
     stats: [
-      { val: "Days", lbl: "From brief to finished film — not months" },
-      { val: "90%", lbl: "Cost saving vs traditional film production" },
-      { val: "Cinema", lbl: "Grade visual quality. AI-powered." },
-      { val: "Inf", lbl: "Creative directions explored before committing" }
+      { val: "Days", lbl: "From brief to finished film" },
+      { val: "Lower Cost", lbl: "Meaningful savings vs. traditional production" },
+      { val: "Cinema-Style", lbl: "Strong visual quality, AI-produced" },
+      { val: "Flexible", lbl: "Multiple creative directions to choose from" }
     ]
   }
 ];

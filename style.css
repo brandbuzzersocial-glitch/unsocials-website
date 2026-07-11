@@ -1650,6 +1650,7 @@ nav.compact{padding:14px 52px}
 .qm{font-family:'Space Mono',monospace;font-size:52px;line-height:1;color:rgba(232,255,0,.08);position:absolute;top:12px;right:18px}
 .ts{color:var(--ac);font-size:12px;letter-spacing:4px;margin-bottom:18px}
 .tq{font-family:'Space Grotesk',sans-serif;font-size:clamp(13px,1vw,15px);line-height:1.65;color:rgba(240,237,232,.85);margin-bottom:24px;letter-spacing:0}
+.tname{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;color:#ffffff;margin-bottom:2px;}
 .tau{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.05em;text-transform:uppercase;color:var(--m2)}
 .tbr{color:var(--ac);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.05em;text-transform:uppercase;display:block;margin-top:5px}
 

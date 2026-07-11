@@ -544,7 +544,7 @@ const caseData = {
     eye: 'Beach Club · Krabi, Thailand · Daily Social Engine + Multi-Format Visibility',
     title: 'Bamboo Beach Club',
     tags: ['Social Media Management', 'Content Production', 'AI Creative Automation', 'Brand Strategy'],
-    media: ["assets/cases/bamboo/img1.png","assets/cases/bamboo/img2.png","assets/cases/bamboo/vid1.mov","assets/cases/bamboo/vid2.mp4","assets/cases/bamboo/vid3.mp4","assets/cases/bamboo/vid4.mp4"],
+    media: ["assets/cases/bamboo/img1.png","assets/cases/bamboo/img2.png","assets/cases/bamboo/vid1.mov","assets/cases/bamboo/vid2.mp4","assets/cases/bamboo/vid3.mp4","assets/cases/bamboo/vid4.mp4","assets/cases/bamboo/vid5.mp4","assets/cases/bamboo/vid6.mp4"],
     problemHtml: `<div class="cs-sec-title">An incredible beach club venue operating in a digital vacuum.</div>
 <p class="cs-p">Bamboo Beach Club in Krabi is one of the island's most vibrant venues. While word of mouth was working locally, their social media presence was a complete afterthought. Great event nights were happening with live fire shows and foam parties, but the right people — tourists planning Krabi trips or actively looking for nightly entertainment — weren't seeing them.</p>
 <p class="cs-p">With an inconsistent posting schedule and lack of format diversity, Bamboo sat invisible behind competitors who posted daily to capture the high-value tourist market.</p>`,

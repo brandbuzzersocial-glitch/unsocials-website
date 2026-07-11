@@ -48,10 +48,38 @@
 /* Cover image container */
 .cs-cover-section { padding: 32px 8vw; background:#040404; display: flex; justify-content: center; }
 .cs-cover-wrapper { width: 100%; max-width: 1200px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); aspect-ratio: 16/9; }
-.cs-cover-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cs-cover-wrapper img, .cs-cover-wrapper video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.cs-gallery{padding:32px 8vw 48px;background:#040404}
+.cs-gallery-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:32px;display:flex;align-items:center;justify-content:center;gap:12px}
+.cs-gallery-label::before{content:'';width:24px;height:1px;background:var(--ac)}
+/* 3D CAROUSEL COVERFLOW */
+.cs-carousel-wrapper{position:relative;width:100%;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;perspective:1200px;padding:20px 0;overflow:hidden}
+.cs-grid{position:relative;width:100%;height:560px;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d;overflow:visible;padding:0;margin:0}
+.cs-grid-item{position:absolute !important;width:270px;height:480px;transition:transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s, z-index 0.6s;transform-style:preserve-3d;margin:0;cursor:pointer;border-radius:16px;overflow:hidden;background:#0a0a0a;border:1px solid rgba(255,255,255,.06)}
+.cs-grid-item:hover{box-shadow:0 24px 48px rgba(0,0,0,.5);border-color:rgba(232,255,0,.1)}
+.cs-grid-item img,.cs-grid-item video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block}
+
+/* Arrow Navigation */
+.cs-carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;background:rgba(255, 255, 255, 0.05);border:1px solid rgba(255, 255, 255, 0.1);color:var(--w);font-size:18px;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;transition:background 0.3s, border-color 0.3s, transform 0.3s;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.cs-carousel-arrow:hover{background:var(--ac);border-color:var(--ac);color:var(--bg)}
+.cs-carousel-arrow.prev{left:20px}
+.cs-carousel-arrow.next{right:20px}
+.cs-carousel-arrow:hover.prev{transform:translateY(-50%) translateX(-4px)}
+.cs-carousel-arrow:hover.next{transform:translateY(-50%) translateX(4px)}
 
 @media(max-width:1024px){.cs-story-grid{grid-template-columns:1fr}}
-@media(max-width:900px){.cs-hero{padding:140px 24px 16px}.cs-story{padding:24px 24px 48px}.cs-stats{grid-template-columns:1fr 1fr}.cs-cta-band{padding:60px 24px;flex-direction:column;align-items:flex-start}}
+@media(max-width:900px){
+  .cs-hero{padding:140px 24px 16px}
+  .cs-story{padding:24px 24px 48px}
+  .cs-gallery{padding:48px 24px}
+  .cs-stats{grid-template-columns:1fr 1fr}
+  .cs-cta-band{padding:60px 24px;flex-direction:column;align-items:flex-start}
+  .cs-grid{height:485px}
+  .cs-grid-item{width:230px;height:410px}
+  .cs-carousel-arrow.prev{left:10px}
+  .cs-carousel-arrow.next{right:10px}
+}
 @media(max-width:540px){.cs-stats{grid-template-columns:1fr}}
 </style>
 </head>
@@ -108,7 +136,20 @@
 
 <section class="cs-cover-section">
   <div class="cs-cover-wrapper cs-reveal">
-    <img src="../assets/huay-yai-cover.png" alt="Huay Yai Park Villas Cover Image" loading="lazy">
+    <video src="../assets/cases/huay-yai/explainer.mp4" autoplay loop muted playsinline poster="../assets/huay-yai-cover.png"></video>
+  </div>
+</section>
+
+<section class="cs-gallery">
+  <div class="cs-gallery-label cs-reveal">Campaign Gallery</div>
+  <div class="cs-carousel-wrapper cs-reveal">
+    <button class="cs-carousel-arrow prev" aria-label="Previous video">←</button>
+    <div class="cs-grid">
+      <div class="cs-grid-item cs-reveal-scale cs-d1"><video src="../assets/cases/huay-yai/vid1.mp4" autoplay loop muted playsinline></video></div>
+      <div class="cs-grid-item cs-reveal-scale cs-d2"><video src="../assets/cases/huay-yai/vid2.mp4" autoplay loop muted playsinline></video></div>
+      <div class="cs-grid-item cs-reveal-scale cs-d3"><video src="../assets/cases/huay-yai/vid3.mp4" autoplay loop muted playsinline></video></div>
+    </div>
+    <button class="cs-carousel-arrow next" aria-label="Next video">→</button>
   </div>
 </section>
 
@@ -125,6 +166,99 @@
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('cs-visible');io.unobserve(e.target)}})
   },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.cs-reveal,.cs-reveal-scale').forEach(el=>io.observe(el));
+})();
+
+// 3D Carousel Coverflow Logic
+(function(){
+  function init3DCarousels() {
+    const wrappers = document.querySelectorAll('.cs-carousel-wrapper');
+    wrappers.forEach(wrapper => {
+      const track = wrapper.querySelector('.cs-grid, .cs-showcase-grid');
+      if (!track) return;
+      const items = track.querySelectorAll('.cs-grid-item, .cs-showcase-item');
+      if (items.length === 0) return;
+
+      let activeIndex = Math.floor(items.length / 2);
+      
+      const prevBtn = wrapper.querySelector('.cs-carousel-arrow.prev');
+      const nextBtn = wrapper.querySelector('.cs-carousel-arrow.next');
+
+      function updatePositions() {
+        items.forEach((item, index) => {
+          const diff = index - activeIndex;
+          const absDiff = Math.abs(diff);
+
+          if (diff === 0) {
+            item.style.transform = `translateX(0) scale(1.15) translateZ(100px) rotateY(0deg)`;
+            item.style.zIndex = '10';
+            item.style.opacity = '1';
+            item.style.pointerEvents = 'auto';
+          } else if (diff < 0) {
+            const tx = -110 * absDiff - 40;
+            item.style.transform = `translateX(${tx}px) scale(${1 - 0.12 * absDiff}) rotateY(40deg) translateZ(${-80 * absDiff}px)`;
+            item.style.zIndex = `${10 - absDiff}`;
+            item.style.opacity = `${Math.max(0.2, 1 - 0.25 * absDiff)}`;
+            item.style.pointerEvents = 'none';
+          } else {
+            const tx = 110 * absDiff + 40;
+            item.style.transform = `translateX(${tx}px) scale(${1 - 0.12 * absDiff}) rotateY(-40deg) translateZ(${-80 * absDiff}px)`;
+            item.style.zIndex = `${10 - absDiff}`;
+            item.style.opacity = `${Math.max(0.2, 1 - 0.25 * absDiff)}`;
+            item.style.pointerEvents = 'none';
+          }
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (activeIndex > 0) {
+            activeIndex--;
+            updatePositions();
+          }
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (activeIndex < items.length - 1) {
+            activeIndex++;
+            updatePositions();
+          }
+        });
+      }
+
+      items.forEach((item, index) => {
+        item.addEventListener('click', () => {
+          if (index !== activeIndex) {
+            activeIndex = index;
+            updatePositions();
+          }
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (wrapper.matches(':hover')) {
+          if (e.key === 'ArrowLeft' && activeIndex > 0) {
+            activeIndex--;
+            updatePositions();
+          } else if (e.key === 'ArrowRight' && activeIndex < items.length - 1) {
+            activeIndex++;
+            updatePositions();
+          }
+        }
+      });
+
+      updatePositions();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init3DCarousels);
+  } else {
+    init3DCarousels();
+  }
 })();
 </script>
 </body>

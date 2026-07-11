@@ -615,14 +615,14 @@ function openCase(id) {
   document.documentElement.style.setProperty('--case-accent-rgb', accent.rgb);
 
   const coverMap = {
-    elysium: 'assets/elysium-cover.jpg',
+    elysium: 'assets/elysium-cover.png',
     alexa: 'assets/alexa-cover.png',
     skyview: 'assets/skyview-cover.png',
     nomads: 'assets/nomads-cover.png',
     bamboo: 'assets/bamboo-cover.png',
     gps: 'assets/gps-cover.jpg'
   };
-  const coverImg = coverMap[id] || 'assets/elysium-cover.jpg';
+  const coverImg = coverMap[id] || 'assets/elysium-cover.png';
   
   let tagsHtml = data.tags.map(t => `<span class="cs-tag">${t}</span>`).join('');
   
@@ -832,7 +832,7 @@ const serviceData = {
     ],
     pitchHtml: '<p class="svc-text">The internet is an auction, and most brands are bidding blindly. We operate differently. We use data to understand exactly what a customer is worth, and we build <strong>performance marketing engines</strong> designed to acquire them for less.</p><p class="svc-text">No vanity metrics. No excuses. Just a transparent, aggressive pursuit of ROI.</p>',
     works: [
-      { media: 'assets/elysium-cover.jpg', tag: 'Performance Funnel', title: 'Elysium Pattaya — Direct Bookings' },
+      { media: 'assets/elysium-cover.png', tag: 'Performance Funnel', title: 'Elysium Pattaya — Direct Bookings' },
       { media: 'assets/showcase/ai-marketing.mp4', tag: 'Paid Acquisition', title: 'AI Lead Gen Engine' },
       { media: 'assets/skyview-cover.png', tag: 'Paid Social', title: 'Skyview Bangkok — Premium Scaling' }
     ]
@@ -955,7 +955,7 @@ function openService(id, fromPopState = false) {
 
   let mediaHtml = '';
   if (id === 'performance') {
-    mediaHtml = `<img src="assets/elysium-cover.jpg" alt="Elysium Pattaya">`;
+    mediaHtml = `<img src="assets/elysium-cover.png" alt="Elysium Pattaya">`;
   } else if (id === 'social') {
     mediaHtml = `<img src="assets/bamboo-cover.png" alt="Bamboo Beach Club">`;
   } else if (id === 'content') {

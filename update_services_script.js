@@ -80,9 +80,8 @@ const content = [
     title: "AI Creative Automation",
     intro: "While competitors wait weeks for a shoot day — we generate at pace, in hours.",
     p1: "We use advanced AI to produce luxury visual assets, brand representatives, campaign graphics and social content at scale — for any industry, any brand, any brief. Product brands. Lifestyle. Gems. Fashion. Events. F&B. If it needs to look incredible, AI creative does it faster and with more variation than traditional production workflows.",
-    p2: "Meet Ava & Alex — our in-house AI models, already appearing in campaigns for clients across Thailand. The unfair advantage is available right now.",
+    p2: "Advanced generative AI models tailored specifically for your brand style, delivering high-end visual assets at scale.",
     bullets: [
-      "AI Brand Representatives — Ava & Alex",
       "Generative Product & Lifestyle Photography",
       "AI-Enhanced Social Content at Scale",
       "Conceptual & Editorial AI Graphics",

@@ -2229,6 +2229,7 @@ footer{background:#040404;padding-bottom:40px}
     clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
     overflow: hidden; border: 1px solid rgba(255,255,255,0.08);
     background: #000; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    display: block; text-decoration: none; cursor: pointer;
 }
 .rep-fragment:hover { transform: translateY(-10px) scale(1.02); }
 .rep-fragment img {

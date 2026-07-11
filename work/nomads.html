@@ -42,38 +42,21 @@
 .cs-story-card p{font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.75;color:rgba(255,255,255,.5)}
 
 /* ===== SIDE-BY-SIDE MEDIA SECTION ===== */
-.cs-media-section{padding:32px 8vw 48px;background:#040404}
-.cs-media-grid{display:grid;grid-template-columns:270px 270px 1fr;gap:40px;align-items:start;max-width:1300px;margin:0 auto}
-.cs-media-col{display:flex;flex-direction:column;position:relative;overflow:visible}
-.cs-media-title{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:32px;display:flex;align-items:center;gap:12px}
-.cs-media-title::before{content:'';width:24px;height:1px;background:var(--ac)}
-.showcase-col .cs-media-title{justify-content:center;width:100%}
-
-/* Comparison Slider */
-.cs-comparison-slider{position:relative;width:100%;max-width:270px;aspect-ratio:9/16;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:#0a0a0a;user-select:none;-webkit-user-select:none;touch-action:pan-y;margin:0 auto}
-.cs-image-wrapper{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden}
-.cs-image-wrapper img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
-.cs-image-wrapper.after{clip-path:inset(0 0 0 50%);z-index:2}
-.cs-image-badge{position:absolute;top:20px;background:rgba(8,8,8,0.75);border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:8px 16px;border-radius:100px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;z-index:10;pointer-events:none}
-.cs-image-badge.before{left:20px;color:rgba(255,255,255,0.55)}
-.cs-image-badge.after{right:20px;color:var(--ac);border-color:rgba(232,255,0,0.3);box-shadow:0 0 15px rgba(232,255,0,0.15)}
-
-/* Slider Handle */
-.cs-slider-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--ac);z-index:10;transform:translateX(-50%);cursor:ew-resize}
-.cs-slider-button{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--ac);color:var(--bg);border:none;box-shadow:0 4px 10px rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;pointer-events:none}
-
-/* 3D Carousel Coverflow */
-.cs-carousel-wrapper{position:relative;width:100%;display:flex;align-items:center;justify-content:center;perspective:1200px;padding:20px 0;overflow:hidden}
-.cs-showcase-grid{position:relative;width:100%;height:560px;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d;overflow:visible;padding:0;margin:0}
-.cs-showcase-item{position:absolute !important;width:270px;height:480px;transition:transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s, z-index 0.6s;transform-style:preserve-3d;margin:0;cursor:pointer;border-radius:16px;overflow:hidden;background:#0a0a0a;border:1px solid rgba(255,255,255,.06)}
-.cs-showcase-item:hover{box-shadow:0 24px 48px rgba(0,0,0,.5);border-color:rgba(232,255,0,.1)}
-.cs-showcase-item img,.cs-showcase-item video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block}
+.cs-gallery{padding:32px 8vw 48px;background:#040404}
+.cs-gallery-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:32px;display:flex;align-items:center;justify-content:center;gap:12px}
+.cs-gallery-label::before{content:'';width:24px;height:1px;background:var(--ac)}
+/* 3D CAROUSEL COVERFLOW */
+.cs-carousel-wrapper{position:relative;width:100%;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;perspective:1200px;padding:20px 0;overflow:hidden}
+.cs-grid{position:relative;width:100%;height:560px;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d;overflow:visible;padding:0;margin:0}
+.cs-grid-item{position:absolute !important;width:270px;height:480px;transition:transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s, z-index 0.6s;transform-style:preserve-3d;margin:0;cursor:pointer;border-radius:16px;overflow:hidden;background:#0a0a0a;border:1px solid rgba(255,255,255,.06)}
+.cs-grid-item:hover{box-shadow:0 24px 48px rgba(0,0,0,.5);border-color:rgba(232,255,0,.1)}
+.cs-grid-item img,.cs-grid-item video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block}
 
 /* Arrow Navigation */
-.cs-carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255, 255, 255, 0.05);border:1px solid rgba(255, 255, 255, 0.1);color:var(--w);font-size:16px;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;transition:background 0.3s, border-color 0.3s, transform 0.3s;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.cs-carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;background:rgba(255, 255, 255, 0.05);border:1px solid rgba(255, 255, 255, 0.1);color:var(--w);font-size:18px;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;transition:background 0.3s, border-color 0.3s, transform 0.3s;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .cs-carousel-arrow:hover{background:var(--ac);border-color:var(--ac);color:var(--bg)}
-.cs-carousel-arrow.prev{left:0px}
-.cs-carousel-arrow.next{right:0px}
+.cs-carousel-arrow.prev{left:20px}
+.cs-carousel-arrow.next{right:20px}
 .cs-carousel-arrow:hover.prev{transform:translateY(-50%) translateX(-4px)}
 .cs-carousel-arrow:hover.next{transform:translateY(-50%) translateX(4px)}
 
@@ -84,19 +67,16 @@
 .cs-cta-link:hover{transform:translateY(-4px);background:#fff;color:var(--bg);box-shadow:0 12px 32px rgba(0,0,0,.3)}
 
 /* ===== RESPONSIVE ===== */
-@media(max-width:1200px){
-  .cs-media-grid{grid-template-columns:270px 270px;justify-content:center;gap:32px}
-  .cs-media-col.showcase-col{grid-column:span 2}
+@media(max-width:1024px){
+  .cs-story-grid{grid-template-columns:1fr}
 }
 @media(max-width:900px){
   .cs-hero{padding:140px 24px 16px}
-  .cs-story{padding:24px 24px 48px}.cs-media-section{padding:48px 24px}
+  .cs-story{padding:24px 24px 48px;}.cs-gallery{padding:48px 24px}
   .cs-stats{grid-template-columns:1fr 1fr}
   .cs-cta-band{padding:60px 24px;flex-direction:column;align-items:flex-start}
-  .cs-media-grid{grid-template-columns:1fr;gap:48px}
-  .cs-media-col.showcase-col{grid-column:span 1}
-  .cs-showcase-grid{height:485px}
-  .cs-showcase-item{width:230px;height:410px}
+  .cs-grid{height:485px}
+  .cs-grid-item{width:230px;height:410px}
   .cs-carousel-arrow.prev{left:10px}
   .cs-carousel-arrow.next{right:10px}
 }
@@ -156,56 +136,18 @@
   </div>
 </section>
 
-<section class="cs-media-section">
-  <div class="cs-media-grid">
-    <!-- Left Column: Krabi Slider -->
-    <div class="cs-media-col slider-col cs-reveal">
-      <div class="cs-media-title">Krabi Property Feed</div>
-      <div class="cs-comparison-slider">
-        <div class="cs-image-wrapper before">
-          <span class="cs-image-badge before">Before</span>
-          <img src="../assets/cases/nomads/img3.png" alt="Nomads Krabi feed — Before Unsocials" loading="lazy">
-        </div>
-        <div class="cs-image-wrapper after">
-          <span class="cs-image-badge after">After</span>
-          <img src="../assets/cases/nomads/img1.png" alt="Nomads Krabi feed — After Unsocials" loading="lazy">
-        </div>
-        <div class="cs-slider-handle">
-          <div class="cs-slider-button">↔</div>
-        </div>
-      </div>
+<section class="cs-gallery">
+  <div class="cs-gallery-label cs-reveal">Content We Created</div>
+  <div class="cs-carousel-wrapper cs-reveal">
+    <button class="cs-carousel-arrow prev" aria-label="Previous video">←</button>
+    <div class="cs-grid">
+      <div class="cs-grid-item cs-reveal-scale cs-d1"><video src="../assets/cases/nomads/vid1.mp4" autoplay loop muted playsinline></video></div>
+      <div class="cs-grid-item cs-reveal-scale cs-d2"><video src="../assets/cases/nomads/vid2.mp4" autoplay loop muted playsinline></video></div>
+      <div class="cs-grid-item cs-reveal-scale cs-d3"><video src="../assets/cases/nomads/vid3.mp4" autoplay loop muted playsinline></video></div>
+      <div class="cs-grid-item cs-reveal-scale cs-d4"><video src="../assets/cases/nomads/vid4.mp4" autoplay loop muted playsinline></video></div>
+      <div class="cs-grid-item cs-reveal-scale cs-d5"><video src="../assets/cases/nomads/vid5.mp4" autoplay loop muted playsinline></video></div>
     </div>
-
-    <!-- Center Column: Phuket Slider -->
-    <div class="cs-media-col slider-col cs-reveal cs-d2">
-      <div class="cs-media-title">Phuket Property Feed</div>
-      <div class="cs-comparison-slider">
-        <div class="cs-image-wrapper before">
-          <span class="cs-image-badge before">Before</span>
-          <img src="../assets/cases/nomads/img4.png" alt="Nomads Phuket feed — Before Unsocials" loading="lazy">
-        </div>
-        <div class="cs-image-wrapper after">
-          <span class="cs-image-badge after">After</span>
-          <img src="../assets/cases/nomads/img2.png" alt="Nomads Phuket feed — After Unsocials" loading="lazy">
-        </div>
-        <div class="cs-slider-handle">
-          <div class="cs-slider-button">↔</div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Right Column: Content Showcase (3D Coverflow) -->
-    <div class="cs-media-col showcase-col cs-reveal cs-d3">
-      <div class="cs-media-title">Content We Created</div>
-      <div class="cs-carousel-wrapper">
-        <button class="cs-carousel-arrow prev" aria-label="Previous image">←</button>
-        <div class="cs-showcase-grid">
-          <div class="cs-showcase-item cs-reveal-scale cs-d1"><video src="../assets/cases/nomads/vid1.mp4" autoplay loop muted playsinline></video></div>
-          <div class="cs-showcase-item cs-reveal-scale cs-d2"><video src="../assets/cases/nomads/vid2.mp4" autoplay loop muted playsinline></video></div>
-        </div>
-        <button class="cs-carousel-arrow next" aria-label="Next image">→</button>
-      </div>
-    </div>
+    <button class="cs-carousel-arrow next" aria-label="Next video">→</button>
   </div>
 </section>
 

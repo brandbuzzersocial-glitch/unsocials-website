@@ -517,7 +517,7 @@ const caseData = {
     eye: 'Hostel · Thailand · 3 Properties · UGC Strategy + Direct Booking Funnel',
     title: 'Nomads Hostel Asia',
     tags: ['Social Media Management', 'UGC Content Strategy', 'Content Production', 'Direct Booking Funnel'],
-    media: ["assets/cases/nomads/img1.png","assets/cases/nomads/img2.png","assets/cases/nomads/img3.png","assets/cases/nomads/img4.png","assets/cases/nomads/vid1.mp4","assets/cases/nomads/vid2.mp4","assets/cases/nomads/vid3.mp4"],
+    media: ["assets/cases/nomads/vid1.mp4","assets/cases/nomads/vid2.mp4","assets/cases/nomads/vid3.mp4","assets/cases/nomads/vid4.mp4","assets/cases/nomads/vid5.mp4"],
     problemHtml: `<div class="cs-sec-title">An exceptional guest experience with zero content and high OTA dependency.</div>
 <p class="cs-p">Nomads Hostel Asia had three properties across Thailand and a genuinely exceptional product — legendary pub crawls, pool parties, and island adventures. The experiences were happening every night, but the content wasn't. Because of this, bookings were heavily OTA-dependent (Hostelworld, Booking.com), eating into their margins with high commission fees.</p>
 <p class="cs-p">The target audience of backpackers and solo travellers lives on Instagram, making booking decisions based on social proof. Nomads was invisible at the exact moment those decisions were being made.</p>`,

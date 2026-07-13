@@ -1889,6 +1889,29 @@ mm.add("(min-width: 901px)", function() {
       revealTl.to(listItems, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: 'power2.out' }, 0.7);
     }
   });
+
+  // Desktop stacking card overlap effect (depth parallax)
+  cards.forEach((card, i) => {
+    if (i > 0) {
+      const prevInner = cards[i - 1].querySelector('.svc-card-inner');
+      if (prevInner) {
+        gsap.to(prevInner, {
+          scrollTrigger: {
+            trigger: card,
+            start: 'top bottom',
+            end: 'top top',
+            scrub: true,
+            invalidateOnRefresh: true
+          },
+          scale: 0.90,
+          opacity: 0,
+          filter: 'brightness(0.2) blur(3px)',
+          y: -60,
+          ease: 'none'
+        });
+      }
+    }
+  });
 });
 
 // Mobile Fallback

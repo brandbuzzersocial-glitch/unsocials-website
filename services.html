@@ -1982,9 +1982,31 @@ mm.add("(max-width: 900px)", function() {
 
 // Read More toggle logic removed (descriptions are fully visible by default)
 
-// Refresh ScrollTrigger after all resources loaded
+// Refresh ScrollTrigger after all resources loaded and instantly reveal visible cards
 window.addEventListener('load', function() {
   ScrollTrigger.refresh();
+  
+  // Reveal any cards that are already in/above the viewport on load
+  if (typeof cards !== 'undefined') {
+    cards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      const triggerPoint = window.innerHeight * 0.85;
+      if (rect.top < triggerPoint) {
+        const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc');
+        const wrapper = card.querySelector('.card-media-wrapper');
+        const media = card.querySelector('.card-media');
+        const listItems = card.querySelectorAll('.svc-deliverables li, .svc-cta-btn');
+        const inner = card.querySelector('.svc-card-inner');
+        
+        gsap.killTweensOf([textEls, wrapper, media, listItems, inner]);
+        gsap.set(textEls, { opacity: 1, y: 0 });
+        if (wrapper) gsap.set(wrapper, { clipPath: 'inset(0 0% 0 0)', overflow: 'visible' });
+        if (media) gsap.set(media, { scale: 1, x: 0 });
+        if (listItems.length) gsap.set(listItems, { opacity: 1, y: 0 });
+        if (inner) gsap.set(inner, { opacity: 1, scale: 1, filter: 'none', y: 0 });
+      }
+    });
+  }
 });
 
 // Hash navigation support for jumping directly to cards
@@ -2003,11 +2025,27 @@ function handleHashNavigation() {
   const hash = window.location.hash;
   if (hash && serviceHashes[hash] !== undefined) {
     const cardIdx = serviceHashes[hash];
-    setTimeout(() => {
-      if (typeof cards !== 'undefined' && cards[cardIdx]) {
-        lenis.scrollTo(cards[cardIdx], { offset: -20, duration: 1.2 });
-      }
-    }, 500);
+    if (typeof cards !== 'undefined' && cards[cardIdx]) {
+      const targetCard = cards[cardIdx];
+      
+      // Instantly reveal target card to avoid blank states during hash jump
+      const textEls = targetCard.querySelectorAll('.svc-num, .svc-title, .svc-desc');
+      const wrapper = targetCard.querySelector('.card-media-wrapper');
+      const media = targetCard.querySelector('.card-media');
+      const listItems = targetCard.querySelectorAll('.svc-deliverables li, .svc-cta-btn');
+      const inner = targetCard.querySelector('.svc-card-inner');
+      
+      gsap.killTweensOf([textEls, wrapper, media, listItems, inner]);
+      gsap.set(textEls, { opacity: 1, y: 0 });
+      if (wrapper) gsap.set(wrapper, { clipPath: 'inset(0 0% 0 0)', overflow: 'visible' });
+      if (media) gsap.set(media, { scale: 1, x: 0 });
+      if (listItems.length) gsap.set(listItems, { opacity: 1, y: 0 });
+      if (inner) gsap.set(inner, { opacity: 1, scale: 1, filter: 'none', y: 0 });
+
+      setTimeout(() => {
+        lenis.scrollTo(targetCard, { offset: -20, duration: 1.2 });
+      }, 300);
+    }
   }
 }
 window.addEventListener('load', handleHashNavigation);

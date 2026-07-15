@@ -59,7 +59,7 @@ nav.compact{padding:14px 52px}
   transform: scale(1.05);
 }
 .ft-logo-img {
-  height: clamp(40px, 4vw, 56px);
+  height: clamp(28px, 4vw, 56px);
   width: auto;
   object-fit: contain;
   filter: brightness(0) invert(1);
@@ -1921,6 +1921,9 @@ footer{background:#040404;padding-bottom:40px}
 
 /* SMALL MOBILE (< 600px) */
 @media(max-width:600px){
+  .nlogo-img {
+    height: 24px;
+  }
   /* Hero */
   .h-big { font-size: clamp(32px, 10vw, 48px); }
   .hero-ui { padding: 120px 20px 0; }

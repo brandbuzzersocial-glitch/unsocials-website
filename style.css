@@ -48,6 +48,29 @@ body::after{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;o
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:20px 52px;background:rgba(8,8,8,.9);backdrop-filter:; -webkit-backdrop-filter:;border-bottom:1px solid var(--border);transition:padding .3s}
 nav.compact{padding:14px 52px}
 .nlogo{font-family:'Syne',sans-serif;font-size:18px;letter-spacing:-0.01em;color:var(--w);text-decoration:none;display:flex;align-items:center;gap:10px;font-weight:800;text-transform:uppercase}
+.nlogo-img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  transition: transform 0.2s ease;
+}
+.nlogo:hover .nlogo-img {
+  transform: scale(1.05);
+}
+.ft-logo-img {
+  height: clamp(40px, 4vw, 56px);
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  transition: transform 0.2s ease;
+}
+.ft-logo-img:hover {
+  transform: scale(1.05);
+}
+.mmenu {
+  display: none;
+}
 .nbadge{background:var(--ac);color:var(--bg);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.05em;padding:4px 8px;font-weight:700;border-radius:2px}
 .nlinks{display:flex;gap:36px;align-items:center}
 .nlinks a{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--m2);text-decoration:none;transition:color .2s}

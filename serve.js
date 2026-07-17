@@ -20,6 +20,8 @@ const MIME_TYPES = {
     '.wasm': 'application/wasm'
 };
 
+const PORT = process.env.PORT || 8000;
+
 http.createServer((req, res) => {
     let urlWithoutQuery = req.url.split('?')[0];
     try {
@@ -49,6 +51,6 @@ http.createServer((req, res) => {
             res.end(content, 'utf-8');
         }
     });
-}).listen(8000);
+}).listen(PORT);
 
-console.log('Server running at http://localhost:8000/');
+console.log(`Server running at http://localhost:${PORT}/`);

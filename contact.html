@@ -28,7 +28,7 @@
   }
   .ch-eye {
     font-family: 'Space Mono', monospace;
-    font-size: 10px;
+    font-size: 0.625rem;
     letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--ac);
@@ -40,7 +40,7 @@
   .ch-eye::before { content: ''; width: 24px; height: 1px; background: var(--ac); display: block; }
   .ch-h {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(52px, 9vw, 130px);
+    font-size: clamp(3.25rem, 9vw, 8.125rem);
     line-height: 0.86;
     font-weight: 800;
     letter-spacing: -0.04em;
@@ -50,7 +50,7 @@
   }
   .ch-h em { font-family: 'Space Mono', monospace; font-style: italic; color: var(--ac); }
   .ch-sub {
-    font-size: clamp(16px, 1.4vw, 20px);
+    font-size: clamp(1rem, 1.4vw, 1.25rem);
     color: rgba(255,255,255,0.5);
     max-width: 520px;
     line-height: 1.7;
@@ -73,7 +73,7 @@
   }
   .cf-label-s {
     font-family: 'Space Mono', monospace;
-    font-size: 9px;
+    font-size: 0.5625rem;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: rgba(0,0,0,0.4);
@@ -90,7 +90,7 @@
   .contact-form .cta-row label {
     display: block;
     font-family: 'Space Mono', monospace;
-    font-size: 10px;
+    font-size: 0.625rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: rgba(0,0,0,0.35);
@@ -103,7 +103,7 @@
     border: none;
     outline: none;
     font-family: 'Syne', sans-serif;
-    font-size: 28px;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
     letter-spacing: -0.02em;
     color: var(--bg);
     width: 100%;
@@ -123,7 +123,7 @@
     background: var(--bg);
     color: var(--ac);
     font-family: 'Space Mono', monospace;
-    font-size: 11px;
+    font-size: 0.6875rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     padding: 18px 40px;
@@ -132,12 +132,14 @@
     clip-path: polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
     transition: transform .25s;
     font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   .contact-form .cta-btn:hover { transform: translate(-4px, -4px); }
   .contact-form .cta-note {
     margin-top: 14px;
     font-family: 'Space Mono', monospace;
-    font-size: 9px;
+    font-size: 0.5625rem;
     letter-spacing: 0.05em;
     color: rgba(0,0,0,0.3);
     text-transform: uppercase;
@@ -155,7 +157,7 @@
   .ci-block {}
   .ci-tag {
     font-family: 'Space Mono', monospace;
-    font-size: 9px;
+    font-size: 0.5625rem;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--ac);
@@ -163,7 +165,7 @@
   }
   .ci-val {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(18px, 2vw, 26px);
+    font-size: clamp(1.125rem, 2vw, 1.625rem);
     font-weight: 700;
     color: var(--w);
     letter-spacing: -0.01em;
@@ -171,7 +173,7 @@
   }
   .ci-sub {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 13px;
+    font-size: 0.8125rem;
     color: rgba(255,255,255,0.4);
     line-height: 1.6;
   }
@@ -189,7 +191,7 @@
   }
   .ci-promise-h {
     font-family: 'Syne', sans-serif;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 800;
     color: var(--ac);
     text-transform: uppercase;
@@ -198,7 +200,7 @@
   }
   .ci-promise-t {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 13px;
+    font-size: 0.8125rem;
     color: rgba(255,255,255,0.5);
     line-height: 1.6;
   }
@@ -241,7 +243,7 @@
   }
   .cc-ch-name {
     font-family: 'Syne', sans-serif;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: -0.01em;
@@ -249,7 +251,7 @@
   }
   .cc-ch-handle {
     font-family: 'Space Mono', monospace;
-    font-size: 10px;
+    font-size: 0.625rem;
     letter-spacing: 1px;
     color: rgba(255,255,255,0.35);
     text-transform: uppercase;
@@ -266,7 +268,7 @@
     .contact-form .cta-row input,
     .contact-form .cta-row select,
     .contact-form .cta-row textarea {
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 
@@ -280,7 +282,7 @@
       padding: 24px !important;
     }
     .hq-card h3 {
-      font-size: 18px !important;
+      font-size: 1.125rem !important;
     }
     
     /* Scale down contact body layout and paddings */
@@ -305,12 +307,12 @@
     .contact-form .cta-row input,
     .contact-form .cta-row select,
     .contact-form .cta-row textarea {
-      font-size: 18px !important;
+      font-size: 1.125rem !important;
     }
     .contact-form .cta-btn {
       margin-top: 24px !important;
       padding: 14px 32px !important;
-      font-size: 10px !important;
+      font-size: 0.625rem !important;
     }
     .contact-form .cta-note {
       margin-top: 10px !important;
@@ -321,18 +323,18 @@
       margin-bottom: 10px !important;
     }
     .ci-val {
-      font-size: clamp(16px, 1.8vw, 20px) !important;
+      font-size: clamp(1rem, 1.8vw, 1.25rem) !important;
       margin-bottom: 4px !important;
     }
     .ci-sub {
-      font-size: 12px !important;
+      font-size: 0.75rem !important;
       line-height: 1.5 !important;
     }
     .ci-promise {
       padding: 20px 18px !important;
     }
     .ci-promise-h {
-      font-size: 15px !important;
+      font-size: 0.9375rem !important;
       margin-bottom: 6px !important;
     }
   }
@@ -351,7 +353,7 @@
   }
   .faq-eyebrow {
     font-family: 'Space Mono', monospace;
-    font-size: 10px;
+    font-size: 0.625rem;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--ac);
@@ -359,7 +361,7 @@
   }
   .faq-title {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(32px, 5vw, 64px);
+    font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 800;
     letter-spacing: -0.03em;
     text-transform: uppercase;
@@ -386,7 +388,7 @@
   .faq-question {
     padding: 24px 30px;
     font-family: 'Syne', sans-serif;
-    font-size: clamp(16px, 1.5vw, 20px);
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
     font-weight: 700;
     color: var(--w);
     cursor: pointer;
@@ -416,7 +418,7 @@
     transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s ease;
     padding: 0 30px;
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.6);
   }

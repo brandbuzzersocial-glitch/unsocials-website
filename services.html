@@ -17,11 +17,11 @@ nav{background:rgba(4,4,4,.95)}
 
 /* ── PAGE HERO ── */
 .ph{padding:160px 5vw 64px;background:#040404;position:relative;z-index:10;}
-.ph-eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.ph-eye{font-family:'Space Mono',monospace;font-size:0.625rem;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:20px;display:flex;align-items:center;gap:12px}
 .ph-eye::before{content:'';width:24px;height:1px;background:var(--ac);display:block}
-.ph-h{font-family:'Syne', sans-serif;font-size:clamp(48px,8vw,96px);line-height:.88;font-weight:800;letter-spacing:-0.03em;text-transform:uppercase;color:var(--w);margin-bottom:24px}
+.ph-h{font-family:'Syne', sans-serif;font-size:clamp(3rem, 8vw, 6rem);line-height:.88;font-weight:800;letter-spacing:-0.03em;text-transform:uppercase;color:var(--w);margin-bottom:24px}
 .ph-h em{font-style:italic;color:var(--ac)}
-.ph-sub{font-size:clamp(14px,1.2vw,18px);color:rgba(255,255,255,.5);max-width:540px;line-height:1.7;font-family:'Space Grotesk',sans-serif}
+.ph-sub{font-size:clamp(0.875rem, 1.2vw, 1.125rem);color:rgba(255,255,255,.5);max-width:540px;line-height:1.7;font-family:'Space Grotesk',sans-serif}
 
 /* ── SERVICES DECK — sticky stacking cards ── */
 .svc-deck {
@@ -81,7 +81,7 @@ nav{background:rgba(4,4,4,.95)}
 
 .svc-menu-num {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(32px, 3vw, 56px);
+  font-size: clamp(2rem, 3vw, 3.5rem);
   font-weight: 800;
   color: var(--ac);
   line-height: 1;
@@ -98,7 +98,7 @@ nav{background:rgba(4,4,4,.95)}
 
 .svc-menu-list li {
   font-family: 'Space Mono', monospace;
-  font-size: 9px;
+  font-size: 0.5625rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--w);
@@ -150,7 +150,7 @@ nav{background:rgba(4,4,4,.95)}
 .svc-target { display: none; }
 .svc-target-lbl {
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
+  font-size: 0.625rem;
   letter-spacing: 1px;
   color: var(--ac);
   display: block;
@@ -171,7 +171,7 @@ nav{background:rgba(4,4,4,.95)}
 
 .svc-num {
   font-family: 'Space Mono', monospace;
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 3px;
   color: var(--ac);
   margin-bottom: 10px;
@@ -179,7 +179,7 @@ nav{background:rgba(4,4,4,.95)}
 
 .svc-title {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(32px, 3.8vw, 58px);
+  font-size: clamp(2rem, 3.8vw, 3.625rem);
   font-weight: 800;
   color: var(--w);
   line-height: 0.95;
@@ -190,7 +190,7 @@ nav{background:rgba(4,4,4,.95)}
 
 .svc-desc {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1.65;
   color: rgba(255,255,255,0.6);
   max-width: 540px;
@@ -211,7 +211,7 @@ nav{background:rgba(4,4,4,.95)}
   display: inline-block;
   margin-top: 8px;
   font-family: 'Space Mono', monospace;
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 1px;
   text-transform: uppercase;
   border-bottom: 1px dashed var(--ac);
@@ -230,7 +230,7 @@ nav{background:rgba(4,4,4,.95)}
   display: inline-flex;
   align-items: center;
   font-family: 'Space Mono', monospace;
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--bg);
@@ -242,6 +242,8 @@ nav{background:rgba(4,4,4,.95)}
   transition: transform 0.3s, background 0.3s;
   width: fit-content;
   margin-top: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .svc-cta-btn:hover { transform: translateY(-4px); background: #fff; }
 
@@ -285,7 +287,7 @@ nav{background:rgba(4,4,4,.95)}
 }
 .sbc-h {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(36px, 5vw, 68px);
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   text-transform: uppercase;
@@ -294,7 +296,7 @@ nav{background:rgba(4,4,4,.95)}
 .sbc-h em { font-family: 'Space Mono', monospace; font-style: italic; }
 .sbc-link {
   font-family: 'Space Mono', monospace;
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   background: var(--bg);
@@ -304,6 +306,8 @@ nav{background:rgba(4,4,4,.95)}
   border-radius: 100px;
   transition: transform 0.25s, background-color 0.25s;
   font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .sbc-link:hover { transform: translateY(-4px); background: #fff; color: var(--bg); }
 
@@ -314,9 +318,9 @@ nav{background:rgba(4,4,4,.95)}
 @media (max-width: 1366px) {
   .ph { padding: 100px 5vw 40px; }
   .svc-card-inner { padding: 80px 5vw 40px calc(240px + 3vw); grid-template-columns: 1fr 220px; gap: 36px; }
-  .svc-title { font-size: clamp(26px, 3vw, 40px); margin-bottom: 12px; }
-  .svc-desc { font-size: 13px; margin-bottom: 10px; line-height: 1.55; }
-  .svc-cta-btn { padding: 12px 24px; font-size: 10px; }
+  .svc-title { font-size: clamp(1.625rem, 3vw, 2.5rem); margin-bottom: 12px; }
+  .svc-desc { font-size: 0.8125rem; margin-bottom: 10px; line-height: 1.55; }
+  .svc-cta-btn { padding: 12px 24px; font-size: 0.625rem; }
   .svc-right { width: 220px; height: 220px; }
 }
 
@@ -345,7 +349,7 @@ nav{background:rgba(4,4,4,.95)}
 }
 .pricing-eyebrow {
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
+  font-size: 0.625rem;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--ac);
@@ -353,7 +357,7 @@ nav{background:rgba(4,4,4,.95)}
 }
 .pricing-title {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(32px, 5vw, 64px);
+  font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   text-transform: uppercase;
@@ -403,7 +407,7 @@ nav{background:rgba(4,4,4,.95)}
 }
 .price-tier {
   font-family: 'Space Mono', monospace;
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: rgba(255,255,255,0.4);
@@ -414,7 +418,7 @@ nav{background:rgba(4,4,4,.95)}
 }
 .price-amt {
   font-family: 'Syne', sans-serif;
-  font-size: 40px;
+  font-size: 2.5rem;
   font-weight: 800;
   color: var(--w);
   margin-bottom: 6px;
@@ -423,13 +427,13 @@ nav{background:rgba(4,4,4,.95)}
   gap: 4px;
 }
 .price-amt span {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-family: 'Space Grotesk', sans-serif;
   color: rgba(255,255,255,0.5);
   font-weight: 400;
 }
 .price-desc {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: rgba(255,255,255,0.6);
   margin-bottom: 30px;
   font-family: 'Space Grotesk', sans-serif;
@@ -445,7 +449,7 @@ nav{background:rgba(4,4,4,.95)}
   flex-grow: 1;
 }
 .price-features li {
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: rgba(255,255,255,0.7);
   font-family: 'Space Grotesk', sans-serif;
   display: flex;
@@ -464,7 +468,7 @@ nav{background:rgba(4,4,4,.95)}
   display: block;
   text-align: center;
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
+  font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -474,6 +478,8 @@ nav{background:rgba(4,4,4,.95)}
   transition: all 0.3s;
   border: 1px solid rgba(255,255,255,0.2);
   color: var(--w);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .price-cta:hover {
   background: var(--w);
@@ -507,21 +513,21 @@ nav{background:rgba(4,4,4,.95)}
 }
 .custom-left h4 {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(20px, 2.5vw, 28px);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
   font-weight: 700;
   color: var(--w);
   margin-bottom: 6px;
 }
 .custom-left p {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: rgba(255,255,255,0.5);
 }
 .custom-cta {
   display: inline-flex;
   align-items: center;
   font-family: 'Space Mono', monospace;
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -532,6 +538,8 @@ nav{background:rgba(4,4,4,.95)}
   padding: 14px 30px;
   border-radius: 100px;
   transition: all 0.3s;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .custom-cta:hover {
   background: var(--ac);

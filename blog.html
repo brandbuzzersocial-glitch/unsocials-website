@@ -18,11 +18,11 @@ nav{background:rgba(4,4,4,.95)}
 
 /* ── PAGE HERO ── */
 .ph{padding:160px 60px 64px;border-bottom:1px solid rgba(255,255,255,.07)}
-.ph-eye{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--rd);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.ph-eye{font-family:'Space Mono',monospace;font-size:0.625rem;letter-spacing:4px;text-transform:uppercase;color:var(--rd);margin-bottom:20px;display:flex;align-items:center;gap:12px}
 .ph-eye::before{content:'';width:24px;height:1px;background:var(--rd);display:block}
-.ph-h{font-family: 'Syne', sans-serif;font-size:clamp(52px,8vw,110px);line-height:.88;font-weight:800;letter-spacing:-.04em;text-transform:uppercase;color:var(--w);margin-bottom:24px}
+.ph-h{font-family: 'Syne', sans-serif;font-size:clamp(3.25rem,8vw,6.875rem);line-height:.88;font-weight:800;letter-spacing:-.04em;text-transform:uppercase;color:var(--w);margin-bottom:24px}
 .ph-h em{font-style:italic;color:var(--ac)}
-.ph-sub{font-size:clamp(14px,1.2vw,18px);color:rgba(255,255,255,.5);max-width:600px;line-height:1.7;font-family:'Space Grotesk',sans-serif}
+.ph-sub{font-size:clamp(0.875rem,1.2vw,1.125rem);color:rgba(255,255,255,.5);max-width:600px;line-height:1.7;font-family:'Space Grotesk',sans-serif}
 
 /* ── BLOG GRID ── */
 .blog-grid {
@@ -73,7 +73,7 @@ nav{background:rgba(4,4,4,.95)}
 }
 .bc-meta {
   font-family: 'Space Mono', monospace;
-  font-size: 9px;
+  font-size: 0.5625rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--ac);
@@ -81,7 +81,7 @@ nav{background:rgba(4,4,4,.95)}
 }
 .bc-title {
   font-family: 'Syne', sans-serif;
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 700;
   color: var(--w);
   line-height: 1.2;
@@ -89,7 +89,7 @@ nav{background:rgba(4,4,4,.95)}
 }
 .bc-desc {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.55);
   line-height: 1.6;
   margin-bottom: 24px;
@@ -97,7 +97,7 @@ nav{background:rgba(4,4,4,.95)}
 }
 .bc-btn {
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
+  font-size: 0.625rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--w);
@@ -108,6 +108,8 @@ nav{background:rgba(4,4,4,.95)}
   gap: 8px;
   margin-top: auto;
   transition: color 0.3s;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .blog-card:hover .bc-btn {
   color: var(--ac);
@@ -183,7 +185,7 @@ nav{background:rgba(4,4,4,.95)}
 }
 .bo-meta {
   font-family: 'Space Mono', monospace;
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--ac);
@@ -191,7 +193,7 @@ nav{background:rgba(4,4,4,.95)}
 }
 .bo-title {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(28px, 4vw, 48px);
+  font-size: clamp(1.75rem, 4vw, 3rem);
   font-weight: 800;
   color: var(--w);
   line-height: 1.1;
@@ -200,7 +202,7 @@ nav{background:rgba(4,4,4,.95)}
 }
 .bo-content {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(15px, 1.2vw, 17px);
+  font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.8;
 }
@@ -209,7 +211,7 @@ nav{background:rgba(4,4,4,.95)}
 }
 .bo-content h3 {
   font-family: 'Syne', sans-serif;
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 700;
   color: var(--w);
   margin-top: 40px;
@@ -230,13 +232,13 @@ nav{background:rgba(4,4,4,.95)}
 }
 .bo-cta-text {
   font-family: 'Syne', sans-serif;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 700;
   color: var(--w);
 }
 .bo-cta-btn {
   font-family: 'Space Mono', monospace;
-  font-size: 11px;
+  font-size: 0.6875rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   background: var(--ac);
@@ -246,6 +248,8 @@ nav{background:rgba(4,4,4,.95)}
   border-radius: 100px;
   font-weight: 700;
   transition: transform 0.3s, background 0.3s;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .bo-cta-btn:hover {
   transform: translateY(-3px);

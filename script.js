@@ -1345,7 +1345,7 @@ function submitContactForm(event) {
                 '• Details: ' + (detailsEl.value.trim() || 'None');
                 
   var encodedText = encodeURIComponent(message);
-  var waUrl = 'https://wa.me/66960531394?text=' + encodedText;
+  var waUrl = 'https://wa.me/66613195339?text=' + encodedText;
   
   window.open(waUrl, '_blank');
   
@@ -1408,7 +1408,7 @@ function submitHomepageForm(event) {
                 '• Estimated Budget: ' + budgetEl.value;
                 
   var encodedText = encodeURIComponent(message);
-  var waUrl = 'https://wa.me/66960531394?text=' + encodedText;
+  var waUrl = 'https://wa.me/66613195339?text=' + encodedText;
   
   window.open(waUrl, '_blank');
   

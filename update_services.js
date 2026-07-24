@@ -50,7 +50,7 @@ const oldCard1 = `  <!-- CARD 1 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20Performance%20Marketing." target="_blank" class="svc-cta-btn reveal-up" data-th="เริ่มแคมเปญ →">Start a Campaign →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20Performance%20Marketing." target="_blank" class="svc-cta-btn reveal-up" data-th="เริ่มแคมเปญ →">Start a Campaign →</a>
       </div>`;
 
 const newCard1 = `  <!-- CARD 1 -->
@@ -94,7 +94,7 @@ const newCard1 = `  <!-- CARD 1 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20Performance%20Marketing." target="_blank" class="svc-cta-btn reveal-up" data-th="เริ่มแคมเปญ →">Start a Campaign →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20Performance%20Marketing." target="_blank" class="svc-cta-btn reveal-up" data-th="เริ่มแคมเปญ →">Start a Campaign →</a>
       </div>`;
 
 html = html.replace(oldCard1, newCard1);
@@ -141,7 +141,7 @@ const oldCard2 = `  <!-- CARD 2 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20Social%20Media%20Management." target="_blank" class="svc-cta-btn reveal-up" data-th="เป็นเจ้าของฟีดของคุณ →">Own Your Feed →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20Social%20Media%20Management." target="_blank" class="svc-cta-btn reveal-up" data-th="เป็นเจ้าของฟีดของคุณ →">Own Your Feed →</a>
       </div>`;
 
 const newCard2 = `  <!-- CARD 2 -->
@@ -185,7 +185,7 @@ const newCard2 = `  <!-- CARD 2 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20Social%20Media%20Management." target="_blank" class="svc-cta-btn reveal-up" data-th="เป็นเจ้าของฟีดของคุณ →">Own Your Feed →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20Social%20Media%20Management." target="_blank" class="svc-cta-btn reveal-up" data-th="เป็นเจ้าของฟีดของคุณ →">Own Your Feed →</a>
       </div>`;
 
 html = html.replace(oldCard2, newCard2);
@@ -233,7 +233,7 @@ const oldCard3 = `  <!-- CARD 3 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20Content%20Production." target="_blank" class="svc-cta-btn reveal-up" data-th="เริ่มการผลิต →">Start Production →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20Content%20Production." target="_blank" class="svc-cta-btn reveal-up" data-th="เริ่มการผลิต →">Start Production →</a>
       </div>`;
 
 const newCard3 = `  <!-- CARD 3 -->
@@ -278,7 +278,7 @@ const newCard3 = `  <!-- CARD 3 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20Content%20Production." target="_blank" class="svc-cta-btn reveal-up" data-th="เริ่มการผลิต →">Start Production →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20Content%20Production." target="_blank" class="svc-cta-btn reveal-up" data-th="เริ่มการผลิต →">Start Production →</a>
       </div>`;
 
 html = html.replace(oldCard3, newCard3);
@@ -326,7 +326,7 @@ const oldCard4 = `  <!-- CARD 4 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20AI%20Creative%20Automation." target="_blank" class="svc-cta-btn reveal-up" data-th="ก้าวสู่อนาคต →">Enter the Future →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20AI%20Creative%20Automation." target="_blank" class="svc-cta-btn reveal-up" data-th="ก้าวสู่อนาคต →">Enter the Future →</a>
       </div>`;
 
 const newCard4 = `  <!-- CARD 4 -->
@@ -371,7 +371,7 @@ const newCard4 = `  <!-- CARD 4 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20AI%20Creative%20Automation." target="_blank" class="svc-cta-btn reveal-up" data-th="ก้าวสู่อนาคต →">Enter the Future →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20AI%20Creative%20Automation." target="_blank" class="svc-cta-btn reveal-up" data-th="ก้าวสู่อนาคต →">Enter the Future →</a>
       </div>`;
 
 html = html.replace(oldCard4, newCard4);
@@ -419,7 +419,7 @@ const oldCard5 = `  <!-- CARD 5 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20Website%20Development." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างเว็บของคุณ →">Build Your Site →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20Website%20Development." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างเว็บของคุณ →">Build Your Site →</a>
       </div>`;
 
 const newCard5 = `  <!-- CARD 5 -->
@@ -464,7 +464,7 @@ const newCard5 = `  <!-- CARD 5 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20Website%20Development." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างเว็บของคุณ →">Build Your Site →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20Website%20Development." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างเว็บของคุณ →">Build Your Site →</a>
       </div>`;
 
 html = html.replace(oldCard5, newCard5);
@@ -511,7 +511,7 @@ const oldCard6 = `  <!-- CARD 6 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20Brand%20Strategy." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างพิมพ์เขียว →">Build Blueprint →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20Brand%20Strategy." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างพิมพ์เขียว →">Build Blueprint →</a>
       </div>`;
 
 const newCard6 = `  <!-- CARD 6 -->
@@ -555,7 +555,7 @@ const newCard6 = `  <!-- CARD 6 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20Brand%20Strategy." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างพิมพ์เขียว →">Build Blueprint →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20Brand%20Strategy." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างพิมพ์เขียว →">Build Blueprint →</a>
       </div>`;
 
 html = html.replace(oldCard6, newCard6);
@@ -603,7 +603,7 @@ const oldCard7 = `  <!-- CARD 7 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20Brand%20Consultancy." target="_blank" class="svc-cta-btn reveal-up" data-th="ขอคำปรึกษา →">Request Consultation →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20Brand%20Consultancy." target="_blank" class="svc-cta-btn reveal-up" data-th="ขอคำปรึกษา →">Request Consultation →</a>
       </div>`;
 
 const newCard7 = `  <!-- CARD 7 -->
@@ -648,7 +648,7 @@ const newCard7 = `  <!-- CARD 7 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20Brand%20Consultancy." target="_blank" class="svc-cta-btn reveal-up" data-th="ขอคำปรึกษา →">Request Consultation →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20Brand%20Consultancy." target="_blank" class="svc-cta-btn reveal-up" data-th="ขอคำปรึกษา →">Request Consultation →</a>
       </div>`;
 
 html = html.replace(oldCard7, newCard7);
@@ -696,7 +696,7 @@ const oldCard8 = `  <!-- CARD 8 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20CGI%20and%203D%20Production." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างโลก 3 มิติ →">Build 3D Worlds →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20CGI%20and%203D%20Production." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างโลก 3 มิติ →">Build 3D Worlds →</a>
       </div>`;
 
 const newCard8 = `  <!-- CARD 8 -->
@@ -741,7 +741,7 @@ const newCard8 = `  <!-- CARD 8 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20CGI%20and%203D%20Production." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างโลก 3 มิติ →">Build 3D Worlds →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20CGI%20and%203D%20Production." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างโลก 3 มิติ →">Build 3D Worlds →</a>
       </div>`;
 
 html = html.replace(oldCard8, newCard8);
@@ -789,7 +789,7 @@ const oldCard9 = `  <!-- CARD 9 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20AI%20Film%20Production." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างภาพยนตร์ของคุณ →">Build AI Films →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20AI%20Film%20Production." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างภาพยนตร์ของคุณ →">Build AI Films →</a>
       </div>`;
 
 const newCard9 = `  <!-- CARD 9 -->
@@ -834,7 +834,7 @@ const newCard9 = `  <!-- CARD 9 -->
           </div>
         </div>
 
-        <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20discuss%20AI%20Film%20Production." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างภาพยนตร์ของคุณ →">Build AI Films →</a>
+        <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20discuss%20AI%20Film%20Production." target="_blank" class="svc-cta-btn reveal-up" data-th="สร้างภาพยนตร์ของคุณ →">Build AI Films →</a>
       </div>`;
 
 html = html.replace(oldCard9, newCard9);
@@ -843,15 +843,15 @@ html = html.replace(oldCard9, newCard9);
 // 2. Update Bottom CTA
 const oldBottomCta = `<div class="svc-bottom-cta">
   <div class="sbc-h" data-th="พร้อมที่จะ<br><em>ครอบงำหรือยัง?</em>">Ready to<br><em>Dominate?</em></div>
-  <a href="https://wa.me/66960531394" target="_blank" class="sbc-link" data-th="จองคิววางกลยุทธ์ →">Book a Strategy Call →</a>
+  <a href="https://wa.me/66613195339" target="_blank" class="sbc-link" data-th="จองคิววางกลยุทธ์ →">Book a Strategy Call →</a>
 </div>`;
 
 const newBottomCta = `<div class="svc-bottom-cta" style="flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 24px; background: var(--ac); color: var(--bg);">
   <h2 class="sbc-h" data-th="พร้อมที่จะ<br><em>ครอบงำหรือยัง?</em>" style="margin-bottom: 8px;">Ready to Dominate?</h2>
   <p style="font-family: 'Space Grotesk', sans-serif; font-size: clamp(15px, 1.5vw, 20px); line-height: 1.6; max-width: 800px; color: rgba(0,0,0,0.85); font-weight: 500;" data-th="ไม่ว่าคุณจะอยู่ในอุตสาหกรรมใดหรือเริ่มจากตรงไหน หากแบรนด์ของคุณควรค่าแก่การเป็นที่กล่าวถึง มีผู้เข้าชม และซื้อซ้ำมากที่สุดในตลาด — เราสร้างระบบที่ทำให้สิ่งนั้นเกิดขึ้นอย่างหลีกเลี่ยงไม่ได้ เราทำงานร่วมกับแบรนด์ที่เราเชื่อมั่นเท่านั้น บอกเราเกี่ยวกับแบรนด์ของคุณ">It doesn't matter what industry you're in or where you're starting from. If your brand deserves to be the most talked-about, most visited, most bought-from name in your market — we can build the system that makes it inevitable.<br><br>We only work with brands we believe in. Tell us about yours.</p>
   <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px;">
-    <a href="https://wa.me/66960531394?text=Hi!%20I%20would%20like%20to%20book%20a%20strategy%20call." target="_blank" class="sbc-link" data-th="จองคิววางกลยุทธ์ →" style="background: var(--bg); color: var(--ac);">Book a Strategy Call →</a>
-    <a href="https://wa.me/66960531394?text=Hi!%20I%27d%20like%20to%20chat%20on%20WhatsApp." target="_blank" class="sbc-link" data-th="ส่งข้อความหาเราทาง WhatsApp" style="background: transparent; color: var(--bg); border: 1px solid rgba(0,0,0,0.3); padding: 18px 40px; text-decoration: none; border-radius: 100px; font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">Or message us directly on WhatsApp</a>
+    <a href="https://wa.me/66613195339?text=Hi!%20I%20would%20like%20to%20book%20a%20strategy%20call." target="_blank" class="sbc-link" data-th="จองคิววางกลยุทธ์ →" style="background: var(--bg); color: var(--ac);">Book a Strategy Call →</a>
+    <a href="https://wa.me/66613195339?text=Hi!%20I%27d%20like%20to%20chat%20on%20WhatsApp." target="_blank" class="sbc-link" data-th="ส่งข้อความหาเราทาง WhatsApp" style="background: transparent; color: var(--bg); border: 1px solid rgba(0,0,0,0.3); padding: 18px 40px; text-decoration: none; border-radius: 100px; font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">Or message us directly on WhatsApp</a>
   </div>
 </div>`;
 

@@ -2,10 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const files = ['index.html', 'work.html', 'services.html', 'about.html', 'contact.html'];
-const waNum = '66960531394';
-const waFormatted = '+66 9605 31394';
+const waNum = '66613195339';
+const waFormatted = '+66 61 319 5339';
 const callNum = '+66960531394';
-const callFormatted = '+66 960531394';
+const callFormatted = '+66 9605 31394';
 
 files.forEach(file => {
   let content = fs.readFileSync(file, 'utf8');

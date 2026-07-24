@@ -1,4 +1,17 @@
 <!DOCTYPE html><html lang="en"><head>
+<script>
+// Store and clear hash immediately to prevent native browser scroll jump
+(function() {
+  var hash = window.location.hash;
+  if (hash) {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    history.replaceState(null, null, ' ');
+    window.__targetHash = hash;
+  }
+})();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Digital Marketing Services | Unsocials Thailand</title>
@@ -1683,7 +1696,6 @@ nav{background:rgba(4,4,4,.95)}
   <div class="ft-g">
     <div>
       <div class="ft-br"><img src="assets/logo.png" alt="Unsocials Logo" class="ft-logo-img"></div>
-      <p class="ft-brs" data-th="เอเจนซี่ครีเอทีฟระดับโลก">Global Creative Agency</p>
     </div>
     <div class="ft-col">
       <h5 data-th="บริการ">Services</h5>
@@ -1691,11 +1703,14 @@ nav{background:rgba(4,4,4,.95)}
       <a href="services.html" data-th="การจัดการโซเชียลมีเดีย">Social Media Management</a>
       <a href="services.html" data-th="การผลิตคอนเทนต์">Content Production</a>
       <a href="services.html" data-th="AI ครีเอทีฟ">AI Creative Automation</a>
-      <a href="services.html" data-th="การพัฒนาเว็บไซต์">Website Development</a>
-      <a href="services.html" data-th="กลยุทธ์แบรนด์">Brand Strategy</a>
-      <a href="services.html" data-th="ที่ปรึกษาแบรนด์">Brand Consultancy</a>
-      <a href="services.html" data-th="การผลิต CGI และ 3D">CGI &amp; 3D Production</a>
-      <a href="services.html" data-th="การผลิตภาพยนตร์ด้วย AI">AI Film Production</a>
+      <div class="ft-col-more">
+        <a href="services.html" data-th="การพัฒนาเว็บไซต์">Website Development</a>
+        <a href="services.html" data-th="กลยุทธ์แบรนด์">Brand Strategy</a>
+        <a href="services.html" data-th="ที่ปรึกษาแบรนด์">Brand Consultancy</a>
+        <a href="services.html" data-th="การผลิต CGI และ 3D">CGI &amp; 3D Production</a>
+        <a href="services.html" data-th="การผลิตภาพยนตร์ด้วย AI">AI Film Production</a>
+      </div>
+      <button class="ft-more-btn" onclick="const m=this.previousElementSibling; m.classList.toggle('is-expanded');"></button>
     </div>
     <div class="ft-col">
       <h5 data-th="ผลงาน">Work</h5>
@@ -1703,9 +1718,12 @@ nav{background:rgba(4,4,4,.95)}
       <a href="work/alexa.html">Alexa Beach Club</a>
       <a href="work/skyview.html">Hotel Skyview</a>
       <a href="work/nomads.html" data-th="โนแมดส์ เอเชีย">Nomads Asia</a>
-      <a href="work/bamboo.html" data-th="แบมบู บีชคลับ">Bamboo Beach Club</a>
-      <a href="work/gps.html" data-th="จีพีเอส เจมส์">GPS Gems</a>
-      <a href="work/huay-yai.html" data-th="ห้วยใหญ่ พาร์ค วิลล่า">Huay Yai Park Villas</a>
+      <div class="ft-col-more">
+        <a href="work/bamboo.html" data-th="แบมบู บีชคลับ">Bamboo Beach Club</a>
+        <a href="work/gps.html" data-th="จีพีเอส เจมส์">GPS Gems</a>
+        <a href="work/huay-yai.html" data-th="ห้วยใหญ่ พาร์ค วิลล่า">Huay Yai Park Villas</a>
+      </div>
+      <button class="ft-more-btn" onclick="const m=this.previousElementSibling; m.classList.toggle('is-expanded');"></button>
     </div>
     <div class="ft-col">
       <h5 data-th="ติดต่อ">Contact</h5>
@@ -1868,7 +1886,7 @@ mm.add("(min-width: 901px)", function() {
         });
         setTimeout(() => { isSnapping = false; }, 1000);
       }
-    }, 200);
+    }, 450);
   });
 
   // Content reveal animations (trigger-based, no scrub)
@@ -1889,7 +1907,7 @@ mm.add("(min-width: 901px)", function() {
       scrollTrigger: {
         trigger: card,
         start: 'top 70%',
-        toggleActions: 'play none none none'
+        toggleActions: 'play none none reverse'
       }
     });
 
@@ -1901,6 +1919,7 @@ mm.add("(min-width: 901px)", function() {
     if (listItems.length) {
       revealTl.to(listItems, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: 'power2.out' }, 0.7);
     }
+    card.revealTl = revealTl;
   });
 
   // Desktop stacking card overlap effect (depth parallax)
@@ -1951,7 +1970,7 @@ mm.add("(max-width: 900px)", function() {
       scrollTrigger: {
         trigger: card,
         start: 'top 80%',
-        toggleActions: 'play none none none'
+        toggleActions: 'play none none reverse'
       }
     });
 
@@ -1970,7 +1989,7 @@ mm.add("(max-width: 900px)", function() {
         scrollTrigger: {
           trigger: card,
           start: 'top 75%',
-          toggleActions: 'play none none none'
+          toggleActions: 'play none none reverse'
         }
       });
       
@@ -1984,7 +2003,9 @@ mm.add("(max-width: 900px)", function() {
         gsap.set(listItems, { opacity: 0, y: 20 });
         imgRevealTl.to(listItems, { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, ease: 'power2.out' }, 0.8);
       }
+      card.revealImgTl = imgRevealTl;
     }
+    card.revealTl = tl;
   });
 });
 
@@ -2000,18 +2021,8 @@ window.addEventListener('load', function() {
       const rect = card.getBoundingClientRect();
       const triggerPoint = window.innerHeight * 0.85;
       if (rect.top < triggerPoint) {
-        const textEls = card.querySelectorAll('.svc-num, .svc-title, .svc-desc');
-        const wrapper = card.querySelector('.card-media-wrapper');
-        const media = card.querySelector('.card-media');
-        const listItems = card.querySelectorAll('.svc-deliverables li, .svc-cta-btn');
-        const inner = card.querySelector('.svc-card-inner');
-        
-        gsap.killTweensOf([textEls, wrapper, media, listItems, inner]);
-        gsap.set(textEls, { opacity: 1, y: 0 });
-        if (wrapper) gsap.set(wrapper, { clipPath: 'inset(0 0% 0 0)', overflow: 'visible' });
-        if (media) gsap.set(media, { scale: 1, x: 0 });
-        if (listItems.length) gsap.set(listItems, { opacity: 1, y: 0 });
-        if (inner) gsap.set(inner, { opacity: 1, scale: 1, filter: 'none', y: 0 });
+        if (card.revealTl) card.revealTl.progress(1);
+        if (card.revealImgTl) card.revealImgTl.progress(1);
       }
     });
   }
@@ -2030,25 +2041,23 @@ const serviceHashes = {
   '#film': 8
 };
 function handleHashNavigation() {
-  const hash = window.location.hash;
+  const hash = window.__targetHash || window.location.hash;
   if (hash && serviceHashes[hash] !== undefined) {
     const cardIdx = serviceHashes[hash];
     if (typeof cards !== 'undefined' && cards[cardIdx]) {
       const targetCard = cards[cardIdx];
       
-      // Instantly reveal target card to avoid blank states during hash jump
-      const textEls = targetCard.querySelectorAll('.svc-num, .svc-title, .svc-desc');
-      const wrapper = targetCard.querySelector('.card-media-wrapper');
-      const media = targetCard.querySelector('.card-media');
-      const listItems = targetCard.querySelectorAll('.svc-deliverables li, .svc-cta-btn');
-      const inner = targetCard.querySelector('.svc-card-inner');
-      
-      gsap.killTweensOf([textEls, wrapper, media, listItems, inner]);
-      gsap.set(textEls, { opacity: 1, y: 0 });
-      if (wrapper) gsap.set(wrapper, { clipPath: 'inset(0 0% 0 0)', overflow: 'visible' });
-      if (media) gsap.set(media, { scale: 1, x: 0 });
-      if (listItems.length) gsap.set(listItems, { opacity: 1, y: 0 });
-      if (inner) gsap.set(inner, { opacity: 1, scale: 1, filter: 'none', y: 0 });
+      // Instantly reveal target card and all cards above it
+      for (let i = 0; i <= cardIdx; i++) {
+        if (cards[i]) {
+          if (cards[i].revealTl) cards[i].revealTl.progress(1);
+          if (cards[i].revealImgTl) cards[i].revealImgTl.progress(1);
+        }
+      }
+
+      // Restore the hash in the URL bar
+      history.replaceState(null, null, hash);
+      window.__targetHash = null;
 
       setTimeout(() => {
         lenis.scrollTo(targetCard, { offset: -20, duration: 1.2 });

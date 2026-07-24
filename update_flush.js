@@ -5,7 +5,7 @@ const replacement = `<section id="ai-results" style="padding:100px 0 100px max(6
   <div class="split-flush-right">
     <div style="padding-right: 2vw;">
       <h2 class="sec-h" data-th="ผลกระทบ<br><em>ที่มองเห็นได้.</em>">Visible<br><em>Impact.</em></h2>
-      <p class="ab-body" data-th="Alex แสดงให้คุณเห็นเพียงสิ่งเดียวที่สำคัญ: <span class='hl-text'>ผลลัพธ์.</span> แคมเปญที่ขับเคลื่อนด้วย AI ของเราไม่ได้มีแค่ความสวยงาม — พวกมันคือเครื่องจักรที่สร้างยอดขาย">Alex shows you the only thing that matters: <span class="hl-text">Results.</span> Our AI-driven campaigns aren't just pretty — they are performance machines.</p>
+      <p class="ab-body" data-th="Ava แสดงให้คุณเห็นเพียงสิ่งเดียวที่สำคัญ: <span class='hl-text'>ผลลัพธ์.</span> แคมเปญที่ขับเคลื่อนด้วย AI ของเราไม่ได้มีแค่ความสวยงาม — พวกมันคือเครื่องจักรที่สร้างยอดขาย">Ava shows you the only thing that matters: <span class="hl-text">Results.</span> Our AI-driven campaigns aren't just pretty — they are performance machines.</p>
       <p class="ab-body" style="margin-top:20px;" data-th="ทุกแคมเปญที่เราสร้างมุ่งเป้าไปที่ตัวชี้วัดหนึ่งเดียว: รายได้ ไม่ใช่ความประทับใจ ไม่ใช่การเข้าถึง — แต่เป็นผลลัพธ์ทางธุรกิจที่วัดผลได้จริง สร้างขึ้นจากข้อมูล ขับเคลื่อนด้วย AI และปรับแต่งอย่างไม่มีวันหยุดพัก">Every campaign we build targets one metric: revenue. Not impressions, not reach — measurable business outcomes. Data-built, AI-powered, and relentlessly optimised.</p>
     </div>
     <div class="rv" style="position:relative; width: 100%; height: 100%; display:flex; justify-content:flex-end;">

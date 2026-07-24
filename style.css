@@ -3103,7 +3103,7 @@ html[lang="th"] .h-big {
   }
 }
 
-/* -- 8. U-SECTION COLLAGE & STATS: fluid scaling and grid layout on mobile -- */
+/* -- 8. U-SECTION COLLAGE & STATS: fluid scaling and vertical stack on mobile -- */
 @media (max-width: 600px) {
   #u-stage {
     height: 78.75vw !important;
@@ -3116,19 +3116,16 @@ html[lang="th"] .h-big {
     margin: 0 auto !important;
   }
   #u-right {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 32px 20px !important;
-    justify-items: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 28px !important;
     width: 100% !important;
     padding: 0 24px !important;
   }
   .u-stat {
     align-items: center !important;
     text-align: center !important;
-  }
-  .u-stat:nth-child(4) {
-    grid-column: span 2 !important;
   }
 }
 

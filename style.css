@@ -3103,15 +3103,32 @@ html[lang="th"] .h-big {
   }
 }
 
-/* -- 8. U-SECTION COLLAGE: prevent overflow on very small screens -- */
-@media (max-width: 390px) {
+/* -- 8. U-SECTION COLLAGE & STATS: fluid scaling and grid layout on mobile -- */
+@media (max-width: 600px) {
   #u-stage {
+    height: 78.75vw !important;
+    margin: 10px 0 !important;
     overflow: hidden !important;
-    height: 260px !important;
   }
   #u-collage {
-    transform: scale(0.55) !important;
-    transform-origin: center top !important;
+    transform: scale(calc(90vw / 480)) !important;
+    transform-origin: center center !important;
+    margin: 0 auto !important;
+  }
+  #u-right {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px 20px !important;
+    justify-items: center !important;
+    width: 100% !important;
+    padding: 0 24px !important;
+  }
+  .u-stat {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .u-stat:nth-child(4) {
+    grid-column: span 2 !important;
   }
 }
 

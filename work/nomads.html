@@ -44,7 +44,7 @@ html { scroll-behavior: auto !important; }
 
 /* ===== SIDE-BY-SIDE MEDIA SECTION ===== */
 .cs-media-section{padding:32px 8vw 48px;background:#040404}
-.cs-media-grid{display:grid;grid-template-columns:270px 270px 1fr;gap:40px;align-items:start;max-width:1300px;margin:0 auto}
+.cs-media-grid{display:grid;grid-template-columns:270px 1fr;gap:40px;align-items:start;max-width:1300px;margin:0 auto}
 .cs-media-col{display:flex;flex-direction:column;position:relative;overflow:visible}
 .cs-media-title{font-family:'Space Mono',monospace;font-size: 0.625rem;letter-spacing:4px;text-transform:uppercase;color:var(--ac);margin-bottom:32px;display:flex;align-items:center;gap:12px}
 .cs-media-title::before{content:'';width:24px;height:1px;background:var(--ac)}
@@ -85,10 +85,7 @@ html { scroll-behavior: auto !important; }
 .cs-cta-link:hover{transform:translateY(-4px);background:#fff;color:var(--bg);box-shadow:0 12px 32px rgba(0,0,0,.3)}
 
 /* ===== RESPONSIVE ===== */
-@media(max-width:1200px){
-  .cs-media-grid{grid-template-columns:270px 270px;justify-content:center;gap:32px}
-  .cs-media-col.showcase-col{grid-column:span 2}
-}
+
 @media(max-width:900px){
   .cs-hero{padding:140px 24px 16px}
   .cs-story{padding:24px 24px 48px;}.cs-media-section{padding:48px 24px}
@@ -190,27 +187,8 @@ html { scroll-behavior: auto !important; }
 
 <section class="cs-media-section">
   <div class="cs-media-grid">
-    <!-- Left Column: Krabi Slider -->
+    <!-- Left Column: Phuket Slider -->
     <div class="cs-media-col slider-col cs-reveal">
-      <div class="cs-media-title">Krabi Property Feed</div>
-      <div class="cs-comparison-slider">
-        <div class="cs-image-wrapper before">
-          <span class="cs-image-badge before">Before</span>
-          <img src="../assets/cases/nomads/img3.png" alt="Nomads Krabi feed — Before Unsocials" loading="lazy">
-        </div>
-        <div class="cs-image-wrapper after">
-          <span class="cs-image-badge after">After</span>
-          <img src="../assets/cases/nomads/img1.png" alt="Nomads Krabi feed — After Unsocials" loading="lazy">
-        </div>
-        <div class="cs-slider-handle">
-          <div class="cs-slider-button">↔</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Center Column: Phuket Slider -->
-    <div class="cs-media-col slider-col cs-reveal cs-d2">
-      <div class="cs-media-title">Phuket Property Feed</div>
       <div class="cs-comparison-slider">
         <div class="cs-image-wrapper before">
           <span class="cs-image-badge before">Before</span>
@@ -227,7 +205,7 @@ html { scroll-behavior: auto !important; }
     </div>
     
     <!-- Right Column: Content Showcase (3D Coverflow) -->
-    <div class="cs-media-col showcase-col cs-reveal cs-d3">
+    <div class="cs-media-col showcase-col cs-reveal cs-d2">
       <div class="cs-media-title">Content We Created</div>
       <div class="cs-carousel-wrapper">
         <button class="cs-carousel-arrow prev" aria-label="Previous video">←</button>

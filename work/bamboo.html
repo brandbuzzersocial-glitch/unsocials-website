@@ -104,6 +104,13 @@ html { scroll-behavior: auto !important; }
 @media(max-width:540px){
   .cs-stats{grid-template-columns:1fr}
 }
+
+@media(max-width:480px){
+  .cs-grid{height:380px !important}
+  .cs-grid-item{width:170px !important;height:300px !important}
+  .cs-showcase-grid{height:380px !important}
+  .cs-showcase-item{width:170px !important;height:300px !important}
+}
 </style>
 
 <link rel="icon" type="image/png" href="../assets/favicon.png?v=3">
@@ -308,23 +315,26 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       const nextBtn = wrapper.querySelector('.cs-carousel-arrow.next');
 
       function updatePositions() {
+        const isSmall = window.innerWidth < 600;
+        const step = isSmall ? 70 : 110;
+        const base = isSmall ? 25 : 40;
         items.forEach((item, index) => {
           const diff = index - activeIndex;
           const absDiff = Math.abs(diff);
 
           if (diff === 0) {
-            item.style.transform = `translateX(0) scale(1.15) translateZ(100px) rotateY(0deg)`;
+            item.style.transform = `translateX(0) scale(${isSmall ? 1.08 : 1.15}) translateZ(100px) rotateY(0deg)`;
             item.style.zIndex = '10';
             item.style.opacity = '1';
             item.style.pointerEvents = 'auto';
           } else if (diff < 0) {
-            const tx = -110 * absDiff - 40;
+            const tx = -step * absDiff - base;
             item.style.transform = `translateX(${tx}px) scale(${1 - 0.12 * absDiff}) rotateY(40deg) translateZ(${-80 * absDiff}px)`;
             item.style.zIndex = `${10 - absDiff}`;
             item.style.opacity = `${Math.max(0.2, 1 - 0.25 * absDiff)}`;
             item.style.pointerEvents = 'none';
           } else {
-            const tx = 110 * absDiff + 40;
+            const tx = step * absDiff + base;
             item.style.transform = `translateX(${tx}px) scale(${1 - 0.12 * absDiff}) rotateY(-40deg) translateZ(${-80 * absDiff}px)`;
             item.style.zIndex = `${10 - absDiff}`;
             item.style.opacity = `${Math.max(0.2, 1 - 0.25 * absDiff)}`;

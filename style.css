@@ -1569,7 +1569,6 @@ nav.compact{padding:14px clamp(24px, 4vw, 52px)}
   gap: 24px;
   overflow-x: auto;
   padding-bottom: 24px;
-  scroll-snap-type: x mandatory;
   scrollbar-width: thin;
   scrollbar-color: var(--case-accent-color, var(--rd)) transparent;
   width: 100%;
@@ -1598,7 +1597,6 @@ nav.compact{padding:14px clamp(24px, 4vw, 52px)}
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 12px;
   background: #040404;
-  scroll-snap-align: start;
   user-select: none;
   -webkit-user-drag: none;
   box-shadow: 0 12px 30px rgba(0,0,0,0.5);

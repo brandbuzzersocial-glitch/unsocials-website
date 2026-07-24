@@ -1842,52 +1842,20 @@ mm.add("(min-width: 901px)", function() {
     });
   });
 
-  // Menu click scrolls to that card
+  // Menu click scrolls to that card using stable page-relative offsets
+  // Offset by nav height so the card title clears the fixed nav bar
   menuItems.forEach((li, idx) => {
     li.addEventListener('click', () => {
-      lenis.scrollTo(cards[idx], { offset: -20, duration: 1.0, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+      if (cards[idx]) {
+        const navEl = document.getElementById('nav');
+        const navH = navEl ? navEl.offsetHeight : 75;
+        const targetY = cards[idx].offsetTop + deck.offsetTop;
+        lenis.scrollTo(targetY - navH, { duration: 1.0, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+      }
     });
   });
 
-  // JS Scroll-snap: after scrolling stops, snap to the nearest card
-  let snapTimer = null;
-  let isSnapping = false;
-  lenis.on('scroll', () => {
-    if (isSnapping) return;
-    clearTimeout(snapTimer);
-    snapTimer = setTimeout(() => {
-      const deckRect = deck.getBoundingClientRect();
-      const deckTopY = window.scrollY + deckRect.top;
-      const deckBottomY = deckTopY + deck.offsetHeight;
-      const sy = window.scrollY;
-      // Only snap when scroll position is inside the deck area
-      if (sy < deckTopY - 50 || sy > deckBottomY - window.innerHeight + 50) return;
 
-      // Find the nearest card
-      let nearestIdx = 0;
-      let nearestDist = Infinity;
-      cards.forEach((card, i) => {
-        const cardTop = card.getBoundingClientRect().top + window.scrollY;
-        const dist = Math.abs(sy - cardTop);
-        if (dist < nearestDist) {
-          nearestDist = dist;
-          nearestIdx = i;
-        }
-      });
-
-      if (nearestDist > 30) {
-        isSnapping = true;
-        const targetCard = cards[nearestIdx];
-        const targetY = targetCard.getBoundingClientRect().top + window.scrollY;
-        lenis.scrollTo(targetY, {
-          duration: 0.6,
-          easing: (t) => t < 0.5 ? 2*t*t : -1+(4-2*t)*t,
-          onComplete: () => { isSnapping = false; }
-        });
-        setTimeout(() => { isSnapping = false; }, 1000);
-      }
-    }, 450);
-  });
 
   // Content reveal animations (trigger-based, no scrub)
   cards.forEach((card) => {
@@ -1944,6 +1912,8 @@ mm.add("(min-width: 901px)", function() {
       }
     }
   });
+
+
 });
 
 // Mobile Fallback
@@ -2046,6 +2016,7 @@ function handleHashNavigation() {
     const cardIdx = serviceHashes[hash];
     if (typeof cards !== 'undefined' && cards[cardIdx]) {
       const targetCard = cards[cardIdx];
+      const deck = document.querySelector('.svc-deck');
       
       // Instantly reveal target card and all cards above it
       for (let i = 0; i <= cardIdx; i++) {
@@ -2060,7 +2031,12 @@ function handleHashNavigation() {
       window.__targetHash = null;
 
       setTimeout(() => {
-        lenis.scrollTo(targetCard, { offset: -20, duration: 1.2 });
+        if (deck) {
+          const navEl = document.getElementById('nav');
+          const navH = navEl ? navEl.offsetHeight : 75;
+          const targetY = targetCard.offsetTop + deck.offsetTop;
+          lenis.scrollTo(targetY - navH, { duration: 1.2 });
+        }
       }, 300);
     }
   }
